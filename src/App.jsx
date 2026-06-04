@@ -7,9 +7,9 @@ import PoolCard from './components/PoolCard'
 import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
 
 export default function App() {
-  const [selectedBorough, setSelectedBorough] = useState('All')
-  const [selectedActivity, setSelectedActivity] = useState('All activities')
-  const [selectedDay, setSelectedDay] = useState('Week')
+  const [selectedBorough, setSelectedBorough] = useState('Manhattan')
+  const [selectedActivity, setSelectedActivity] = useState('Lap Swim')
+  const [selectedDay, setSelectedDay] = useState('Today')
   const [showClosed, setShowClosed] = useState(true)
 
   const boroughs = useMemo(() => {
