@@ -80,3 +80,13 @@ export function matchesActivity(sessionType, activityKey) {
   const a = ACTIVITIES.find((x) => x.key === activityKey)
   return a ? a.match(sessionType) : false
 }
+
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+export function matchesDay(scheduleDays, dayKey) {
+  if (!dayKey || dayKey === 'Week') return true
+  const now = new Date()
+  const offset = dayKey === 'Tomorrow' ? 1 : 0
+  const target = DAY_NAMES[(now.getDay() + offset) % 7]
+  return new RegExp(`\\b${target}\\b`, 'i').test(scheduleDays ?? '')
+}

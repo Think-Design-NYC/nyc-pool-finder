@@ -25,6 +25,8 @@ export default function FilterBar({
   activities,
   selectedActivity,
   onSelectActivity,
+  selectedDay,
+  onSelectDay,
   showClosed,
   onToggleClosed,
   closedCount,
@@ -51,6 +53,12 @@ export default function FilterBar({
             {showClosed ? 'Hiding none' : `Hiding closed${closedCount ? ` (${closedCount})` : ''}`}
           </button>
         </div>
+        <PillRow
+          options={['Week', 'Today', 'Tomorrow']}
+          selected={selectedDay}
+          onSelect={onSelectDay}
+          activeClass="bg-orange-500 text-white shadow-sm"
+        />
         {activities && activities.length > 0 && (
           <PillRow
             options={['All activities', ...activities]}

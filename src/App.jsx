@@ -4,11 +4,12 @@ import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
-import { getBorough, ACTIVITIES, matchesActivity } from './utils'
+import { getBorough, ACTIVITIES, matchesActivity, matchesDay } from './utils'
 
 export default function App() {
   const [selectedBorough, setSelectedBorough] = useState('All')
   const [selectedActivity, setSelectedActivity] = useState('All activities')
+  const [selectedDay, setSelectedDay] = useState('Week')
   const [showClosed, setShowClosed] = useState(true)
 
   const boroughs = useMemo(() => {
@@ -44,25 +45,30 @@ export default function App() {
   }, [])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
+  const dayActive = selectedDay && selectedDay !== 'Week'
 
   const visiblePools = useMemo(() => {
     return pools
       .filter((p) => selectedBorough === 'All' || getBorough(p) === selectedBorough)
       .filter((p) => showClosed || p.status !== 'closed')
       .map((p) => {
-        if (!activityActive) return p
-        const filtered = (p.schedules ?? []).filter((s) =>
-          matchesActivity(s.session_type, selectedActivity),
+        if (!activityActive && !dayActive) return p
+        const filtered = (p.schedules ?? []).filter(
+          (s) =>
+            (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
+            (!dayActive || matchesDay(s.days, selectedDay)),
         )
         return { ...p, schedules: filtered }
       })
-      .filter((p) => !activityActive || (p.schedules?.length ?? 0) > 0)
+      .filter(
+        (p) => (!activityActive && !dayActive) || (p.schedules?.length ?? 0) > 0,
+      )
       .sort((a, b) => {
         // Open pools first, then transitioning, then closed
         const rank = { open: 0, transitioning: 1, closed: 2 }
         return (rank[a.status] ?? 3) - (rank[b.status] ?? 3)
       })
-  }, [selectedBorough, showClosed, selectedActivity, activityActive])
+  }, [selectedBorough, showClosed, selectedActivity, activityActive, selectedDay, dayActive])
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
@@ -86,6 +92,8 @@ export default function App() {
         activities={activities}
         selectedActivity={selectedActivity}
         onSelectActivity={setSelectedActivity}
+        selectedDay={selectedDay}
+        onSelectDay={setSelectedDay}
         showClosed={showClosed}
         onToggleClosed={() => setShowClosed((v) => !v)}
         closedCount={closedCount}
