@@ -1,0 +1,110 @@
+[
+    {
+        "pool_name": "Chelsea Pool",
+        "url": "https://www.nycgovparks.org/facilities/recreationcenters/M260",
+        "status": "open",
+        "location": {
+            "address": "430 West 25th Street",
+            "city": "New York",
+            "state": "NY",
+            "zip_code": "10001",
+            "cross_streets": "9th & 10th Avenues"
+        },
+        "schedules": [
+            {
+                "session_type": "Adult Lap Swim (Ages 18+)",
+                "days": "Monday – Friday",
+                "time": "7:00 AM – 9:45 AM"
+            },
+            {
+                "session_type": "Adult Lap Swim (Ages 18+)",
+                "days": "Select Weekdays (e.g., Monday/Wednesday)",
+                "time": "2:30 PM – 3:45 PM"
+            },
+            {
+                "session_type": "Open Lap Swim (Ages 15+)",
+                "days": "Saturday",
+                "time": "8:00 AM – 9:45 AM"
+            }
+        ]
+    },
+    {
+        "pool_name": "Gertrude Ederle Pool",
+        "url": "https://www.nycgovparks.org/facilities/recreationcenters/M063",
+        "status": "open",
+        "location": {
+            "address": "232 West 60th Street",
+            "city": "New York",
+            "state": "NY",
+            "zip_code": "10023",
+            "cross_streets": "West End Avenue & Amsterdam Avenue"
+        },
+        "schedules": [
+            {
+                "session_type": "Adult & Open Lap Swim",
+                "days": "Monday – Friday (Mornings)",
+                "time": "7:00 AM – 9:45 AM"
+            },
+            {
+                "session_type": "Adult & Open Lap Swim",
+                "days": "Monday – Friday (Afternoons)",
+                "time": "3:30 PM – 4:45 PM"
+            },
+            {
+                "session_type": "Adult & Open Lap Swim",
+                "days": "Monday – Friday (Evenings)",
+                "time": "5:00 PM – 7:00 PM",
+                "notes": "Session ends at 6:45 PM on Wednesdays"
+            }
+        ]
+    },
+    {
+        "pool_name": "Constance Baker Motley Pool",
+        "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130",
+        "status": "open",
+        "location": {
+            "address": "348 East 54th Street",
+            "city": "New York",
+            "state": "NY",
+            "zip_code": "10022",
+            "cross_streets": "1st & 2nd Avenues"
+        },
+        "schedules": [
+            {
+                "session_type": "Lap Swim (Ages 16+)",
+                "days": "Monday – Friday",
+                "time": "7:00 AM – 11:45 AM"
+            },
+            {
+                "session_type": "Lap Swim (Ages 16+)",
+                "days": "Select Weekday Evenings",
+                "time": "4:00 PM – 7:00 PM"
+            }
+        ]
+    },
+    {
+        "pool_name": "Asser Levy Pool",
+        "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164",
+        "status": "transitioning",
+        "location": {
+            "address": "392 Asser Levy Place",
+            "city": "New York",
+            "state": "NY",
+            "zip_code": "10010",
+            "cross_streets": "East 23rd Street & FDR Drive"
+        },
+        "notes": "Indoor pool closed for the summer starting June 15, 2026. Free outdoor pool available instead.",
+        "schedules": [
+            {
+                "session_type": "Independent Lap Swim (Prior to June 15)",
+                "days": "Monday – Friday",
+                "time": "Intermittent during 7:00 AM – 8:00 PM building hours"
+            },
+            {
+                "session_type": "Independent Lap Swim (Prior to June 15)",
+                "days": "Saturday",
+                "time": "Intermittent during 9:00 AM – 4:00 PM building hours"
+            }
+        ]
+    }
+]
