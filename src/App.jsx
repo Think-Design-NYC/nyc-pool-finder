@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Waves } from 'lucide-react'
 import pools from '../nyc_pools_live.json'
+import meta from '../nyc_pools_meta.json'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import { getBorough, ACTIVITIES, matchesActivity } from './utils'
@@ -33,6 +34,15 @@ export default function App() {
     [],
   )
 
+  const lastUpdated = useMemo(() => {
+    if (!meta.updated_at) return null
+    return new Date(meta.updated_at).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
+  }, [])
+
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
 
   const visiblePools = useMemo(() => {
@@ -63,6 +73,9 @@ export default function App() {
         </h1>
         <p className="mt-1 text-sm text-slate-500">
           Indoor public pools &amp; lap swim schedules
+          {lastUpdated && (
+            <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
+          )}
         </p>
       </header>
 

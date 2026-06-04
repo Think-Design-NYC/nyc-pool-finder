@@ -1,5 +1,7 @@
 import json
 import re
+from datetime import datetime, timezone
+
 import requests
 from bs4 import BeautifulSoup, Comment
 from pydantic import BaseModel
@@ -183,4 +185,14 @@ if __name__ == "__main__":
     extracted_data = scrape_nyc_pools()
     with open("nyc_pools_live.json", "w", encoding="utf-8") as f:
         json.dump(extracted_data, f, indent=4)
+
+    meta = {
+        "updated_at": datetime.now(timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z"),
+        "pool_count": len(extracted_data),
+    }
+    with open("nyc_pools_meta.json", "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=4)
+
     print(f"Scraping complete! Saved {len(extracted_data)} pools to nyc_pools_live.json.")
