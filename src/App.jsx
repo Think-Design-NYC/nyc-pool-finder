@@ -4,7 +4,7 @@ import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
-import { getBorough, ACTIVITIES, matchesActivity, matchesDay } from './utils'
+import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
 
 export default function App() {
   const [selectedBorough, setSelectedBorough] = useState('All')
@@ -46,6 +46,7 @@ export default function App() {
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const dayActive = selectedDay && selectedDay !== 'Week'
+  const hidePast = selectedDay === 'Today'
 
   const visiblePools = useMemo(() => {
     return pools
@@ -56,7 +57,8 @@ export default function App() {
         const filtered = (p.schedules ?? []).filter(
           (s) =>
             (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
-            (!dayActive || matchesDay(s.days, selectedDay)),
+            (!dayActive || matchesDay(s.days, selectedDay)) &&
+            (!hidePast || !isPastToday(s.time)),
         )
         return { ...p, schedules: filtered }
       })
@@ -68,7 +70,7 @@ export default function App() {
         const rank = { open: 0, transitioning: 1, closed: 2 }
         return (rank[a.status] ?? 3) - (rank[b.status] ?? 3)
       })
-  }, [selectedBorough, showClosed, selectedActivity, activityActive, selectedDay, dayActive])
+  }, [selectedBorough, showClosed, selectedActivity, activityActive, selectedDay, dayActive, hidePast])
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">

@@ -90,3 +90,21 @@ export function matchesDay(scheduleDays, dayKey) {
   const target = DAY_NAMES[(now.getDay() + offset) % 7]
   return new RegExp(`\\b${target}\\b`, 'i').test(scheduleDays ?? '')
 }
+
+// Parses "9:45 a" / "1:00 p" → minutes since midnight, or null on failure.
+function parseClockTime(s) {
+  const m = /^\s*(\d{1,2}):(\d{2})\s*([ap])/i.exec(s ?? '')
+  if (!m) return null
+  let h = Number(m[1]) % 12
+  if (m[3].toLowerCase() === 'p') h += 12
+  return h * 60 + Number(m[2])
+}
+
+// True when the schedule's end time has already passed today.
+export function isPastToday(timeRange) {
+  const end = (timeRange ?? '').split('-')[1]
+  const mins = parseClockTime(end)
+  if (mins == null) return false
+  const now = new Date()
+  return mins <= now.getHours() * 60 + now.getMinutes()
+}
