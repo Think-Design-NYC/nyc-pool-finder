@@ -980,9 +980,19 @@
                 "time": "8:45 a - 9:30 a"
             },
             {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "10:00 a - 11:30 a"
+            },
+            {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
-                "time": "1:15 p - 2:45 p"
+                "time": "11:45 a - 1:30 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "1:45 p - 2:45 p"
             },
             {
                 "session_type": "Family Swim",
@@ -1012,7 +1022,17 @@
             {
                 "session_type": "General Swim",
                 "days": "Friday",
-                "time": "1:15 p - 2:45 p"
+                "time": "10:00 a - 11:30 a"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "11:45 a - 1:30 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "1:45 p - 2:45 p"
             },
             {
                 "session_type": "Children/Teen Swim",
@@ -1449,7 +1469,7 @@
                 "time": "3:30 p - 4:30 p"
             },
             {
-                "session_type": "Flushing Aquacades Swim Team",
+                "session_type": "CANCELED: Flushing Aquacades Swim Team",
                 "days": "Thursday",
                 "time": "4:00 p - 6:00 p"
             },
