@@ -40,7 +40,7 @@ function ScheduleRow({ schedule }) {
   )
 }
 
-export default function PoolCard({ pool }) {
+export default function PoolCard({ pool, activityLabel = 'Swim' }) {
   const loc = pool.location ?? {}
   const address = fullAddress(loc)
   const mapsUrl = pool.pool_name
@@ -127,7 +127,7 @@ export default function PoolCard({ pool }) {
           <section>
             <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
               <Waves size={14} className="text-sky-500" />
-              Lap Swim Times
+              {activityLabel} Times
             </h3>
             <ul className="space-y-2">
               {pool.schedules.map((s, i) => (

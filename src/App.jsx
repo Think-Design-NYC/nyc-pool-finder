@@ -128,7 +128,11 @@ export default function App() {
         ) : (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {visiblePools.map((pool) => (
-              <PoolCard key={pool.pool_name} pool={pool} />
+              <PoolCard
+                key={pool.pool_name}
+                pool={pool}
+                activityLabel={activityActive ? selectedActivity : 'Swim'}
+              />
             ))}
           </div>
         )}
