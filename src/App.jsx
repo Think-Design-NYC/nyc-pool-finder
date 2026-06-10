@@ -36,8 +36,8 @@ export default function App() {
   }, [showClosed, activityActive, dayActive, hidePast, selectedActivity, selectedDay])
 
   useEffect(() => {
-    if (selectedBorough !== 'All' && !boroughs.includes(selectedBorough)) {
-      setSelectedBorough('All')
+    if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
+      setSelectedBorough('All Boroughs')
     }
   }, [boroughs, selectedBorough])
 
@@ -69,7 +69,7 @@ export default function App() {
 
   const visiblePools = useMemo(() => {
     return pools
-      .filter((p) => selectedBorough === 'All' || getBorough(p) === selectedBorough)
+      .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
       .filter((p) => showClosed || p.status !== 'closed')
       .map((p) => {
         if (!activityActive && !dayActive) return p
