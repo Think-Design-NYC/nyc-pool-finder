@@ -1,4 +1,4 @@
-import { Eye, EyeOff, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-white shadow-sm' }) {
   return (
@@ -55,9 +55,6 @@ export default function FilterBar({
   onSelectActivity,
   selectedDay,
   onSelectDay,
-  showClosed,
-  onToggleClosed,
-  closedCount,
 }) {
   const hasActivities = activities && activities.length > 0
   return (
@@ -101,27 +98,12 @@ export default function FilterBar({
           </div>
         )}
 
-        {/* Day filter + closed toggle: same on all sizes */}
-        <div className="flex flex-wrap items-center gap-2">
-          <PillRow
-            options={['Today', 'Tomorrow', 'Week']}
-            selected={selectedDay}
-            onSelect={onSelectDay}
-            activeClass="bg-orange-500 text-white shadow-sm"
-          />
-          <button
-            onClick={onToggleClosed}
-            className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-              showClosed
-                ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                : 'bg-red-50 text-red-700 ring-1 ring-inset ring-red-200 hover:bg-red-100'
-            }`}
-            title={showClosed ? 'Hide closed pools' : 'Show closed pools'}
-          >
-            {showClosed ? <Eye size={15} /> : <EyeOff size={15} />}
-            {showClosed ? 'Hiding none' : `Hiding closed${closedCount ? ` (${closedCount})` : ''}`}
-          </button>
-        </div>
+        <PillRow
+          options={['Today', 'Tomorrow', 'Week']}
+          selected={selectedDay}
+          onSelect={onSelectDay}
+          activeClass="bg-orange-500 text-white shadow-sm"
+        />
       </div>
     </div>
   )

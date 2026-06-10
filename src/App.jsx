@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Waves } from 'lucide-react'
 import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
+import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
@@ -10,7 +11,6 @@ export default function App() {
   const [selectedBorough, setSelectedBorough] = useState('Manhattan')
   const [selectedActivity, setSelectedActivity] = useState('Lap Swim')
   const [selectedDay, setSelectedDay] = useState('Today')
-  const [showClosed, setShowClosed] = useState(true)
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const dayActive = selectedDay && selectedDay !== 'Week'
@@ -20,7 +20,6 @@ export default function App() {
     const order = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
     const present = new Set()
     for (const p of pools) {
-      if (!showClosed && p.status === 'closed') continue
       if (activityActive || dayActive) {
         const hasMatch = (p.schedules ?? []).some(
           (s) =>
@@ -33,7 +32,7 @@ export default function App() {
       present.add(getBorough(p))
     }
     return order.filter((b) => present.has(b))
-  }, [showClosed, activityActive, dayActive, hidePast, selectedActivity, selectedDay])
+  }, [activityActive, dayActive, hidePast, selectedActivity, selectedDay])
 
   useEffect(() => {
     if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
@@ -53,11 +52,6 @@ export default function App() {
     return ACTIVITIES.map((a) => a.key).filter((k) => present.has(k))
   }, [])
 
-  const closedCount = useMemo(
-    () => pools.filter((p) => p.status === 'closed').length,
-    [],
-  )
-
   const lastUpdated = useMemo(() => {
     if (!meta.updated_at) return null
     return new Date(meta.updated_at).toLocaleDateString('en-US', {
@@ -70,7 +64,6 @@ export default function App() {
   const visiblePools = useMemo(() => {
     return pools
       .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
-      .filter((p) => showClosed || p.status !== 'closed')
       .map((p) => {
         if (!activityActive && !dayActive) return p
         const filtered = (p.schedules ?? []).filter(
@@ -89,21 +82,36 @@ export default function App() {
         const rank = { open: 0, transitioning: 1, closed: 2 }
         return (rank[a.status] ?? 3) - (rank[b.status] ?? 3)
       })
-  }, [selectedBorough, showClosed, selectedActivity, activityActive, selectedDay, dayActive, hidePast])
+  }, [selectedBorough, selectedActivity, activityActive, selectedDay, dayActive, hidePast])
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
-      <header className="mx-auto max-w-6xl pb-4 pt-6">
-        <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-900">
-          <Waves className="text-sky-600" size={26} />
-          NYC Pool Finder
-        </h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Indoor public pools &amp; lap swim schedules
-          {lastUpdated && (
-            <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
-          )}
-        </p>
+      <header className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-4 pt-6">
+        <div>
+          <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-900">
+            <Waves className="text-sky-600" size={26} />
+            NYC Pool Finder
+          </h1>
+          <p className="mt-1 text-sm text-slate-500">
+            Indoor public pools &amp; lap swim schedules
+            {lastUpdated && (
+              <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
+            )}
+          </p>
+        </div>
+        <a
+          href="https://thinkdesign.com"
+          target="_blank"
+          rel="noreferrer"
+          className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
+          aria-label="Think Design"
+        >
+          <img
+            src={thinkDesignLogo}
+            alt="Think Design"
+            className="h-10 w-auto"
+          />
+        </a>
       </header>
 
       <FilterBar
@@ -115,9 +123,6 @@ export default function App() {
         onSelectActivity={setSelectedActivity}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}
-        showClosed={showClosed}
-        onToggleClosed={() => setShowClosed((v) => !v)}
-        closedCount={closedCount}
       />
 
       <main className="mx-auto mt-5 max-w-6xl">
