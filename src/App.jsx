@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Waves } from 'lucide-react'
 import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
@@ -12,11 +12,34 @@ export default function App() {
   const [selectedDay, setSelectedDay] = useState('Today')
   const [showClosed, setShowClosed] = useState(true)
 
+  const activityActive = selectedActivity && selectedActivity !== 'All activities'
+  const dayActive = selectedDay && selectedDay !== 'Week'
+  const hidePast = selectedDay === 'Today'
+
   const boroughs = useMemo(() => {
     const order = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
-    const present = new Set(pools.map(getBorough))
+    const present = new Set()
+    for (const p of pools) {
+      if (!showClosed && p.status === 'closed') continue
+      if (activityActive || dayActive) {
+        const hasMatch = (p.schedules ?? []).some(
+          (s) =>
+            (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
+            (!dayActive || matchesDay(s.days, selectedDay)) &&
+            (!hidePast || !isPastToday(s.time)),
+        )
+        if (!hasMatch) continue
+      }
+      present.add(getBorough(p))
+    }
     return order.filter((b) => present.has(b))
-  }, [])
+  }, [showClosed, activityActive, dayActive, hidePast, selectedActivity, selectedDay])
+
+  useEffect(() => {
+    if (selectedBorough !== 'All' && !boroughs.includes(selectedBorough)) {
+      setSelectedBorough('All')
+    }
+  }, [boroughs, selectedBorough])
 
   const activities = useMemo(() => {
     const present = new Set()
@@ -43,10 +66,6 @@ export default function App() {
       year: 'numeric',
     })
   }, [])
-
-  const activityActive = selectedActivity && selectedActivity !== 'All activities'
-  const dayActive = selectedDay && selectedDay !== 'Week'
-  const hidePast = selectedDay === 'Today'
 
   const visiblePools = useMemo(() => {
     return pools
