@@ -137,6 +137,21 @@
                 "time": "7:00 a - 9:45 a"
             },
             {
+                "session_type": "Asser Levy: Swim for Life Class A (Thursday) - Ps 161",
+                "days": "Thursday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Asser Levy: Swim for Life Class B (Thursday) - Ps 161",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Asser Levy: Swim for Life Class C (Thursday) - P12x",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
                 "session_type": "Asser Levy: Adult Learn to Swim (Thursday)",
                 "days": "Thursday",
                 "time": "1:00 p - 2:00 p"
@@ -160,6 +175,21 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "7:00 a - 9:45 a"
+            },
+            {
+                "session_type": "Swim for Life at Asser Levy Class A Friday - Ps 94M",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Swim for Life at Asser Levy Class B Friday - Ps 246",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Asser Levy: Swim for Life Class C (Friday) - Ps 188",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "Asser Levy: Adult Artistic Swimming",
@@ -669,6 +699,21 @@
                 "time": "7:00 a - 9:45 a"
             },
             {
+                "session_type": "Gertrude Ederle: Swim for Life Class A (Thursday) - Ps 30M",
+                "days": "Thursday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Gertrude Ederle: Swim for Life Class B (Thursday) - Ps 173",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Gertrude Ederle: Swim for Life Class C (Thursday) - Ps 92",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
                 "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
                 "days": "Thursday",
                 "time": "1:00 p - 1:45 p"
@@ -692,6 +737,21 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "7:00 a - 9:45 a"
+            },
+            {
+                "session_type": "Gertrude Ederle: Swim for Life Class A (Friday) - Thurgood Marshall",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Gertrude Ederle: Swim for Life Class B (Friday) - Ps 173",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Gertrude Ederle: Swim for Life Class C (Friday) - Ps 242",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "Gertrude Ederle: Adult Water Exercise",
@@ -980,19 +1040,24 @@
                 "time": "8:45 a - 9:30 a"
             },
             {
-                "session_type": "General Swim",
+                "session_type": "Swim For Life at St. John's Class A Thursday - Ps 75K",
                 "days": "Thursday",
-                "time": "10:00 a - 11:30 a"
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Swim For Life at St. John's Class B Thursday - Ps 114",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Swim for Life at St. John's Class C Thursday - Ps 161",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
-                "time": "11:45 a - 1:30 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "1:45 p - 2:45 p"
+                "time": "1:15 p - 2:45 p"
             },
             {
                 "session_type": "Family Swim",
@@ -1020,19 +1085,24 @@
                 "time": "8:45 a - 9:30 a"
             },
             {
-                "session_type": "General Swim",
+                "session_type": "Swim For Life at St. John's Class A Friday - Bed-Stuy Charter",
                 "days": "Friday",
-                "time": "10:00 a - 11:30 a"
+                "time": "10:00 a - 11:00 a"
             },
             {
-                "session_type": "Adult Lap Swim",
+                "session_type": "Swim for Life at St. John's Class B Friday - Ps 256",
                 "days": "Friday",
-                "time": "11:45 a - 1:30 p"
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Swim For Life at St. John's Class C Friday - Ps 191",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Friday",
-                "time": "1:45 p - 2:45 p"
+                "time": "1:15 p - 2:45 p"
             },
             {
                 "session_type": "Children/Teen Swim",
@@ -1264,12 +1334,12 @@
                 "time": "12:00 p - 1:00 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                 "days": "Tuesday",
                 "time": "1:00 p - 2:00 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Tuesday",
                 "time": "1:00 p - 2:00 p"
             },
@@ -1289,22 +1359,22 @@
                 "time": "4:00 p - 6:00 p"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p"
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p"
             },
@@ -1369,17 +1439,17 @@
                 "time": "12:00 p - 1:00 p"
             },
             {
+                "session_type": "FMAC: Senior Learn to Swim (Level 2)",
+                "days": "Wednesday",
+                "time": "1:00 p - 2:00 p"
+            },
+            {
                 "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                 "days": "Wednesday",
                 "time": "1:00 p - 2:00 p"
             },
             {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Senior Learn to Swim (Level 2)",
                 "days": "Wednesday",
                 "time": "1:00 p - 2:00 p"
             },
@@ -1434,9 +1504,24 @@
                 "time": "6:00 a - 11:00 a"
             },
             {
+                "session_type": "FMAC: Swim for Life Class A - PS 24Q (Thursday)",
+                "days": "Thursday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "FMAC: Swim for Life Class B - PS 119Q (Thursday)",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
                 "session_type": "FMAC: Parent and Tiny Tot Learn to Swim (Thursday)",
                 "days": "Thursday",
                 "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "FMAC: Swim for Life Class C - PS 201Q (Thursday)",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "FMAC: Adult Learn to Swim (Level 3)",
@@ -1469,17 +1554,17 @@
                 "time": "3:30 p - 4:30 p"
             },
             {
-                "session_type": "CANCELED: Flushing Aquacades Swim Team",
+                "session_type": "Flushing Aquacades Swim Team",
                 "days": "Thursday",
                 "time": "4:00 p - 6:00 p"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                 "days": "Thursday",
                 "time": "4:00 p - 5:00 p"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                 "days": "Thursday",
                 "time": "4:00 p - 5:00 p"
             },
@@ -1497,11 +1582,6 @@
                 "session_type": "FMAC: Children's Learn to Swim (Level 2)",
                 "days": "Thursday",
                 "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Learn to Dive",
-                "days": "Thursday",
-                "time": "6:00 p - 7:30 p"
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 2)",
@@ -1539,9 +1619,24 @@
                 "time": "10:00 a - 11:00 a"
             },
             {
+                "session_type": "FMAC: Swim for Life Class A - PS 24Q (Friday)",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Friday",
                 "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "FMAC: Swim for Life Class B - PS 200Q (Friday)",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "FMAC: Swim for Life Class C - PS 201Q  (Friday)",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
             },
             {
                 "session_type": "FMAC: Senior Learn to Swim (Level 3)",
@@ -1549,12 +1644,12 @@
                 "time": "1:00 p - 2:00 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                 "days": "Friday",
                 "time": "1:00 p - 2:00 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Friday",
                 "time": "1:00 p - 2:00 p"
             },
@@ -1572,11 +1667,6 @@
                 "session_type": "FMAC: Adaptive Aquatics",
                 "days": "Friday",
                 "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Work Learn Grow",
-                "days": "Friday",
-                "time": "5:00 p - 6:00 p"
             },
             {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
@@ -1599,32 +1689,27 @@
                 "time": "9:00 a - 10:00 a"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Saturday",
-                "time": "9:00 a - 10:00 a"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim (Level 1)",
                 "days": "Saturday",
                 "time": "9:00 a - 10:00 a"
             },
             {
-                "session_type": "FMAC: Learn to Dive",
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                 "days": "Saturday",
-                "time": "9:30 a - 11:00 a"
+                "time": "9:00 a - 10:00 a"
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Saturday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
                 "days": "Saturday",
                 "time": "10:00 a - 11:00 a"
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
                 "days": "Saturday",
                 "time": "10:00 a - 11:00 a"
             },
@@ -1649,12 +1734,12 @@
                 "time": "12:45 p - 1:15 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Saturday",
                 "time": "1:15 p - 2:00 p"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                 "days": "Saturday",
                 "time": "1:15 p - 2:00 p"
             },
@@ -1679,11 +1764,6 @@
                 "time": "3:00 p - 4:00 p"
             },
             {
-                "session_type": "FMAC: Work Learn Grow",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p"
-            },
-            {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Saturday",
                 "time": "3:00 p - 4:00 p"
@@ -1702,11 +1782,6 @@
                 "session_type": "Open Swim",
                 "days": "Sunday",
                 "time": "9:00 a - 7:30 p"
-            },
-            {
-                "session_type": "CANCELED: Youth Swim Stroke Fundamentals",
-                "days": "Sunday",
-                "time": "12:00 p - 1:00 p"
             }
         ]
     },
@@ -1863,14 +1938,24 @@
                 "time": "8:30 a - 9:30 a"
             },
             {
-                "session_type": "General Swim",
+                "session_type": "Swim for Life at Roy Wilkins Class A Thursday - Ps 50",
                 "days": "Thursday",
-                "time": "9:30 a - 5:00 p"
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Swim for Life at Roy Wilkins Class B Thursday - Ps 176Q",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p"
             },
             {
                 "session_type": "Swim for Life at Roy Wilkins Class C Wednesday - Goldie Maple Academy new",
                 "days": "Thursday",
                 "time": "12:00 p - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "1:15 p - 4:45 p"
             },
             {
                 "session_type": "Roy Wilkins Piranhas Swim Team",
@@ -1893,9 +1978,24 @@
                 "time": "7:00 a - 9:45 a"
             },
             {
+                "session_type": "Swim for Life at Roy Wilkins Class A Friday - Ps 50",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a"
+            },
+            {
+                "session_type": "Swim for Life at Roy Wilkins Class B Friday - Ps 136Q",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Swim for Life at Roy Wilkins Class C Friday - Ps 134Q",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Friday",
-                "time": "10:00 a - 2:00 p"
+                "time": "1:15 p - 2:00 p"
             },
             {
                 "session_type": "Roy Wilkins: Senior Learn to Swim Beginner (Friday)",
