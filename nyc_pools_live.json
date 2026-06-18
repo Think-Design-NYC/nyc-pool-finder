@@ -707,7 +707,7 @@
             {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
-                "time": "1:15 p - 2:45 p"
+                "time": "12:30 p - 2:45 p"
             },
             {
                 "session_type": "Family Swim",
@@ -760,29 +760,14 @@
                 "time": "2:15 p - 4:15 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "8:15 a - 10:00 a"
+                "session_type": "Children Swim (SNL)",
+                "days": "Saturday",
+                "time": "4:30 p - 6:45 p"
             },
             {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "10:15 a - 11:15 a"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Sunday",
-                "time": "11:30 a - 1:15 p"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Sunday",
-                "time": "1:30 p - 2:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "2:45 p - 4:15 p"
+                "session_type": "Young Adult Swim (SNL)",
+                "days": "Saturday",
+                "time": "9:15 p - 10:15 p"
             }
         ]
     },
@@ -1411,21 +1396,6 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Sunday",
                 "time": "8:00 a - 10:45 a"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Sunday",
-                "time": "11:00 a - 2:00 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "2:00 p - 3:45 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "4:00 p - 5:30 p"
             }
         ]
     },
