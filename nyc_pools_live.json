@@ -47,19 +47,9 @@
                 "time": "1:00 p - 2:00 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "2:30 p - 3:45 p"
-            },
-            {
                 "session_type": "General Open Swim",
                 "days": "Tuesday",
                 "time": "4:00 p - 4:45 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -70,11 +60,6 @@
                 "session_type": "Asser Levy: Adult Water Exercise",
                 "days": "Wednesday",
                 "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "2:30 p - 3:45 p"
             },
             {
                 "session_type": "Asser Levy: Afterschool Learn to Swim (Wednesday)",
@@ -97,19 +82,9 @@
                 "time": "1:00 p - 2:00 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "2:30 p - 3:45 p"
-            },
-            {
                 "session_type": "General Open Swim",
                 "days": "Thursday",
                 "time": "4:00 p - 4:45 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Asser Levy Lightning Swim Team",
