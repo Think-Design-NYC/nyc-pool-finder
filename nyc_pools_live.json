@@ -10,113 +10,7 @@
             "state": "NY"
         },
         "phone": "(212) 447-2020",
-        "schedules": [
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Asser Levy: Adult Water Exercise",
-                "days": "Monday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "2:30 p - 3:45 p"
-            },
-            {
-                "session_type": "Asser Levy: Afterschool Learn to Swim (Monday)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Asser Levy Lightning Swim Team",
-                "days": "Monday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Asser Levy: Adult Water Exercise",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Tuesday",
-                "time": "4:00 p - 4:45 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Asser Levy: Adult Water Exercise",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Asser Levy: Afterschool Learn to Swim (Wednesday)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Asser Levy Lightning Swim Team",
-                "days": "Wednesday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Asser Levy: Adult Learn to Swim (Thursday)",
-                "days": "Thursday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Thursday",
-                "time": "4:00 p - 4:45 p"
-            },
-            {
-                "session_type": "Asser Levy Lightning Swim Team",
-                "days": "Saturday",
-                "time": "8:30 a - 10:00 a"
-            },
-            {
-                "session_type": "Asser Levy: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "Asser Levy: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "11:00 a - 12:00 p"
-            },
-            {
-                "session_type": "Asser Levy: Parent and Tots Learn to Swim",
-                "days": "Saturday",
-                "time": "12:00 p - 12:30 p"
-            },
-            {
-                "session_type": "Asser Levy: Adult Learn to Swim (Saturday)",
-                "days": "Saturday",
-                "time": "12:30 p - 1:30 p"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Saturday",
-                "time": "1:30 p - 2:15 p"
-            }
-        ]
+        "schedules": []
     },
     {
         "borough": "Manhattan",
@@ -133,12 +27,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Monday",
-                "time": "10:00 a - 1:00 p"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -146,7 +35,7 @@
                 "time": "1:15 p - 2:15 p"
             },
             {
-                "session_type": "Adult Lap Swim",
+                "session_type": "General Open Swim",
                 "days": "Monday",
                 "time": "2:30 p - 3:45 p"
             },
@@ -158,12 +47,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Tuesday",
-                "time": "10:00 a - 12:00 p"
+                "time": "11:00 a - 12:00 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
@@ -173,12 +57,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Wednesday",
-                "time": "10:00 a - 1:00 p"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -186,7 +65,7 @@
                 "time": "1:15 p - 2:15 p"
             },
             {
-                "session_type": "Adult Lap Swim",
+                "session_type": "General Open Swim",
                 "days": "Wednesday",
                 "time": "2:30 p - 3:45 p"
             },
@@ -198,16 +77,21 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Thursday",
-                "time": "10:00 a - 12:00 p"
+                "time": "11:00 a - 12:00 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
                 "days": "Thursday",
+                "time": "12:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Lifeguard Training Program",
+                "days": "Friday",
                 "time": "12:00 p - 7:00 p"
             },
             {
@@ -224,21 +108,6 @@
                 "session_type": "General Open Swim",
                 "days": "Saturday",
                 "time": "2:30 p - 3:45 p"
-            },
-            {
-                "session_type": "Metropolitan Sharks Swim Team at Chelsea",
-                "days": "Saturday",
-                "time": "4:00 p - 5:30 p"
-            },
-            {
-                "session_type": "Chelsea Blue Dolphins Swim Team",
-                "days": "Saturday",
-                "time": "4:00 p - 5:30 p"
-            },
-            {
-                "session_type": "Saturday Night Lights General Swim (Youth Only)",
-                "days": "Saturday",
-                "time": "5:45 p - 7:00 p"
             }
         ]
     },
@@ -257,127 +126,112 @@
             {
                 "session_type": "Lap Swim",
                 "days": "Monday",
-                "time": "7:00 a - 11:45 a"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Monday",
-                "time": "12:00 p - 2:30 p"
+                "time": "1:15 p - 3:00 p"
             },
             {
-                "session_type": "Constance Baker Motley: Adult Water Exercise",
+                "session_type": "General Swim",
                 "days": "Monday",
-                "time": "2:30 p - 3:30 p"
+                "time": "3:30 p - 4:45 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Monday",
-                "time": "4:00 p - 7:00 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Tuesday",
-                "time": "7:00 a - 11:45 a"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Tuesday",
-                "time": "12:00 p - 2:30 p"
+                "time": "1:15 p - 3:00 p"
             },
             {
-                "session_type": "Constance Baker Motley: Adult Water Exercise",
+                "session_type": "General Swim",
                 "days": "Tuesday",
-                "time": "2:30 p - 3:30 p"
+                "time": "3:30 p - 4:45 p"
             },
             {
-                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Tuesday)",
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Constance Baker Motely Gators Swim Team",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
-                "time": "7:00 a - 11:45 a"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
-                "time": "12:00 p - 2:30 p"
+                "time": "1:15 p - 3:00 p"
             },
             {
-                "session_type": "Constance Baker Motley: Adult Water Exercise",
+                "session_type": "Lap Swim",
                 "days": "Wednesday",
-                "time": "2:30 p - 3:30 p"
+                "time": "3:30 p - 4:45 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
-                "time": "4:00 p - 7:00 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 11:45 a"
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
-                "time": "12:00 p - 2:30 p"
+                "time": "1:15 p - 3:00 p"
             },
             {
-                "session_type": "Constance Baker Motley: Adult Learn to Swim (Thursday)",
+                "session_type": "General Swim",
                 "days": "Thursday",
-                "time": "2:30 p - 3:30 p"
+                "time": "3:30 p - 4:45 p"
             },
             {
-                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Thursday)",
+                "session_type": "Lap Swim",
                 "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
-                "session_type": "Constance Baker Motely Gators Swim Team",
-                "days": "Thursday",
-                "time": "5:00 p - 6:30 p"
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 1:00 p"
             },
             {
-                "session_type": "Constance Baker Motely Gators Swim Team",
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
                 "days": "Saturday",
-                "time": "8:00 a - 9:30 a"
-            },
-            {
-                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "9:30 a - 10:30 a"
-            },
-            {
-                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "10:30 a - 11:30 a"
-            },
-            {
-                "session_type": "Constance Baker Motley: Tots Learn to Swim",
-                "days": "Saturday",
-                "time": "11:30 a - 12:00 p"
-            },
-            {
-                "session_type": "Constance Baker Motley: Adult Learn to Swim (Saturday)",
-                "days": "Saturday",
-                "time": "12:00 p - 1:00 p"
+                "time": "8:00 a - 12:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Saturday",
-                "time": "1:15 p - 2:45 p"
-            },
-            {
-                "session_type": "Constance Baker Motley Recreation Center: Swim Prep",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p"
+                "time": "12:30 p - 2:45 p"
             }
         ]
     },
@@ -394,49 +248,19 @@
         "phone": "(212) 397-3159",
         "schedules": [
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Adult Water Exercise",
-                "days": "Monday",
-                "time": "1:00 p - 1:45 p"
-            },
-            {
                 "session_type": "General Swim",
                 "days": "Monday",
-                "time": "2:15 p - 3:15 p"
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Adult Learn to Swim (Advanced Beginner)",
-                "days": "Tuesday",
-                "time": "1:00 p - 1:45 p"
-            },
-            {
-                "session_type": "Gertrude Ederle: Afterschool Learn to Swim (Tuesday)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Gertrude Ederle Sea Lions Swim Team",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Adult Water Exercise",
-                "days": "Wednesday",
-                "time": "1:00 p - 1:45 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "General Swim",
@@ -445,53 +269,18 @@
             },
             {
                 "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 9:45 a"
+                "time": "5:00 p - 7:00 p"
             },
             {
-                "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
-                "days": "Thursday",
-                "time": "1:00 p - 1:45 p"
-            },
-            {
-                "session_type": "Gertrude Ederle: Afterschool Learn to Swim (Thursday)",
-                "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Gertrude Ederle Sea Lions Swim Team",
-                "days": "Thursday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "Gertrude Ederle Sea Lions Swim Team",
-                "days": "Saturday",
-                "time": "8:00 a - 9:30 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "9:30 a - 10:30 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "10:30 a - 11:30 a"
-            },
-            {
-                "session_type": "Gertrude Ederle: Parent and Tots Learn to Swim",
-                "days": "Saturday",
-                "time": "11:30 a - 12:00 p"
-            },
-            {
-                "session_type": "Gertrude Ederle: Adults Learn to Swim (Saturday)",
-                "days": "Saturday",
-                "time": "12:00 p - 1:00 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "1:15 p - 3:30 p"
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "5:00 p - 7:00 p"
             }
         ]
     },
@@ -560,104 +349,94 @@
         "phone": "(718) 771-2787",
         "schedules": [
             {
-                "session_type": "St. John's: Senior Water Exercise",
+                "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "8:30 a - 9:15 a"
+                "time": "11:00 a - 12:15 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Monday",
-                "time": "10:00 a - 12:15 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Monday",
-                "time": "12:30 p - 2:45 p"
-            },
-            {
-                "session_type": "St. John's: Afterschool Learn to Swim",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Monday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "Brownsville Sting Rays Swim Team",
-                "days": "Monday",
-                "time": "5:00 p - 6:30 p"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Monday",
-                "time": "6:45 p - 7:30 p"
+                "time": "1:15 p - 2:15 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "7:45 p - 9:30 p"
+                "time": "1:45 p - 2:45 p"
             },
             {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Tuesday",
-                "time": "8:30 a - 9:15 a"
+                "session_type": "Children/Teen Swim",
+                "days": "Monday",
+                "time": "3:00 p - 4:15 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Monday",
+                "time": "4:30 p - 5:45 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "6:00 p - 7:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Tuesday",
-                "time": "10:00 a - 12:15 p"
+                "time": "11:00 a - 12:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "12:30 p - 2:45 p"
+                "time": "12:15 p - 1:45 p"
             },
             {
-                "session_type": "St. John's Recreation Center: Swim Prep",
+                "session_type": "General Swim",
                 "days": "Tuesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "2:00 p - 2:45 p"
             },
             {
-                "session_type": "Women's General Swim",
+                "session_type": "Children/Teen Swim",
                 "days": "Tuesday",
-                "time": "6:45 p - 7:30 p"
+                "time": "3:00 p - 4:15 p"
             },
             {
-                "session_type": "Women's Lap Swim",
+                "session_type": "Family Swim",
                 "days": "Tuesday",
-                "time": "7:45 p - 9:30 p"
+                "time": "4:30 p - 5:45 p"
             },
             {
-                "session_type": "St. John's: Senior Water Exercise",
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "6:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "8:30 a - 9:15 a"
+                "time": "11:00 a - 12:15 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
-                "time": "10:00 a - 12:15 p"
+                "time": "12:30 p - 1:30 p"
             },
             {
-                "session_type": "St. John's: Afterschool Learn to Swim",
+                "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "4:00 p - 5:00 p"
+                "time": "1:45 p - 2:45 p"
             },
             {
-                "session_type": "St. John's Finmen Swim Team",
+                "session_type": "Children/Teen Swim",
                 "days": "Wednesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "3:00 p - 4:15 p"
             },
             {
-                "session_type": "Brownsville Sting Rays Swim Team",
+                "session_type": "Family Swim",
                 "days": "Wednesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "4:30 p - 5:45 p"
             },
             {
-                "session_type": "St. John's: Adult Water Exercise",
+                "session_type": "General Swim",
                 "days": "Wednesday",
-                "time": "6:45 p - 7:30 p"
+                "time": "6:00 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -665,34 +444,34 @@
                 "time": "7:45 p - 9:30 p"
             },
             {
-                "session_type": "Adult Lap Swim",
+                "session_type": "General Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 8:30 a"
+                "time": "11:00 a - 12:00 p"
             },
             {
-                "session_type": "St. John's: Senior Learn to Swim - Level 1",
+                "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "8:45 a - 9:30 a"
+                "time": "12:15 p - 1:45 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
-                "time": "10:00 a - 12:15 p"
+                "time": "2:00 p - 2:45 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Children/Teen Swim",
                 "days": "Thursday",
-                "time": "12:30 p - 2:45 p"
+                "time": "3:00 p - 4:15 p"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Thursday",
-                "time": "5:00 p - 6:15 p"
+                "time": "4:30 p - 5:45 p"
             },
             {
-                "session_type": "St. John's: Adult Water Exercise",
+                "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "6:30 p - 7:15 p"
+                "time": "6:00 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -700,39 +479,69 @@
                 "time": "7:45 p - 9:30 p"
             },
             {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Saturday",
-                "time": "9:00 a - 10:30 a"
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 12:15 p"
             },
             {
-                "session_type": "Brownsville Sting Rays Swim Team",
-                "days": "Saturday",
-                "time": "9:00 a - 10:30 a"
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "1:15 p - 2:15 p"
             },
             {
-                "session_type": "St. John's: Children's Learn to Swim - Level 2",
-                "days": "Saturday",
-                "time": "10:30 a - 11:30 a"
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "1:45 p - 2:45 p"
             },
             {
-                "session_type": "St. John's: Children's Learn to Swim - Level 1",
-                "days": "Saturday",
-                "time": "11:30 a - 12:30 p"
+                "session_type": "Children/Teen Swim",
+                "days": "Friday",
+                "time": "3:00 p - 4:15 p"
             },
             {
-                "session_type": "St. John's: Parent and Tot Learn to Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 1:00 p"
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "4:30 p - 5:45 p"
             },
             {
-                "session_type": "St. John's: Adult Learn to Swim (Saturday)",
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "6:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "7:45 p - 9:30 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
                 "days": "Saturday",
-                "time": "1:00 p - 2:00 p"
+                "time": "8:00 a - 9:15 a"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "9:30 a - 10:30 a"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Saturday",
-                "time": "2:15 p - 4:15 p"
+                "time": "10:45 a - 12:00 p"
+            },
+            {
+                "session_type": "Children/Teen Swim",
+                "days": "Saturday",
+                "time": "12:15 p - 1:30 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "2:00 p - 2:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Saturday",
+                "time": "3:00 p - 4:00 p"
             },
             {
                 "session_type": "Children Swim (SNL)",
@@ -761,87 +570,12 @@
             {
                 "session_type": "Lap Swim",
                 "days": "Monday",
-                "time": "6:00 a - 9:30 p"
+                "time": "11:00 a - 7:00 p"
             },
             {
                 "session_type": "Open Swim",
                 "days": "Monday",
-                "time": "6:00 a - 10:00 a"
-            },
-            {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Monday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Monday",
-                "time": "11:00 a - 1:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
-                "days": "Monday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
-                "days": "Monday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Senior Learn to Swim (Level 1)",
-                "days": "Monday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Monday",
-                "time": "2:00 p - 9:30 p"
-            },
-            {
-                "session_type": "FMAC: Artistic Swimming",
-                "days": "Monday",
-                "time": "4:00 p - 5:30 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                "days": "Monday",
-                "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Monday",
-                "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Monday",
-                "time": "6:00 p - 7:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Monday",
-                "time": "7:00 p - 8:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Tuesday",
-                "time": "6:00 a - 9:30 p"
+                "time": "11:00 a - 7:00 p"
             },
             {
                 "session_type": "Open Swim",
@@ -849,194 +583,9 @@
                 "time": "6:00 a - 11:00 a"
             },
             {
-                "session_type": "FMAC: Parent and Tiny Tot Learn to Swim (Tuesday)",
-                "days": "Tuesday",
-                "time": "11:00 a - 12:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 3)",
-                "days": "Tuesday",
-                "time": "12:00 p - 1:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Tuesday",
-                "time": "2:00 p - 9:30 p"
-            },
-            {
-                "session_type": "Flushing Aquacades Swim Team",
-                "days": "Tuesday",
-                "time": "4:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Tuesday",
-                "time": "6:00 p - 7:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 3)",
-                "days": "Tuesday",
-                "time": "7:00 p - 8:00 p"
-            },
-            {
-                "session_type": "FMAC: Masters Swim Technique Training",
-                "days": "Tuesday",
-                "time": "8:00 p - 9:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Wednesday",
-                "time": "6:00 a - 9:30 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "6:00 a - 10:00 a"
-            },
-            {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Wednesday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "11:00 a - 1:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Senior Learn to Swim (Level 2)",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "2:00 p - 9:30 p"
-            },
-            {
-                "session_type": "Flushing Aquacades Swim Team",
-                "days": "Wednesday",
-                "time": "4:00 p - 7:30 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Wednesday",
-                "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Wednesday",
-                "time": "6:00 p - 7:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
-                "days": "Wednesday",
-                "time": "7:00 p - 8:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Thursday",
-                "time": "6:00 a - 9:30 p"
-            },
-            {
                 "session_type": "Open Swim",
                 "days": "Thursday",
                 "time": "6:00 a - 11:00 a"
-            },
-            {
-                "session_type": "FMAC: Parent and Tiny Tot Learn to Swim (Thursday)",
-                "days": "Thursday",
-                "time": "11:00 a - 12:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 3)",
-                "days": "Thursday",
-                "time": "12:00 p - 1:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
-                "days": "Thursday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Thursday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Thursday",
-                "time": "1:00 p - 2:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Thursday",
-                "time": "2:00 p - 9:30 p"
             },
             {
                 "session_type": "Little Dolphins",
@@ -1044,149 +593,9 @@
                 "time": "3:30 p - 4:30 p"
             },
             {
-                "session_type": "Flushing Aquacades Swim Team",
-                "days": "Thursday",
-                "time": "4:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                "days": "Thursday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Thursday",
-                "time": "5:00 p - 6:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Thursday",
-                "time": "6:00 p - 7:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 3)",
-                "days": "Thursday",
-                "time": "7:00 p - 8:00 p"
-            },
-            {
-                "session_type": "FMAC: Masters Swim Technique Training",
-                "days": "Thursday",
-                "time": "8:00 p - 9:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Saturday",
-                "time": "9:00 a - 9:30 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Saturday",
-                "time": "9:00 a - 9:30 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Saturday",
+                "session_type": "Little Splashers",
+                "days": "Friday",
                 "time": "9:00 a - 10:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "9:00 a - 10:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "9:00 a - 10:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Saturday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "10:00 a - 11:00 a"
-            },
-            {
-                "session_type": "Flushing Aquacades Swim Team",
-                "days": "Saturday",
-                "time": "11:00 a - 1:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "11:00 a - 12:00 p"
-            },
-            {
-                "session_type": "FMAC: Parent and Tiny Tot Learn to Swim",
-                "days": "Saturday",
-                "time": "12:00 p - 12:30 p"
-            },
-            {
-                "session_type": "FMAC: Parent and Tot Learn to Swim",
-                "days": "Saturday",
-                "time": "12:45 p - 1:15 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "1:15 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "1:15 p - 2:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
-                "days": "Saturday",
-                "time": "2:00 p - 3:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Saturday",
-                "time": "2:00 p - 3:00 p"
-            },
-            {
-                "session_type": "FMAC: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "2:00 p - 3:00 p"
-            },
-            {
-                "session_type": "Flushing Meadows Corona Park Aquatics Center: Swim Prep",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p"
-            },
-            {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p"
-            },
-            {
-                "session_type": "FMAC: Saturday Teen Learn To Swim",
-                "days": "Saturday",
-                "time": "4:00 p - 5:00 p"
             },
             {
                 "session_type": "Lap Swim",
@@ -1213,164 +622,94 @@
         "phone": "(718) 276-8686",
         "schedules": [
             {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "7:00 a - 9:45 a"
+                "time": "1:15 p - 3:15 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Monday",
-                "time": "1:15 p - 2:30 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Senior Water Exercise",
-                "days": "Monday",
-                "time": "2:30 p - 3:30 p"
-            },
-            {
-                "session_type": "Roy Wilkins: SQPA Afterschool Learn to Swim",
-                "days": "Monday",
-                "time": "4:00 p - 4:45 p"
+                "time": "3:30 p - 4:30 p"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Monday",
-                "time": "5:00 p - 9:30 p"
+                "time": "4:45 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "7:00 a - 8:15 a"
+                "time": "11:00 a - 2:00 p"
             },
             {
-                "session_type": "Synchronized Swimming",
+                "session_type": "General Swim",
                 "days": "Tuesday",
-                "time": "1:15 p - 3:45 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Afterschool Learn to Swim (Tuesday)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Roy Wilkins Piranhas Swim Team",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "2:15 p - 4:45 p"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Tuesday",
-                "time": "6:45 p - 9:30 p"
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "7:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Roy Wilkins: Adult Learn to Swim (Wednesday)",
-                "days": "Wednesday",
-                "time": "1:15 p - 2:15 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Senior Water Exercise",
-                "days": "Wednesday",
-                "time": "2:30 p - 3:30 p"
-            },
-            {
-                "session_type": "Roy Wilkins: SQPA Afterschool Learn to Swim",
-                "days": "Wednesday",
-                "time": "4:00 p - 4:45 p"
+                "time": "11:00 a - 12:15 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
-                "time": "5:00 p - 6:30 p"
+                "time": "12:30 p - 4:30 p"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Wednesday",
-                "time": "6:45 p - 9:30 p"
+                "time": "4:45 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 8:15 a"
-            },
-            {
-                "session_type": "Roy Wilkins: Senior Learn to Swim Beginner (Thursday)",
-                "days": "Thursday",
-                "time": "8:30 a - 9:30 a"
+                "time": "11:00 a - 2:00 p"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
-                "time": "10:00 a - 4:30 p"
-            },
-            {
-                "session_type": "Roy Wilkins Piranhas Swim Team",
-                "days": "Thursday",
-                "time": "5:00 p - 6:30 p"
+                "time": "2:15 p - 4:45 p"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Thursday",
-                "time": "8:15 p - 9:30 p"
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "11:00 a - 1:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 9:00 a"
+                "days": "Friday",
+                "time": "1:15 p - 3:15 p"
             },
             {
-                "session_type": "CANCELED: Roy Wilkins Piranhas Swim Team",
-                "days": "Saturday",
-                "time": "9:00 a - 10:30 a"
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "3:30 p - 7:00 p"
             },
             {
-                "session_type": "Roy Wilkins Piranhas Swim Team",
+                "session_type": "Open Lap Swim",
                 "days": "Saturday",
-                "time": "9:00 a - 10:30 a"
-            },
-            {
-                "session_type": "Roy Wilkins: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "10:30 a - 11:30 a"
-            },
-            {
-                "session_type": "Roy Wilkins: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "11:30 a - 12:30 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Parent and Tot Learn to Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 1:00 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Adult Learn to Swim (Saturday)",
-                "days": "Saturday",
-                "time": "1:00 p - 2:00 p"
+                "time": "8:00 a - 11:45 a"
             },
             {
                 "session_type": "General Swim",
                 "days": "Saturday",
-                "time": "2:15 p - 3:45 p"
-            },
-            {
-                "session_type": "Roy Wilkins: Saturday Teen Learn to Swim",
-                "days": "Saturday",
-                "time": "4:00 p - 5:00 p"
-            },
-            {
-                "session_type": "Saturday Night Lights: Teen Game Night",
-                "days": "Saturday",
-                "time": "5:00 p - 7:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "8:00 a - 10:45 a"
+                "time": "12:00 p - 4:00 p"
             }
         ]
     },
