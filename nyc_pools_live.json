@@ -578,14 +578,34 @@
                 "time": "11:00 a - 7:00 p"
             },
             {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Tuesday",
-                "time": "6:00 a - 11:00 a"
+                "time": "11:00 a - 7:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "11:00 a - 7:00 p"
             },
             {
                 "session_type": "Open Swim",
                 "days": "Thursday",
-                "time": "6:00 a - 11:00 a"
+                "time": "11:00 a - 7:00 p"
             },
             {
                 "session_type": "Little Dolphins",
@@ -598,14 +618,24 @@
                 "time": "9:00 a - 10:00 a"
             },
             {
+                "session_type": "Open Swim",
+                "days": "Friday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
                 "session_type": "Lap Swim",
                 "days": "Sunday",
-                "time": "9:00 a - 7:30 p"
+                "time": "9:00 a - 5:00 p"
             },
             {
                 "session_type": "Open Swim",
                 "days": "Sunday",
-                "time": "9:00 a - 7:30 p"
+                "time": "9:00 a - 5:00 p"
             }
         ]
     },
