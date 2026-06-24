@@ -569,31 +569,11 @@
         "schedules": [
             {
                 "session_type": "Lap Swim",
-                "days": "Monday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Monday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Tuesday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Tuesday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 7:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 7:00 p"
             },
@@ -618,24 +598,24 @@
                 "time": "9:00 a - 10:00 a"
             },
             {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 7:00 p"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Friday",
                 "time": "11:00 a - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
-                "days": "Friday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
                 "days": "Sunday",
-                "time": "9:00 a - 5:00 p"
+                "time": "7:00 a - 3:00 p"
             },
             {
                 "session_type": "Open Swim",
                 "days": "Sunday",
-                "time": "9:00 a - 5:00 p"
+                "time": "7:00 a - 3:00 p"
             }
         ]
     },
