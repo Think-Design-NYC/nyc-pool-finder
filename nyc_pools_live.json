@@ -248,6 +248,11 @@
         "phone": "(212) 397-3159",
         "schedules": [
             {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Monday",
                 "time": "2:15 p - 4:45 p"
@@ -260,7 +265,17 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
                 "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 2:00 p"
             },
             {
                 "session_type": "General Swim",
@@ -275,7 +290,17 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
                 "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 2:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -356,7 +381,7 @@
             {
                 "session_type": "General Swim",
                 "days": "Monday",
-                "time": "1:15 p - 2:15 p"
+                "time": "12:30 p - 1:30 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -486,7 +511,7 @@
             {
                 "session_type": "General Swim",
                 "days": "Friday",
-                "time": "1:15 p - 2:15 p"
+                "time": "12:30 p - 1:30 p"
             },
             {
                 "session_type": "Adult Lap Swim",
