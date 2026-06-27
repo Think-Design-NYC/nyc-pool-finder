@@ -27,7 +27,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "11:00 a - 1:00 p"
+                "time": "10:00 a - 1:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -47,7 +47,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "11:00 a - 12:00 p"
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
@@ -57,7 +57,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "11:00 a - 1:00 p"
+                "time": "10:00 a - 1:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -77,7 +77,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "11:00 a - 12:00 p"
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
@@ -87,7 +87,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
-                "time": "11:00 a - 12:00 p"
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
@@ -611,16 +611,6 @@
                 "session_type": "Open Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Little Dolphins",
-                "days": "Thursday",
-                "time": "3:30 p - 4:30 p"
-            },
-            {
-                "session_type": "Little Splashers",
-                "days": "Friday",
-                "time": "9:00 a - 10:00 a"
             },
             {
                 "session_type": "Lap Swim",
