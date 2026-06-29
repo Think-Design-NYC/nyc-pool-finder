@@ -93,21 +93,6 @@
                 "session_type": "Lifeguard Training Program",
                 "days": "Friday",
                 "time": "12:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Open Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 9:45 a"
-            },
-            {
-                "session_type": "Lifeguard Training Program",
-                "days": "Saturday",
-                "time": "10:00 a - 2:15 p"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Saturday",
-                "time": "2:30 p - 3:45 p"
             }
         ]
     },
@@ -222,16 +207,6 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 12:00 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 2:45 p"
             }
         ]
     },
@@ -464,11 +439,6 @@
                 "time": "6:00 p - 7:00 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:45 p - 9:30 p"
-            },
-            {
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 12:15 p"
@@ -500,11 +470,6 @@
             },
             {
                 "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "7:45 p - 9:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "11:00 a - 12:15 p"
             },
@@ -532,51 +497,6 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "6:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:45 p - 9:30 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 9:15 a"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "9:30 a - 10:30 a"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Saturday",
-                "time": "10:45 a - 12:00 p"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Saturday",
-                "time": "12:15 p - 1:30 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "2:00 p - 2:45 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p"
-            },
-            {
-                "session_type": "Children Swim (SNL)",
-                "days": "Saturday",
-                "time": "4:30 p - 6:45 p"
-            },
-            {
-                "session_type": "Young Adult Swim (SNL)",
-                "days": "Saturday",
-                "time": "9:15 p - 10:15 p"
             }
         ]
     },
@@ -594,41 +514,61 @@
         "schedules": [
             {
                 "session_type": "Lap Swim",
-                "days": "Wednesday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Thursday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Thursday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Friday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Friday",
-                "time": "11:00 a - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Sunday",
+                "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
             {
                 "session_type": "Open Swim",
+                "days": "Monday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Friday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Sunday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
                 "days": "Sunday",
                 "time": "7:00 a - 3:00 p"
             }
@@ -650,6 +590,11 @@
                 "session_type": "General Swim",
                 "days": "Monday",
                 "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "1:15 p - 3:15 p"
             },
             {
                 "session_type": "General Swim",
@@ -720,16 +665,6 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "3:30 p - 7:00 p"
-            },
-            {
-                "session_type": "Open Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 11:45 a"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "12:00 p - 4:00 p"
             }
         ]
     },
