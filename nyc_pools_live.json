@@ -301,7 +301,7 @@
         "borough": "Manhattan",
         "pool_name": "Tony Dapolito Pool",
         "pool_code": "M103",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "Clarkson St. and Seventh Ave. South",
             "city": "New York",
