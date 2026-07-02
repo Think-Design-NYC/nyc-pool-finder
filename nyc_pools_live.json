@@ -592,11 +592,6 @@
                 "time": "11:00 a - 1:00 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "1:15 p - 3:15 p"
-            },
-            {
                 "session_type": "General Swim",
                 "days": "Monday",
                 "time": "3:30 p - 4:30 p"
@@ -655,11 +650,6 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "11:00 a - 1:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "1:15 p - 3:15 p"
             },
             {
                 "session_type": "General Swim",
