@@ -353,6 +353,140 @@
     },
     {
         "borough": "Brooklyn",
+        "pool_name": "Shirley Chisholm Recreation Center Pool",
+        "pool_code": "B250",
+        "status": "open",
+        "location": {
+            "address": "Farragut Pl between E 31st Street and E 32nd Street",
+            "city": "New York",
+            "state": "NY"
+        },
+        "phone": "(718) 859-3937",
+        "schedules": [
+            {
+                "session_type": "Shirley Chisholm Recreation Center: Adult Water Exercise",
+                "days": "Monday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Monday",
+                "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "5:45 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 2:45 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Tuesday",
+                "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:45 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Tuesday",
+                "time": "6:00 p - 7:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 11:45 a"
+            },
+            {
+                "session_type": "Shirley Chisholm Recreation Center: Adult Water Exercise",
+                "days": "Wednesday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Wednesday",
+                "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "5:45 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "11:00 a - 2:45 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Thursday",
+                "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "4:00 p - 5:45 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Thursday",
+                "time": "6:00 p - 7:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "11:00 a - 11:45 a"
+            },
+            {
+                "session_type": "Shirley Chisholm Recreation Center: Adult Water Exercise",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "1:00 p - 2:45 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Friday",
+                "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "4:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Sunday",
+                "time": "8:00 a - 10:45 a"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "12:00 p - 1:15 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "1:30 p - 2:45 p"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Sunday",
+                "time": "3:00 p - 4:00 p"
+            }
+        ]
+    },
+    {
+        "borough": "Brooklyn",
         "pool_name": "St. John's Pool",
         "pool_code": "B245",
         "status": "open",
@@ -558,14 +692,19 @@
         "phone": "(718) 271-7572",
         "schedules": [
             {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
                 "days": "Monday",
-                "time": "7:00 a - 3:00 p"
+                "time": "11:30 a - 12:30 p"
             },
             {
                 "session_type": "Lap Swim",
@@ -583,22 +722,27 @@
                 "time": "11:30 a - 12:00 p"
             },
             {
+                "session_type": "Open Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
                 "days": "Wednesday",
-                "time": "7:00 a - 3:00 p"
+                "time": "11:30 a - 12:30 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Thursday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Thursday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -608,14 +752,19 @@
                 "time": "11:30 a - 12:00 p"
             },
             {
+                "session_type": "Open Swim",
+                "days": "Friday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
                 "session_type": "Lap Swim",
                 "days": "Friday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
                 "days": "Friday",
-                "time": "7:00 a - 3:00 p"
+                "time": "11:30 a - 12:30 p"
             },
             {
                 "session_type": "Lap Swim",
