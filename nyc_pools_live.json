@@ -80,19 +80,29 @@
                 "time": "10:00 a - 12:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Thursday",
+                "time": "12:15 p - 2:00 p"
+            },
+            {
                 "session_type": "Lifeguard Training Program",
                 "days": "Thursday",
-                "time": "12:00 p - 7:00 p"
+                "time": "2:00 p - 5:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
-                "time": "10:00 a - 12:00 p"
+                "time": "10:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Friday",
+                "time": "1:15 p - 3:45 p"
             },
             {
                 "session_type": "Lifeguard Training Program",
                 "days": "Friday",
-                "time": "12:00 p - 7:00 p"
+                "time": "4:00 p - 7:00 p"
             },
             {
                 "session_type": "Open Lap Swim",
