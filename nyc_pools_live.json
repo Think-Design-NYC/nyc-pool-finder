@@ -75,11 +75,6 @@
                 "time": "4:00 p - 7:00 p"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "10:00 a - 12:00 p"
-            },
-            {
                 "session_type": "General Open Swim",
                 "days": "Thursday",
                 "time": "12:15 p - 2:00 p"
@@ -232,16 +227,6 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 12:00 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 2:45 p"
             }
         ]
     },
@@ -263,6 +248,11 @@
                 "time": "11:00 a - 2:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
                 "time": "5:00 p - 7:00 p"
@@ -273,6 +263,11 @@
                 "time": "11:00 a - 2:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Tuesday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
                 "time": "5:00 p - 7:00 p"
@@ -283,6 +278,11 @@
                 "time": "11:00 a - 2:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Wednesday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "5:00 p - 7:00 p"
@@ -293,6 +293,11 @@
                 "time": "11:00 a - 2:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Thursday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
                 "time": "5:00 p - 7:00 p"
@@ -303,9 +308,24 @@
                 "time": "11:00 a - 2:00 p"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Friday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 12:30 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Saturday",
+                "time": "12:45 p - 3:30 p"
             }
         ]
     },
