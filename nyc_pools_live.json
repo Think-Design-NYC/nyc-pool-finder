@@ -144,6 +144,106 @@
         "phone": "(212) 754-5411",
         "schedules": [
             {
+                "session_type": "CBM Camp Swim",
+                "days": "Monday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 1:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "1:15 p - 3:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
                 "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:00 p"
