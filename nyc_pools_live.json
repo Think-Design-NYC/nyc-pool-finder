@@ -429,6 +429,11 @@
                 "time": "3:00 p - 4:00 p"
             },
             {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "4:00 p - 5:30 p"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
                 "time": "5:45 p - 7:00 p"
@@ -467,6 +472,11 @@
                 "session_type": "Closed for Cleaning",
                 "days": "Wednesday",
                 "time": "3:00 p - 4:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:30 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -568,6 +578,11 @@
                 "time": "1:45 p - 2:45 p"
             },
             {
+                "session_type": "Family Swim",
+                "days": "Monday",
+                "time": "5:15 p - 5:45 p"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Monday",
                 "time": "6:00 p - 7:00 p"
@@ -616,6 +631,11 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "1:45 p - 2:45 p"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Wednesday",
+                "time": "5:15 p - 5:45 p"
             },
             {
                 "session_type": "General Swim",
