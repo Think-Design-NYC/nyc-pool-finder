@@ -747,12 +747,12 @@
         "phone": "(718) 271-7572",
         "schedules": [
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -762,12 +762,12 @@
                 "time": "11:30 a - 12:30 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -777,12 +777,12 @@
                 "time": "11:30 a - 12:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Wednesday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -807,12 +807,12 @@
                 "time": "11:30 a - 12:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Friday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Friday",
                 "time": "7:00 a - 3:00 p"
             },
