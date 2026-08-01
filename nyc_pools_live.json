@@ -52,12 +52,12 @@
             {
                 "session_type": "General Open Swim",
                 "days": "Tuesday",
-                "time": "2:00 p - 4:00 p"
+                "time": "2:00 p - 4:30 p"
             },
             {
-                "session_type": "Lifeguard Training Program",
+                "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "4:00 p - 9:00 p"
+                "time": "4:45 p - 7:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -72,12 +72,12 @@
             {
                 "session_type": "General Open Swim",
                 "days": "Wednesday",
-                "time": "2:30 p - 3:45 p"
+                "time": "2:30 p - 4:30 p"
             },
             {
-                "session_type": "Lifeguard Training Program",
+                "session_type": "Adult Open Play Water Polo",
                 "days": "Wednesday",
-                "time": "4:00 p - 9:00 p"
+                "time": "4:30 p - 7:00 p"
             },
             {
                 "session_type": "Summer Camp Swim",
@@ -113,6 +113,11 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "4:45 p - 7:00 p"
+            },
+            {
+                "session_type": "Lifeguard Training Program",
+                "days": "Friday",
+                "time": "6:00 p - 8:00 p"
             },
             {
                 "session_type": "Open Lap Swim",
@@ -747,14 +752,19 @@
         "phone": "(718) 271-7572",
         "schedules": [
             {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 3:00 p"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "FMAC: Summer Youth Employment Program",
                 "days": "Monday",
-                "time": "7:00 a - 3:00 p"
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
@@ -772,6 +782,11 @@
                 "time": "7:00 a - 3:00 p"
             },
             {
+                "session_type": "FMAC: Summer Youth Employment Program",
+                "days": "Tuesday",
+                "time": "10:00 a - 12:00 p"
+            },
+            {
                 "session_type": "FMAC: Parent and Tots Learn to Swim",
                 "days": "Tuesday",
                 "time": "11:30 a - 12:00 p"
@@ -785,6 +800,11 @@
                 "session_type": "Open Swim",
                 "days": "Wednesday",
                 "time": "7:00 a - 3:00 p"
+            },
+            {
+                "session_type": "FMAC: Summer Youth Employment Program",
+                "days": "Wednesday",
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
@@ -802,9 +822,19 @@
                 "time": "7:00 a - 3:00 p"
             },
             {
+                "session_type": "FMAC: Summer Youth Employment Program",
+                "days": "Thursday",
+                "time": "10:00 a - 12:00 p"
+            },
+            {
                 "session_type": "FMAC: Parent and Tots Learn to Swim",
                 "days": "Thursday",
                 "time": "11:30 a - 12:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 3:00 p"
             },
             {
                 "session_type": "Open Swim",
@@ -812,9 +842,9 @@
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "FMAC: Summer Youth Employment Program",
                 "days": "Friday",
-                "time": "7:00 a - 3:00 p"
+                "time": "10:00 a - 12:00 p"
             },
             {
                 "session_type": "Flushing Meadows Aquatic Center: Adult Water Exercise",
