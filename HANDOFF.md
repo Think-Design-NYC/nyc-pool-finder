@@ -1,4 +1,4 @@
-# NYC Pool Finder — Hand-off
+# NYC Indoor Pool Finder — Hand-off
 
 A static React/Vite site that lists NYC indoor public pools and their
 lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.

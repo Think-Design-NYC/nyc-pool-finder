@@ -184,7 +184,7 @@ function buildJsonLd() {
         '@type': 'WebSite',
         '@id': `${SITE_URL}#website`,
         url: SITE_URL,
-        name: 'NYC Pool Finder',
+        name: 'NYC Indoor Pool Finder',
         description:
           'Live schedules for every NYC Parks indoor public pool — lap swim, open swim and family swim.',
         publisher: { '@id': `${SITE_URL}#organization` },
@@ -194,7 +194,7 @@ function buildJsonLd() {
         '@type': 'WebPage',
         '@id': `${SITE_URL}#webpage`,
         url: SITE_URL,
-        name: 'NYC Indoor Pools Open Now — Lap Swim Schedules & Hours',
+        name: 'NYC Indoor Pool Finder — Open Now & Lap Swim Schedules',
         isPartOf: { '@id': `${SITE_URL}#website` },
         about: { '@id': `${SITE_URL}#itemlist` },
         dateModified: meta.updated_at,
@@ -272,8 +272,8 @@ function buildFallbackHtml() {
   // Divergence here would read as cloaking to a crawler that checks both.
   return `
 <div id="seo-fallback">
-  <h1>NYC Pool Finder</h1>
-  <p>Indoor public pools open now — lap swim &amp; open swim schedules</p>
+  <h1>NYC Indoor Pool Finder</h1>
+  <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(boroughs)}.</p>
   ${sections}
   <section>

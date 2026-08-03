@@ -96,10 +96,10 @@ export default function App() {
         <div>
           <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-900">
             <Waves className="text-sky-600" size={26} />
-            NYC Pool Finder
+            NYC Indoor Pool Finder
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Indoor public pools open now — lap swim &amp; open swim schedules
+            Public pools open now — lap swim &amp; open swim schedules
             {lastUpdated && (
               <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
             )}
