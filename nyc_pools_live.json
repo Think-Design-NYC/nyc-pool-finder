@@ -42,7 +42,12 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "4:45 p - 7:00 p"
+                "time": "4:45 p - 6:00 p"
+            },
+            {
+                "session_type": "Lifeguard Training Program",
+                "days": "Monday",
+                "time": "6:00 p - 8:00 p"
             },
             {
                 "session_type": "Adult Lap Swim",
@@ -115,11 +120,6 @@
                 "time": "4:45 p - 7:00 p"
             },
             {
-                "session_type": "Lifeguard Training Program",
-                "days": "Friday",
-                "time": "6:00 p - 8:00 p"
-            },
-            {
                 "session_type": "Open Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 10:30 a"
@@ -130,7 +130,7 @@
                 "time": "10:45 a - 1:00 p"
             },
             {
-                "session_type": "Open Lap Swim",
+                "session_type": "Adult Open Play Water Polo",
                 "days": "Saturday",
                 "time": "1:15 p - 3:45 p"
             }
@@ -752,12 +752,12 @@
         "phone": "(718) 271-7572",
         "schedules": [
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Monday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -772,12 +772,12 @@
                 "time": "11:30 a - 12:30 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
