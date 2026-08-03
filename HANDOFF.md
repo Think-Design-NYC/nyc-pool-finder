@@ -11,8 +11,10 @@ lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
 ```
 scraper.py            → writes nyc_pools_live.json + nyc_pools_meta.json
                         (3 requests per pool: listing, rec center page, detail page)
-scripts/refresh.sh    → runs scraper, sanity-checks, commits, pushes (Pi cron)
+scripts/refresh.sh    → runs scraper, sanity-checks, commits, pushes (launchd)
 src/App.jsx           → imports the JSON at build time, renders the UI
+src/faq.js            → FAQ copy, shared by the UI and the build-time SEO output
+src/membership.js     → membership prices (hand-maintained, NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML, sitemap.xml
 .github/workflows/    → deploy.yml: build + publish to GitHub Pages on push to main
 ```
@@ -62,9 +64,36 @@ Parsing notes, all learned the hard way from real pages:
 Known source gaps (not bugs): B250 has an empty `<p></p>` for cross streets, and
 M103 has no Building Hours block because it's closed for reconstruction.
 
-**All 13 pools require a Recreation Center membership** (free under 25, $25
-seniors/veterans/disabled, $150 otherwise). Don't let "free" creep back into the
-copy — only the outdoor pools are free.
+## Membership pricing (the one thing that isn't scraped)
+
+**All 13 pools require a Recreation Center membership.** Don't let "free" creep
+back into the copy — only the city's *outdoor* pools are free.
+
+Prices live in [src/membership.js](src/membership.js), imported by the FAQ, the
+rendered pricing table and the no-JS fallback so the three can't drift:
+
+| Who | Cost |
+| --- | --- |
+| 24 and under | Free |
+| 25–61 | $150/year, or $75 for six months |
+| 62+, veterans, people with disabilities | $25/year |
+
+Two things that are easy to get wrong, and are called out in the copy for that
+reason:
+
+- The senior tier starts at **62 with no upper limit**, and it covers veterans
+  and people with disabilities **at any age**.
+- NYC Parks also sells a **$100/year package that excludes every center with a
+  pool**. Quoting that number on a pool finder sends people to buy the wrong
+  membership — always name the "Access to All Centers" tier.
+
+These figures are typed in by hand, so unlike everything else on the site they
+can go stale silently. `MEMBERSHIP_CHECKED` is the date they were last verified
+against NYC Parks and is rendered on the page as "As of …". It is deliberately
+**not** derived from the build date — an auto-updating date would vouch for
+numbers nobody had looked at. Bump it by hand when you re-check.
+
+Source of truth: <https://www.nycgovparks.org/programs/recreation-centers/membership>
 
 ## SEO
 
@@ -79,10 +108,36 @@ time — it reads `nyc_pools_live.json` and:
 - emits `sitemap.xml` with `lastmod` from the scrape timestamp.
 
 **The fallback markup must keep saying what React says.** If the two diverge a
-crawler comparing raw vs. rendered HTML reads it as cloaking. The FAQ copy lives
-in [src/faq.js](src/faq.js) and is imported by both sides for exactly this reason;
-`poolAnchorId()` in [src/utils.js](src/utils.js) is shared so JSON-LD `@id`
-fragments match the rendered card `id`s.
+crawler comparing raw vs. rendered HTML reads it as cloaking. Anything shared is
+shared through a module for exactly this reason — [src/faq.js](src/faq.js),
+[src/membership.js](src/membership.js), and `poolAnchorId()` in
+[src/utils.js](src/utils.js) (so JSON-LD `@id` fragments match the rendered card
+`id`s). **If you change the `<h1>`, the headings or the body copy in
+`SeoContent.jsx`, change the fallback in `vite-plugin-seo.js` to match.**
+
+### Naming
+
+The site is **NYC Indoor Pool Finder**. "Indoor" is load-bearing: NYC's ~50
+*outdoor* pools are a separate system with different hours, no membership and a
+late-June-to-Labor-Day season, and people arriving from an outdoor-pool search
+need to see the distinction in the SERP title before they click. The name appears
+in `index.html` (`<title>`, `og:site_name`, `og:title`, `twitter:title`), the
+`<h1>` in `App.jsx`, the fallback `<h1>`, and the JSON-LD `WebSite`/`WebPage`
+nodes. Keep them in sync.
+
+### Keyword targeting
+
+Aimed at the **indoor + lap swim + open now** cluster, deliberately *not* at bare
+"NYC pools open now" — in summer that query wants the free outdoor pools this
+site doesn't cover, so ranking for it would earn traffic that bounces.
+
+### Counties vs. boroughs
+
+JSON-LD `areaServed` uses **county** names (New York, Kings, Queens, Bronx,
+Richmond) with the borough as `alternateName`. `addressLocality` stays the
+**mailing city** ("Brooklyn", "Flushing", "Jamaica") because a `PostalAddress`
+has to be deliverable. Visible copy and the filter buttons stay boroughs — that's
+what people actually search.
 
 Fallback styling uses a scoped `<style>` block, not Tailwind classes — the plugin
 runs in `transformIndexHtml`, after Tailwind has scanned sources, so classes
@@ -92,16 +147,26 @@ Note `public/robots.txt` is inert on a github.io *project* page (robots.txt is
 only honoured at the domain root, which this repo doesn't control). Submit the
 sitemap in Search Console instead, or move to a custom domain.
 
-## Data refresh (runs on the Pi, not GitHub)
+## Data refresh (runs locally, not on GitHub)
 
 `nycgovparks.org` returns **403 Forbidden** to datacenter IPs, so the scraper
-cannot run on GitHub-hosted runners. It runs daily at 06:00 local on a
-Raspberry Pi (residential IP), via `scripts/refresh.sh` in cron. Full setup
-is in [DEPLOY.md](DEPLOY.md).
+cannot run on GitHub-hosted runners. It needs a residential IP.
+
+**It currently runs on Ray's Mac**, daily at 06:00 local, via a launchd agent —
+not the Raspberry Pi. Moving it to the Pi is still an option; both setups are
+written up in [DEPLOY.md](DEPLOY.md).
+
+`refresh.sh` needs `.venv/` in the repo root. If it's missing the script falls
+back to system `python3`, which doesn't have `requests`/`bs4`/`pydantic`, and
+every run dies with `ModuleNotFoundError: No module named 'requests'`. Fix:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+```
 
 Safety net: `refresh.sh` refuses to commit if the scrape returns fewer than 8
 pools — guards against site HTML changes or network blips blanking the site.
-NYC has ~12 indoor pools, so <8 means something went wrong.
+There are currently 13 indoor pools, so <8 means something went wrong.
 
 The "Last updated: …" line in the header comes from `nyc_pools_meta.json`
 (`updated_at`), which the scraper rewrites on each run.
@@ -113,7 +178,11 @@ Defaults are opinionated for the most common use case:
 - Borough: **Manhattan**
 - Activity: **Lap Swim**
 - Day: **Today**
-- Show closed pools: on
+
+There is no "show closed pools" toggle. Closed pools have no schedules, so
+whenever an activity or day filter is active they drop out on their own; with
+filters off they show and sort last. Worth knowing when a pool you expect to
+see isn't there — and why closure `notes` are invisible in the default view.
 
 Filter helpers live in `src/utils.js`:
 
@@ -131,8 +200,15 @@ Pool sort order: open → transitioning → closed.
 
 ## Known gotchas
 
-- **Pi must have write-enabled SSH deploy key.** HTTPS push won't work
-  non-interactively from cron. See DEPLOY.md.
+- **`.venv/` is required and gitignored.** A fresh clone can't run
+  `refresh.sh` until you create it — see the data refresh section above.
+- **Push auth.** On the Mac this uses the login keychain, so the job only
+  fires while logged in. On the Pi it needs a write-enabled SSH deploy key;
+  HTTPS push won't work non-interactively from cron. See DEPLOY.md.
+- **Fallback HTML and React must agree.** See the SEO section — divergence
+  reads as cloaking, and nothing in the build catches it automatically.
+- **Membership prices are hand-typed.** They have a "checked on" date, not a
+  scrape. See the membership section.
 - **Vite `base` is `/nyc-pool-finder/`.** If the repo is ever renamed or
   moved off project-pages hosting, update `vite.config.js` or assets 404.
 - **Borough inference relies on zip prefix.** If NYC ever assigns a new
@@ -143,8 +219,24 @@ Pool sort order: open → transitioning → closed.
   while a specific activity is selected. Check `ACTIVITIES` if a real
   session goes missing.
 
-## Likely next steps
+## Open follow-ups
 
+Needs a human (can't be done from the repo):
+
+- **Submit `sitemap.xml` in Google Search Console.** `public/robots.txt` is
+  live but inert at this path, so it can't advertise the sitemap for you.
+- **Replace `public/og-image.png`.** It's a placeholder copy of the Think
+  Design logo at 548×289; social cards want 1200×630.
+- **A custom domain would outweigh every on-page SEO change here**, given the
+  shared `github.io` subdomain.
+
+Code:
+
+- `deploy.yml` pins `actions/checkout@v4`, `setup-node@v4` and
+  `upload-artifact@v4`, which target Node 20 and are being force-run on Node
+  24. Currently just a warning annotation; bump them before it breaks.
+- Scrape membership pricing instead of hand-maintaining it — the URL is
+  stable and the markup is a clean table.
 - Geolocation / "pools near me" sort (needs lat/lng in the scraped data;
   currently only address + zip).
 - Persist filter selections to `localStorage` so reloads keep state.
