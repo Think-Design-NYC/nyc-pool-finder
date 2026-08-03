@@ -10,8 +10,10 @@ lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
 
 ```
 scraper.py            → writes nyc_pools_live.json + nyc_pools_meta.json
+                        (3 requests per pool: listing, rec center page, detail page)
 scripts/refresh.sh    → runs scraper, sanity-checks, commits, pushes (Pi cron)
 src/App.jsx           → imports the JSON at build time, renders the UI
+vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML, sitemap.xml
 .github/workflows/    → deploy.yml: build + publish to GitHub Pages on push to main
 ```
 
@@ -28,6 +30,67 @@ npm run build    # outputs to dist/
 
 Node 20, React 18, Vite 6, Tailwind v4 (via `@tailwindcss/vite`), `lucide-react`
 for icons. No test suite, no linter configured.
+
+## Where each field comes from
+
+The listing page (`/facilities/indoor-pools`) only has name, rough location and a
+phone number hidden in an HTML comment. Everything else needs two more fetches
+per pool:
+
+| Field | Source |
+| --- | --- |
+| `pool_name`, `phone`, rough address | listing page |
+| `address`, `cross_streets`, `city`, `zip_code`, `building_hours`, `notes` | `/facilities/recreationcenters/{code}` |
+| `membership_required` | `/parks/{code}/facilities/indoor-pools` |
+| `schedules` | `/facilities/recreationcenters/{code}/schedule` |
+
+Parsing notes, all learned the hard way from real pages:
+
+- The address block is unlabelled text nodes, so `parse_address_block` anchors on
+  the "Cross Streets:" `<strong>` and reads backwards.
+- Most pages say `Brooklyn, NY 11213`, but some spell the state out
+  (`Brooklyn, New York 11210`) — the regex accepts both and normalises to `NY`.
+- `building_hours` keys use underscores (`Monday_Friday`) because the UI renders
+  `day.replaceAll('_', ' – ')`.
+- Only `div.alert-error` becomes `notes`. `alert-success` is general news and a
+  bare `alert` is the membership-login promo. A site-wide "Membership Extensions"
+  promo *is* classed `alert-error` on some pages, so it's filtered by text.
+- **Nearest subway is not published anywhere on nycgovparks.org** — `PoolCard`
+  still renders `location.nearest_subway` if it ever appears, but nothing fills
+  it. Populating it would need an external MTA station dataset.
+
+Known source gaps (not bugs): B250 has an empty `<p></p>` for cross streets, and
+M103 has no Building Hours block because it's closed for reconstruction.
+
+**All 13 pools require a Recreation Center membership** (free under 25, $25
+seniors/veterans/disabled, $150 otherwise). Don't let "free" creep back into the
+copy — only the outdoor pools are free.
+
+## SEO
+
+The app is client-rendered, so the HTML Pages serves would otherwise be an empty
+`<div id="root">`. [vite-plugin-seo.js](vite-plugin-seo.js) fixes that at build
+time — it reads `nyc_pools_live.json` and:
+
+- injects JSON-LD (`ItemList` of `PublicSwimmingPool`, plus `WebSite`/`WebPage`/
+  `FAQPage`), with opening hours merged from each pool's session times;
+- injects a static mirror of the UI into `#root` for crawlers that don't run JS.
+  React's `createRoot()` wipes it on mount, so users never see it;
+- emits `sitemap.xml` with `lastmod` from the scrape timestamp.
+
+**The fallback markup must keep saying what React says.** If the two diverge a
+crawler comparing raw vs. rendered HTML reads it as cloaking. The FAQ copy lives
+in [src/faq.js](src/faq.js) and is imported by both sides for exactly this reason;
+`poolAnchorId()` in [src/utils.js](src/utils.js) is shared so JSON-LD `@id`
+fragments match the rendered card `id`s.
+
+Fallback styling uses a scoped `<style>` block, not Tailwind classes — the plugin
+runs in `transformIndexHtml`, after Tailwind has scanned sources, so classes
+introduced there would be purged.
+
+Note `public/robots.txt` is inert on a github.io *project* page (robots.txt is
+only honoured at the domain root, which this repo doesn't control). Submit the
+sitemap in Search Console instead, or move to a custom domain.
 
 ## Data refresh (runs on the Pi, not GitHub)
 

@@ -5,6 +5,7 @@ import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
+import SeoContent from './components/SeoContent'
 import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
 
 export default function App() {
@@ -52,6 +53,11 @@ export default function App() {
     return ACTIVITIES.map((a) => a.key).filter((k) => present.has(k))
   }, [])
 
+  const openNames = useMemo(
+    () => pools.filter((p) => p.status === 'open').map((p) => p.pool_name),
+    [],
+  )
+
   const lastUpdated = useMemo(() => {
     if (!meta.updated_at) return null
     return new Date(meta.updated_at).toLocaleDateString('en-US', {
@@ -93,10 +99,14 @@ export default function App() {
             NYC Pool Finder
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Indoor public pools &amp; lap swim schedules
+            Indoor public pools open now — lap swim &amp; open swim schedules
             {lastUpdated && (
               <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
             )}
+          </p>
+          <p className="mt-1 text-sm font-medium text-slate-600">
+            {openNames.length} of {pools.length} NYC indoor pools open today across
+            Manhattan, Brooklyn, Queens &amp; the Bronx
           </p>
         </div>
         <a
@@ -142,6 +152,8 @@ export default function App() {
           </div>
         )}
       </main>
+
+      <SeoContent pools={pools} openNames={openNames} />
     </div>
   )
 }

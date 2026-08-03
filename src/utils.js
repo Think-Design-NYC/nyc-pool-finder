@@ -26,6 +26,13 @@ export function getBorough(pool) {
   return 'Other'
 }
 
+// Stable DOM id per pool. The build-time JSON-LD points each pool's `url` at
+// `#<this>`, so the rendered card has to carry the matching id.
+export function poolAnchorId(pool) {
+  const base = pool.pool_code || pool.pool_name || ''
+  return `pool-${base.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`
+}
+
 export const STATUS_STYLES = {
   open: {
     label: 'Open',

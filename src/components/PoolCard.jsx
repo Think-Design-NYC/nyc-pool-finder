@@ -8,7 +8,7 @@ import {
   ExternalLink,
   Building2,
 } from 'lucide-react'
-import { getBorough, getStatusStyle, fullAddress } from '../utils'
+import { getBorough, getStatusStyle, fullAddress, poolAnchorId } from '../utils'
 
 function StatusBadge({ status }) {
   const s = getStatusStyle(status)
@@ -50,7 +50,10 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
   const isClosed = pool.status === 'closed'
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition-shadow hover:shadow-md">
+    <article
+      id={poolAnchorId(pool)}
+      className="flex scroll-mt-4 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition-shadow hover:shadow-md"
+    >
       {/* Header */}
       <header className="flex items-start justify-between gap-3 border-b border-slate-100 p-4">
         <div>
@@ -85,6 +88,11 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
                 )}
                 {loc.cross_streets && (
                   <span className="text-slate-400"> ({loc.cross_streets})</span>
+                )}
+                {(loc.city || loc.zip_code) && (
+                  <span className="block text-slate-400">
+                    {[loc.city, loc.state].filter(Boolean).join(', ')} {loc.zip_code}
+                  </span>
                 )}
               </span>
             </p>

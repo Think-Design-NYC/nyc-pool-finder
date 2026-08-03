@@ -1,0 +1,11 @@
+# NYC Pool Finder
+#
+# NOTE: on a github.io *project* page this file is served at
+# /nyc-pool-finder/robots.txt, which crawlers ignore — robots.txt is only
+# honoured at the domain root. It becomes effective if the site moves to a
+# custom domain. Submit the sitemap directly in Google Search Console until then.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://think-design-nyc.github.io/nyc-pool-finder/sitemap.xml
