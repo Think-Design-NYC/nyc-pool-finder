@@ -223,12 +223,40 @@ Pool sort order: open → transitioning → closed.
 
 Needs a human (can't be done from the repo):
 
-- **Submit `sitemap.xml` in Google Search Console.** `public/robots.txt` is
-  live but inert at this path, so it can't advertise the sitemap for you.
+- **Submit `sitemap.xml` in Google Search Console** — see below, it's more
+  involved than it sounds. Started 2026-08-03, parked before completion.
 - **Replace `public/og-image.png`.** It's a placeholder copy of the Think
   Design logo at 548×289; social cards want 1200×630.
 - **A custom domain would outweigh every on-page SEO change here**, given the
   shared `github.io` subdomain.
+
+### Search Console — parked, and why it's fiddly
+
+**Submitting the sitemap is the easy part. Getting a verified property is not.**
+Search Console won't accept a sitemap until the property exists and is verified,
+and this site's hosting makes that awkward.
+
+- It has to be a **URL-prefix** property for exactly
+  `https://think-design-nyc.github.io/nyc-pool-finder/` (with the trailing
+  slash). A **Domain property is impossible** — that needs DNS control over
+  `github.io`, which we don't have. This is the same root cause as
+  `public/robots.txt` being inert: we own a *path*, not a *domain*.
+- Verification is easiest via the **HTML tag** method. Google issues a token;
+  add `<meta name="google-site-verification" content="…">` to `index.html`,
+  push, and the deploy has it live at the property URL in ~40s. Then click
+  Verify. The HTML-file method also works — drop the file in `public/` and it
+  lands at `/nyc-pool-finder/<file>.html` — but the meta tag is one line and
+  can't be forgotten during a rebuild.
+- Once verified, the sitemap field wants just `sitemap.xml` (it's relative to
+  the property URL).
+- You must be signed into the Google account that should own the property.
+
+Blocked on 2026-08-03 because the Claude in Chrome extension had
+`search.google.com` in its blocked-sites list. Granting the extension access to
+that host is the first step next time.
+
+A custom domain would collapse most of this — Domain property, working
+`robots.txt`, and better ranking than a shared `github.io` subdomain.
 
 Code:
 
