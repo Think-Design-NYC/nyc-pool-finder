@@ -11,6 +11,11 @@
 export const MEMBERSHIP_URL =
   'https://www.nycgovparks.org/programs/recreation-centers/membership'
 
+// Shown next to the prices. Hardcoded on purpose — it's the date the figures
+// were checked against NYC Parks, not today's date, so bump it by hand when you
+// re-verify. An auto-updating date here would vouch for numbers nobody looked at.
+export const MEMBERSHIP_CHECKED = 'Aug 3, 2026'
+
 export const MEMBERSHIP_TIERS = [
   { who: '24 and under', price: 'Free' },
   { who: '25–61', price: '$150 / year', note: 'or $75 for six months' },

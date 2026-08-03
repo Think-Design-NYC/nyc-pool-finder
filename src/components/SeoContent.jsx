@@ -1,5 +1,10 @@
 import { FAQ } from '../faq'
-import { IDNYC_NOTE, MEMBERSHIP_TIERS, MEMBERSHIP_URL } from '../membership'
+import {
+  IDNYC_NOTE,
+  MEMBERSHIP_CHECKED,
+  MEMBERSHIP_TIERS,
+  MEMBERSHIP_URL,
+} from '../membership'
 
 // Crawlable, genuinely useful page copy. Googlebot executes JS and indexes the
 // *rendered* DOM, which means the static fallback in vite-plugin-seo.js is gone
@@ -25,6 +30,7 @@ export default function SeoContent({ pools, openNames }) {
       <h3 className="mt-6 text-sm font-bold text-slate-900">
         What a Recreation Center membership costs
       </h3>
+      <p className="mt-1 text-xs text-slate-400">As of {MEMBERSHIP_CHECKED}</p>
       <div className="mt-2 max-w-2xl overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>

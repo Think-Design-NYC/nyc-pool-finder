@@ -2,7 +2,7 @@
 // fallback in vite-plugin-seo.js, so the two can't drift apart. Answers take
 // the list of currently-open pool names so the first one stays accurate.
 
-import { IDNYC_NOTE, MEMBERSHIP_SUMMARY } from './membership'
+import { IDNYC_NOTE, MEMBERSHIP_CHECKED, MEMBERSHIP_SUMMARY } from './membership'
 
 export const FAQ = [
   {
@@ -15,7 +15,8 @@ export const FAQ = [
     q: 'How much does it cost to swim at an NYC indoor pool?',
     a: () =>
       `Every NYC indoor pool sits inside a recreation center, so you need a Recreation Center ` +
-      `membership: ${MEMBERSHIP_SUMMARY}. One membership covers every recreation center in the ` +
+      `membership. As of ${MEMBERSHIP_CHECKED} it is ${MEMBERSHIP_SUMMARY}. ` +
+      `One membership covers every recreation center in the ` +
       `city. Note that the cheaper $100 tier does not include centers with pools — you need the ` +
       `"Access to All Centers" package. ${IDNYC_NOTE}`,
   },

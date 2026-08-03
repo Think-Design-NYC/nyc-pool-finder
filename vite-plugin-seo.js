@@ -18,7 +18,12 @@ import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
 import { poolAnchorId as anchorId } from './src/utils.js'
-import { IDNYC_NOTE, MEMBERSHIP_TIERS, MEMBERSHIP_URL } from './src/membership.js'
+import {
+  IDNYC_NOTE,
+  MEMBERSHIP_CHECKED,
+  MEMBERSHIP_TIERS,
+  MEMBERSHIP_URL,
+} from './src/membership.js'
 
 export const SITE_URL = 'https://think-design-nyc.github.io/nyc-pool-finder/'
 
@@ -290,6 +295,7 @@ function buildFallbackHtml() {
     from nycgovparks.org each morning, so you can see which pools are open now and when the next
     session starts without clicking through a dozen recreation-center pages.</p>
     <h3>What a Recreation Center membership costs</h3>
+    <p>As of ${esc(MEMBERSHIP_CHECKED)}</p>
     <table>
       <thead><tr><th>Who</th><th>Cost</th></tr></thead>
       <tbody>${MEMBERSHIP_TIERS.map(
