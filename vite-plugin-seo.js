@@ -18,6 +18,7 @@ import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
 import { poolAnchorId as anchorId } from './src/utils.js'
+import { IDNYC_NOTE, MEMBERSHIP_TIERS, MEMBERSHIP_URL } from './src/membership.js'
 
 export const SITE_URL = 'https://think-design-nyc.github.io/nyc-pool-finder/'
 
@@ -132,6 +133,11 @@ function poolLd(pool, position) {
     // Nearly every NYC indoor pool sits inside a recreation center you have to
     // join, so these are not free-access facilities.
     isAccessibleForFree: pool.membership_required === true ? false : undefined,
+    // Cost is the rec center membership, not a per-swim fee.
+    priceRange:
+      pool.membership_required === true
+        ? '$0–$150 per year (Recreation Center membership)'
+        : undefined,
     publicAccess: true,
     areaServed: {
       '@type': 'AdministrativeArea',
@@ -278,12 +284,24 @@ function buildFallbackHtml() {
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>
-    <p>NYC Parks operates ${pools.length} indoor public pools across ${esc(boroughs)}. Almost all of
-    them sit inside a recreation center and need a Recreation Center membership — free if you&apos;re
-    24 or under, $25 a year for seniors, veterans and people with disabilities, $150 otherwise. This
+    <p>NYC Parks operates ${pools.length} indoor public pools across ${esc(boroughs)}. Every one of
+    them sits inside a recreation center, so you need a Recreation Center membership to swim. This
     page pulls the current lap swim, open swim, family swim and water exercise schedules straight
     from nycgovparks.org each morning, so you can see which pools are open now and when the next
     session starts without clicking through a dozen recreation-center pages.</p>
+    <h3>What a Recreation Center membership costs</h3>
+    <table>
+      <thead><tr><th>Who</th><th>Cost</th></tr></thead>
+      <tbody>${MEMBERSHIP_TIERS.map(
+        (t) =>
+          `<tr><td>${esc(t.who)}</td><td>${esc(t.price)}${
+            t.note ? ` (${esc(t.note)})` : ''
+          }</td></tr>`,
+      ).join('')}</tbody>
+    </table>
+    <p>Prices are for the &ldquo;Access to All Centers&rdquo; package — the cheaper $100/year tier
+    excludes every center with a pool. ${esc(IDNYC_NOTE)}
+    <a href="${esc(MEMBERSHIP_URL)}" rel="nofollow">Full membership details</a>.</p>
     <p>Unlike the city&apos;s outdoor pools — which run only from late June through Labor Day —
     indoor pools are open year-round.</p>
   </section>
@@ -300,6 +318,8 @@ const FALLBACK_STYLE = `
 #seo-fallback .sf-card{border:1px solid #e2e8f0;border-radius:.75rem;padding:.85rem;margin:.6rem 0}
 #seo-fallback .sf-badge{font-size:.7rem;font-weight:600;color:#475569}
 #seo-fallback ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem;color:#475569}
+#seo-fallback table{border-collapse:collapse;margin:.5rem 0;font-size:.85rem}
+#seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
 #seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#475569}
 </style>`
 

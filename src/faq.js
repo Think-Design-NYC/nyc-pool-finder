@@ -2,6 +2,8 @@
 // fallback in vite-plugin-seo.js, so the two can't drift apart. Answers take
 // the list of currently-open pool names so the first one stays accurate.
 
+import { IDNYC_NOTE, MEMBERSHIP_SUMMARY } from './membership'
+
 export const FAQ = [
   {
     q: 'Which NYC indoor pools are open right now?',
@@ -10,13 +12,19 @@ export const FAQ = [
       `Use the "Today" filter to see only sessions that haven't already finished today.`,
   },
   {
+    q: 'How much does it cost to swim at an NYC indoor pool?',
+    a: () =>
+      `Every NYC indoor pool sits inside a recreation center, so you need a Recreation Center ` +
+      `membership: ${MEMBERSHIP_SUMMARY}. One membership covers every recreation center in the ` +
+      `city. Note that the cheaper $100 tier does not include centers with pools — you need the ` +
+      `"Access to All Centers" package. ${IDNYC_NOTE}`,
+  },
+  {
     q: 'Are NYC public indoor pools free?',
     a: () =>
-      'Not usually. Almost every NYC indoor pool sits inside a recreation center, and access ' +
-      'requires a Recreation Center membership. Membership is free for anyone 24 and under, ' +
-      '$25/year for seniors 62+, veterans and people with disabilities, and $150/year for other ' +
-      "adults — and it covers every recreation center in the city. The city's outdoor pools, open " +
-      'late June through Labor Day, are free to everyone with no membership.',
+      'Only if you are 24 or under — youth and young-adult memberships cost nothing. Everyone ' +
+      "else pays for a Recreation Center membership. The city's outdoor pools, open late June " +
+      'through Labor Day, are free to everyone with no membership at all.',
   },
   {
     q: 'When is lap swim at NYC indoor pools?',
