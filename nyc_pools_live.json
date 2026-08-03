@@ -5,11 +5,20 @@
         "pool_code": "M164",
         "status": "open",
         "location": {
-            "address": "Asser Levy Place and E. 23rd Street",
+            "address": "392 Asser Levy Place",
+            "cross_streets": "East 23rd Street & FDR Drive",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10010",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 8:00 PM",
+                "Saturday": "9:00 AM - 4:00 PM"
+            }
         },
         "phone": "(212) 447-2020",
+        "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": []
     },
     {
@@ -18,11 +27,21 @@
         "pool_code": "M260",
         "status": "open",
         "location": {
-            "address": "West 25th St. between 9th & 10th Aves",
+            "address": "430 West 25th Street",
+            "cross_streets": "9th & 10th avenues",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10001",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 8:00 PM",
+                "Saturday": "8:00 AM - 4:00 PM",
+                "Sunday": "8:00 AM - 2:00 PM"
+            }
         },
         "phone": "(212) 255-3705",
+        "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Summer Camp Swim",
@@ -142,11 +161,20 @@
         "pool_code": "M130",
         "status": "open",
         "location": {
-            "address": "E. 54th St. bet. First and Second Aves.",
+            "address": "348 East 54th Street",
+            "cross_streets": "1st & 2nd Avenues",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10022",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 8:00 PM",
+                "Saturday": "8:00 AM - 3:00 PM"
+            }
         },
         "phone": "(212) 754-5411",
+        "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "CBM Camp Swim",
@@ -267,10 +295,19 @@
         "status": "open",
         "location": {
             "address": "232 West 60th Street",
+            "cross_streets": "West End Avenue and Amsterdam Avenue",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10023",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 8:00 PM",
+                "Saturday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(212) 397-3159",
+        "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -365,11 +402,21 @@
         "pool_code": "M131",
         "status": "closed",
         "location": {
-            "address": "134th St. between Fifth & Lenox Aves.",
+            "address": "35 West 134th Street",
+            "cross_streets": "Lenox Terrace Place between Lenox & 5th avenues.",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10037",
+            "building_hours": {
+                "Monday_Friday": "6:00 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 8:00 PM",
+                "Sunday": "8:00 AM - 6:00 PM"
+            }
         },
         "phone": "(212) 234-9603",
+        "url": "https://www.nycgovparks.org/parks/M131/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
         "schedules": []
     },
     {
@@ -378,11 +425,17 @@
         "pool_code": "M103",
         "status": "open",
         "location": {
-            "address": "Clarkson St. and Seventh Ave. South",
+            "address": "1 Clarkson Street",
+            "cross_streets": "Clarkson Street at 7th Avenue South",
             "city": "New York",
-            "state": "NY"
+            "state": "NY",
+            "zip_code": "10014",
+            "building_hours": null
         },
         "phone": "(212) 242-5228",
+        "url": "https://www.nycgovparks.org/parks/M103/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building\u2019s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
         "schedules": []
     },
     {
@@ -391,11 +444,21 @@
         "pool_code": "B270",
         "status": "closed",
         "location": {
-            "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
-            "city": "New York",
-            "state": "NY"
+            "address": "1555 Linden Boulevard",
+            "cross_streets": "Linden Blvd. and Hegeman Ave.",
+            "city": "Brooklyn",
+            "state": "NY",
+            "zip_code": "11212",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 12:00 AM",
+                "Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 485-4633",
+        "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "schedules": []
     },
     {
@@ -404,11 +467,20 @@
         "pool_code": "B085",
         "status": "closed",
         "location": {
-            "address": "Bedford and Metropolitan Avenues",
-            "city": "New York",
-            "state": "NY"
+            "address": "261 Bedford Avenue",
+            "cross_streets": "Bedford Avenue and Metropolitan Avenue",
+            "city": "Brooklyn",
+            "state": "NY",
+            "zip_code": "11211",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 10:00 PM",
+                "Saturday_Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 599-5707",
+        "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": "Metropolitan Recreation Center is currently closed due to a mechanical issue which has resulted in poor dehumidification and air circulation. For the health and safety of our patrons, the Center must remain closed until we are able to install a full dehumidification system in the natatorium through our planned Capital renovation. For more information, please visit NYC Parks Capital Project Tracker",
         "schedules": []
     },
     {
@@ -417,11 +489,21 @@
         "pool_code": "B250",
         "status": "open",
         "location": {
-            "address": "Farragut Pl between E 31st Street and E 32nd Street",
-            "city": "New York",
-            "state": "NY"
+            "address": "3105 Farragut Place",
+            "cross_streets": null,
+            "city": "Brooklyn",
+            "state": "NY",
+            "zip_code": "11210",
+            "building_hours": {
+                "Monday_Friday": "6:30 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 12:00 AM",
+                "Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 859-3937",
+        "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Shirley Chisholm Recreation Center: Adult Water Exercise",
@@ -561,11 +643,21 @@
         "pool_code": "B245",
         "status": "open",
         "location": {
-            "address": "Prospect Place, between Troy and Schenectady Avenues",
-            "city": "New York",
-            "state": "NY"
+            "address": "1251 Prospect Place",
+            "cross_streets": "Between Troy and Schenectady Avenues",
+            "city": "Brooklyn",
+            "state": "NY",
+            "zip_code": "11213",
+            "building_hours": {
+                "Monday_Friday": "6:00 AM - 10:45 PM",
+                "Saturday": "8:00 AM - 11:45 PM",
+                "Sunday": "8:00 AM - 5:45 PM"
+            }
         },
         "phone": "(718) 771-2787",
+        "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -745,11 +837,21 @@
         "pool_code": "Q099",
         "status": "open",
         "location": {
-            "address": "Avery Avenue and 131 Street",
-            "city": "New York",
-            "state": "NY"
+            "address": "131-04 Meridian Rd",
+            "cross_streets": "Avery Avenue and College Point Boulevard",
+            "city": "Flushing",
+            "state": "NY",
+            "zip_code": "11368",
+            "building_hours": {
+                "Monday_Friday": "6:00 AM - 10:00 PM",
+                "Saturday": "9:00 AM - 10:00 PM",
+                "Sunday": "9:00 AM - 8:00 PM"
+            }
         },
         "phone": "(718) 271-7572",
+        "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Open Swim",
@@ -869,11 +971,21 @@
         "pool_code": "Q448",
         "status": "open",
         "location": {
-            "address": "177th Street and Baisley Boulevard",
-            "city": "New York",
-            "state": "NY"
+            "address": "177th Street & Baisley Boulevard",
+            "cross_streets": "Baisley and Merrick boulevards",
+            "city": "Jamaica",
+            "state": "NY",
+            "zip_code": "11434",
+            "building_hours": {
+                "Monday_Friday": "6:00 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 8:00 PM",
+                "Sunday": "8:00 AM - 6:00 PM"
+            }
         },
         "phone": "(718) 276-8686",
+        "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": null,
         "schedules": [
             {
                 "session_type": "Roy Wilkins Recreation Center: Adult Water Exercise",
@@ -978,11 +1090,20 @@
         "pool_code": "X045",
         "status": "closed",
         "location": {
-            "address": "St. Ann's Avenue and E. 145th Street",
-            "city": "New York",
-            "state": "NY"
+            "address": "450 Saint Ann's Avenue",
+            "cross_streets": "145th Street and St. Ann's Avenue",
+            "city": "Bronx",
+            "state": "NY",
+            "zip_code": "10455",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 9:00 PM",
+                "Saturday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 402-5157",
+        "url": "https://www.nycgovparks.org/parks/X045/facilities/indoor-pools",
+        "membership_required": true,
+        "notes": "St. Mary's Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
         "schedules": []
     }
 ]

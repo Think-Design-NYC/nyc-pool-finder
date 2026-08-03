@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import requests
 from bs4 import BeautifulSoup, Comment
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 BASE_URL = "https://www.nycgovparks.org"
 LISTING_URL = f"{BASE_URL}/facilities/indoor-pools"
@@ -27,6 +27,21 @@ POOL_CODE_RE = re.compile(r"/parks/([A-Z0-9]+)/facilities/indoor-pools")
 DAY_DATE_SUFFIX_RE = re.compile(r"\s+\d+/\d+\s*$")
 PHONE_RE = re.compile(r"\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}")
 
+# "Brooklyn, NY 11213" — the mailing city varies by borough (New York,
+# Brooklyn, Flushing, Bronx…), so don't assume "New York". The state is
+# usually "NY" but some pages spell it out ("Brooklyn, New York 11210").
+CITY_STATE_ZIP_RE = re.compile(r"^(.+?),\s*(NY|New York)\s+(\d{5})\b", re.IGNORECASE)
+
+# Site-wide promos that land in the same alert box as real closures. These are
+# marketing, not "can I swim today" information.
+NOTICE_NOISE_RE = re.compile(r"membership extension", re.IGNORECASE)
+
+# The pool detail page states this when the pool sits inside a recreation
+# center you have to join. True for nearly every indoor pool.
+MEMBERSHIP_RE = re.compile(
+    r"you must have a[^.]{0,60}?Recreation Center membership", re.IGNORECASE
+)
+
 
 class Schedule(BaseModel):
     session_type: str
@@ -36,8 +51,12 @@ class Schedule(BaseModel):
 
 class Location(BaseModel):
     address: str
+    cross_streets: Optional[str] = None
     city: str = "New York"
     state: str = "NY"
+    zip_code: Optional[str] = None
+    # {"Monday_Friday": "7:00 AM - 8:00 PM", "Saturday": "8:00 AM - 4:00 PM"}
+    building_hours: Optional[Dict[str, str]] = None
 
 
 class PoolData(BaseModel):
@@ -47,6 +66,9 @@ class PoolData(BaseModel):
     status: str
     location: Optional[Location] = None
     phone: Optional[str] = None
+    url: Optional[str] = None
+    membership_required: Optional[bool] = None
+    notes: Optional[str] = None
     schedules: List[Schedule] = []
 
 
@@ -54,6 +76,144 @@ def fetch(url: str) -> str:
     resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return resp.text
+
+
+def parse_address_block(soup: BeautifulSoup) -> dict:
+    """Street address, city/state/zip and cross streets from a rec center page.
+
+    The block is unlabelled markup — bare text nodes followed by a
+    "Cross Streets:" <strong> — so anchor on that <strong> and read backwards:
+
+        430 West 25th Street<br>
+        New York, NY 10001<br />
+        <strong>Cross Streets:</strong> <p>9th & 10th avenues</p>
+    """
+    marker = next(
+        (
+            s for s in soup.find_all("strong")
+            if s.get_text(strip=True).lower().startswith("cross streets")
+        ),
+        None,
+    )
+    if not marker or not marker.parent:
+        return {}
+
+    lines = []
+    for child in marker.parent.children:
+        if child is marker:
+            break
+        if isinstance(child, str) and child.strip():
+            lines.append(child.strip())
+
+    out = {}
+    if lines:
+        out["address"] = lines[0]
+    if len(lines) > 1:
+        m = CITY_STATE_ZIP_RE.match(lines[1])
+        if m:
+            out["city"] = m.group(1).strip()
+            out["state"] = "NY"
+            out["zip_code"] = m.group(3)
+
+    cross = marker.find_next("p")
+    if cross:
+        text = cross.get_text(" ", strip=True)
+        if text:
+            out["cross_streets"] = text
+    return out
+
+
+def parse_building_hours(soup: BeautifulSoup) -> Optional[Dict[str, str]]:
+    """Building hours, keyed so the UI can render "Monday – Friday".
+
+        <h2>Building Hours</h2>
+        <p><strong>Monday - Friday: </strong><br /> 7:00 AM - 8:00 PM <br />…
+    """
+    heading = next(
+        (
+            h for h in soup.find_all(["h2", "h3"])
+            if h.get_text(strip=True).lower() == "building hours"
+        ),
+        None,
+    )
+    if not heading:
+        return None
+    block = heading.find_next("p")
+    if not block:
+        return None
+
+    hours: Dict[str, str] = {}
+    label: Optional[str] = None
+    parts: List[str] = []
+
+    def flush():
+        if label and parts:
+            hours[label] = " ".join(parts).strip()
+
+    for child in block.children:
+        name = getattr(child, "name", None)
+        if name == "strong":
+            # The trailing "Holiday Hours" <strong> wraps a link, not a day.
+            if child.find("a"):
+                break
+            flush()
+            label = (
+                child.get_text(" ", strip=True)
+                .rstrip(":")
+                .strip()
+                .replace(" - ", "_")
+            )
+            parts = []
+        elif name == "br":
+            continue
+        elif isinstance(child, str) and child.strip():
+            parts.append(child.strip())
+    flush()
+
+    return hours or None
+
+
+def parse_facility(pool_code: str) -> dict:
+    """Location + hours + closure notices from the recreation center page."""
+    url = f"{BASE_URL}/facilities/recreationcenters/{pool_code}"
+    try:
+        html = fetch(url)
+    except requests.RequestException as e:
+        print(f"  Could not fetch facility page for {pool_code}: {e}")
+        return {}
+
+    soup = BeautifulSoup(html, "html.parser")
+    details = parse_address_block(soup)
+
+    hours = parse_building_hours(soup)
+    if hours:
+        details["building_hours"] = hours
+
+    # `alert-error` carries closures and access restrictions. `alert-success`
+    # is general news and a bare `alert` is the membership-login promo — both
+    # are noise on a "can I swim today" page.
+    notices = [
+        re.sub(r"\s+", " ", d.get_text(" ", strip=True))
+        for d in soup.find_all("div", class_="alert-error")
+    ]
+    notices = [n for n in notices if n and not NOTICE_NOISE_RE.search(n)]
+    if notices:
+        details["notes"] = " ".join(notices)[:400]
+
+    return details
+
+
+def parse_pool_detail(pool_code: str) -> dict:
+    """Membership requirement, from the pool's own detail page."""
+    url = f"{BASE_URL}/parks/{pool_code}/facilities/indoor-pools"
+    try:
+        html = fetch(url)
+    except requests.RequestException as e:
+        print(f"  Could not fetch detail page for {pool_code}: {e}")
+        return {}
+
+    text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+    return {"membership_required": bool(MEMBERSHIP_RE.search(text))}
 
 
 def parse_schedule(pool_code: str) -> List[Schedule]:
@@ -151,7 +311,27 @@ def scrape_nyc_pools() -> List[dict]:
                 if isinstance(sib, str):
                     address_parts.append(sib.strip())
             address = " ".join(p for p in address_parts if p)
-            location = Location(address=address) if address else None
+
+            # The listing only gives a rough location ("West 25th St. between
+            # 9th & 10th Aves"). The recreation center page has the real
+            # street address, zip, cross streets and building hours — worth
+            # the extra request per pool, including for closed ones.
+            details = parse_facility(pool_code) if pool_code else {}
+            details.update(parse_pool_detail(pool_code) if pool_code else {})
+
+            street = details.get("address") or address
+            location = (
+                Location(
+                    address=street,
+                    cross_streets=details.get("cross_streets"),
+                    city=details.get("city", "New York"),
+                    state=details.get("state", "NY"),
+                    zip_code=details.get("zip_code"),
+                    building_hours=details.get("building_hours"),
+                )
+                if street
+                else None
+            )
 
             # Phone numbers are tucked inside HTML comments.
             phone = None
@@ -175,6 +355,13 @@ def scrape_nyc_pools() -> List[dict]:
                 status=status,
                 location=location,
                 phone=phone,
+                url=(
+                    f"{BASE_URL}/parks/{pool_code}/facilities/indoor-pools"
+                    if pool_code
+                    else None
+                ),
+                membership_required=details.get("membership_required"),
+                notes=details.get("notes"),
                 schedules=schedules,
             ).model_dump())
 
