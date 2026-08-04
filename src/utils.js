@@ -83,7 +83,7 @@ export const ACTIVITIES = [
 ]
 
 export function matchesActivity(sessionType, activityKey) {
-  if (!activityKey || activityKey === 'All') return true
+  if (!activityKey) return true
   const a = ACTIVITIES.find((x) => x.key === activityKey)
   return a ? a.match(sessionType) : false
 }
