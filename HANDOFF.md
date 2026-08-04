@@ -260,9 +260,6 @@ A custom domain would collapse most of this — Domain property, working
 
 Code:
 
-- `deploy.yml` pins `actions/checkout@v4`, `setup-node@v4` and
-  `upload-artifact@v4`, which target Node 20 and are being force-run on Node
-  24. Currently just a warning annotation; bump them before it breaks.
 - Scrape membership pricing instead of hand-maintaining it — the URL is
   stable and the markup is a clean table.
 - Geolocation / "pools near me" sort (needs lat/lng in the scraped data;
