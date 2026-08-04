@@ -179,6 +179,11 @@ Defaults are opinionated for the most common use case:
 - Activity: **Lap Swim**
 - Day: **Today**
 
+Selections persist across reloads via `localStorage` (`poolfinder.borough` /
+`.activity` / `.day`, no expiry) — the defaults above only apply on first
+visit or when a stored value fails validation against the known filter
+values (`usePersistedFilter` in `App.jsx`).
+
 There is no "show closed pools" toggle. Closed pools have no schedules, so
 whenever an activity or day filter is active they drop out on their own; with
 filters off they show and sort last. Worth knowing when a pool you expect to
@@ -264,7 +269,6 @@ Code:
   stable and the markup is a clean table.
 - Geolocation / "pools near me" sort (needs lat/lng in the scraped data;
   currently only address + zip).
-- Persist filter selections to `localStorage` so reloads keep state.
 - Surface a clear empty-state when a borough/activity/day combo has no
   matches *because everything ended for today* vs. *no schedule at all*.
 - Add a small banner if `meta.updated_at` is more than ~48h old (scraper

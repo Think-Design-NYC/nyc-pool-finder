@@ -8,17 +8,52 @@ import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
 
+const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
+
+// localStorage can throw (private mode, storage disabled); on failure this
+// degrades to plain useState.
+function usePersistedFilter(key, defaultValue, validValues) {
+  const [value, setValue] = useState(() => {
+    try {
+      const stored = localStorage.getItem(key)
+      if (validValues.includes(stored)) return stored
+    } catch {
+      // fall through to default
+    }
+    return defaultValue
+  })
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, value)
+    } catch {
+      // ignore
+    }
+  }, [key, value])
+  return [value, setValue]
+}
+
 export default function App() {
-  const [selectedBorough, setSelectedBorough] = useState('Manhattan')
-  const [selectedActivity, setSelectedActivity] = useState('Lap Swim')
-  const [selectedDay, setSelectedDay] = useState('Today')
+  const [selectedBorough, setSelectedBorough] = usePersistedFilter(
+    'poolfinder.borough',
+    'Manhattan',
+    ['All Boroughs', ...BOROUGH_ORDER],
+  )
+  const [selectedActivity, setSelectedActivity] = usePersistedFilter(
+    'poolfinder.activity',
+    'Lap Swim',
+    ['All activities', ...ACTIVITIES.map((a) => a.key)],
+  )
+  const [selectedDay, setSelectedDay] = usePersistedFilter('poolfinder.day', 'Today', [
+    'Today',
+    'Tomorrow',
+    'Week',
+  ])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const dayActive = selectedDay && selectedDay !== 'Week'
   const hidePast = selectedDay === 'Today'
 
   const boroughs = useMemo(() => {
-    const order = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
     const present = new Set()
     for (const p of pools) {
       if (activityActive || dayActive) {
@@ -32,7 +67,7 @@ export default function App() {
       }
       present.add(getBorough(p))
     }
-    return order.filter((b) => present.has(b))
+    return BOROUGH_ORDER.filter((b) => present.has(b))
   }, [activityActive, dayActive, hidePast, selectedActivity, selectedDay])
 
   useEffect(() => {
