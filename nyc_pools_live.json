@@ -44,9 +44,9 @@
         "notes": null,
         "schedules": [
             {
-                "session_type": "Summer Camp Swim",
+                "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "11:00 a - 1:00 p"
+                "time": "10:00 a - 1:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -99,24 +99,19 @@
                 "time": "4:30 p - 7:00 p"
             },
             {
-                "session_type": "Summer Camp Swim",
+                "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "11:00 a - 1:00 p"
+                "time": "10:00 a - 1:45 p"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Thursday",
-                "time": "1:00 p - 3:45 p"
+                "time": "2:00 p - 4:30 p"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "4:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "10:00 a - 1:00 p"
+                "time": "4:45 p - 7:00 p"
             },
             {
                 "session_type": "Water Aerobics",
@@ -172,7 +167,7 @@
         "notes": null,
         "schedules": [
             {
-                "session_type": "CBM Camp Swim",
+                "session_type": "Lap Swim",
                 "days": "Monday",
                 "time": "11:00 a - 1:00 p"
             },
@@ -223,16 +218,6 @@
             },
             {
                 "session_type": "Lap Swim",
-                "days": "Wednesday",
-                "time": "3:30 p - 4:45 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "5:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 1:00 p"
             },
@@ -260,26 +245,11 @@
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "1:15 p - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Friday",
-                "time": "3:30 p - 4:45 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:00 p"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 2:45 p"
             }
         ]
     },
@@ -670,9 +640,14 @@
                 "time": "1:45 p - 2:45 p"
             },
             {
+                "session_type": "Children/Teen Swim",
+                "days": "Monday",
+                "time": "3:00 p - 4:15 p"
+            },
+            {
                 "session_type": "Family Swim",
                 "days": "Monday",
-                "time": "5:15 p - 5:45 p"
+                "time": "4:30 p - 5:45 p"
             },
             {
                 "session_type": "General Swim",
@@ -725,9 +700,14 @@
                 "time": "1:45 p - 2:45 p"
             },
             {
+                "session_type": "Children/Teen Swim",
+                "days": "Wednesday",
+                "time": "3:00 p - 4:15 p"
+            },
+            {
                 "session_type": "Family Swim",
                 "days": "Wednesday",
-                "time": "5:15 p - 5:45 p"
+                "time": "4:30 p - 5:45 p"
             },
             {
                 "session_type": "General Swim",
@@ -869,12 +849,12 @@
                 "time": "11:30 a - 12:30 p"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 3:00 p"
             },
@@ -988,9 +968,29 @@
                 "time": "11:00 a - 12:00 p"
             },
             {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "12:00 p - 2:45 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "3:00 p - 4:45 p"
+            },
+            {
                 "session_type": "Open Lap Swim",
                 "days": "Monday",
                 "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "2:15 p - 4:45 p"
             },
             {
                 "session_type": "Open Lap Swim",
@@ -1003,9 +1003,29 @@
                 "time": "11:00 a - 12:00 p"
             },
             {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "12:00 p - 2:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
                 "session_type": "Open Lap Swim",
                 "days": "Wednesday",
                 "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "2:15 p - 4:45 p"
             },
             {
                 "session_type": "Open Lap Swim",
@@ -1016,6 +1036,16 @@
                 "session_type": "Roy Wilkins Recreation Center: Adult Water Exercise",
                 "days": "Friday",
                 "time": "11:00 a - 12:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "12:00 p - 3:15 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "3:30 p - 7:00 p"
             },
             {
                 "session_type": "Open Lap Swim",
