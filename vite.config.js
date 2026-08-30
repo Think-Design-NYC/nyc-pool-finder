@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import seo from './vite-plugin-seo.js'
 
-// Served from a GitHub Pages project subpath:
-// https://think-design-nyc.github.io/nyc-pool-finder/
+// Served from a subpath on WP Engine (thinkdesignprd):
+// https://thinkdesign.com/pools/
 export default defineConfig({
-  base: '/nyc-pool-finder/',
+  base: '/pools/',
   plugins: [react(), tailwindcss(), seo()],
 })

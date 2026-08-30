@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp nyc_pools_live.json nyc_pools_meta.json dist/",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -4,7 +4,8 @@
 # with a residential IP (e.g. a Raspberry Pi) — nycgovparks.org returns 403
 # to datacenter/cloud IPs, so this cannot run on GitHub-hosted runners.
 #
-# On push, the GitHub Pages deploy workflow rebuilds and publishes the site.
+# On push, the deploy workflow rebuilds and publishes the site to WP Engine
+# (thinkdesign.com/pools).
 #
 # One-time setup on the Pi:
 #   git clone git@github.com:Think-Design-NYC/nyc-pool-finder.git
@@ -49,5 +50,5 @@ else
   git add nyc_pools_live.json nyc_pools_meta.json
   git commit -m "Refresh pool data [automated]"
   git push
-  echo "Pushed updated data — GitHub Pages will redeploy."
+  echo "Pushed updated data — the deploy workflow publishes to WP Engine (thinkdesign.com/pools)."
 fi
