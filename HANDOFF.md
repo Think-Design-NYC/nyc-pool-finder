@@ -19,6 +19,8 @@ src/membership.js     → membership prices (hand-maintained, NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML, sitemap.xml
 .github/workflows/    → deploy.yml: build + publish to WP Engine on push to main
                         (plus a GitHub Pages job that publishes only a redirect page)
+mobile/               → React Native (Expo) app; bundles the root JSON as a
+                        snapshot and fetches the published JSON at launch
 ```
 
 Data is baked in at build time (`import pools from '../nyc_pools_live.json'`),
@@ -220,6 +222,83 @@ Filter helpers live in `src/utils.js`:
 
 Pool sort order: open → transitioning → closed.
 
+## Mobile app (`mobile/`)
+
+React Native + Expo (SDK 57, managed workflow, plain JavaScript). Single
+screen, no navigation lib; RN `StyleSheet` with tokens in
+`mobile/src/lib/theme.js` (no NativeWind). Own `package.json` — nothing in the
+website build touches it. Developed on branch `expo-app`.
+
+```bash
+cd mobile
+npm install
+npx expo start      # Expo Go on simulator/device
+npm test            # jest-expo
+```
+
+### Data flow (offline-first)
+
+`usePoolData()` in `mobile/src/lib/hooks.js`:
+
+1. Seeds synchronously from the **bundled snapshot** — the repo-root
+   `nyc_pools_live.json` is `require`d directly (Metro resolves outside
+   `mobile/` without extra config), so a fresh install renders offline.
+2. Overlays the **AsyncStorage cache** (`poolfinder.dataCache`) only if its
+   `updated_at` is newer than what's displayed.
+3. Fetches `nyc_pools_meta.json?t=<now>`, then `nyc_pools_live.json?v=<updated_at>`
+   from `https://thinkdesign.com/pools` — version-keyed URLs so the host's
+   600s CDN cache can't pin a stale copy. Validation is strict (JSON
+   content-type to reject a WordPress HTML fallback, array of ≥8 pools,
+   count matching meta). Any failure is **silent by design**: keep
+   cached/bundled data. Success writes pools+meta as one atomic cache record.
+
+Filters persist in AsyncStorage under the same `poolfinder.borough/activity/day`
+keys the website uses in localStorage; first render is gated on hydration so a
+stored selection isn't clobbered by the defaults. `StalenessBanner` appears when
+`updated_at` is >48h old, but only after the fetch settles — the bundled
+snapshot is always stale on a fresh install, so flagging it pre-fetch would
+show the banner on every first launch.
+
+### Kept in sync with the website by hand
+
+- `mobile/src/lib/{utils,faq,membership}.js` are ports of `src/*`. `faq.js`
+  and `membership.js` should stay **byte-identical** to the website's;
+  `utils.js` differs only in theme tokens replacing Tailwind class strings
+  (and drops the SEO-only `poolAnchorId`). Nothing catches drift — when you
+  change the website copy, change the app's copy.
+- Unlike the website, `pools` changes at runtime (the fetch replaces the
+  snapshot), so **every `useMemo` in `mobile/App.js` depends on `pools`**.
+  Copying a memo from `App.jsx` without adding that dependency silently
+  freezes the UI on the bundled data.
+- All the copy rules apply: "Indoor" in the name, never "free" for pool
+  access, never the $100/yr tier.
+
+### Test-suite quirks (all learned the hard way)
+
+- Testing Library RN v14 + React 19: `render`, `renderHook` **and**
+  `fireEvent` are all async — `await` every one, or state doesn't flush and
+  you get overlapping-`act()` warnings.
+- `jest.setup.js` sets `IS_REACT_ACT_ENVIRONMENT` and mocks
+  `@react-native-async-storage/async-storage` and
+  `react-native-safe-area-context` (without the latter, `SafeAreaView`
+  renders nothing and every App-level test silently sees an empty tree).
+- `workerIdleMemoryLimit: "1GB"` in the jest config works around a Node 26
+  heap crash.
+- `lucide-react-native` ships raw ESM `.mjs` that jest-expo's transform
+  regex doesn't cover; it's `moduleNameMapper`'d to its CJS build by
+  absolute `<rootDir>` path because the package `exports` map blocks the
+  subpath import. Don't replace jest-expo's `transformIgnorePatterns`
+  wholesale trying to fix this — that breaks `expo-modules-core`.
+
+### Store readiness (not yet done)
+
+`app.json` identifiers (`com.thinkdesign.nycpoolfinder`), 1024×1024 icon and
+splash, `eas.json` build profiles, an **offline test of a preview build**
+(proves Metro bundled the root JSON into a production bundle, not just the dev
+server), store privacy declarations ("no data collected"; policy is live at
+<https://thinkdesign.com/pools/privacy/>), then `eas submit` once the Apple
+Developer / Play Console accounts exist.
+
 ## Known gotchas
 
 - **`.venv/` is required and gitignored.** A fresh clone can't run
@@ -290,7 +369,8 @@ Code:
 - Surface a clear empty-state when a borough/activity/day combo has no
   matches *because everything ended for today* vs. *no schedule at all*.
 - Add a small banner if `meta.updated_at` is more than ~48h old (scraper
-  silently failing).
+  silently failing). Done in the mobile app (`StalenessBanner`); still open
+  for the website.
 
 ## Operational checks
 
