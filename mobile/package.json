@@ -11,6 +11,7 @@
     "lucide-react-native": "^1.37.0",
     "react": "19.2.3",
     "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
     "react-native-svg": "15.15.4"
   },
   "scripts": {
@@ -26,7 +27,10 @@
     "setupFiles": [
       "./jest.setup.js"
     ],
-    "workerIdleMemoryLimit": "1GB"
+    "workerIdleMemoryLimit": "1GB",
+    "moduleNameMapper": {
+      "^lucide-react-native$": "<rootDir>/node_modules/lucide-react-native/dist/cjs/lucide-react-native.js"
+    }
   },
   "devDependencies": {
     "@testing-library/react-native": "^14.0.1"
