@@ -1,11 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Allow the GITHUB_TOKEN to deploy to Pages.
+# contents: read for checkout; pages/id-token for the GitHub Pages redirect deploy.
 permissions:
   contents: read
   pages: write
@@ -13,34 +13,65 @@ permissions:
 
 # One deploy at a time; let an in-progress run finish.
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: false
 
 jobs:
-  build:
+  # Build the site and publish it to WP Engine at thinkdesign.com/pools/.
+  deploy-wpe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
 
       - run: npm run build
 
-      - uses: actions/upload-pages-artifact@v5
+      - uses: wpengine/github-action-wpe-site-deploy@v3
         with:
-          path: dist
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: thinkdesignprd
+          SRC_PATH: "dist/"
+          REMOTE_PATH: "pools/"
 
-  deploy:
-    needs: build
+  # Keep GitHub Pages alive as a redirect so old indexed URLs don't 404.
+  # The same page serves as index.html and 404.html; the script preserves
+  # pool anchors (#pool-...) across the hop.
+  deploy-pages-redirect:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Build redirect page
+        run: |
+          mkdir -p _site
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <title>NYC Indoor Pool Finder has moved</title>
+              <link rel="canonical" href="https://thinkdesign.com/pools/" />
+              <meta http-equiv="refresh" content="0; url=https://thinkdesign.com/pools/" />
+              <script>location.replace('https://thinkdesign.com/pools/' + location.hash)</script>
+            </head>
+            <body>
+              <p>NYC Indoor Pool Finder has moved to
+                <a href="https://thinkdesign.com/pools/">thinkdesign.com/pools</a>.</p>
+            </body>
+          </html>
+          HTML
+          cp _site/index.html _site/404.html
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
       - id: deployment
         uses: actions/deploy-pages@v5

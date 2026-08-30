@@ -1,6 +1,6 @@
 // Build-time SEO plugin.
 //
-// The app is a client-rendered SPA, so the HTML GitHub Pages serves would
+// The app is a client-rendered SPA, so the HTML the host serves would
 // otherwise be an empty <div id="root">. Crawlers that don't execute JS (and
 // several LLM/social crawlers don't) would see no content at all. This plugin:
 //
@@ -25,7 +25,7 @@ import {
   MEMBERSHIP_URL,
 } from './src/membership.js'
 
-export const SITE_URL = 'https://think-design-nyc.github.io/nyc-pool-finder/'
+export const SITE_URL = 'https://thinkdesign.com/pools/'
 
 const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island']
 

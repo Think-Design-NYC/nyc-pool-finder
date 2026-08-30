@@ -1,14 +1,23 @@
 # Deployment
 
-## Hosting — GitHub Pages (free)
+## Hosting — WP Engine (thinkdesign.com/pools)
 
-The site is a static Vite/React build deployed by GitHub Actions.
+The site is a static Vite/React build deployed by GitHub Actions to WP Engine.
 
-- **Live URL:** https://think-design-nyc.github.io/nyc-pool-finder/
+- **Live URL:** https://thinkdesign.com/pools/
 - **Workflow:** [.github/workflows/deploy.yml](.github/workflows/deploy.yml) — builds and
-  deploys on every push to `main`.
-- Pages is configured with the **Actions** build source (no branch/folder setting).
-- The Vite `base` is `/nyc-pool-finder/` so assets resolve at the project subpath.
+  deploys on every push to `main`. The `deploy-wpe` job pushes `dist/` to the
+  `thinkdesignprd` environment via `wpengine/github-action-wpe-site-deploy@v3`,
+  authenticated by the repo secret `WPE_SSHG_KEY_PRIVATE` (an SSH private key whose
+  public half is registered in the WP Engine SSH Gateway).
+- The Vite `base` is `/pools/` so assets resolve at the subpath.
+- The build also copies `nyc_pools_live.json` + `nyc_pools_meta.json` into `dist/`,
+  so the mobile app can fetch them at https://thinkdesign.com/pools/nyc_pools_live.json.
+
+**GitHub Pages now only serves a redirect.** The old URL
+(https://think-design-nyc.github.io/nyc-pool-finder/) still gets a deploy on every
+push — the `deploy-pages-redirect` job publishes a one-page meta-refresh/JS redirect
+to thinkdesign.com/pools/ (preserving `#pool-…` anchors) so indexed URLs don't 404.
 
 The pool data is imported at build time (`import pools from '../nyc_pools_live.json'`),
 so refreshing the data means committing the JSON — which triggers a rebuild + redeploy.
@@ -28,6 +37,8 @@ scraper rewrites on each run.
 A LaunchAgent runs [scripts/refresh.sh](scripts/refresh.sh) every day:
 
 - **Plist:** `~/Library/LaunchAgents/com.thinkdesign.poolfinder-refresh.plist`
+- **Script path:** `/Users/rshah/Claude/Projects/pool-finder/scripts/refresh.sh`
+  (the old "Local Sites" checkout is gone)
 - **Log:** `~/Library/Logs/poolfinder-refresh.log`
 - **Venv:** `.venv/` in the repo (`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`)
 - Push auth uses the existing `gh`/git credentials in the login keychain.
@@ -35,9 +46,9 @@ A LaunchAgent runs [scripts/refresh.sh](scripts/refresh.sh) every day:
 Manage it:
 
 ```bash
-launchctl load   ~/Library/LaunchAgents/com.thinkdesign.poolfinder-refresh.plist   # enable
-launchctl start  com.thinkdesign.poolfinder-refresh                                # run now
-launchctl unload ~/Library/LaunchAgents/com.thinkdesign.poolfinder-refresh.plist   # disable
+launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.thinkdesign.poolfinder-refresh.plist  # enable
+launchctl kickstart gui/$UID/com.thinkdesign.poolfinder-refresh                               # run now
+launchctl bootout   gui/$UID/com.thinkdesign.poolfinder-refresh                               # disable
 ```
 
 If the Mac is asleep at 06:00, launchd runs the job on the next wake. The job only

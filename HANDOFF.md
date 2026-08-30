@@ -3,7 +3,8 @@
 A static React/Vite site that lists NYC indoor public pools and their
 lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
 
-- **Live:** https://think-design-nyc.github.io/nyc-pool-finder/
+- **Live:** https://thinkdesign.com/pools/ (WP Engine, env `thinkdesignprd`; the old
+  GitHub Pages URL now serves only a redirect here)
 - **Repo:** `Think-Design-NYC/nyc-pool-finder` (default branch `main`)
 
 ## How the pieces fit
@@ -16,11 +17,25 @@ src/App.jsx           → imports the JSON at build time, renders the UI
 src/faq.js            → FAQ copy, shared by the UI and the build-time SEO output
 src/membership.js     → membership prices (hand-maintained, NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML, sitemap.xml
-.github/workflows/    → deploy.yml: build + publish to GitHub Pages on push to main
+.github/workflows/    → deploy.yml: build + publish to WP Engine on push to main
+                        (plus a GitHub Pages job that publishes only a redirect page)
 ```
 
 Data is baked in at build time (`import pools from '../nyc_pools_live.json'`),
-so a data refresh = a commit = an auto-deploy. There is no runtime fetch.
+so a data refresh = a commit = an auto-deploy. There is no runtime fetch on the
+website; the mobile app fetches the published JSON (see Hosting below).
+
+## Hosting (WP Engine)
+
+The deploy workflow pushes `dist/` to the `thinkdesignprd` environment under
+`pools/` (see [DEPLOY.md](DEPLOY.md)). Quirks of that host worth knowing:
+
+- **thinkdesign.com is behind Cloudflare.** HTML responses get a Cloudflare
+  bot-management script injected on the way out; JSON is served clean.
+- **JSON is cached with `max-age=600`, and query strings are part of the cache
+  key.** The build copies `nyc_pools_live.json` + `nyc_pools_meta.json` into
+  `dist/`, so they're published at `https://thinkdesign.com/pools/nyc_pools_live.json`
+  for the mobile app — which uses version-keyed URLs to bust that cache.
 
 ## Local development
 
@@ -97,7 +112,7 @@ Source of truth: <https://www.nycgovparks.org/programs/recreation-centers/member
 
 ## SEO
 
-The app is client-rendered, so the HTML Pages serves would otherwise be an empty
+The app is client-rendered, so the HTML the host serves would otherwise be an empty
 `<div id="root">`. [vite-plugin-seo.js](vite-plugin-seo.js) fixes that at build
 time — it reads `nyc_pools_live.json` and:
 
@@ -143,9 +158,11 @@ Fallback styling uses a scoped `<style>` block, not Tailwind classes — the plu
 runs in `transformIndexHtml`, after Tailwind has scanned sources, so classes
 introduced there would be purged.
 
-Note `public/robots.txt` is inert on a github.io *project* page (robots.txt is
-only honoured at the domain root, which this repo doesn't control). Submit the
-sitemap in Search Console instead, or move to a custom domain.
+Note `public/robots.txt` is still inert for crawlers: it lands at
+`/pools/robots.txt`, and robots.txt is only honoured at the domain root. The
+root-domain robots.txt and sitemap for thinkdesign.com must be configured in
+WordPress — a manual follow-up for Ray. Submit the sitemap in Search Console
+regardless.
 
 ## Data refresh (runs locally, not on GitHub)
 
@@ -214,8 +231,9 @@ Pool sort order: open → transitioning → closed.
   reads as cloaking, and nothing in the build catches it automatically.
 - **Membership prices are hand-typed.** They have a "checked on" date, not a
   scrape. See the membership section.
-- **Vite `base` is `/nyc-pool-finder/`.** If the repo is ever renamed or
-  moved off project-pages hosting, update `vite.config.js` or assets 404.
+- **Vite `base` is `/pools/`.** If the site's path on thinkdesign.com ever
+  changes, update `vite.config.js` (and `REMOTE_PATH` in the deploy workflow)
+  or assets 404.
 - **Borough inference relies on zip prefix.** If NYC ever assigns a new
   zip prefix outside the table in `utils.js`, those pools will fall into
   the "Other" bucket.
@@ -232,26 +250,25 @@ Needs a human (can't be done from the repo):
   involved than it sounds. Started 2026-08-03, parked before completion.
 - **Replace `public/og-image.png`.** It's a placeholder copy of the Think
   Design logo at 548×289; social cards want 1200×630.
-- **A custom domain would outweigh every on-page SEO change here**, given the
-  shared `github.io` subdomain.
+- **Configure root-domain robots.txt/sitemap in WordPress** — `/pools/robots.txt`
+  is inert (see the SEO section), so thinkdesign.com's own robots.txt is what
+  crawlers actually read.
 
 ### Search Console — parked, and why it's fiddly
 
 **Submitting the sitemap is the easy part. Getting a verified property is not.**
-Search Console won't accept a sitemap until the property exists and is verified,
-and this site's hosting makes that awkward.
+Search Console won't accept a sitemap until the property exists and is verified.
+The WP Engine move makes this easier than it was on github.io:
 
-- It has to be a **URL-prefix** property for exactly
-  `https://think-design-nyc.github.io/nyc-pool-finder/` (with the trailing
-  slash). A **Domain property is impossible** — that needs DNS control over
-  `github.io`, which we don't have. This is the same root cause as
-  `public/robots.txt` being inert: we own a *path*, not a *domain*.
-- Verification is easiest via the **HTML tag** method. Google issues a token;
-  add `<meta name="google-site-verification" content="…">` to `index.html`,
-  push, and the deploy has it live at the property URL in ~40s. Then click
-  Verify. The HTML-file method also works — drop the file in `public/` and it
-  lands at `/nyc-pool-finder/<file>.html` — but the meta tag is one line and
-  can't be forgotten during a rebuild.
+- Either a **Domain property** for `thinkdesign.com` (DNS TXT record — we control
+  the domain now) or a **URL-prefix** property for exactly
+  `https://thinkdesign.com/pools/` (with the trailing slash) works.
+- For a URL-prefix property, verification is easiest via the **HTML tag** method.
+  Google issues a token; add `<meta name="google-site-verification" content="…">`
+  to `index.html`, push, and the deploy has it live at the property URL within
+  minutes. Then click Verify. The HTML-file method also works — drop the file in
+  `public/` and it lands at `/pools/<file>.html` — but the meta tag is one line
+  and can't be forgotten during a rebuild.
 - Once verified, the sitemap field wants just `sitemap.xml` (it's relative to
   the property URL).
 - You must be signed into the Google account that should own the property.
@@ -260,8 +277,9 @@ Blocked on 2026-08-03 because the Claude in Chrome extension had
 `search.google.com` in its blocked-sites list. Granting the extension access to
 that host is the first step next time.
 
-A custom domain would collapse most of this — Domain property, working
-`robots.txt`, and better ranking than a shared `github.io` subdomain.
+The move to thinkdesign.com collapsed the old blockers (no more shared
+`github.io` subdomain), but the root-domain robots.txt/sitemap still need to be
+configured in WordPress — see the SEO section.
 
 Code:
 
@@ -279,8 +297,9 @@ Code:
 - **Site looks empty / blanked out:** check the most recent commit on
   `main` — if `refresh.sh`'s 8-pool guard tripped, the log on the Pi
   (`/home/pi/pool-refresh.log`) will say so.
-- **Deploy didn't run:** Actions tab → "Deploy to GitHub Pages". Pages
-  source must be **Actions** (not a branch), under repo Settings → Pages.
+- **Deploy didn't run:** Actions tab → "Deploy". The `deploy-wpe` job needs
+  the `WPE_SSHG_KEY_PRIVATE` secret; the Pages redirect job needs the Pages
+  source set to **Actions** (not a branch), under repo Settings → Pages.
 - **Manual refresh from the Pi:** `./scripts/refresh.sh` from the repo
   root. Safe to run by hand; it pulls, scrapes, sanity-checks, and only
   pushes if the data actually changed.
