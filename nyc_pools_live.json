@@ -275,6 +275,11 @@
                 "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:00 p"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "12:30 p - 2:45 p"
             }
         ]
     },
