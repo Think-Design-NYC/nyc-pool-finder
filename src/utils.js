@@ -74,12 +74,14 @@ export const ACTIVITIES = [
     match: (s) => /open swim|general swim/i.test(s) && !/lap/i.test(s),
   },
   { key: 'Family Swim', match: (s) => /family swim/i.test(s) },
+  { key: 'Children/Teen Swim', match: (s) => /children|teen/i.test(s) },
   { key: 'Learn to Swim', match: (s) => /learn to swim/i.test(s) },
   {
     key: 'Water Exercise',
     match: (s) => /water (exercise|aerobics)|aqua(?!cades)/i.test(s),
   },
   { key: 'Swim Team', match: (s) => /swim team|aquacades/i.test(s) },
+  { key: 'Water Polo', match: (s) => /water polo/i.test(s) },
 ]
 
 export function matchesActivity(sessionType, activityKey) {

@@ -17,7 +17,7 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { poolAnchorId as anchorId } from './src/utils.js'
+import { ACTIVITIES, poolAnchorId as anchorId } from './src/utils.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -114,17 +114,20 @@ const parksUrl = (pool) =>
     : undefined
 
 // Distinct swim programs offered, e.g. "Adult Lap Swim" -> "Lap Swim".
+//
+// Derived from the same ACTIVITIES table the UI filters on, so a new program
+// type is classified identically in the pills and in the JSON-LD. This used to
+// be a hand-maintained copy of those regexes and had already drifted: it never
+// emitted Swim Team at all.
 function activityTags(pool) {
   const tags = new Set()
   for (const s of pool.schedules ?? []) {
     const t = s.session_type ?? ''
-    if (/lap swim/i.test(t)) tags.add('Lap Swim')
-    else if (/family swim/i.test(t)) tags.add('Family Swim')
-    else if (/open swim|general swim/i.test(t)) tags.add('Open Swim')
-    else if (/learn to swim/i.test(t)) tags.add('Learn to Swim')
-    else if (/water (exercise|aerobics)/i.test(t)) tags.add('Water Exercise')
+    for (const a of ACTIVITIES) {
+      if (a.match(t)) tags.add(a.key)
+    }
   }
-  return [...tags]
+  return ACTIVITIES.map((a) => a.key).filter((k) => tags.has(k))
 }
 
 function poolLd(pool, position) {
