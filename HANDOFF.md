@@ -290,14 +290,32 @@ show the banner on every first launch.
   subpath import. Don't replace jest-expo's `transformIgnorePatterns`
   wholesale trying to fix this — that breaks `expo-modules-core`.
 
-### Store readiness (not yet done)
+### Store readiness
 
-`app.json` identifiers (`com.thinkdesign.nycpoolfinder`), 1024×1024 icon and
-splash, `eas.json` build profiles, an **offline test of a preview build**
-(proves Metro bundled the root JSON into a production bundle, not just the dev
-server), store privacy declarations ("no data collected"; policy is live at
-<https://thinkdesign.com/pools/privacy/>), then `eas submit` once the Apple
-Developer / Play Console accounts exist.
+Configured in `mobile/app.json` / `mobile/eas.json`:
+
+- Name **"NYC Indoor Pool Finder"**, slug `nyc-pool-finder`, bundle ID /
+  package `com.thinkdesign.nycpoolfinder` on both platforms.
+  `ITSAppUsesNonExemptEncryption: false` (no custom crypto) skips Apple's
+  export-compliance question on every submission.
+- Icon and splash PNGs in `mobile/assets/` are **exported from the SVG
+  sources in `mobile/assets/src/`** — edit the SVGs and re-export; don't
+  touch the PNGs directly. Splash/adaptive-icon background is `#0284c7`
+  (the theme's sky-600).
+- `eas.json`: `preview` = internal distribution, Android builds an APK
+  (sideloadable without Play Console); `production` = auto-incremented
+  build numbers, version source `remote`.
+- **Expo Go ignores all of this** — icon, splash, and bundle ID only take
+  effect in a real (EAS) build, so "it looks right in Expo Go" verifies
+  none of it.
+
+Still to do: `eas login` + `eas init` (attaches the Expo `projectId` to
+`app.json`), `eas build --profile preview` on both platforms, then the
+**offline test of that preview build** (fresh install, airplane mode —
+proves Metro bundled the root JSON into a production bundle, not just the
+dev server). Store privacy declarations ("no data collected"; policy is
+live at <https://thinkdesign.com/pools/privacy/>), then `eas submit` once
+the Apple Developer / Play Console accounts exist.
 
 ## Known gotchas
 
