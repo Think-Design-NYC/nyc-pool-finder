@@ -169,9 +169,11 @@ regardless.
 `nycgovparks.org` returns **403 Forbidden** to datacenter IPs, so the scraper
 cannot run on GitHub-hosted runners. It needs a residential IP.
 
-**It currently runs on Ray's Mac**, daily at 06:00 local, via a launchd agent —
-not the Raspberry Pi. Moving it to the Pi is still an option; both setups are
-written up in [DEPLOY.md](DEPLOY.md).
+**It runs on the primary Mac** (there is no Raspberry Pi), daily at 06:00 local
+via a launchd agent. The secondary Mac is a dev machine with no scheduled job;
+when the primary has been off, run `refresh.sh --if-stale 36` there by hand — it
+exits without scraping unless the published data is already older than 36h. See
+[DEPLOY.md](DEPLOY.md).
 
 `refresh.sh` needs `.venv/` in the repo root. If it's missing the script falls
 back to system `python3`, which doesn't have `requests`/`bs4`/`pydantic`, and
@@ -224,9 +226,9 @@ Pool sort order: open → transitioning → closed.
 
 - **`.venv/` is required and gitignored.** A fresh clone can't run
   `refresh.sh` until you create it — see the data refresh section above.
-- **Push auth.** On the Mac this uses the login keychain, so the job only
-  fires while logged in. On the Pi it needs a write-enabled SSH deploy key;
-  HTTPS push won't work non-interactively from cron. See DEPLOY.md.
+- **Push auth.** Uses the login keychain, so the job only fires while that Mac
+  is awake and logged in. That gap is what `refresh.sh --if-stale 36` covers,
+  run by hand from either Mac. See DEPLOY.md.
 - **Fallback HTML and React must agree.** See the SEO section — divergence
   reads as cloaking, and nothing in the build catches it automatically.
 - **Membership prices are hand-typed.** They have a "checked on" date, not a
@@ -295,11 +297,14 @@ Code:
 ## Operational checks
 
 - **Site looks empty / blanked out:** check the most recent commit on
-  `main` — if `refresh.sh`'s 8-pool guard tripped, the log on the Pi
-  (`/home/pi/pool-refresh.log`) will say so.
+  `main` — if `refresh.sh`'s 8-pool guard tripped,
+  `~/Library/Logs/poolfinder-refresh.log` on the primary Mac will say so.
 - **Deploy didn't run:** Actions tab → "Deploy". The `deploy-wpe` job needs
   the `WPE_SSHG_KEY_PRIVATE` secret; the Pages redirect job needs the Pages
   source set to **Actions** (not a branch), under repo Settings → Pages.
-- **Manual refresh from the Pi:** `./scripts/refresh.sh` from the repo
-  root. Safe to run by hand; it pulls, scrapes, sanity-checks, and only
-  pushes if the data actually changed.
+- **Manual refresh:** `./scripts/refresh.sh` from the repo root on either
+  Mac. Safe to run by hand; it pulls, scrapes, sanity-checks, and only
+  pushes if the data actually changed. It refuses to run off `main`.
+- **Data going stale:** if `meta.updated_at` is drifting past ~36h, the primary
+  Mac has been off. Either wake it and `launchctl kickstart` the agent (label
+  in DEPLOY.md), or run `./scripts/refresh.sh --if-stale 36` from the other Mac.

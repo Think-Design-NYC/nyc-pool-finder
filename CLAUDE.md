@@ -37,7 +37,7 @@ src/membership.js     → membership prices, hand-maintained (NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into #root, sitemap.xml
 ```
 
-**The scraper cannot run in CI.** nycgovparks.org returns 403 to datacenter IPs; it runs on a residential IP (currently Ray's Mac, daily 06:00 via launchd — see DEPLOY.md). `refresh.sh` silently falls back to system `python3` if `.venv/` is missing, and then fails on imports — the venv is required.
+**The scraper cannot run in CI.** nycgovparks.org returns 403 to datacenter IPs; it runs on a residential IP. The primary Mac runs `refresh.sh` daily at 06:00 via launchd (no Raspberry Pi); the secondary Mac has no scheduled job, but `refresh.sh --if-stale 36` can be run there by hand and no-ops unless the published data is already >36h old. `refresh.sh` refuses to run off `main`. See DEPLOY.md. `refresh.sh` silently falls back to system `python3` if `.venv/` is missing, and then fails on imports — the venv is required.
 
 ## Invariants (violating these breaks things quietly)
 

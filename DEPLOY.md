@@ -22,7 +22,7 @@ to thinkdesign.com/pools/ (preserving `#pool-…` anchors) so indexed URLs don't
 The pool data is imported at build time (`import pools from '../nyc_pools_live.json'`),
 so refreshing the data means committing the JSON — which triggers a rebuild + redeploy.
 
-## Data refresh — runs locally (currently on Ray's Mac)
+## Data refresh — runs locally (two Macs: primary + backup)
 
 `nycgovparks.org` returns **403 Forbidden** to datacenter/cloud IPs, so the scraper
 **cannot** run on GitHub-hosted runners. It runs on a machine with a residential IP
@@ -32,7 +32,18 @@ commits `nyc_pools_live.json` + `nyc_pools_meta.json`, and pushes — which auto
 The header shows **"Last updated: <date>"** from `nyc_pools_meta.json`, which the
 scraper rewrites on each run.
 
-### Current setup — macOS launchd (daily at 06:00 local)
+There is no Raspberry Pi. Only the primary Mac runs it on a schedule; the
+secondary is a dev machine that can also refresh by hand (see below).
+
+**The two Macs use differently-named checkouts** — check which machine you're on
+before assuming a path:
+
+| Machine | Repo path | Role |
+| --- | --- | --- |
+| Primary | `/Users/rshah/Claude/Projects/pool-finder/` | scheduled refresh, daily 06:00 |
+| Secondary | `/Users/rshah/Claude/Projects/nyc-pool-finder/` | development, manual refresh |
+
+### Primary — macOS launchd (daily at 06:00 local)
 
 A LaunchAgent runs [scripts/refresh.sh](scripts/refresh.sh) every day:
 
@@ -54,27 +65,28 @@ launchctl bootout   gui/$UID/com.thinkdesign.poolfinder-refresh                 
 If the Mac is asleep at 06:00, launchd runs the job on the next wake. The job only
 fires while the user is logged in (it needs the login keychain for `git push`).
 
-### Future option — move to the Raspberry Pi (always-on)
+### Manual fallback — `--if-stale`
 
-To move the refresh to the Pi instead:
-
-```bash
-git clone git@github.com:Think-Design-NYC/nyc-pool-finder.git
-cd nyc-pool-finder
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-```
-
-Give the Pi push access with an SSH **deploy key** (write-enabled):
+The scheduled job only fires while the primary Mac is awake and logged in, so
+the data can go stale without anyone noticing. Either Mac can cover the gap on
+demand:
 
 ```bash
-ssh-keygen -t ed25519 -C "pi-pool-refresh" -f ~/.ssh/pool_finder
-cat ~/.ssh/pool_finder.pub
-# → add at: repo Settings → Deploy keys → Add deploy key → check "Allow write access"
-git remote set-url origin git@github.com:Think-Design-NYC/nyc-pool-finder.git
+./scripts/refresh.sh --if-stale 36
 ```
 
-Schedule with cron — `crontab -e`:
+`--if-stale <hours>` pulls, reads `updated_at` from `nyc_pools_meta.json`, and
+exits 0 **without scraping** unless the published data is already older than
+`<hours>`. It's safe to run any time — when the primary is healthy it does
+nothing and says so:
 
 ```
-0 6 * * * /home/pi/nyc-pool-finder/scripts/refresh.sh >> /home/pi/pool-refresh.log 2>&1
+Data is 29h old (< 36h) — primary runner is healthy, nothing to do.
 ```
+
+This is deliberately manual: there is **no** second scheduled job. If you ever
+want one, a LaunchAgent running that command on a `StartInterval` is all it
+takes — but then give it its own clone rather than pointing it at a checkout
+you develop in.
+
+`refresh.sh` refuses to run anywhere but `main`, since it commits and pushes.
