@@ -159,10 +159,23 @@ runs in `transformIndexHtml`, after Tailwind has scanned sources, so classes
 introduced there would be purged.
 
 Note `public/robots.txt` is still inert for crawlers: it lands at
-`/pools/robots.txt`, and robots.txt is only honoured at the domain root. The
-root-domain robots.txt and sitemap for thinkdesign.com must be configured in
-WordPress — a manual follow-up for Ray. Submit the sitemap in Search Console
-regardless.
+`/pools/robots.txt`, and robots.txt is only honoured at the domain root.
+
+The effective robots.txt is a **static file at the WordPress web root** on WP
+Engine (verified: nginx serves it with a file ETag, and it is not
+WordPress-generated). It is not deployable from this repo, and must not be
+pushed with the deploy workflow — that action rsyncs with `--delete`, so
+aiming it at the web root would wipe the WordPress install. Edit it through
+**Yoast SEO → Tools → File editor → robots.txt**, or over SFTP/SSH.
+
+As of 2026-08-31 it advertises only the Yoast `sitemap_index.xml`, which does
+**not** include `/pools/`. Until a second `Sitemap:` line is added there,
+nothing advertises this site's sitemap and it has to be submitted directly in
+Search Console:
+
+```
+Sitemap: https://thinkdesign.com/pools/sitemap.xml
+```
 
 ## Data refresh (runs locally, not on GitHub)
 
@@ -252,9 +265,10 @@ Needs a human (can't be done from the repo):
   involved than it sounds. Started 2026-08-03, parked before completion.
 - **Replace `public/og-image.png`.** It's a placeholder copy of the Think
   Design logo at 548×289; social cards want 1200×630.
-- **Configure root-domain robots.txt/sitemap in WordPress** — `/pools/robots.txt`
-  is inert (see the SEO section), so thinkdesign.com's own robots.txt is what
-  crawlers actually read.
+- **Add `Sitemap: https://thinkdesign.com/pools/sitemap.xml` to the root
+  robots.txt** — one line, via Yoast's file editor. `/pools/robots.txt` is
+  inert (see the SEO section), so thinkdesign.com's own robots.txt is what
+  crawlers actually read, and today it points only at the Yoast sitemap.
 
 ### Search Console — parked, and why it's fiddly
 
