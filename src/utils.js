@@ -61,6 +61,25 @@ export function getStatusStyle(status) {
   )
 }
 
+const MONTH_ABBREV = {
+  January: 'Jan', February: 'Feb', March: 'Mar', April: 'Apr',
+  May: 'May', June: 'Jun', July: 'Jul', August: 'Aug',
+  September: 'Sep', October: 'Oct', November: 'Nov', December: 'Dec',
+}
+
+// "Closed until Sep 8" when the pool states a reopening date, plain "Closed"
+// when it doesn't — plenty of closures are open-ended ("through mid-September",
+// "due to the building's structural condition") and shouldn't promise a date.
+//
+// Shared by the React badge and the build-time SEO fallback so the two can't
+// drift; see the fallback note in vite-plugin-seo.js.
+export function statusLabel(pool) {
+  const base = getStatusStyle(pool.status).label
+  if (pool.status !== 'closed' || !pool.reopens) return base
+  const when = String(pool.reopens).replace(/^(\w+)/, (m) => MONTH_ABBREV[m] ?? m)
+  return `${base} until ${when}`
+}
+
 export function fullAddress(location = {}) {
   return [location.address, location.city, location.state, location.zip_code]
     .filter(Boolean)

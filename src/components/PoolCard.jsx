@@ -8,16 +8,16 @@ import {
   ExternalLink,
   Building2,
 } from 'lucide-react'
-import { getBorough, getStatusStyle, fullAddress, poolAnchorId } from '../utils'
+import { getBorough, getStatusStyle, statusLabel, fullAddress, poolAnchorId } from '../utils'
 
-function StatusBadge({ status }) {
-  const s = getStatusStyle(status)
+function StatusBadge({ pool }) {
+  const s = getStatusStyle(pool.status)
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ${s.badge}`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${s.dot}`} />
-      {s.label}
+      {statusLabel(pool)}
     </span>
   )
 }
@@ -64,7 +64,7 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
             {getBorough(pool)}
           </p>
         </div>
-        <StatusBadge status={pool.status} />
+        <StatusBadge pool={pool} />
       </header>
 
       <div className="flex flex-1 flex-col gap-3 p-4">

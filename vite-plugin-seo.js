@@ -17,7 +17,7 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { ACTIVITIES, poolAnchorId as anchorId } from './src/utils.js'
+import { ACTIVITIES, statusLabel, poolAnchorId as anchorId } from './src/utils.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -269,14 +269,13 @@ function buildFallbackHtml() {
       const cards = list
         .map((pool) => {
           const loc = pool.location ?? {}
-          const isOpen = pool.status === 'open'
           const sessions = (pool.schedules ?? [])
             .filter((s) => !NON_PUBLIC_SESSION.test(s.session_type ?? ''))
             .map((s) => `<li>${esc(s.days)} — ${esc(s.session_type)}: ${esc(s.time)}</li>`)
             .join('')
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
-  <h3>${esc(pool.pool_name)} <span class="sf-badge">${isOpen ? 'Open' : 'Closed'}</span></h3>
+  <h3>${esc(pool.pool_name)} <span class="sf-badge">${esc(statusLabel(pool))}</span></h3>
   <p>${esc(
     [
       loc.address,

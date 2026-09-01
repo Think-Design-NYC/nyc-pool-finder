@@ -61,6 +61,34 @@ CLOSURE_RE = re.compile(
 )
 
 
+_MONTHS = (
+    r"(?:January|February|March|April|May|June|July|August|September|October"
+    r"|November|December)"
+)
+
+# "The center will reopen to the public on Tuesday, September 8." Months are
+# spelled out explicitly rather than matched as a generic capitalised word,
+# because IGNORECASE would otherwise let any word through.
+REOPEN_RE = re.compile(
+    rf"\breopen\w*\b[^.]{{0,40}}?\bon\s+(?:\w+day,\s*)?"
+    rf"({_MONTHS}\s+\d{{1,2}}(?:,\s*\d{{4}})?)",
+    re.IGNORECASE,
+)
+
+
+def find_reopen_date(notes: Optional[str]) -> Optional[str]:
+    """The date a closed facility says it reopens, when it states one.
+
+    Plenty of closures don't: "through mid-September" and "closed due to the
+    building's structural condition" give nothing to promise a reader, so this
+    returns None and the UI just says Closed.
+    """
+    if not notes:
+        return None
+    m = REOPEN_RE.search(notes)
+    return m.group(1) if m else None
+
+
 def clean_notices(raw: List[str]) -> List[str]:
     """Strip site-wide boilerplate; drop notices that were nothing but it."""
     out: List[str] = []
@@ -105,6 +133,7 @@ class PoolData(BaseModel):
     url: Optional[str] = None
     membership_required: Optional[bool] = None
     notes: Optional[str] = None
+    reopens: Optional[str] = None
     schedules: List[Schedule] = []
 
 
@@ -423,6 +452,7 @@ def scrape_nyc_pools() -> List[dict]:
                 ),
                 membership_required=details.get("membership_required"),
                 notes=notes,
+                reopens=find_reopen_date(notes) if status == "closed" else None,
                 schedules=schedules,
             ).model_dump())
 
