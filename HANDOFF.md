@@ -168,14 +168,16 @@ pushed with the deploy workflow — that action rsyncs with `--delete`, so
 aiming it at the web root would wipe the WordPress install. Edit it through
 **Yoast SEO → Tools → File editor → robots.txt**, or over SFTP/SSH.
 
-As of 2026-08-31 it advertises only the Yoast `sitemap_index.xml`, which does
-**not** include `/pools/`. Until a second `Sitemap:` line is added there,
-nothing advertises this site's sitemap and it has to be submitted directly in
-Search Console:
+The Yoast `sitemap_index.xml` does **not** include `/pools/`, so the root
+robots.txt carries a second `Sitemap:` line pointing at this site's own
+sitemap — added 2026-09-01, verified live:
 
 ```
 Sitemap: https://thinkdesign.com/pools/sitemap.xml
 ```
+
+Keep that line if the root robots.txt is ever rewritten; without it nothing
+advertises the pool sitemap to crawlers.
 
 ## Data refresh (runs locally, not on GitHub)
 
@@ -265,10 +267,9 @@ Needs a human (can't be done from the repo):
   involved than it sounds. Started 2026-08-03, parked before completion.
 - **Replace `public/og-image.png`.** It's a placeholder copy of the Think
   Design logo at 548×289; social cards want 1200×630.
-- **Add `Sitemap: https://thinkdesign.com/pools/sitemap.xml` to the root
-  robots.txt** — one line, via Yoast's file editor. `/pools/robots.txt` is
-  inert (see the SEO section), so thinkdesign.com's own robots.txt is what
-  crawlers actually read, and today it points only at the Yoast sitemap.
+- ~~Add the pool sitemap to the root robots.txt~~ — **done 2026-09-01.**
+  Search Console submission is still parked (see below); the robots.txt line
+  covers Bing and other crawlers in the meantime.
 
 ### Search Console — parked, and why it's fiddly
 

@@ -11,8 +11,9 @@
 # action rsyncs with --delete, and aiming it at the web root would wipe the
 # WordPress install.
 #
-# It must carry a second Sitemap line for this site's sitemap, or nothing
-# advertises it (the Yoast sitemap_index.xml does not include /pools/):
+# It carries a second Sitemap line for this site's sitemap, added 2026-09-01,
+# because the Yoast sitemap_index.xml does not include /pools/. Keep it if
+# that file is ever rewritten:
 #   Sitemap: https://thinkdesign.com/pools/sitemap.xml
 
 User-agent: *
