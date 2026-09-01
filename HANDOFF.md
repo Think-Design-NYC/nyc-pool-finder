@@ -91,6 +91,20 @@ Parsing notes, all learned the hard way from real pages:
   very much open; without the day-of-week exclusion every one of them gets
   marked closed. If you touch that regex, re-check it against all 13 pools —
   reduced-hours pools and genuinely-closed ones both mention "closed".
+- **Closure notices carry links, and they matter.** `extract_notice_links`
+  keeps the anchors inside `alert-error` boxes — capital project pages, the
+  Clarkson Street input portal. Hrefs are sometimes site-relative or
+  whitespace-padded, so they're absolutised and stripped. Links whose href
+  mentions `membership` are skipped: on Chelsea and Flushing the only anchor is
+  the membership-extension promo, labelled "webpage", which says nothing about
+  the closure.
+- **`CAPITAL_PROJECT_OVERRIDES` is hand-maintained**, like the membership
+  prices. Some notices link only the tracker index, which is useless to someone
+  asking when their pool reopens. A center can have several unrelated capital
+  projects — Metropolitan's park page lists three, and only 10796 is the
+  dehumidification work its closure notice describes — so confirm a project
+  matches the stated reason before adding it. Tony Dapolito's park page lists
+  no projects at all, which is why his row keeps the generic tracker link.
 - **Nearest subway is not published anywhere on nycgovparks.org** — `PoolCard`
   still renders `location.nearest_subway` if it ever appears, but nothing fills
   it. Populating it would need an external MTA station dataset.

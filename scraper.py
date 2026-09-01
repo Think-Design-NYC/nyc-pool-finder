@@ -151,6 +151,46 @@ def find_reopen_date(notes: Optional[str]) -> Optional[str]:
 NOTICE_LINK_SKIP_RE = re.compile(r"membership", re.IGNORECASE)
 
 
+# The tracker index, and its filter views — useful to nobody asking "when does
+# my pool come back". Superseded when a specific project is known below.
+GENERIC_TRACKER_RE = re.compile(
+    r"^https://www\.nycgovparks\.org/planning-and-building/capital-project-tracker"
+    r"(?:/(?:partner|completed))?(?:[#?].*)?$",
+    re.IGNORECASE,
+)
+
+# Some closure notices link only the tracker index, not the project actually
+# responsible for the closure. Where the specific project is known it's named
+# here, by pool code.
+#
+# HAND-MAINTAINED, like the membership prices. A recreation center can have
+# several unrelated capital projects — Metropolitan's park page lists three,
+# and only 10796 is the dehumidification work its closure notice describes — so
+# check a project actually matches the stated reason before adding it here.
+CAPITAL_PROJECT_OVERRIDES = {
+    # "must remain closed until we are able to install a full dehumidification
+    # system in the natatorium" -> Dehumidification System Reconstruction.
+    "B085": {
+        "text": "Dehumidification System Reconstruction",
+        "url": (
+            "https://www.nycgovparks.org/planning-and-building"
+            "/capital-project-tracker/project/10796"
+        ),
+    },
+}
+
+
+def apply_capital_override(pool_code: str, links: List[dict]) -> List[dict]:
+    """Swap a bare tracker-index link for the specific project, when known."""
+    override = CAPITAL_PROJECT_OVERRIDES.get(pool_code)
+    if not override:
+        return links
+    kept = [l for l in links if not GENERIC_TRACKER_RE.match(l["url"])]
+    if override["url"] not in {l["url"] for l in kept}:
+        kept.insert(0, dict(override))
+    return kept
+
+
 def extract_notice_links(divs) -> List[dict]:
     """(text, url) for each informative link in a set of notice divs."""
     links: List[dict] = []
@@ -550,7 +590,11 @@ def scrape_nyc_pools() -> List[dict]:
                 membership_required=details.get("membership_required"),
                 notes=notes,
                 reduced_hours=reduced_hours,
-                notice_links=notice_links if status == "closed" else [],
+                notice_links=(
+                    apply_capital_override(pool_code, notice_links)
+                    if status == "closed"
+                    else []
+                ),
                 closure_reason=find_closure_reason(notes) if status == "closed" else None,
                 closed_through=find_closed_through(notes) if status == "closed" else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,
