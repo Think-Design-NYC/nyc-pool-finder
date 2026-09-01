@@ -67,6 +67,31 @@ export function fullAddress(location = {}) {
     .join(', ')
 }
 
+// The scraper runs on a schedule on one Mac, and that schedule only fires while
+// the machine is awake and logged in (see DEPLOY.md). When it misses, the site
+// keeps serving the last-good schedules with no outward sign — so past this age
+// the UI says so rather than presenting stale times as current.
+export const STALE_AFTER_HOURS = 48
+
+// Hours since `updatedAt`, or null when it's missing or unparseable. `now` is
+// injectable so this is testable without faking the clock.
+export function dataAgeHours(updatedAt, now = Date.now()) {
+  if (!updatedAt) return null
+  const t = new Date(updatedAt).getTime()
+  if (Number.isNaN(t)) return null
+  return (now - t) / 3600000
+}
+
+// "yesterday" / "3 days ago". Coarse on purpose: past the staleness threshold
+// the exact hour doesn't change what the reader should do about it.
+export function describeAge(hours) {
+  if (hours == null) return null
+  const days = Math.floor(hours / 24)
+  if (days < 1) return 'today'
+  if (days === 1) return 'yesterday'
+  return `${days} days ago`
+}
+
 export const ACTIVITIES = [
   { key: 'Lap Swim', match: (s) => /lap swim/i.test(s) },
   {

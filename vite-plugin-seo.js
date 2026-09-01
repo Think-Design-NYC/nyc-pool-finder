@@ -235,7 +235,29 @@ function buildJsonLd() {
   }
 }
 
+// The scrape date, formatted as the React header formats it. Pinned to New York
+// so a CI build (UTC) and a local build don't disagree about the day.
+function lastUpdatedLabel() {
+  if (!meta.updated_at) return null
+  const t = new Date(meta.updated_at)
+  if (Number.isNaN(t.getTime())) return null
+  return t.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'America/New_York',
+  })
+}
+
 // Static mirror of the React UI for non-JS crawlers. Replaced on mount.
+//
+// NOTE: App.jsx also renders a "schedules may be out of date" banner past
+// STALE_AFTER_HOURS. There is deliberately no counterpart here, and that is not
+// drift. This HTML is regenerated only by a deploy, and deploys are triggered by
+// data-refresh commits — so at build time the data is always fresh, and a stale
+// site is serving a fallback built back when it wasn't. Build-time staleness
+// detection is impossible by construction. The scrape date below is the honest
+// static equivalent: a crawler can read it and judge freshness itself.
 function buildFallbackHtml() {
   const openCount = pools.filter((p) => p.status === 'open').length
   const byBorough = BOROUGH_ORDER.map((b) => [b, pools.filter((p) => p.borough === b)]).filter(
@@ -289,6 +311,7 @@ function buildFallbackHtml() {
   <h1>NYC Indoor Pool Finder</h1>
   <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(boroughs)}.</p>
+  ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>

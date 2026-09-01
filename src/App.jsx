@@ -6,7 +6,16 @@ import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
-import { getBorough, ACTIVITIES, matchesActivity, matchesDay, isPastToday } from './utils'
+import {
+  getBorough,
+  ACTIVITIES,
+  matchesActivity,
+  matchesDay,
+  isPastToday,
+  dataAgeHours,
+  describeAge,
+  STALE_AFTER_HOURS,
+} from './utils'
 
 const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
 
@@ -102,6 +111,14 @@ export default function App() {
     })
   }, [])
 
+  // Null unless the data has actually gone stale, so the banner is absent in the
+  // normal case rather than rendered-and-hidden. Deliberately has no counterpart
+  // in the build-time SEO fallback — see the note in vite-plugin-seo.js.
+  const staleFor = useMemo(() => {
+    const hours = dataAgeHours(meta.updated_at)
+    return hours != null && hours >= STALE_AFTER_HOURS ? describeAge(hours) : null
+  }, [])
+
   const visiblePools = useMemo(() => {
     return pools
       .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
@@ -158,6 +175,26 @@ export default function App() {
           />
         </a>
       </header>
+
+      {staleFor && (
+        <div
+          role="status"
+          className="mx-auto mb-4 max-w-6xl rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-600/20"
+        >
+          <strong className="font-semibold">These schedules may be out of date.</strong>{' '}
+          The last update was {lastUpdated} ({staleFor}). NYC Parks may have changed times
+          since —{' '}
+          <a
+            href="https://www.nycgovparks.org/facilities/indoor-pools"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium underline underline-offset-2"
+          >
+            check the official listing
+          </a>{' '}
+          before heading out.
+        </div>
+      )}
 
       <FilterBar
         boroughs={boroughs}
