@@ -8,6 +8,11 @@ import { getBorough, statusLabel, poolAnchorId } from '../utils'
 // their own section means they're visible under every filter combination
 // without ever matching a "when can I swim" query.
 //
+// Each row carries the things someone would go looking for once they learn a
+// pool is shut: a number to call, and the project page explaining why. The
+// links come from the closure notice itself, so a pool only gets one if NYC
+// Parks published one.
+//
 // The anchor id stays on each row so /pools/#pool-m260 and the JSON-LD `url`
 // for a closed pool still resolve.
 export default function ClosedPoolList({ pools }) {
@@ -23,13 +28,53 @@ export default function ClosedPoolList({ pools }) {
           <li
             key={pool.pool_name}
             id={poolAnchorId(pool)}
-            className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5 px-4 py-3 scroll-mt-4"
+            className="scroll-mt-4 px-4 py-3"
           >
-            <span className="font-semibold text-slate-900">{pool.pool_name}</span>
-            <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
-              {getBorough(pool)}
-            </span>
-            <span className="w-full text-sm text-amber-800">{statusLabel(pool)}</span>
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+              <span className="font-semibold text-slate-900">{pool.pool_name}</span>
+              <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                {getBorough(pool)}
+              </span>
+            </div>
+
+            <p className="mt-0.5 text-sm text-amber-800">{statusLabel(pool)}</p>
+
+            <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+              {pool.phone && (
+                <a
+                  className="font-medium text-sky-700 hover:underline"
+                  href={`tel:${pool.phone.replace(/[^+\d]/g, '')}`}
+                >
+                  {pool.phone}
+                </a>
+              )}
+              {(pool.notice_links ?? []).map((link) => (
+                <span key={link.url} className="flex items-center gap-2">
+                  <span aria-hidden="true">·</span>
+                  <a
+                    className="text-sky-700 hover:underline"
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.text}
+                  </a>
+                </span>
+              ))}
+              {pool.url && (
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true">·</span>
+                  <a
+                    className="text-sky-700 hover:underline"
+                    href={pool.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    NYC Parks page
+                  </a>
+                </span>
+              )}
+            </p>
           </li>
         ))}
       </ul>

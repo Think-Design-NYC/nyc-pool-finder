@@ -144,6 +144,32 @@ def find_reopen_date(notes: Optional[str]) -> Optional[str]:
     return m.group(1) if m else None
 
 
+# Links inside a closure notice are the only route to the detail — a capital
+# project page, a community input portal. Excluded: the membership-extension
+# promo, whose link text is a bare "webpage" and which explains nothing about
+# why the pool is shut.
+NOTICE_LINK_SKIP_RE = re.compile(r"membership", re.IGNORECASE)
+
+
+def extract_notice_links(divs) -> List[dict]:
+    """(text, url) for each informative link in a set of notice divs."""
+    links: List[dict] = []
+    seen = set()
+    for d in divs:
+        for a in d.find_all("a", href=True):
+            href = a["href"].strip()
+            text = re.sub(r"\s+", " ", a.get_text(" ", strip=True))
+            if not href or not text or NOTICE_LINK_SKIP_RE.search(href):
+                continue
+            if href.startswith("/"):
+                href = BASE_URL + href
+            if not href.startswith("http") or href in seen:
+                continue
+            seen.add(href)
+            links.append({"text": text, "url": href})
+    return links
+
+
 def clean_notices(raw: List[str]) -> List[str]:
     """Strip site-wide boilerplate; drop notices that were nothing but it."""
     out: List[str] = []
@@ -189,6 +215,7 @@ class PoolData(BaseModel):
     membership_required: Optional[bool] = None
     notes: Optional[str] = None
     reduced_hours: bool = False
+    notice_links: List[dict] = []
     closure_reason: Optional[str] = None
     closed_through: Optional[str] = None
     reopens: Optional[str] = None
@@ -319,6 +346,7 @@ def parse_facility(pool_code: str) -> dict:
         re.sub(r"\s+", " ", d.get_text(" ", strip=True))
         for d in soup.find_all("div", class_="alert-error")
     ]
+    details["notice_links"] = extract_notice_links(soup.find_all("div", class_="alert-error"))
     details["raw_notices"] = notices
     details["notices"] = clean_notices(notices)
 
@@ -338,7 +366,7 @@ def parse_pool_detail(pool_code: str) -> dict:
     return {"membership_required": bool(MEMBERSHIP_RE.search(text))}
 
 
-def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]]:
+def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str], List[dict]]:
     """Schedules plus any closure notices posted on the schedule page.
 
     The notices matter as much as the table: a center shut for repairs simply
@@ -350,7 +378,7 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
         html = fetch(url)
     except requests.RequestException as e:
         print(f"  Could not fetch schedule for {pool_code}: {e}")
-        return [], [], []
+        return [], [], [], []
 
     soup = BeautifulSoup(html, "html.parser")
     raw_notices = [
@@ -358,6 +386,7 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
         for d in soup.find_all("div", class_="alert-error")
     ]
     notices = clean_notices(raw_notices)
+    links = extract_notice_links(soup.find_all("div", class_="alert-error"))
     pool_heading = next(
         (
             h for h in soup.find_all(["h2", "h3"])
@@ -366,15 +395,15 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
         None,
     )
     if not pool_heading:
-        return [], notices, raw_notices
+        return [], notices, raw_notices, links
 
     table = pool_heading.find_next("table", class_="schedule-table")
     if not table:
-        return [], notices, raw_notices
+        return [], notices, raw_notices, links
 
     rows = table.find_all("tr")
     if len(rows) < 2:
-        return [], notices, raw_notices
+        return [], notices, raw_notices, links
 
     day_headers = [c.get_text(" ", strip=True) for c in rows[0].find_all(["th", "td"])]
     day_columns = rows[1].find_all("td")
@@ -404,7 +433,7 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
                 days=day,
                 time=time_text,
             ))
-    return schedules, notices, raw_notices
+    return schedules, notices, raw_notices, links
 
 
 def scrape_nyc_pools() -> List[dict]:
@@ -478,11 +507,15 @@ def scrape_nyc_pools() -> List[dict]:
 
             notices = list(details.get("notices") or [])
             reduced_hours = any(REDUCED_HOURS_RE.search(n) for n in details.get("raw_notices") or [])
+            notice_links = list(details.get("notice_links") or [])
 
             schedules: List[Schedule] = []
             if status == "open" and pool_code:
                 print(f"  Fetching schedule for {pool_name} ({pool_code})...")
-                schedules, schedule_notices, schedule_raw = parse_schedule(pool_code)
+                schedules, schedule_notices, schedule_raw, schedule_links = parse_schedule(pool_code)
+                for link in schedule_links:
+                    if link["url"] not in {l["url"] for l in notice_links}:
+                        notice_links.append(link)
                 for n in schedule_notices:
                     if n not in notices:
                         notices.append(n)
@@ -517,6 +550,7 @@ def scrape_nyc_pools() -> List[dict]:
                 membership_required=details.get("membership_required"),
                 notes=notes,
                 reduced_hours=reduced_hours,
+                notice_links=notice_links if status == "closed" else [],
                 closure_reason=find_closure_reason(notes) if status == "closed" else None,
                 closed_through=find_closed_through(notes) if status == "closed" else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,

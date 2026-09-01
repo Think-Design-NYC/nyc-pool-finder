@@ -349,11 +349,30 @@ function buildFallbackHtml() {
   ${
     closed.length
       ? `<section><h2>Currently closed (${closed.length})</h2><ul>${closed
-          .map(
-            (pool) =>
+          .map((pool) => {
+            // Mirrors ClosedPoolList.jsx: closure sentence, a number to call,
+            // and whatever project page the notice linked to.
+            const links = [
+              ...(pool.notice_links ?? []).map(
+                (l) => `<a href="${esc(l.url)}" rel="nofollow">${esc(l.text)}</a>`,
+              ),
+              pool.url
+                ? `<a href="${esc(pool.url)}" rel="nofollow">NYC Parks page</a>`
+                : null,
+            ].filter(Boolean)
+            const contact = [
+              pool.phone
+                ? `<a href="tel:${esc(pool.phone.replace(/[^+\d]/g, ''))}">${esc(pool.phone)}</a>`
+                : null,
+              ...links,
+            ].filter(Boolean)
+            return (
               `<li id="${esc(anchorId(pool))}"><strong>${esc(pool.pool_name)}</strong>` +
-              ` — ${esc(statusLabel(pool))}</li>`,
-          )
+              ` — ${esc(statusLabel(pool))}` +
+              (contact.length ? `<br />${contact.join(' · ')}` : '') +
+              `</li>`
+            )
+          })
           .join('')}</ul></section>`
       : ''
   }
