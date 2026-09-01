@@ -14,7 +14,7 @@ export const MEMBERSHIP_URL =
 // Shown next to the prices. Hardcoded on purpose — it's the date the figures
 // were checked against NYC Parks, not today's date, so bump it by hand when you
 // re-verify. An auto-updating date here would vouch for numbers nobody looked at.
-export const MEMBERSHIP_CHECKED = 'Aug 3, 2026'
+export const MEMBERSHIP_CHECKED = 'Aug 31, 2026'
 
 export const MEMBERSHIP_TIERS = [
   { who: '24 and under', price: 'Free' },
