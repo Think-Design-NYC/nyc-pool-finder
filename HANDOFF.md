@@ -295,8 +295,9 @@ Blocked on 2026-08-03 because the Claude in Chrome extension had
 that host is the first step next time.
 
 The move to thinkdesign.com collapsed the old blockers (no more shared
-`github.io` subdomain), but the root-domain robots.txt/sitemap still need to be
-configured in WordPress — see the SEO section.
+`github.io` subdomain), and the root-domain robots.txt now advertises the pool
+sitemap (2026-09-01), so Bing and other crawlers can find it. Search Console
+still needs a verified property before Google will take a submission.
 
 Code:
 
