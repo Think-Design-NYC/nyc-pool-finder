@@ -47,7 +47,23 @@ NOTICE_BOILERPLATE_RES = [
     re.compile(r"In observance of [^.]*\.\s*", re.IGNORECASE),
     # Per-slot filler on the schedule page.
     re.compile(r"There are no (?:public )?programs at this [^.]*\.\s*", re.IGNORECASE),
+    # The summer reduced-hours block, carried verbatim by five pools. It runs
+    # ~400 characters and restates hours the schedule table already shows, so
+    # it's stripped here and surfaced as the `reduced_hours` flag instead.
+    # Stripping it also removes "The pool is closed on Sundays", which is the
+    # sentence that makes closure detection hardest.
+    re.compile(
+        # `.` not `[^.]` for the facility name: "St. John's Recreation Center"
+        # contains a period, and a period-free span never reaches it.
+        r"The indoor pool at .{0,80}?will operate at reduced hours.*?"
+        r"(?:in the coming weeks\.|$)",
+        re.IGNORECASE | re.DOTALL,
+    ),
 ]
+
+# Set when the stripped block above was present, so the UI can say "Reduced
+# summer hours" in four words instead of four hundred characters.
+REDUCED_HOURS_RE = re.compile(r"will operate at reduced hours", re.IGNORECASE)
 
 # A facility-level closure, as opposed to a recurring weekly one. The trailing
 # lookahead is load-bearing: "The pool is closed on Sundays" appears in the
@@ -172,6 +188,7 @@ class PoolData(BaseModel):
     url: Optional[str] = None
     membership_required: Optional[bool] = None
     notes: Optional[str] = None
+    reduced_hours: bool = False
     closure_reason: Optional[str] = None
     closed_through: Optional[str] = None
     reopens: Optional[str] = None
@@ -302,6 +319,7 @@ def parse_facility(pool_code: str) -> dict:
         re.sub(r"\s+", " ", d.get_text(" ", strip=True))
         for d in soup.find_all("div", class_="alert-error")
     ]
+    details["raw_notices"] = notices
     details["notices"] = clean_notices(notices)
 
     return details
@@ -320,7 +338,7 @@ def parse_pool_detail(pool_code: str) -> dict:
     return {"membership_required": bool(MEMBERSHIP_RE.search(text))}
 
 
-def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str]]:
+def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]]:
     """Schedules plus any closure notices posted on the schedule page.
 
     The notices matter as much as the table: a center shut for repairs simply
@@ -332,13 +350,14 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str]]:
         html = fetch(url)
     except requests.RequestException as e:
         print(f"  Could not fetch schedule for {pool_code}: {e}")
-        return [], []
+        return [], [], []
 
     soup = BeautifulSoup(html, "html.parser")
-    notices = clean_notices([
+    raw_notices = [
         re.sub(r"\s+", " ", d.get_text(" ", strip=True))
         for d in soup.find_all("div", class_="alert-error")
-    ])
+    ]
+    notices = clean_notices(raw_notices)
     pool_heading = next(
         (
             h for h in soup.find_all(["h2", "h3"])
@@ -347,15 +366,15 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str]]:
         None,
     )
     if not pool_heading:
-        return [], notices
+        return [], notices, raw_notices
 
     table = pool_heading.find_next("table", class_="schedule-table")
     if not table:
-        return [], notices
+        return [], notices, raw_notices
 
     rows = table.find_all("tr")
     if len(rows) < 2:
-        return [], notices
+        return [], notices, raw_notices
 
     day_headers = [c.get_text(" ", strip=True) for c in rows[0].find_all(["th", "td"])]
     day_columns = rows[1].find_all("td")
@@ -385,7 +404,7 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str]]:
                 days=day,
                 time=time_text,
             ))
-    return schedules, notices
+    return schedules, notices, raw_notices
 
 
 def scrape_nyc_pools() -> List[dict]:
@@ -458,14 +477,18 @@ def scrape_nyc_pools() -> List[dict]:
             status = "closed" if "currently closed" in box.get_text().lower() else "open"
 
             notices = list(details.get("notices") or [])
+            reduced_hours = any(REDUCED_HOURS_RE.search(n) for n in details.get("raw_notices") or [])
 
             schedules: List[Schedule] = []
             if status == "open" and pool_code:
                 print(f"  Fetching schedule for {pool_name} ({pool_code})...")
-                schedules, schedule_notices = parse_schedule(pool_code)
+                schedules, schedule_notices, schedule_raw = parse_schedule(pool_code)
                 for n in schedule_notices:
                     if n not in notices:
                         notices.append(n)
+                reduced_hours = reduced_hours or any(
+                    REDUCED_HOURS_RE.search(n) for n in schedule_raw
+                )
 
             # The listing page only says "currently closed" for long-term
             # closures. A center shut for a week of repairs still reads as open
@@ -493,6 +516,7 @@ def scrape_nyc_pools() -> List[dict]:
                 ),
                 membership_required=details.get("membership_required"),
                 notes=notes,
+                reduced_hours=reduced_hours,
                 closure_reason=find_closure_reason(notes) if status == "closed" else None,
                 closed_through=find_closed_through(notes) if status == "closed" else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,

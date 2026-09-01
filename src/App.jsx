@@ -6,6 +6,7 @@ import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
+import ClosedPoolList from './components/ClosedPoolList'
 import {
   getBorough,
   ACTIVITIES,
@@ -119,8 +120,15 @@ export default function App() {
     return hours != null && hours >= STALE_AFTER_HOURS ? describeAge(hours) : null
   }, [])
 
+  // Every closed pool, always — they're listed at the bottom rather than in the
+  // grid. Filtering by activity or day used to hide them completely (a closed
+  // pool has no schedules to match), so the pools people most need to know
+  // about were the ones that disappeared.
+  const closedPools = useMemo(() => pools.filter((p) => p.status === 'closed'), [])
+
   const visiblePools = useMemo(() => {
     return pools
+      .filter((p) => p.status !== 'closed')
       .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
       .map((p) => {
         if (!activityActive && !dayActive) return p
@@ -136,9 +144,9 @@ export default function App() {
         (p) => (!activityActive && !dayActive) || (p.schedules?.length ?? 0) > 0,
       )
       .sort((a, b) => {
-        // Open pools first, then transitioning, then closed
-        const rank = { open: 0, transitioning: 1, closed: 2 }
-        return (rank[a.status] ?? 3) - (rank[b.status] ?? 3)
+        // Open first, then transitioning. Closed pools aren't in this list.
+        const rank = { open: 0, transitioning: 1 }
+        return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
       })
   }, [selectedBorough, selectedActivity, activityActive, selectedDay, dayActive, hidePast])
 
@@ -224,6 +232,8 @@ export default function App() {
           </div>
         )}
       </main>
+
+      <ClosedPoolList pools={closedPools} />
 
       <SeoContent pools={pools} openNames={openNames} />
     </div>

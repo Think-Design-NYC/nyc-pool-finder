@@ -75,10 +75,11 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
       </header>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
-        {/* Why it's shut and until when, when NYC Parks says. Suppressed when
-            there's nothing to add beyond the badge's own word. */}
-        {isClosed && statusLabel(pool) !== statusBadgeLabel(pool) && (
-          <p className="text-sm font-medium text-amber-800">{statusLabel(pool)}</p>
+        {/* NYC Parks repeats a ~400-character summer reduced-hours notice on
+            every affected pool. The scraper strips it and sets this flag; the
+            actual hours are in the schedule below. */}
+        {pool.reduced_hours && !isClosed && (
+          <p className="text-sm text-slate-500">Reduced summer hours</p>
         )}
 
         {/* Location & contact */}

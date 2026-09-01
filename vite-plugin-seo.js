@@ -265,9 +265,13 @@ function lastUpdatedLabel() {
 // static equivalent: a crawler can read it and judge freshness itself.
 function buildFallbackHtml() {
   const openCount = pools.filter((p) => p.status === 'open').length
-  const byBorough = BOROUGH_ORDER.map((b) => [b, pools.filter((p) => p.borough === b)]).filter(
-    ([, list]) => list.length,
-  )
+  // Mirrors App.jsx: closed pools leave the borough grid and get their own list
+  // at the bottom, so they stay visible under every filter combination.
+  const closed = pools.filter((p) => p.status === 'closed')
+  const byBorough = BOROUGH_ORDER.map((b) => [
+    b,
+    pools.filter((p) => p.borough === b && p.status !== 'closed'),
+  ]).filter(([, list]) => list.length)
 
   const sections = byBorough
     .map(([borough, list]) => {
@@ -281,11 +285,7 @@ function buildFallbackHtml() {
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
   <h3>${esc(pool.pool_name)} <span class="sf-badge">${esc(statusBadgeLabel(pool))}</span></h3>
-  ${
-    pool.status === 'closed' && statusLabel(pool) !== statusBadgeLabel(pool)
-      ? `<p class="sf-closure">${esc(statusLabel(pool))}</p>`
-      : ''
-  }
+  ${pool.reduced_hours ? '<p>Reduced summer hours</p>' : ''}
   <p>${esc(
     [
       loc.address,
@@ -346,6 +346,17 @@ function buildFallbackHtml() {
     <p>Unlike the city&apos;s outdoor pools — which run only from late June through Labor Day —
     indoor pools are open year-round.</p>
   </section>
+  ${
+    closed.length
+      ? `<section><h2>Currently closed (${closed.length})</h2><ul>${closed
+          .map(
+            (pool) =>
+              `<li id="${esc(anchorId(pool))}"><strong>${esc(pool.pool_name)}</strong>` +
+              ` — ${esc(statusLabel(pool))}</li>`,
+          )
+          .join('')}</ul></section>`
+      : ''
+  }
   <section><h2>Frequently asked questions</h2>${faq}</section>
 </div>`
 }
