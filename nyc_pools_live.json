@@ -3,7 +3,7 @@
         "borough": "Manhattan",
         "pool_name": "Asser Levy Pool",
         "pool_code": "M164",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "392 Asser Levy Place",
             "cross_streets": "East 23rd Street & FDR Drive",
@@ -18,14 +18,14 @@
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
         "schedules": []
     },
     {
         "borough": "Manhattan",
         "pool_name": "Chelsea Pool",
         "pool_code": "M260",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "430 West 25th Street",
             "cross_streets": "9th & 10th avenues",
@@ -41,7 +41,7 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Beginning Sunday, August 30, 2026, through Sunday, September 6, 2026, Chelsea Recreation Center will be closed for scheduled repairs. The center will also be closed on Monday, September 7 for Labor Day. The center will reopen to the public on Tuesday, September 8. We apologize for the inconvenience. The indoor pool at Chelsea Recreation Center will operate at reduced hours for the duration of the ",
         "schedules": []
     },
     {
@@ -63,7 +63,7 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at Constance Baker Motley Recreation Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing outdoor pools. Beginning Monday, June 22, 2026, pool operating hours will be Monday - Friday, 11:00 a.m. to 7:00 p.m., and Saturday, 8:00 a.m. to 2:45 p.m. The pool is closed on Sundays. Members who have been affected will have the opportunity t",
         "schedules": [
             {
                 "session_type": "Lap Swim",
@@ -181,7 +181,7 @@
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at Gertrude Ederle Recreation Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing outdoor pools. Beginning Monday, June 22, 2026, pool operating hours will be Monday - Friday, 11:00 a.m. to 7:00 p.m., and Saturday, 8:00 a.m. to 3:30 p.m. The pool is closed on Sundays. Members who have been affected will have the opportunity to reque",
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -297,7 +297,7 @@
         "borough": "Manhattan",
         "pool_name": "Tony Dapolito Pool",
         "pool_code": "M103",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "1 Clarkson Street",
             "cross_streets": "Clarkson Street at 7th Avenue South",
@@ -377,7 +377,7 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at Shirley Chisholm Recreation Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing outdoor pools. Beginning Sunday, June 28, 2026, pool operating hours will be Monday - Friday, 11:00 a.m. to 7:00 p.m., and Sunday, 8:00 a.m. to 4:00 p.m. The pool is closed on Saturdays. Members who have been affected will have the opportunity to requ",
         "schedules": [
             {
                 "session_type": "General Swim",
@@ -511,7 +511,7 @@
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at St. John's Recreation Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing outdoor pools. Beginning Sunday, June 21, 2026, pool operating hours will be Monday - Friday, 11:00 a.m. to 7:00 p.m., and Saturday, 8:00 a.m. to 4:00 p.m. The pool is closed on Sundays. Members who have been affected will have the opportunity to request a ",
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -704,7 +704,7 @@
         "borough": "Queens",
         "pool_name": "Flushing Meadows Corona Park Pool & Rink",
         "pool_code": "Q099",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "131-04 Meridian Rd",
             "cross_streets": "Avery Avenue and College Point Boulevard",
@@ -720,59 +720,8 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
-        "schedules": [
-            {
-                "session_type": "Open Swim",
-                "days": "Monday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Friday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Friday",
-                "time": "7:00 a - 3:00 p"
-            }
-        ]
+        "notes": "Flushing Meadows Corona Park Aquatics Center will be temporarily closed beginning Sunday, August 30, 2026, for approximately three weeks to accommodate pre-scheduled maintenance. The Aquatics Center is expected to reopen on September 21. The indoor pool at Flushing Meadows Corona Park Aquatics Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing out",
+        "schedules": []
     },
     {
         "borough": "Queens",
@@ -794,7 +743,7 @@
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at Roy Wilkins Recreation Center will operate at reduced hours for the duration of the summer while our lifeguards are staffing outdoor pools. Beginning Sunday, June 21, 2026, pool operating hours will be Monday - Friday, 11:00 a.m. to 7:00 p.m., and Saturday, 8:00 a.m. to 4:00 p.m. The pool is closed on Sundays. Members who have been affected will have the opportunity to request a",
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",

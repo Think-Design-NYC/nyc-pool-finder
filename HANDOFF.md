@@ -57,9 +57,11 @@ per pool:
 | Field | Source |
 | --- | --- |
 | `pool_name`, `phone`, rough address | listing page |
-| `address`, `cross_streets`, `city`, `zip_code`, `building_hours`, `notes` | `/facilities/recreationcenters/{code}` |
+| `address`, `cross_streets`, `city`, `zip_code`, `building_hours` | `/facilities/recreationcenters/{code}` |
 | `membership_required` | `/parks/{code}/facilities/indoor-pools` |
-| `schedules` | `/facilities/recreationcenters/{code}/schedule` |
+| `schedules`, closure notices | `/facilities/recreationcenters/{code}/schedule` |
+| `notes` | `alert-error` boxes on **both** the recreation-center page and the schedule page |
+| `status` | listing page, **overridden** by a closure notice — see below |
 
 Parsing notes, all learned the hard way from real pages:
 
@@ -69,9 +71,26 @@ Parsing notes, all learned the hard way from real pages:
   (`Brooklyn, New York 11210`) — the regex accepts both and normalises to `NY`.
 - `building_hours` keys use underscores (`Monday_Friday`) because the UI renders
   `day.replaceAll('_', ' – ')`.
-- Only `div.alert-error` becomes `notes`. `alert-success` is general news and a
-  bare `alert` is the membership-login promo. A site-wide "Membership Extensions"
-  promo *is* classed `alert-error` on some pages, so it's filtered by text.
+- Only `div.alert-error` becomes `notes`, from the recreation-center page *and*
+  the schedule page. `alert-success` is general news and a bare `alert` is the
+  membership-login promo.
+- **One alert box can hold several unrelated notices concatenated.** A single
+  `alert-error` routinely contains the site-wide "Membership Extensions" promo,
+  the site-wide Labor Day note, and a real closure, in that order. Filtering by
+  "does this notice mention the promo" therefore discarded real closures — that
+  is how Flushing Meadows' three-week shutdown went missing. `NOTICE_BOILERPLATE_RES`
+  now strips the boilerplate *blocks* and keeps whatever survives.
+- **`status` cannot be read off the listing page alone.** It only says "currently
+  closed" for long-term closures; a center shut for a week of repairs still reads
+  as open there. `CLOSURE_RE` re-derives it from the cleaned notices, and a pool
+  closed that way has its `schedules` cleared — a posted timetable for a closed
+  building would still satisfy the day/activity filters and send someone to a
+  locked door.
+- **`CLOSURE_RE`'s trailing lookahead is load-bearing.** "The pool is closed on
+  Sundays" appears in the reduced-hours notice carried by five pools that are
+  very much open; without the day-of-week exclusion every one of them gets
+  marked closed. If you touch that regex, re-check it against all 13 pools —
+  reduced-hours pools and genuinely-closed ones both mention "closed".
 - **Nearest subway is not published anywhere on nycgovparks.org** — `PoolCard`
   still renders `location.nearest_subway` if it ever appears, but nothing fills
   it. Populating it would need an external MTA station dataset.
