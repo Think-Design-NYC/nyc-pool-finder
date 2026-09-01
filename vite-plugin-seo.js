@@ -17,7 +17,12 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { ACTIVITIES, statusLabel, poolAnchorId as anchorId } from './src/utils.js'
+import {
+  ACTIVITIES,
+  statusLabel,
+  statusBadgeLabel,
+  poolAnchorId as anchorId,
+} from './src/utils.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -275,7 +280,12 @@ function buildFallbackHtml() {
             .join('')
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
-  <h3>${esc(pool.pool_name)} <span class="sf-badge">${esc(statusLabel(pool))}</span></h3>
+  <h3>${esc(pool.pool_name)} <span class="sf-badge">${esc(statusBadgeLabel(pool))}</span></h3>
+  ${
+    pool.status === 'closed' && statusLabel(pool) !== statusBadgeLabel(pool)
+      ? `<p class="sf-closure">${esc(statusLabel(pool))}</p>`
+      : ''
+  }
   <p>${esc(
     [
       loc.address,
@@ -348,6 +358,7 @@ const FALLBACK_STYLE = `
 #seo-fallback h3{font-size:1rem;margin:0 0 .25rem}
 #seo-fallback .sf-card{border:1px solid #e2e8f0;border-radius:.75rem;padding:.85rem;margin:.6rem 0}
 #seo-fallback .sf-badge{font-size:.7rem;font-weight:600;color:#475569}
+#seo-fallback .sf-closure{font-weight:600;color:#92400e}
 #seo-fallback ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem;color:#475569}
 #seo-fallback table{border-collapse:collapse;margin:.5rem 0;font-size:.85rem}
 #seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}

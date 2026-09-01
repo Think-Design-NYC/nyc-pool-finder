@@ -76,6 +76,45 @@ REOPEN_RE = re.compile(
 )
 
 
+# Why a facility is shut, in NYC Parks' own terms. Ordered so the specific cause
+# wins over the generic capital-works word that often appears later in the same
+# notice — Metropolitan cites a mechanical issue *and* a planned renovation, and
+# the mechanical issue is the reason it's shut today. Each value is the whole
+# prepositional phrase, because "for repairs" and "due to a mechanical issue"
+# don't take the same preposition.
+CLOSURE_REASONS = [
+    (re.compile(r"\bmechanical issue\b", re.IGNORECASE), "due to a mechanical issue"),
+    (re.compile(r"\bstructural condition\b", re.IGNORECASE), "due to the building's condition"),
+    (re.compile(r"\breconstruction\b", re.IGNORECASE), "for reconstruction"),
+    (re.compile(r"\brenovation\b", re.IGNORECASE), "for renovation"),
+    (re.compile(r"\brepairs?\b", re.IGNORECASE), "for repairs"),
+    (re.compile(r"\bmaintenance\b", re.IGNORECASE), "for maintenance"),
+    (re.compile(r"\bconstruction\b", re.IGNORECASE), "for construction"),
+]
+
+# "closed for the duration of summer through mid-September". Deliberately only
+# matches an early/mid/late + month phrase: a bare "through <weekday>" would
+# also match the closure *start* range ("Beginning Sunday ... through Sunday").
+CLOSED_THROUGH_RE = re.compile(
+    rf"\bthrough\s+((?:early|mid|late)[-\s]?{_MONTHS})", re.IGNORECASE
+)
+
+
+def find_closure_reason(notes: Optional[str]) -> Optional[str]:
+    """NYC Parks' stated reason for the closure, as a prepositional phrase."""
+    if not notes:
+        return None
+    return next((phrase for rx, phrase in CLOSURE_REASONS if rx.search(notes)), None)
+
+
+def find_closed_through(notes: Optional[str]) -> Optional[str]:
+    """An open-ended end point ("mid-September") when no hard date is given."""
+    if not notes:
+        return None
+    m = CLOSED_THROUGH_RE.search(notes)
+    return m.group(1) if m else None
+
+
 def find_reopen_date(notes: Optional[str]) -> Optional[str]:
     """The date a closed facility says it reopens, when it states one.
 
@@ -133,6 +172,8 @@ class PoolData(BaseModel):
     url: Optional[str] = None
     membership_required: Optional[bool] = None
     notes: Optional[str] = None
+    closure_reason: Optional[str] = None
+    closed_through: Optional[str] = None
     reopens: Optional[str] = None
     schedules: List[Schedule] = []
 
@@ -452,6 +493,8 @@ def scrape_nyc_pools() -> List[dict]:
                 ),
                 membership_required=details.get("membership_required"),
                 notes=notes,
+                closure_reason=find_closure_reason(notes) if status == "closed" else None,
+                closed_through=find_closed_through(notes) if status == "closed" else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,
                 schedules=schedules,
             ).model_dump())

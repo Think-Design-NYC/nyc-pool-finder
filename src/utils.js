@@ -67,17 +67,32 @@ const MONTH_ABBREV = {
   September: 'Sep', October: 'Oct', November: 'Nov', December: 'Dec',
 }
 
-// "Closed until Sep 8" when the pool states a reopening date, plain "Closed"
-// when it doesn't — plenty of closures are open-ended ("through mid-September",
-// "due to the building's structural condition") and shouldn't promise a date.
+// Says as much about a closure as NYC Parks actually stated: why, and until
+// when. "Closed for repairs until Sep 8", "Closed for reconstruction",
+// "Closed through mid-September". Each part is optional and omitted rather
+// than guessed — an open-ended closure must not imply a return date.
 //
 // Shared by the React badge and the build-time SEO fallback so the two can't
 // drift; see the fallback note in vite-plugin-seo.js.
+// The pill itself stays short — one scannable word, and a 38-character pill
+// would crush the pool name beside it. The full phrase goes on its own line;
+// see statusLabel.
+export function statusBadgeLabel(pool) {
+  return getStatusStyle(pool.status).label
+}
+
 export function statusLabel(pool) {
   const base = getStatusStyle(pool.status).label
-  if (pool.status !== 'closed' || !pool.reopens) return base
-  const when = String(pool.reopens).replace(/^(\w+)/, (m) => MONTH_ABBREV[m] ?? m)
-  return `${base} until ${when}`
+  if (pool.status !== 'closed') return base
+
+  const parts = [base]
+  if (pool.closure_reason) parts.push(pool.closure_reason)
+  if (pool.reopens) {
+    parts.push(`until ${String(pool.reopens).replace(/^(\w+)/, (m) => MONTH_ABBREV[m] ?? m)}`)
+  } else if (pool.closed_through) {
+    parts.push(`through ${pool.closed_through}`)
+  }
+  return parts.join(' ')
 }
 
 export function fullAddress(location = {}) {
