@@ -159,17 +159,18 @@ GENERIC_TRACKER_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Some closure notices link only the tracker index, not the project actually
-# responsible for the closure. Where the specific project is known it's named
-# here, by pool code.
+# The page that actually explains a given closure, where the notice only links
+# the tracker index. Naming one here also drops the generic link, which is a
+# filter view and tells a visitor nothing.
 #
-# HAND-MAINTAINED, like the membership prices. A recreation center can have
-# several unrelated capital projects — Metropolitan's park page lists three,
-# and only 10796 is the dehumidification work its closure notice describes — so
-# check a project actually matches the stated reason before adding it here.
-CAPITAL_PROJECT_OVERRIDES = {
+# HAND-MAINTAINED, like the membership prices, because this can't be derived
+# safely. A center can have several unrelated capital projects — Metropolitan's
+# park page lists three, and only 10796 is the dehumidification work its notice
+# describes — and the right page isn't always a capital project at all. Confirm
+# a page matches the stated closure reason before adding it.
+CLOSURE_INFO_OVERRIDES = {
     # "must remain closed until we are able to install a full dehumidification
-    # system in the natatorium" -> Dehumidification System Reconstruction.
+    # system in the natatorium" -> that exact project.
     "B085": {
         "text": "Dehumidification System Reconstruction",
         "url": (
@@ -177,12 +178,22 @@ CAPITAL_PROJECT_OVERRIDES = {
             "/capital-project-tracker/project/10796"
         ),
     },
+    # No capital project is listed for this site. The planning page for the
+    # corridor is where the replacement facility (and its indoor pool) is
+    # described, so it stands alone rather than beside a generic tracker link.
+    "M103": {
+        "text": "Clarkson Street Corridor Input Portal",
+        "url": (
+            "https://www.nycgovparks.org/planning-and-building"
+            "/planning/clarkson-street-corridor"
+        ),
+    },
 }
 
 
-def apply_capital_override(pool_code: str, links: List[dict]) -> List[dict]:
-    """Swap a bare tracker-index link for the specific project, when known."""
-    override = CAPITAL_PROJECT_OVERRIDES.get(pool_code)
+def apply_closure_info_override(pool_code: str, links: List[dict]) -> List[dict]:
+    """Drop the generic tracker link, and name the real page when we know it."""
+    override = CLOSURE_INFO_OVERRIDES.get(pool_code)
     if not override:
         return links
     kept = [l for l in links if not GENERIC_TRACKER_RE.match(l["url"])]
@@ -591,7 +602,7 @@ def scrape_nyc_pools() -> List[dict]:
                 notes=notes,
                 reduced_hours=reduced_hours,
                 notice_links=(
-                    apply_capital_override(pool_code, notice_links)
+                    apply_closure_info_override(pool_code, notice_links)
                     if status == "closed"
                     else []
                 ),

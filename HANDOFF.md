@@ -98,13 +98,15 @@ Parsing notes, all learned the hard way from real pages:
   mentions `membership` are skipped: on Chelsea and Flushing the only anchor is
   the membership-extension promo, labelled "webpage", which says nothing about
   the closure.
-- **`CAPITAL_PROJECT_OVERRIDES` is hand-maintained**, like the membership
-  prices. Some notices link only the tracker index, which is useless to someone
-  asking when their pool reopens. A center can have several unrelated capital
-  projects — Metropolitan's park page lists three, and only 10796 is the
-  dehumidification work its closure notice describes — so confirm a project
-  matches the stated reason before adding it. Tony Dapolito's park page lists
-  no projects at all, which is why his row keeps the generic tracker link.
+- **`CLOSURE_INFO_OVERRIDES` is hand-maintained**, like the membership prices.
+  Some notices link only the tracker index — a filter view that tells a visitor
+  nothing — so naming the real page here also drops the generic link. It can't
+  be derived safely: a center can have several unrelated capital projects
+  (Metropolitan's park page lists three, and only 10796 is the dehumidification
+  work its notice describes), and the right page isn't always a capital project
+  at all — Tony Dapolito has none, and the Clarkson Street Corridor planning
+  page is where the replacement facility and its indoor pool are described.
+  Confirm a page matches the stated closure reason before adding it.
 - **Nearest subway is not published anywhere on nycgovparks.org** — `PoolCard`
   still renders `location.nearest_subway` if it ever appears, but nothing fills
   it. Populating it would need an external MTA station dataset.
