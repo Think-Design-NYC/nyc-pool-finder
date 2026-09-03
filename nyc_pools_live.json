@@ -182,7 +182,93 @@
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
         "notes": null,
-        "schedules": []
+        "schedules": [
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Tuesday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Wednesday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Thursday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "11:00 a - 2:00 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Friday",
+                "time": "2:15 p - 4:45 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 12:30 p"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Saturday",
+                "time": "12:45 p - 3:30 p"
+            }
+        ]
     },
     {
         "borough": "Manhattan",
@@ -267,7 +353,7 @@
         },
         "phone": "(718) 599-5707",
         "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Metropolitan Recreation Center is currently closed due to a mechanical issue which has resulted in poor dehumidification and air circulation. For the health and safety of our patrons, the Center must remain closed until we are able to install a full dehumidification system in the natatorium through our planned Capital renovation. For more information, please visit NYC Parks Capital Project Tracker",
         "schedules": []
     },
@@ -712,7 +798,7 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "schedules": [
             {
