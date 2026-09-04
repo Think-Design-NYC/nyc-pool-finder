@@ -180,7 +180,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "schedules": [
             {
@@ -726,58 +726,7 @@
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
         "notes": null,
-        "schedules": [
-            {
-                "session_type": "Open Swim",
-                "days": "Monday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Lap Swim",
-                "days": "Friday",
-                "time": "7:00 a - 3:00 p"
-            },
-            {
-                "session_type": "Open Swim",
-                "days": "Friday",
-                "time": "7:00 a - 3:00 p"
-            }
-        ]
+        "schedules": []
     },
     {
         "borough": "Queens",
@@ -798,17 +747,12 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "12:00 a - 3:00 a"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
                 "time": "11:00 a - 2:00 p"
             },
             {
@@ -835,11 +779,6 @@
                 "session_type": "Open Lap Swim",
                 "days": "Tuesday",
                 "time": "5:00 p - 7:00 p"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "12:00 a - 3:00 a"
             },
             {
                 "session_type": "Adult Lap Swim",
