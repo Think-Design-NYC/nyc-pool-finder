@@ -40,7 +40,7 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "schedules": []
     },
@@ -180,7 +180,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "schedules": [
             {
@@ -318,21 +318,17 @@
         "pool_code": "B270",
         "status": "closed",
         "location": {
-            "address": "1555 Linden Boulevard",
-            "cross_streets": "Linden Blvd. and Hegeman Ave.",
-            "city": "Brooklyn",
+            "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
+            "cross_streets": null,
+            "city": "New York",
             "state": "NY",
-            "zip_code": "11212",
-            "building_hours": {
-                "Monday_Friday": "7:00 AM - 10:00 PM",
-                "Saturday": "8:00 AM - 12:00 AM",
-                "Sunday": "8:00 AM - 4:00 PM"
-            }
+            "zip_code": null,
+            "building_hours": null
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
+        "notes": null,
         "schedules": []
     },
     {
@@ -515,7 +511,7 @@
         },
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "schedules": [
             {
