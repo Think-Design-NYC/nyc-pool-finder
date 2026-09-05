@@ -41,7 +41,16 @@
       content="https://pools.thinkdesign.com/og-image.png"
     />
 
-    <link rel="icon" type="image/png" href="./og-image.png" />
+    <!-- og-image.png stays the social card; the favicon is the square PWA
+         mark, since a 548x289 image squashes badly into a tab icon. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- iOS uses this for the home-screen label, not <title>, which is far too
+         long to fit under an icon. -->
+    <meta name="apple-mobile-web-app-title" content="Pool Finder" />
     <link rel="preconnect" href="https://www.nycgovparks.org" />
   </head>
   <body>

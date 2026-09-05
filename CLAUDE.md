@@ -13,7 +13,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev          # vite dev server
 npm run build        # build to dist/ (also runs the SEO plugin: JSON-LD, fallback HTML, sitemap)
-npm run preview      # serve the built dist/
+npm run preview      # serve the built dist/ (the ONLY way to exercise the service worker)
+python3 scripts/make_icons.py   # regenerate public/icons/* (needs system python3 + Pillow)
 
 # Scraper (Python; needs the venv — see below)
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # one-time setup
@@ -32,6 +33,8 @@ scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (4 requests/
                         facility, detail, and the schedule page twice — this week + next)
 scripts/refresh.sh    → runs scraper, refuses to commit if <8 pools scraped
 netlify.toml          → Netlify build command, publish dir, headers, /pools/* → / 301
+vite.config.js        → VitePWA: manifest, service worker, precache rules
+scripts/make_icons.py → regenerates the PWA icon set (committed, not hand-made)
 src/App.jsx           → filter state, imports the JSON, renders the UI
 src/utils.js          → borough inference (zip prefix), activity regexes, day/time matching, poolAnchorId()
 src/faq.js            → FAQ copy shared by UI and build-time SEO output
@@ -51,6 +54,10 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 - **`schedule_weeks` is populated for closed pools too, and `schedules` is not.** A pool shut this week can have a full timetable next week (Chelsea reopens 9/8). The flat list is still cleared on closure so nothing renders a timetable for a locked building.
 - **`holiday` and `note` on a schedule day are different things.** `holiday` ("Labor Day: Recreation Centers will be closed.") explains an empty day and is shown; `note` ("There are no programs at this pool today.") restates an empty list and is not. The scraper splits them from the markup — don't re-derive it with a regex.
 - **A closed pool is promoted into the grid only for a range it actually reopens in**, and then it must leave the closed list — appearing in both would state two different things about the same pool. `reopeningDate()` derives the return date from the first day in range that has sessions, never from the closure prose, and the card wears an amber "Reopens Tue 9/8" badge rather than a green "Open".
+- **The service worker must never be cached.** `netlify.toml` sends `sw.js` and `manifest.webmanifest` with `max-age=0, must-revalidate`. A cached `sw.js` pins every returning visitor to an old build and no update prompt can ever fire.
+- **Offline works because the data is in the bundle, not because the JSON is cached.** `App.jsx` imports the JSON at build time, so precaching the app shell precaches the schedules. `dist/nyc_pools_*.json` is deliberately excluded from the precache (`globIgnores`) — it exists only for the mobile app and the website never fetches it.
+- **`registerType` is `'prompt'`, not `'autoUpdate'`.** Swapping the schedule out from under someone mid-read is worse than a stale minute. If the prompt is ignored, the existing 48h staleness banner still fires: `meta.updated_at` is baked into the cached bundle and compared against the live clock, so a stale cache correctly reports itself as stale.
+- **`npm run dev` has no service worker** (`devOptions.enabled: false`) — a SW caching a hot-reloading bundle is a debugging trap. Use `npm run build && npm run preview` to test PWA behaviour.
 - **Vite `base` is `/`, matching the subdomain root.** If the site ever moves back to a subpath, `base` in `vite.config.js` *and* `SITE_URL` in `vite-plugin-seo.js` must both change — they are separate constants and nothing checks they agree.
 
 ## UI behavior worth knowing

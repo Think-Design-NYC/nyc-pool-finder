@@ -7,6 +7,7 @@ import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
+import UpdatePrompt from './components/UpdatePrompt'
 import {
   getBorough,
   ACTIVITIES,
@@ -287,6 +288,8 @@ export default function App() {
       <ClosedPoolList pools={closedPools} />
 
       <SeoContent pools={pools} openNames={openNames} />
+
+      <UpdatePrompt />
     </div>
   )
 }

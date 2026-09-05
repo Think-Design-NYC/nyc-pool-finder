@@ -518,3 +518,74 @@ No pools have sessions on Mon 9/7.
 This is filter-dependent and so has no counterpart in the build-time SEO
 fallback, which mirrors the *unfiltered* view — the same reasoning as the
 staleness banner. See the note in `vite-plugin-seo.js`.
+
+## PWA (installable + offline)
+
+Added with `vite-plugin-pwa` (`generateSW` mode). What ships: a
+`manifest.webmanifest`, a Workbox service worker precaching the app shell, and
+an icon set under `public/icons/`.
+
+### Why offline actually works here
+
+`App.jsx` imports `nyc_pools_live.json` **at build time**, so the JS bundle *is*
+the data. Precaching the shell therefore precaches every schedule — which is the
+whole point at a pool door with no signal. There is no runtime fetch to make
+resilient.
+
+`dist/nyc_pools_*.json` is excluded from the precache (`globIgnores`): it exists
+only for the mobile app, the website never reads it, and precaching 150KB nobody
+fetches is pure waste.
+
+### Staleness still works, and that is not an accident
+
+The obvious worry with offline caching is serving month-old schedules silently.
+It doesn't happen: `meta.updated_at` is baked into the cached bundle and
+`dataAgeHours()` compares it against the **live** clock, so a stale cache
+reports itself stale and the 48h banner fires normally.
+
+### Update flow
+
+`registerType: 'prompt'`. A new build waits rather than replacing the page a
+reader is looking at; `UpdatePrompt.jsx` shows a toast with a Refresh button and
+re-checks hourly for long-lived installed sessions. If the reader ignores it,
+the staleness banner is the backstop.
+
+**`sw.js` and `manifest.webmanifest` are served `max-age=0, must-revalidate`**
+(see `netlify.toml`). This is the one piece that must not be got wrong: a cached
+service worker pins returning visitors to an old build forever and no prompt can
+fire. `workbox-*.js` is content-hashed and stays immutable.
+
+### Icons
+
+`scripts/make_icons.py` draws them — sky-600 ground, the same waves motif as the
+header — and is committed so any size can be regenerated. It needs Pillow, which
+system `python3` has; it is deliberately **not** in `requirements.txt`, because
+that file is the scraper's and `refresh.sh` must stay lean.
+
+`og-image.png` is untouched and remains the social card. It is a 548x289
+placeholder that squashes badly into a square, which is why the favicon now
+points at `icons/favicon-32.png` instead.
+
+Maskable icons inset the glyph to the middle 80% so Android's circular crop
+doesn't shave it. iOS ignores the manifest for the home-screen label and uses
+`apple-mobile-web-app-title` ("Pool Finder") — `<title>` is far too long to fit.
+
+### Gotchas
+
+- **`npm run dev` has no service worker** (`devOptions.enabled: false`). Test
+  with `npm run build && npm run preview`, never the dev server.
+- `directoryIndex: 'index.html'` is set so an offline visit to `/privacy/`
+  resolves to the precached `privacy/index.html` rather than falling through to
+  the app shell.
+- The SEO plugin is listed **before** `VitePWA` in `vite.config.js` so the
+  service worker hashes the final index.html — the one carrying the injected
+  JSON-LD and no-JS fallback. Reversing them would precache a pre-injection
+  shell and quietly serve crawlers different HTML than visitors.
+- `UpdatePrompt` is filter-independent UI with no counterpart in the build-time
+  SEO fallback, same as the staleness banner.
+
+### Open question: overlap with the mobile app
+
+There is already a mobile app consuming `nyc_pools_live.json`. An installable
+PWA covers overlapping ground; worth deciding whether they complement each other
+or whether one should be retired, before investing further in either.
