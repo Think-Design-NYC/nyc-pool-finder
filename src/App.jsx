@@ -16,6 +16,9 @@ import {
   scheduleWeeks,
   sessionsForFilter,
   reopeningDate,
+  holidaysForFilter,
+  holidaysInRange,
+  dayStamp,
   isPastToday,
   dataAgeHours,
   describeAge,
@@ -105,6 +108,14 @@ export default function App() {
     }
     return ACTIVITIES.map((a) => a.key).filter((k) => present.has(k))
   }, [])
+
+  // Named holiday closures inside the selected range. Cards carry their own,
+  // but they're also needed page-level: on a day every centre is shut, no card
+  // renders at all and the empty state would otherwise blame the filters.
+  const rangeHolidays = useMemo(
+    () => holidaysInRange(pools, selectedDay, weeks),
+    [selectedDay, weeks],
+  )
 
   const openNames = useMemo(
     () => pools.filter((p) => p.status === 'open').map((p) => p.pool_name),
@@ -244,7 +255,20 @@ export default function App() {
       <main className="mx-auto mt-5 max-w-6xl">
         {visiblePools.length === 0 ? (
           <div className="rounded-2xl bg-white p-10 text-center text-slate-500 ring-1 ring-slate-200">
-            No pools match your filters.
+            {rangeHolidays.length > 0 ? (
+              <>
+                <p className="font-medium text-slate-700">
+                  {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
+                  recreation centers are closed.
+                </p>
+                <p className="mt-1 text-sm">
+                  No pools have sessions on{' '}
+                  {rangeHolidays.map((h) => dayStamp({ date: h.date })).join(', ')}.
+                </p>
+              </>
+            ) : (
+              'No pools match your filters.'
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -253,6 +277,7 @@ export default function App() {
                 key={pool.pool_name}
                 pool={pool}
                 activityLabel={activityActive ? selectedActivity : 'Swim'}
+                holidays={holidaysForFilter(pool, selectedDay, weeks)}
               />
             ))}
           </div>

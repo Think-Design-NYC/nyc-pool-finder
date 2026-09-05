@@ -17,6 +17,7 @@ import {
   poolAnchorId,
   dayStamp,
   parseISODate,
+  holidaysForFilter,
 } from '../utils'
 
 // "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
@@ -59,7 +60,7 @@ function ScheduleRow({ schedule }) {
   )
 }
 
-export default function PoolCard({ pool, activityLabel = 'Swim' }) {
+export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }) {
   const loc = pool.location ?? {}
   const address = fullAddress(loc)
   const mapsUrl = pool.pool_name
@@ -171,6 +172,20 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
                 </span>
               )}
             </h3>
+            {/* Explains a gap in the list below: the day is missing because the
+                centers are shut, not because this pool has no sessions. */}
+            {holidays.map((h) => (
+              <p
+                key={h.date}
+                className="mb-2 flex items-start gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-xs text-amber-800 ring-1 ring-inset ring-amber-100"
+              >
+                <Info size={13} className="mt-0.5 shrink-0" />
+                <span>
+                  <span className="font-semibold">{dayStamp({ date: h.date })}</span>{' '}
+                  {h.holiday}
+                </span>
+              </p>
+            ))}
             <ul className="space-y-2">
               {pool.schedules.map((s, i) => (
                 <ScheduleRow key={i} schedule={s} />

@@ -252,8 +252,11 @@ class ScheduleDay(BaseModel):
     date: str                              # "2026-09-07"
     weekday: str                           # "Monday"
     building_hours: Optional[str] = None   # "7:00 a - 8:00 p", or "Closed"
-    # Holiday and no-programs notices posted per day, e.g.
-    # "Labor Day: Recreation Centers will be closed."
+    # A named holiday closure, e.g. "Labor Day: Recreation Centers will be
+    # closed." Kept apart from `note` because it explains an empty day and is
+    # worth showing; `note` is usually just "There are no programs at this pool
+    # today.", which says nothing a reader can't already see.
+    holiday: Optional[str] = None
     note: Optional[str] = None
     sessions: List[Schedule] = []
 
@@ -555,6 +558,7 @@ def parse_schedule(
         # A holiday block is `div.alert` with an <h3> title; the plain
         # "no programs" line is `div.alert-error`.
         notes: List[str] = []
+        holiday: Optional[str] = None
         for alert in cell.find_all("div", class_="alert"):
             classes = alert.get("class") or []
             title = alert.find("h3")
@@ -562,7 +566,7 @@ def parse_schedule(
             if title:
                 heading = title.get_text(" ", strip=True)
                 rest = body[len(heading):].strip(" :.")
-                notes.append(f"{heading}: {rest}." if rest else heading)
+                holiday = f"{heading}: {rest}." if rest else heading
             elif "alert-error" in classes:
                 notes.append(body)
 
@@ -594,6 +598,7 @@ def parse_schedule(
             date=day_date.isoformat(),
             weekday=weekday,
             building_hours=building_hours,
+            holiday=holiday,
             note=" ".join(notes) or None,
             sessions=sessions,
         ))

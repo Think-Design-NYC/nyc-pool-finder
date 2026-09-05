@@ -296,6 +296,38 @@ export function reopeningDate(pool, dayKey, weeks = [], from = new Date()) {
   return withSessions[0] ?? null
 }
 
+// Named holiday closures falling inside the selected range, e.g. Labor Day.
+// Only `holiday` is surfaced, never `note` — "There are no programs at this
+// pool today" restates an empty list, while "Recreation Centers will be closed"
+// explains it.
+export function holidaysForFilter(pool, dayKey, weeks = [], from = new Date()) {
+  const dates = datesForFilter(dayKey, weeks, from)
+  const out = []
+  const seen = new Set()
+  for (const w of pool?.schedule_weeks ?? []) {
+    for (const day of w.days ?? []) {
+      if (!day.holiday) continue
+      if (dates && !dates.has(day.date)) continue
+      if (seen.has(day.date)) continue
+      seen.add(day.date)
+      out.push({ date: day.date, holiday: day.holiday })
+    }
+  }
+  return out.sort((a, b) => a.date.localeCompare(b.date))
+}
+
+// The same, across every pool — for the case where a holiday empties the grid
+// entirely and there is no card left to carry the explanation.
+export function holidaysInRange(pools, dayKey, weeks = [], from = new Date()) {
+  const seen = new Map()
+  for (const p of pools ?? []) {
+    for (const h of holidaysForFilter(p, dayKey, weeks, from)) {
+      if (!seen.has(h.date)) seen.set(h.date, h)
+    }
+  }
+  return [...seen.values()].sort((a, b) => a.date.localeCompare(b.date))
+}
+
 // "Mon 9/7"
 export function dayStamp(session) {
   const d = parseISODate(session?.date)

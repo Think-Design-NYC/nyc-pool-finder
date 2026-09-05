@@ -410,6 +410,13 @@ Each day cell also carries things the old parser discarded:
 | `div.center-hrs` | that day's building hours, or `Closed` |
 | `div.alert` + `h3` | holiday notice — "Labor Day: Recreation Centers will be closed." |
 | `div.alert-error` | "There are no programs at this pool today." |
+
+These land in **separate fields**, `holiday` and `note`, because only one of
+them is worth showing. "There are no programs at this pool today" restates an
+empty list; "Labor Day: Recreation Centers will be closed" explains it. Any
+front-end that wants to surface a closure reason should read `holiday` and
+ignore `note` — do not re-derive the distinction with a regex over the prose,
+the markup already draws it.
 | `p.program` | a session: time, `a.program-popup` name, `span.room` |
 
 **A week with no programs at all collapses the body row into one `colspan`
@@ -487,3 +494,27 @@ The pre-dated value `Week` migrates to `ThisWeek` (`usePersistedFilter`'s
 Labels are derived from `schedule_weeks` rather than the reader's clock
 (`scheduleWeeks()` in `utils.js`), so if a refresh is missed the buttons name
 the weeks we actually have. The staleness banner is what flags the gap.
+
+## Holiday closures on the cards
+
+`holidaysForFilter(pool, dayKey, weeks)` returns the named closures inside the
+selected range; `PoolCard` renders each as an amber line above the session list,
+so a missing weekday reads as "the centers are shut" rather than "this pool has
+nothing on". Verified 2026-09-05: nothing renders under Today or this week, and
+every card under 9/7–9/13 carries "Mon 9/7 Labor Day: Recreation Centers will be
+closed."
+
+`holidaysInRange(pools, …)` is the page-level counterpart, and exists for the
+case the per-card version cannot cover: **when a holiday empties the grid there
+is no card left to carry the explanation.** Selecting Today on Labor Day used to
+render "No pools match your filters", blaming the reader's filters for a
+citywide closure. It now reads:
+
+```
+Labor Day — recreation centers are closed.
+No pools have sessions on Mon 9/7.
+```
+
+This is filter-dependent and so has no counterpart in the build-time SEO
+fallback, which mirrors the *unfiltered* view — the same reasoning as the
+staleness banner. See the note in `vite-plugin-seo.js`.

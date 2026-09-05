@@ -34,6 +34,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -41,6 +42,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -48,6 +50,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -55,6 +58,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -62,6 +66,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -69,6 +74,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -76,6 +82,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -89,13 +96,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -103,6 +112,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -110,6 +120,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -117,6 +128,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -124,6 +136,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "9:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -131,6 +144,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -174,6 +188,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -181,6 +196,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -188,6 +204,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -195,6 +212,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -202,6 +220,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -209,6 +228,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -216,6 +236,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -229,13 +250,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -262,6 +285,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -294,6 +318,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -320,6 +345,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -352,6 +378,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -378,6 +405,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 2:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -535,6 +563,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -561,6 +590,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -587,6 +617,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -619,6 +650,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -645,6 +677,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -677,6 +710,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 3:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -697,6 +731,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -710,13 +745,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -724,6 +761,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -731,6 +769,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -738,6 +777,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -745,6 +785,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 3:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -752,6 +793,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -897,6 +939,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -923,6 +966,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -949,6 +993,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -975,6 +1020,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1001,6 +1047,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1027,6 +1074,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1047,6 +1095,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -1060,13 +1109,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1093,6 +1144,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1119,6 +1171,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1145,6 +1198,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1171,6 +1225,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1191,6 +1246,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -1239,6 +1295,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1246,6 +1303,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1253,6 +1311,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1260,6 +1319,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1267,6 +1327,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1274,6 +1335,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1281,6 +1343,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -1294,13 +1357,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1308,6 +1373,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1315,6 +1381,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1322,6 +1389,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1329,6 +1397,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1336,6 +1405,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 6:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -1380,6 +1450,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1387,6 +1458,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1394,6 +1466,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1401,6 +1474,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1408,6 +1482,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1415,6 +1490,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1422,6 +1498,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -1435,13 +1512,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -1449,6 +1528,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -1456,6 +1536,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -1463,6 +1544,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -1470,6 +1552,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -1477,6 +1560,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
@@ -1520,6 +1604,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1527,6 +1612,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1534,6 +1620,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1541,6 +1628,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1548,6 +1636,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1555,6 +1644,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1562,6 +1652,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -1575,13 +1666,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1589,6 +1682,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1596,6 +1690,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1603,6 +1698,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1610,6 +1706,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 12:00 a",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1617,6 +1714,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -1664,6 +1762,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1671,6 +1770,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1678,6 +1778,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1685,6 +1786,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1692,6 +1794,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1699,6 +1802,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -1706,6 +1810,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -1719,13 +1824,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1733,6 +1840,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1740,6 +1848,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1747,6 +1856,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1754,6 +1864,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -1761,6 +1872,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -1943,6 +2055,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -1975,6 +2088,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2007,6 +2121,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2039,6 +2154,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2071,6 +2187,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2103,6 +2220,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 12:00 a",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -2110,6 +2228,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2142,13 +2261,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2163,6 +2284,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2183,6 +2305,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2197,6 +2320,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2217,6 +2341,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 12:00 a",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -2224,6 +2349,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2509,6 +2635,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2559,6 +2686,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2603,6 +2731,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2647,6 +2776,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2691,6 +2821,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2735,6 +2866,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 11:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2779,6 +2911,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 5:45 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -2792,13 +2925,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2843,6 +2978,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2887,6 +3023,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2931,6 +3068,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -2975,6 +3113,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 11:45 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3019,6 +3158,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 5:45 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -3062,6 +3202,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3069,6 +3210,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3076,6 +3218,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3083,6 +3226,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3090,6 +3234,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3097,6 +3242,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3104,6 +3250,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -3117,13 +3264,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -3131,6 +3280,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -3138,6 +3288,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -3145,6 +3296,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -3152,6 +3304,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "9:00 a - 10:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
@@ -3159,6 +3312,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "9:00 a - 8:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -3299,6 +3453,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3325,6 +3480,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3351,6 +3507,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3377,6 +3534,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3403,6 +3561,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3423,6 +3582,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3443,6 +3603,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 6:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -3456,13 +3617,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed. There are no programs at this pool today.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3489,6 +3652,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3515,6 +3679,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3541,6 +3706,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3561,6 +3727,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": [
                             {
@@ -3581,6 +3748,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 6:00 p",
+                        "holiday": null,
                         "note": "There are no programs at this pool today.",
                         "sessions": []
                     }
@@ -3628,6 +3796,7 @@
                         "date": "2026-08-31",
                         "weekday": "Monday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3635,6 +3804,7 @@
                         "date": "2026-09-01",
                         "weekday": "Tuesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3642,6 +3812,7 @@
                         "date": "2026-09-02",
                         "weekday": "Wednesday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3649,6 +3820,7 @@
                         "date": "2026-09-03",
                         "weekday": "Thursday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3656,6 +3828,7 @@
                         "date": "2026-09-04",
                         "weekday": "Friday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3663,6 +3836,7 @@
                         "date": "2026-09-05",
                         "weekday": "Saturday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     },
@@ -3670,6 +3844,7 @@
                         "date": "2026-09-06",
                         "weekday": "Sunday",
                         "building_hours": null,
+                        "holiday": null,
                         "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
@@ -3683,13 +3858,15 @@
                         "date": "2026-09-07",
                         "weekday": "Monday",
                         "building_hours": "Closed",
-                        "note": "Labor Day: Recreation Centers will be closed.",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-09-08",
                         "weekday": "Tuesday",
                         "building_hours": "7:00 a - 9:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -3697,6 +3874,7 @@
                         "date": "2026-09-09",
                         "weekday": "Wednesday",
                         "building_hours": "7:00 a - 9:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -3704,6 +3882,7 @@
                         "date": "2026-09-10",
                         "weekday": "Thursday",
                         "building_hours": "7:00 a - 9:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -3711,6 +3890,7 @@
                         "date": "2026-09-11",
                         "weekday": "Friday",
                         "building_hours": "7:00 a - 9:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -3718,6 +3898,7 @@
                         "date": "2026-09-12",
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     },
@@ -3725,6 +3906,7 @@
                         "date": "2026-09-13",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
+                        "holiday": null,
                         "note": null,
                         "sessions": []
                     }
