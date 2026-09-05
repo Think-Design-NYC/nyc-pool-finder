@@ -433,12 +433,38 @@ drops the week rather than guessing.
   uses this.
 
 Why closed pools still get weeks: Chelsea (M260) is closed as of 2026-09-05 and
-reopens 9/8 with 17 sessions in the 9/7–9/13 week. Keeping the data means the
-reopening is representable. **The grid still hides it** — `App.jsx` filters
-`status !== 'closed'` before any date filtering, so Chelsea stays in the closed
-list even under the next-week filter. That is the conservative reading of the
-"don't send someone to a locked door" rule; if you want reopening pools to
-surface in the week they reopen, that filter is the line to change.
+reopens 9/8 with 17 sessions in the 9/7–9/13 week.
+
+### Reopening pools surface in the week they reopen
+
+`reopeningDate(pool, dayKey, weeks)` returns the first date **inside the
+selected range** on which a closed pool actually has sessions, or null. A pool
+it returns a date for is promoted into the grid for that range and removed from
+the closed list — being in both would have the same pool saying two different
+things.
+
+The date comes from the timetable, never from the closure prose. For Chelsea
+three independent sources agree on 2026-09-08, which is the check worth
+repeating if this logic is ever touched:
+
+| Source | Value |
+| --- | --- |
+| Notice text | "The center will reopen to the public on Tuesday, September 8." |
+| `reopens` (regex over the notice) | `September 8` |
+| First day in range with sessions | `2026-09-08` |
+
+Note it correctly skips Monday 9/7 — Labor Day, zero sessions — rather than
+taking the first day of the week.
+
+The card does **not** read as open: `StatusBadge` swaps to the amber
+`transitioning` style and reads "Reopens Tue 9/8", and the schedule heading
+gains "· from Tue 9/8". `isClosed` in `PoolCard` becomes
+`status === 'closed' && !reopening`, which is what lets the timetable render at
+all — so if you add another closed-pool branch there, check both flags.
+
+Under Today / Tomorrow / this-week nothing is promoted (verified), so the
+default view is byte-identical to before and the build-time SEO fallback — which
+mirrors the *unfiltered* view — needs no matching change.
 
 ### What the dates fixed
 

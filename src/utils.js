@@ -280,6 +280,22 @@ export function sessionsForFilter(pool, dayKey, weeks = [], from = new Date()) {
   return out
 }
 
+// A pool NYC Parks lists as closed can still have a timetable later in the
+// window — Chelsea is shut on 2026-09-05 and reopens 9/8. Returns the first
+// date in the selected range that actually has sessions, or null. The caller
+// uses it both to decide whether to surface the pool and to label when it
+// comes back, so the date is never guessed from the closure prose.
+export function reopeningDate(pool, dayKey, weeks = [], from = new Date()) {
+  if (pool?.status !== 'closed') return null
+  const dates = datesForFilter(dayKey, weeks, from)
+  const days = (pool.schedule_weeks ?? []).flatMap((w) => w.days ?? [])
+  const withSessions = days
+    .filter((d) => (d.sessions?.length ?? 0) > 0 && (!dates || dates.has(d.date)))
+    .map((d) => d.date)
+    .sort()
+  return withSessions[0] ?? null
+}
+
 // "Mon 9/7"
 export function dayStamp(session) {
   const d = parseISODate(session?.date)

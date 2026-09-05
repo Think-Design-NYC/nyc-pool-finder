@@ -16,16 +16,26 @@ import {
   fullAddress,
   poolAnchorId,
   dayStamp,
+  parseISODate,
 } from '../utils'
 
+// "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
+// selected week. It must never read as "Open": the badge is amber, not green,
+// and names the date rather than the status.
+function reopensLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `Reopens ${dayStamp({ date: iso })}` : 'Reopens later'
+}
+
 function StatusBadge({ pool }) {
-  const s = getStatusStyle(pool.status)
+  const reopening = Boolean(pool.reopens_on)
+  const s = reopening ? getStatusStyle('transitioning') : getStatusStyle(pool.status)
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ${s.badge}`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${s.dot}`} />
-      {statusBadgeLabel(pool)}
+      {reopening ? reopensLabel(pool.reopens_on) : statusBadgeLabel(pool)}
     </span>
   )
 }
@@ -56,7 +66,10 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
     ? `https://maps.google.com/?q=${encodeURIComponent(`${pool.pool_name} New York NY`)}`
     : null
   const hours = loc.building_hours
-  const isClosed = pool.status === 'closed'
+  // A reopening pool is closed *now* but has a real timetable in view, so it
+  // renders its schedule and wears the amber closure note rather than the red.
+  const reopening = Boolean(pool.reopens_on)
+  const isClosed = pool.status === 'closed' && !reopening
 
   return (
     <article
@@ -152,6 +165,11 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
             <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
               <Waves size={14} className="text-sky-500" />
               {activityLabel} Times
+              {reopening && (
+                <span className="font-medium normal-case tracking-normal text-amber-700">
+                  · from {dayStamp({ date: pool.reopens_on })}
+                </span>
+              )}
             </h3>
             <ul className="space-y-2">
               {pool.schedules.map((s, i) => (

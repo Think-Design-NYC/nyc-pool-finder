@@ -15,6 +15,7 @@ import {
   dayFilterOptions,
   scheduleWeeks,
   sessionsForFilter,
+  reopeningDate,
   isPastToday,
   dataAgeHours,
   describeAge,
@@ -127,15 +128,33 @@ export default function App() {
     return hours != null && hours >= STALE_AFTER_HOURS ? describeAge(hours) : null
   }, [])
 
+  // Closed pools that have a real timetable inside the selected range, keyed by
+  // name to the date they come back. These are promoted into the grid, so they
+  // must also leave the closed list — otherwise the same pool appears twice
+  // saying two different things.
+  const reopening = useMemo(() => {
+    const out = new Map()
+    for (const p of pools) {
+      const date = reopeningDate(p, selectedDay, weeks)
+      if (date) out.set(p.pool_name, date)
+    }
+    return out
+  }, [selectedDay, weeks])
+
   // Every closed pool, always — they're listed at the bottom rather than in the
   // grid. Filtering by activity or day used to hide them completely (a closed
   // pool has no schedules to match), so the pools people most need to know
   // about were the ones that disappeared.
-  const closedPools = useMemo(() => pools.filter((p) => p.status === 'closed'), [])
+  const closedPools = useMemo(
+    () => pools.filter((p) => p.status === 'closed' && !reopening.has(p.pool_name)),
+    [reopening],
+  )
 
   const visiblePools = useMemo(() => {
     return pools
-      .filter((p) => p.status !== 'closed')
+      // A closed pool joins the grid only for a range it actually reopens in;
+      // the rest of the time it stays in the closed list below.
+      .filter((p) => p.status !== 'closed' || reopening.has(p.pool_name))
       .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
       .map((p) => {
         // Always resolve through the dated weeks: "Today" now means this
@@ -146,7 +165,7 @@ export default function App() {
             (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
             (!hidePast || !isPastToday(s.time)),
         )
-        return { ...p, schedules: filtered }
+        return { ...p, schedules: filtered, reopens_on: reopening.get(p.pool_name) ?? null }
       })
       .filter((p) => (p.schedules?.length ?? 0) > 0)
       .sort((a, b) => {
@@ -154,7 +173,7 @@ export default function App() {
         const rank = { open: 0, transitioning: 1 }
         return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
       })
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, weeks])
+  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, weeks, reopening])
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
