@@ -550,10 +550,23 @@ reader is looking at; `UpdatePrompt.jsx` shows a toast with a Refresh button and
 re-checks hourly for long-lived installed sessions. If the reader ignores it,
 the staleness banner is the backstop.
 
-**`sw.js` and `manifest.webmanifest` are served `max-age=0, must-revalidate`**
+**`sw.js` and `manifest.webmanifest` are configured `max-age=0, must-revalidate`**
 (see `netlify.toml`). This is the one piece that must not be got wrong: a cached
 service worker pins returning visitors to an old build forever and no prompt can
 fire. `workbox-*.js` is content-hashed and stays immutable.
+
+**Cloudflare currently overrides that**, verified 2026-09-05: `/sw.js` comes back
+`max-age=14400` (4h). It is the edge, not Netlify — `/assets/*` and
+`/workbox-*.js` both keep the repo's `immutable` rule, and a cache-busting
+request that reached origin (`cf-cache-status: MISS`) still returned 14400.
+Cloudflare's Browser Cache TTL raises short max-ages on extensions it caches:
+`.js` yes, `.webmanifest` no, which is exactly the split seen live.
+
+The practical impact is small — browsers do not serve the service worker script
+from the HTTP cache anyway (`updateViaCache` defaults to `'imports'`, plus the
+spec's 24h bypass) — so update prompts still fire. To make it correct, add a
+Cloudflare Cache Rule bypassing `/sw.js`. That is a dashboard change, not a repo
+one.
 
 ### Icons
 

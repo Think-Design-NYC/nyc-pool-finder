@@ -53,6 +53,39 @@ is finally served at a domain root and is now the effective one for this site.
 Then, in Google Search Console, add `pools.thinkdesign.com` as a property and
 submit https://pools.thinkdesign.com/sitemap.xml.
 
+## Outstanding — needs a human, cannot be done from this repo
+
+As of 2026-09-05, in rough priority order:
+
+1. **301 `thinkdesign.com/pools/` → `https://pools.thinkdesign.com/$1`** in
+   WordPress/WP Engine. That path still returns **200** and serves a frozen copy
+   of the last WP Engine build, competing with the subdomain for the same
+   queries. The stale copy's canonical points at the subdomain, which helps, but
+   is not a substitute for the redirect.
+2. **Repoint the mobile app's JSON URL** to
+   `https://pools.thinkdesign.com/nyc_pools_live.json`. It still fetches the old
+   path and works only for as long as that 301 exists. The new URL is served
+   `max-age=0, must-revalidate` with open CORS, so the app's version-keyed
+   cache-busting URLs (a workaround for Cloudflare's 600s JSON cache in front of
+   thinkdesign.com) are no longer needed.
+3. **Drop the dead `Sitemap: https://thinkdesign.com/pools/sitemap.xml` line**
+   from the static robots.txt at the WordPress web root (Yoast SEO → Tools →
+   File editor). `public/robots.txt` in this repo is now the effective one.
+4. **Cloudflare Cache Rule bypassing `/sw.js`** — the edge overrides it to a 4h
+   browser cache. Low impact (see the PWA section in HANDOFF.md), but the header
+   is wrong.
+5. **Google Search Console property for `pools.thinkdesign.com`**, then submit
+   the sitemap. Still parked; see HANDOFF.md.
+6. **Replace `public/og-image.png`** — a 548x289 placeholder; social cards want
+   1200x630. The PWA icons are already square and generated separately.
+
+Verify 1–3 with:
+
+```bash
+curl -sSI https://thinkdesign.com/pools/ | head -1        # want 301, currently 200
+curl -sS https://thinkdesign.com/robots.txt | grep -i sitemap
+```
+
 The pool data is imported at build time (`import pools from '../nyc_pools_live.json'`),
 so refreshing the data means committing the JSON — which triggers a rebuild + redeploy.
 
