@@ -4,8 +4,8 @@
 # IP — nycgovparks.org returns 403 to datacenter/cloud IPs, so this cannot run
 # on GitHub-hosted runners.
 #
-# On push, the deploy workflow rebuilds and publishes the site to WP Engine
-# (thinkdesign.com/pools).
+# On push, Netlify rebuilds and publishes the site
+# (pools.thinkdesign.com).
 #
 # Scheduled on the primary Mac only (daily via launchd — see DEPLOY.md).
 #
@@ -90,5 +90,5 @@ else
   git add nyc_pools_live.json nyc_pools_meta.json
   git commit -m "Refresh pool data [automated]"
   git push
-  echo "Pushed updated data — the deploy workflow publishes to WP Engine (thinkdesign.com/pools)."
+  echo "Pushed updated data — Netlify rebuilds and publishes (pools.thinkdesign.com)."
 fi

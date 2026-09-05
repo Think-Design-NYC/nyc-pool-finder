@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import seo from './vite-plugin-seo.js'
 
-// Served from a subpath on WP Engine (thinkdesignprd):
-// https://thinkdesign.com/pools/
+// Served from the root of its own subdomain on Netlify:
+// https://pools.thinkdesign.com/
 export default defineConfig({
-  base: '/pools/',
+  base: '/',
   plugins: [react(), tailwindcss(), seo()],
 })

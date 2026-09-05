@@ -3,8 +3,9 @@
 A static React/Vite site that lists NYC indoor public pools and their
 lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
 
-- **Live:** https://thinkdesign.com/pools/ (WP Engine, env `thinkdesignprd`; the old
-  GitHub Pages URL now serves only a redirect here)
+- **Live:** https://pools.thinkdesign.com/ (Netlify, built from `main` by Netlify's
+  Git integration; the old GitHub Pages URL redirects here, and thinkdesign.com/pools/
+  should too — see Hosting)
 - **Repo:** `Think-Design-NYC/nyc-pool-finder` (default branch `main`)
 
 ## How the pieces fit
@@ -17,25 +18,50 @@ src/App.jsx           → imports the JSON at build time, renders the UI
 src/faq.js            → FAQ copy, shared by the UI and the build-time SEO output
 src/membership.js     → membership prices (hand-maintained, NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML, sitemap.xml
-.github/workflows/    → deploy.yml: build + publish to WP Engine on push to main
-                        (plus a GitHub Pages job that publishes only a redirect page)
+netlify.toml          → Netlify build command, publish dir, cache headers, redirects
+.github/workflows/    → deploy.yml: build check + a GitHub Pages job that publishes
+                        only a redirect page. It no longer deploys the site.
 ```
 
 Data is baked in at build time (`import pools from '../nyc_pools_live.json'`),
 so a data refresh = a commit = an auto-deploy. There is no runtime fetch on the
 website; the mobile app fetches the published JSON (see Hosting below).
 
-## Hosting (WP Engine)
+## Hosting (Netlify)
 
-The deploy workflow pushes `dist/` to the `thinkdesignprd` environment under
-`pools/` (see [DEPLOY.md](DEPLOY.md)). Quirks of that host worth knowing:
+Netlify's Git integration watches `main` and runs `npm run build` itself; the
+config lives in [netlify.toml](netlify.toml) (see [DEPLOY.md](DEPLOY.md)).
+Nothing in GitHub Actions deploys the site any more, and there are no deploy
+secrets in the repo.
 
-- **thinkdesign.com is behind Cloudflare.** HTML responses get a Cloudflare
-  bot-management script injected on the way out; JSON is served clean.
-- **JSON is cached with `max-age=600`, and query strings are part of the cache
-  key.** The build copies `nyc_pools_live.json` + `nyc_pools_meta.json` into
-  `dist/`, so they're published at `https://thinkdesign.com/pools/nyc_pools_live.json`
-  for the mobile app — which uses version-keyed URLs to bust that cache.
+- **The site is at the root of its own subdomain**, so Vite `base` is `/` and
+  `SITE_URL` in `vite-plugin-seo.js` is `https://pools.thinkdesign.com/`.
+- **No SPA catch-all rewrite.** The app is one page with anchor-only navigation
+  (`#pool-…`); a `/* → /index.html 200` rule would turn every typo into a 200
+  and let crawlers index infinite duplicates. Unknown paths 404 on purpose.
+  There *is* a 301 from `/pools/*` to `/` for stray links to the old shape.
+- **`public/robots.txt` is finally the real one.** At `/pools/` it was inert —
+  robots.txt is only honoured at a domain root. Now it is served at
+  `https://pools.thinkdesign.com/robots.txt` and advertises this site's sitemap
+  directly, so the WP Engine root robots.txt no longer has to carry that line.
+- **The mobile app's JSON moved.** The build copies `nyc_pools_live.json` +
+  `nyc_pools_meta.json` into `dist/`, now published at
+  `https://pools.thinkdesign.com/nyc_pools_live.json`, served with
+  `Cache-Control: max-age=0, must-revalidate` and `Access-Control-Allow-Origin: *`.
+  That removes the WP Engine caching quirk the app worked around with
+  version-keyed URLs (Cloudflare in front of thinkdesign.com cached JSON for
+  600s with the query string in the cache key). **The app still points at the
+  old URL** — update it, or keep the WP Engine 301 in place indefinitely.
+
+### thinkdesign.com/pools/ is now stale
+
+The WP Engine deploy job was removed, so that path serves a frozen copy of the
+last build. It needs a 301 to `https://pools.thinkdesign.com/$1` added in
+WordPress/WP Engine (not deployable from this repo), and the root robots.txt
+should drop its `Sitemap: https://thinkdesign.com/pools/sitemap.xml` line.
+Until that happens the two copies compete for the same queries — the stale one
+now carries a canonical pointing at the subdomain, which helps but is not a
+substitute for the redirect.
 
 ## Local development
 
@@ -193,26 +219,19 @@ Fallback styling uses a scoped `<style>` block, not Tailwind classes — the plu
 runs in `transformIndexHtml`, after Tailwind has scanned sources, so classes
 introduced there would be purged.
 
-Note `public/robots.txt` is still inert for crawlers: it lands at
-`/pools/robots.txt`, and robots.txt is only honoured at the domain root.
-
-The effective robots.txt is a **static file at the WordPress web root** on WP
-Engine (verified: nginx serves it with a file ETag, and it is not
-WordPress-generated). It is not deployable from this repo, and must not be
-pushed with the deploy workflow — that action rsyncs with `--delete`, so
-aiming it at the web root would wipe the WordPress install. Edit it through
-**Yoast SEO → Tools → File editor → robots.txt**, or over SFTP/SSH.
-
-The Yoast `sitemap_index.xml` does **not** include `/pools/`, so the root
-robots.txt carries a second `Sitemap:` line pointing at this site's own
-sitemap — added 2026-09-01, verified live:
+`public/robots.txt` is now the effective robots.txt: on the subdomain it is
+served at the domain root, where crawlers actually honour it, and it carries
 
 ```
-Sitemap: https://thinkdesign.com/pools/sitemap.xml
+Sitemap: https://pools.thinkdesign.com/sitemap.xml
 ```
 
-Keep that line if the root robots.txt is ever rewritten; without it nothing
-advertises the pool sitemap to crawlers.
+Before the move it landed at `/pools/robots.txt` and was ignored; the real one
+was a hand-edited static file at the WordPress web root on WP Engine, which was
+given a second `Sitemap:` line on 2026-09-01 because the Yoast
+`sitemap_index.xml` didn't include `/pools/`. That line is now dead and should
+be removed via **Yoast SEO → Tools → File editor → robots.txt** (or SFTP/SSH).
+It was never deployable from this repo.
 
 ## Data refresh (runs locally, not on GitHub)
 
@@ -283,9 +302,11 @@ Pool sort order: open → transitioning → closed.
   reads as cloaking, and nothing in the build catches it automatically.
 - **Membership prices are hand-typed.** They have a "checked on" date, not a
   scrape. See the membership section.
-- **Vite `base` is `/pools/`.** If the site's path on thinkdesign.com ever
-  changes, update `vite.config.js` (and `REMOTE_PATH` in the deploy workflow)
-  or assets 404.
+- **Vite `base` (`vite.config.js`) and `SITE_URL` (`vite-plugin-seo.js`) are
+  independent constants that must describe the same URL.** Both say the site is
+  at the root of `pools.thinkdesign.com`. Change one without the other and you
+  get either 404'd assets or canonical/JSON-LD/sitemap URLs pointing at the
+  wrong place — silently, since nothing in the build compares them.
 - **Borough inference relies on zip prefix.** If NYC ever assigns a new
   zip prefix outside the table in `utils.js`, those pools will fall into
   the "Other" bucket.
@@ -310,17 +331,17 @@ Needs a human (can't be done from the repo):
 
 **Submitting the sitemap is the easy part. Getting a verified property is not.**
 Search Console won't accept a sitemap until the property exists and is verified.
-The WP Engine move makes this easier than it was on github.io:
+The move to its own subdomain makes this simpler still:
 
-- Either a **Domain property** for `thinkdesign.com` (DNS TXT record — we control
-  the domain now) or a **URL-prefix** property for exactly
-  `https://thinkdesign.com/pools/` (with the trailing slash) works.
+- Either a **Domain property** for `thinkdesign.com` (a DNS TXT record, which
+  also covers the subdomain) or a **URL-prefix** property for exactly
+  `https://pools.thinkdesign.com/` works.
 - For a URL-prefix property, verification is easiest via the **HTML tag** method.
   Google issues a token; add `<meta name="google-site-verification" content="…">`
-  to `index.html`, push, and the deploy has it live at the property URL within
-  minutes. Then click Verify. The HTML-file method also works — drop the file in
-  `public/` and it lands at `/pools/<file>.html` — but the meta tag is one line
-  and can't be forgotten during a rebuild.
+  to `index.html`, push, and Netlify has it live within a minute or two. Then
+  click Verify. The HTML-file method also works — drop the file in `public/` and
+  it lands at `/<file>.html` — but the meta tag is one line and can't be
+  forgotten during a rebuild.
 - Once verified, the sitemap field wants just `sitemap.xml` (it's relative to
   the property URL).
 - You must be signed into the Google account that should own the property.
@@ -329,10 +350,12 @@ Blocked on 2026-08-03 because the Claude in Chrome extension had
 `search.google.com` in its blocked-sites list. Granting the extension access to
 that host is the first step next time.
 
-The move to thinkdesign.com collapsed the old blockers (no more shared
-`github.io` subdomain), and the root-domain robots.txt now advertises the pool
-sitemap (2026-09-01), so Bing and other crawlers can find it. Search Console
-still needs a verified property before Google will take a submission.
+The move to `pools.thinkdesign.com` collapsed the last of the old blockers: the
+site owns a domain root, so its own `robots.txt` advertises the sitemap and a
+URL-prefix property covers the whole site. Search Console still needs a verified
+property before Google will take a submission. Add the new property when you do
+— the old `thinkdesign.com/pools/` prefix, if it was ever created, should be
+left to age out behind the 301.
 
 Code:
 

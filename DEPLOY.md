@@ -1,23 +1,57 @@
 # Deployment
 
-## Hosting — WP Engine (thinkdesign.com/pools)
+## Hosting — Netlify (pools.thinkdesign.com)
 
-The site is a static Vite/React build deployed by GitHub Actions to WP Engine.
+The site is a static Vite/React build published by **Netlify's Git integration**.
 
-- **Live URL:** https://thinkdesign.com/pools/
-- **Workflow:** [.github/workflows/deploy.yml](.github/workflows/deploy.yml) — builds and
-  deploys on every push to `main`. The `deploy-wpe` job pushes `dist/` to the
-  `thinkdesignprd` environment via `wpengine/github-action-wpe-site-deploy@v3`,
-  authenticated by the repo secret `WPE_SSHG_KEY_PRIVATE` (an SSH private key whose
-  public half is registered in the WP Engine SSH Gateway).
-- The Vite `base` is `/pools/` so assets resolve at the subpath.
-- The build also copies `nyc_pools_live.json` + `nyc_pools_meta.json` into `dist/`,
-  so the mobile app can fetch them at https://thinkdesign.com/pools/nyc_pools_live.json.
+- **Live URL:** https://pools.thinkdesign.com/
+- **Trigger:** Netlify watches `main` and builds on every push — including the
+  automated "Refresh pool data" commits, since the pool JSON is imported at
+  build time rather than fetched at runtime.
+- **Config:** [netlify.toml](netlify.toml) — `npm run build`, publish `dist`,
+  Node 22, plus cache headers and a 301 from any stray `/pools/*` path to `/`.
+  There is deliberately **no SPA catch-all rewrite**: the app is one page with
+  anchor-only navigation, so unknown paths should 404 rather than return 200.
+- The Vite `base` is `/` — the site sits at the root of its own subdomain.
+- The build copies `nyc_pools_live.json` + `nyc_pools_meta.json` into `dist/`,
+  so the mobile app fetches them at
+  https://pools.thinkdesign.com/nyc_pools_live.json (CORS-open, no-cache).
+- **No deploy secrets live in GitHub.** Netlify authenticates to the repo
+  through its own GitHub app.
 
-**GitHub Pages now only serves a redirect.** The old URL
-(https://think-design-nyc.github.io/nyc-pool-finder/) still gets a deploy on every
-push — the `deploy-pages-redirect` job publishes a one-page meta-refresh/JS redirect
-to thinkdesign.com/pools/ (preserving `#pool-…` anchors) so indexed URLs don't 404.
+### DNS
+
+`pools.thinkdesign.com` is a CNAME to the Netlify site's `*.netlify.app`
+hostname (or Netlify's ALIAS/A record if the DNS host doesn't allow a CNAME at
+that label). Netlify provisions the Let's Encrypt certificate once the record
+resolves. thinkdesign.com itself stays on WP Engine and is untouched.
+
+### GitHub Actions
+
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) no longer deploys
+anything. It keeps two jobs:
+
+- `build-check` — runs the same `npm run build` so a broken build is visible in
+  GitHub, not only in a Netlify email.
+- `deploy-pages-redirect` — publishes a one-page meta-refresh/JS redirect at the
+  old GitHub Pages URL (https://think-design-nyc.github.io/nyc-pool-finder/),
+  preserving `#pool-…` anchors.
+
+### Still to do on WP Engine — 301 the old subpath
+
+The `deploy-wpe` job is gone, so **thinkdesign.com/pools/ is now a frozen copy
+of the old build**. Until it is redirected it competes with the subdomain for
+the same queries. Add a permanent redirect in WordPress/WP Engine:
+
+    /pools/(.*)  →  https://pools.thinkdesign.com/$1   [301]
+
+and, while there, edit the static robots.txt at the WordPress web root to drop
+the now-dead `Sitemap: https://thinkdesign.com/pools/sitemap.xml` line (Yoast
+SEO → Tools → File editor). The repo's own [public/robots.txt](public/robots.txt)
+is finally served at a domain root and is now the effective one for this site.
+
+Then, in Google Search Console, add `pools.thinkdesign.com` as a property and
+submit https://pools.thinkdesign.com/sitemap.xml.
 
 The pool data is imported at build time (`import pools from '../nyc_pools_live.json'`),
 so refreshing the data means committing the JSON — which triggers a rebuild + redeploy.

@@ -13,7 +13,7 @@ import { getBorough, statusLabel, poolAnchorId } from '../utils'
 // links come from the closure notice itself, so a pool only gets one if NYC
 // Parks published one.
 //
-// The anchor id stays on each row so /pools/#pool-m260 and the JSON-LD `url`
+// The anchor id stays on each row so /#pool-m260 and the JSON-LD `url`
 // for a closed pool still resolve.
 export default function ClosedPoolList({ pools }) {
   if (!pools.length) return null

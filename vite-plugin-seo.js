@@ -30,7 +30,7 @@ import {
   MEMBERSHIP_URL,
 } from './src/membership.js'
 
-export const SITE_URL = 'https://thinkdesign.com/pools/'
+export const SITE_URL = 'https://pools.thinkdesign.com/'
 
 const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island']
 

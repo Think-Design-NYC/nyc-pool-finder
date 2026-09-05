@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-**NYC Indoor Pool Finder** — a static React/Vite site listing NYC's 13 indoor public pools and their schedules, scraped from nycgovparks.org. Live at https://thinkdesign.com/pools/ on WP Engine (repo `Think-Design-NYC/nyc-pool-finder`, deploys from `main`; the old GitHub Pages URL now serves only a redirect).
+**NYC Indoor Pool Finder** — a static React/Vite site listing NYC's 13 indoor public pools and their schedules, scraped from nycgovparks.org. Live at https://pools.thinkdesign.com/ on Netlify (repo `Think-Design-NYC/nyc-pool-finder`, Netlify's Git integration builds from `main`; the old GitHub Pages URL and thinkdesign.com/pools/ now redirect here).
 
 **[HANDOFF.md](HANDOFF.md) is the authoritative deep-dive** — scraper field sources, SEO rationale, gotchas, open follow-ups. Read it before non-trivial work, and keep it current when you change how things work.
 
@@ -25,11 +25,12 @@ No test suite, no linter.
 
 ## Architecture
 
-**Data is baked in at build time** — `App.jsx` imports `nyc_pools_live.json` directly; there is no runtime fetch. A data refresh is therefore a commit, which triggers the deploy (`.github/workflows/deploy.yml`: WP Engine `thinkdesignprd` via `wpengine/github-action-wpe-site-deploy`, plus a GitHub Pages job that publishes only a redirect page).
+**Data is baked in at build time** — `App.jsx` imports `nyc_pools_live.json` directly; there is no runtime fetch. A data refresh is therefore a commit, which triggers a Netlify build (config in `netlify.toml`). `.github/workflows/deploy.yml` deploys nothing any more — it only runs a build check and publishes the GitHub Pages redirect page.
 
 ```
 scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (3 requests/pool)
 scripts/refresh.sh    → runs scraper, refuses to commit if <8 pools scraped
+netlify.toml          → Netlify build command, publish dir, headers, /pools/* → / 301
 src/App.jsx           → filter state, imports the JSON, renders the UI
 src/utils.js          → borough inference (zip prefix), activity regexes, day/time matching, poolAnchorId()
 src/faq.js            → FAQ copy shared by UI and build-time SEO output
@@ -45,7 +46,7 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 - **The site name is "NYC Indoor Pool Finder" — "Indoor" is load-bearing** (NYC's ~50 outdoor pools are a separate free system). The name appears in `index.html` meta tags, the `App.jsx` `<h1>`, the fallback `<h1>`, and the JSON-LD `WebSite`/`WebPage` nodes; keep them in sync.
 - **All 13 pools require a paid Recreation Center membership — never let "free" into the copy.** Prices in `src/membership.js` are hand-typed; `MEMBERSHIP_CHECKED` is the date they were last verified and must be bumped by hand, never derived from the build date. Never quote the $100/yr tier — it excludes every center with a pool (name the "Access to All Centers" tier instead).
 - **Fallback markup can't use Tailwind classes** — the SEO plugin runs after Tailwind scans sources, so classes introduced there get purged. It uses a scoped `<style>` block.
-- **Vite `base` is `/pools/`** — assets 404 if the site's path on thinkdesign.com changes without updating `vite.config.js`.
+- **Vite `base` is `/`, matching the subdomain root.** If the site ever moves back to a subpath, `base` in `vite.config.js` *and* `SITE_URL` in `vite-plugin-seo.js` must both change — they are separate constants and nothing checks they agree.
 
 ## UI behavior worth knowing
 
