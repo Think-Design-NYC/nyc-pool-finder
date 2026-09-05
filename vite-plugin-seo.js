@@ -418,17 +418,36 @@ export default function seoPlugin() {
     },
 
     generateBundle() {
+      // lastmod comes from the scrape timestamp, not the build date, so it
+      // stays truthful: a rebuild that changed no data must not claim the
+      // content is newer than it is.
       const lastmod = (meta.updated_at || '').slice(0, 10)
+      // Only genuinely indexable pages belong here. Pool anchors (#pool-…) are
+      // fragments, not URLs — crawlers ignore them in a sitemap; each pool is
+      // addressable through its JSON-LD @id instead. Anything listed here must
+      // NOT carry a noindex, or Search Console reports the contradiction as
+      // "Submitted URL marked 'noindex'".
+      const pages = [
+        { loc: SITE_URL, lastmod, changefreq: 'daily', priority: '1.0' },
+        // The privacy page changes on its own schedule and has no scrape date
+        // to point at, so it carries no lastmod rather than a guessed one.
+        { loc: `${SITE_URL}privacy/`, changefreq: 'yearly', priority: '0.3' },
+      ]
+      const urls = pages
+        .map(
+          (p) => `  <url>
+    <loc>${p.loc}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ''}
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`,
+        )
+        .join('\n')
       this.emitFile({
         type: 'asset',
         fileName: 'sitemap.xml',
         source: `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${SITE_URL}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+${urls}
 </urlset>
 `,
       })

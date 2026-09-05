@@ -495,6 +495,24 @@ Labels are derived from `schedule_weeks` rather than the reader's clock
 (`scheduleWeeks()` in `utils.js`), so if a refresh is missed the buttons name
 the weeks we actually have. The staleness banner is what flags the gap.
 
+## The privacy page is indexable (changed 2026-09-05)
+
+`public/privacy/index.html` used to carry `<meta name="robots" content="noindex">`,
+which is why the sitemap listed only the homepage — a noindex page in a sitemap
+is a contradiction Search Console reports as *"Submitted URL marked 'noindex'"*.
+The noindex is gone, it now has a canonical and a description, and the sitemap
+lists it.
+
+`vite-plugin-seo.js` builds the sitemap from a `pages` array now rather than
+hardcoding one URL. Two rules for anything added to it: it must not carry a
+noindex, and it only gets a `lastmod` if there is a real date to point at — the
+privacy page has none, so it carries none rather than a guessed one. Pool
+anchors stay out; they are fragments, not URLs.
+
+**It is still an orphan page.** Nothing on the site links to it, so crawlers
+will only reach it via the sitemap. If it matters that it ranks, give it a
+footer link — that is a visible UI change and was deliberately not made here.
+
 ## Holiday closures on the cards
 
 `holidaysForFilter(pool, dayKey, weeks)` returns the named closures inside the
