@@ -377,6 +377,7 @@ function buildFallbackHtml() {
       : ''
   }
   <section><h2>Frequently asked questions</h2>${faq}</section>
+  <footer><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
 </div>`
 }
 

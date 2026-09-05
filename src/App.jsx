@@ -289,6 +289,25 @@ export default function App() {
 
       <SeoContent pools={pools} openNames={openNames} />
 
+      {/* Mirrored in the SEO fallback (vite-plugin-seo.js) — if this changes,
+          change it there too or crawlers see different markup than visitors. */}
+      <footer className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-4 text-xs text-slate-400">
+        <a href="/privacy/" className="underline hover:text-sky-700">
+          Privacy
+        </a>
+        <span className="mx-2" aria-hidden="true">
+          ·
+        </span>
+        <a
+          href="https://thinkdesign.com"
+          target="_blank"
+          rel="noreferrer"
+          className="underline hover:text-sky-700"
+        >
+          Think Design
+        </a>
+      </footer>
+
       <UpdatePrompt />
     </div>
   )

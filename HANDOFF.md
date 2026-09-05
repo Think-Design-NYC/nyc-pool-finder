@@ -509,9 +509,12 @@ noindex, and it only gets a `lastmod` if there is a real date to point at — th
 privacy page has none, so it carries none rather than a guessed one. Pool
 anchors stay out; they are fragments, not URLs.
 
-**It is still an orphan page.** Nothing on the site links to it, so crawlers
-will only reach it via the sitemap. If it matters that it ranks, give it a
-footer link — that is a visible UI change and was deliberately not made here.
+It is linked from a footer at the bottom of the page, so crawlers reach it by
+following a link rather than only through the sitemap. **That footer exists
+twice** — in `App.jsx` and again in `buildFallbackHtml()` in
+`vite-plugin-seo.js` — and the two must keep saying the same thing, same links
+in the same order. Nothing in the build catches drift; see the cloaking note in
+the SEO section.
 
 ## Holiday closures on the cards
 
