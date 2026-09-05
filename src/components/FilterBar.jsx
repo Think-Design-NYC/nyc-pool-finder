@@ -3,17 +3,24 @@ import { ChevronDown } from 'lucide-react'
 function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-white shadow-sm' }) {
   return (
     <div className="flex flex-1 gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
-      {options.map((o) => (
-        <button
-          key={o}
-          onClick={() => onSelect(o)}
-          className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-            selected === o ? activeClass : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-          }`}
-        >
-          {o}
-        </button>
-      ))}
+      {options.map((o) => {
+        // Borough/activity pills are plain strings; the day pills carry a label
+        // that differs from the stored value (dates, which change weekly).
+        const { value, label, ariaLabel } = typeof o === 'string' ? { value: o, label: o } : o
+        return (
+          <button
+            key={value}
+            onClick={() => onSelect(value)}
+            aria-label={ariaLabel}
+            aria-pressed={selected === value}
+            className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium tabular-nums transition-colors ${
+              selected === value ? activeClass : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            {label}
+          </button>
+        )
+      })}
     </div>
   )
 }
@@ -53,6 +60,7 @@ export default function FilterBar({
   activities,
   selectedActivity,
   onSelectActivity,
+  dayOptions,
   selectedDay,
   onSelectDay,
 }) {
@@ -99,7 +107,7 @@ export default function FilterBar({
         )}
 
         <PillRow
-          options={['Today', 'Tomorrow', 'Week']}
+          options={dayOptions}
           selected={selectedDay}
           onSelect={onSelectDay}
           activeClass="bg-orange-500 text-white shadow-sm"

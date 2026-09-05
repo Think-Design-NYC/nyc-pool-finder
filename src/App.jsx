@@ -11,7 +11,10 @@ import {
   getBorough,
   ACTIVITIES,
   matchesActivity,
-  matchesDay,
+  DAY_FILTERS,
+  dayFilterOptions,
+  scheduleWeeks,
+  sessionsForFilter,
   isPastToday,
   dataAgeHours,
   describeAge,
@@ -22,11 +25,12 @@ const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Islan
 
 // localStorage can throw (private mode, storage disabled); on failure this
 // degrades to plain useState.
-function usePersistedFilter(key, defaultValue, validValues) {
+function usePersistedFilter(key, defaultValue, validValues, migrations = {}) {
   const [value, setValue] = useState(() => {
     try {
       const stored = localStorage.getItem(key)
-      if (validValues.includes(stored)) return stored
+      const migrated = migrations[stored] ?? stored
+      if (validValues.includes(migrated)) return migrated
     } catch {
       // fall through to default
     }
@@ -53,32 +57,35 @@ export default function App() {
     'Lap Swim',
     ['All activities', ...ACTIVITIES.map((a) => a.key)],
   )
-  const [selectedDay, setSelectedDay] = usePersistedFilter('poolfinder.day', 'Today', [
+  const [selectedDay, setSelectedDay] = usePersistedFilter(
+    'poolfinder.day',
     'Today',
-    'Tomorrow',
-    'Week',
-  ])
+    DAY_FILTERS,
+    // Anyone who had the old undated "Week" pill selected lands on this week.
+    { Week: 'ThisWeek' },
+  )
+
+  // The two weeks the scrape covers. Both the button labels and the date
+  // filtering come from these, so the UI can't claim a week the data lacks.
+  const weeks = useMemo(() => scheduleWeeks(pools), [])
+  const dayOptions = useMemo(() => dayFilterOptions(weeks), [weeks])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
-  const dayActive = selectedDay && selectedDay !== 'Week'
   const hidePast = selectedDay === 'Today'
 
   const boroughs = useMemo(() => {
     const present = new Set()
     for (const p of pools) {
-      if (activityActive || dayActive) {
-        const hasMatch = (p.schedules ?? []).some(
-          (s) =>
-            (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
-            (!dayActive || matchesDay(s.days, selectedDay)) &&
-            (!hidePast || !isPastToday(s.time)),
-        )
-        if (!hasMatch) continue
-      }
+      const hasMatch = sessionsForFilter(p, selectedDay, weeks).some(
+        (s) =>
+          (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
+          (!hidePast || !isPastToday(s.time)),
+      )
+      if (!hasMatch) continue
       present.add(getBorough(p))
     }
     return BOROUGH_ORDER.filter((b) => present.has(b))
-  }, [activityActive, dayActive, hidePast, selectedActivity, selectedDay])
+  }, [activityActive, hidePast, selectedActivity, selectedDay, weeks])
 
   useEffect(() => {
     if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
@@ -131,24 +138,23 @@ export default function App() {
       .filter((p) => p.status !== 'closed')
       .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
       .map((p) => {
-        if (!activityActive && !dayActive) return p
-        const filtered = (p.schedules ?? []).filter(
+        // Always resolve through the dated weeks: "Today" now means this
+        // calendar date, so a holiday closure genuinely empties the day
+        // instead of showing that weekday's usual sessions.
+        const filtered = sessionsForFilter(p, selectedDay, weeks).filter(
           (s) =>
             (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
-            (!dayActive || matchesDay(s.days, selectedDay)) &&
             (!hidePast || !isPastToday(s.time)),
         )
         return { ...p, schedules: filtered }
       })
-      .filter(
-        (p) => (!activityActive && !dayActive) || (p.schedules?.length ?? 0) > 0,
-      )
+      .filter((p) => (p.schedules?.length ?? 0) > 0)
       .sort((a, b) => {
         // Open first, then transitioning. Closed pools aren't in this list.
         const rank = { open: 0, transitioning: 1 }
         return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
       })
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, dayActive, hidePast])
+  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, weeks])
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
@@ -211,6 +217,7 @@ export default function App() {
         activities={activities}
         selectedActivity={selectedActivity}
         onSelectActivity={setSelectedActivity}
+        dayOptions={dayOptions}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}
       />

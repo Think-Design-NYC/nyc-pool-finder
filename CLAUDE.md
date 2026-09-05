@@ -28,7 +28,8 @@ No test suite, no linter.
 **Data is baked in at build time** — `App.jsx` imports `nyc_pools_live.json` directly; there is no runtime fetch. A data refresh is therefore a commit, which triggers a Netlify build (config in `netlify.toml`). `.github/workflows/deploy.yml` deploys nothing any more — it only runs a build check and publishes the GitHub Pages redirect page.
 
 ```
-scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (3 requests/pool)
+scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (4 requests/pool:
+                        facility, detail, and the schedule page twice — this week + next)
 scripts/refresh.sh    → runs scraper, refuses to commit if <8 pools scraped
 netlify.toml          → Netlify build command, publish dir, headers, /pools/* → / 301
 src/App.jsx           → filter state, imports the JSON, renders the UI
@@ -46,6 +47,8 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 - **The site name is "NYC Indoor Pool Finder" — "Indoor" is load-bearing** (NYC's ~50 outdoor pools are a separate free system). The name appears in `index.html` meta tags, the `App.jsx` `<h1>`, the fallback `<h1>`, and the JSON-LD `WebSite`/`WebPage` nodes; keep them in sync.
 - **All 13 pools require a paid Recreation Center membership — never let "free" into the copy.** Prices in `src/membership.js` are hand-typed; `MEMBERSHIP_CHECKED` is the date they were last verified and must be bumped by hand, never derived from the build date. Never quote the $100/yr tier — it excludes every center with a pool (name the "Access to All Centers" tier instead).
 - **Fallback markup can't use Tailwind classes** — the SEO plugin runs after Tailwind scans sources, so classes introduced there get purged. It uses a scoped `<style>` block.
+- **`schedules` is frozen for the mobile app; `schedule_weeks` is the real source.** NYC Parks serves any week at `/facilities/recreationcenters/<code>/schedule/<Monday>`, so the scraper pulls this week and next with real dates, per-day building hours and holiday notices. `schedules` stays a flat, undated, current-week list because the mobile app reads it — the site itself must use `schedule_weeks`. Adding dated rows to `schedules` would make Monday appear twice and break the app.
+- **`schedule_weeks` is populated for closed pools too, and `schedules` is not.** A pool shut this week can have a full timetable next week (Chelsea reopens 9/8). The flat list is still cleared on closure so nothing renders a timetable for a locked building; `App.jsx` drops closed pools from the grid before filtering, so a closed pool stays in the closed list even in a week when it reopens.
 - **Vite `base` is `/`, matching the subdomain root.** If the site ever moves back to a subpath, `base` in `vite.config.js` *and* `SITE_URL` in `vite-plugin-seo.js` must both change — they are separate constants and nothing checks they agree.
 
 ## UI behavior worth knowing

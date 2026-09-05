@@ -151,8 +151,145 @@ export function matchesActivity(sessionType, activityKey) {
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+// Weeks run Monday–Sunday, matching how NYC Parks paginates its schedule
+// pages (/schedule/<Monday>) and the labels the day filter shows.
+const WEEK_STARTS_ON = 1
+
+// The day filter's stable values. These are NOT the button labels: the two week
+// options are labelled with their dates, which change every Monday, so using a
+// label as the persisted value would invalidate the stored filter each week.
+export const DAY_FILTERS = ['Today', 'Tomorrow', 'ThisWeek', 'NextWeek']
+
+export function isWeekFilter(dayKey) {
+  // 'Week' is the pre-dated-labels value that may still be in localStorage.
+  return dayKey === 'ThisWeek' || dayKey === 'NextWeek' || dayKey === 'Week'
+}
+
+// "2026-09-07" -> local midnight. `new Date(iso)` would parse it as UTC and
+// land on the previous day for anyone west of Greenwich.
+export function parseISODate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso ?? '')
+  return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null
+}
+
+export function toISODate(d) {
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+}
+
+// Midnight on the Monday of the week containing `date`.
+export function startOfWeek(date = new Date()) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  d.setDate(d.getDate() - ((d.getDay() - WEEK_STARTS_ON + 7) % 7))
+  return d
+}
+
+export function weekRange(weeksAhead = 0, from = new Date()) {
+  const start = startOfWeek(from)
+  start.setDate(start.getDate() + weeksAhead * 7)
+  const end = new Date(start)
+  end.setDate(end.getDate() + 6)
+  return { start, end }
+}
+
+const shortDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`
+const longDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
+
+// "9/7 – 9/13"
+export function weekLabel(week) {
+  const start = parseISODate(week?.start)
+  const end = parseISODate(week?.end)
+  return start && end ? `${shortDate(start)} – ${shortDate(end)}` : ''
+}
+
+// The two weeks the scrape actually covers, newest data wins. Labels come from
+// the data rather than the reader's clock: if a refresh has been missed the
+// buttons should name the weeks we have, not the weeks we wish we had — the
+// staleness banner is what flags the gap.
+export function scheduleWeeks(pools) {
+  const seen = new Map()
+  for (const p of pools ?? []) {
+    for (const w of p.schedule_weeks ?? []) {
+      if (w?.start && !seen.has(w.start)) seen.set(w.start, { start: w.start, end: w.end })
+    }
+  }
+  return [...seen.values()].sort((a, b) => a.start.localeCompare(b.start)).slice(0, 2)
+}
+
+export function dayFilterOptions(weeks = [], from = new Date()) {
+  const fallback = [0, 1].map((n) => {
+    const { start, end } = weekRange(n, from)
+    return { start: toISODate(start), end: toISODate(end) }
+  })
+  const [thisWeek, nextWeek] = weeks.length === 2 ? weeks : fallback
+  return [
+    { value: 'Today', label: 'Today' },
+    { value: 'Tomorrow', label: 'Tomorrow' },
+    ...[
+      ['ThisWeek', thisWeek, 'This'],
+      ['NextWeek', nextWeek, 'Next'],
+    ].map(([value, week, which]) => {
+      const start = parseISODate(week.start)
+      const end = parseISODate(week.end)
+      return {
+        value,
+        label: weekLabel(week),
+        // "9/7 – 9/13" read aloud is not obviously a date range.
+        ariaLabel: `${which} week, ${longDate(start)} to ${longDate(end)}`,
+      }
+    }),
+  ]
+}
+
+// The ISO dates a filter selects. Today/Tomorrow resolve against the reader's
+// clock; the week filters against the dates in the scraped data.
+export function datesForFilter(dayKey, weeks = [], from = new Date()) {
+  if (dayKey === 'Today' || dayKey === 'Tomorrow') {
+    const d = new Date(from.getFullYear(), from.getMonth(), from.getDate())
+    if (dayKey === 'Tomorrow') d.setDate(d.getDate() + 1)
+    return new Set([toISODate(d)])
+  }
+  const week = weeks[dayKey === 'NextWeek' ? 1 : 0]
+  if (!week) return null
+  const out = new Set()
+  const start = parseISODate(week.start)
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start)
+    d.setDate(d.getDate() + i)
+    out.add(toISODate(d))
+  }
+  return out
+}
+
+// Flattens the dated weeks down to the sessions a filter selects. Falls back to
+// the undated `schedules` list (weekday-name matching) for data scraped before
+// schedule_weeks existed, so an old JSON still renders.
+export function sessionsForFilter(pool, dayKey, weeks = [], from = new Date()) {
+  const dated = pool?.schedule_weeks ?? []
+  if (!dated.length) {
+    return (pool?.schedules ?? []).filter((s) => matchesDay(s.days, dayKey))
+  }
+  const dates = datesForFilter(dayKey, weeks, from)
+  const out = []
+  for (const w of dated) {
+    for (const day of w.days ?? []) {
+      if (dates && !dates.has(day.date)) continue
+      for (const s of day.sessions ?? []) out.push({ ...s, date: day.date, days: day.weekday })
+    }
+  }
+  return out
+}
+
+// "Mon 9/7"
+export function dayStamp(session) {
+  const d = parseISODate(session?.date)
+  if (!d) return session?.days ?? ''
+  return `${d.toLocaleDateString('en-US', { weekday: 'short' })} ${shortDate(d)}`
+}
+
+// Legacy weekday-name matching, kept for data without schedule_weeks.
 export function matchesDay(scheduleDays, dayKey) {
-  if (!dayKey || dayKey === 'Week') return true
+  if (!dayKey || isWeekFilter(dayKey)) return true
   const now = new Date()
   const offset = dayKey === 'Tomorrow' ? 1 : 0
   const target = DAY_NAMES[(now.getDay() + offset) % 7]

@@ -1,6 +1,6 @@
 import json
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import requests
 from bs4 import BeautifulSoup, Comment
@@ -243,6 +243,25 @@ class Schedule(BaseModel):
     session_type: str
     days: str
     time: str
+    # ISO date of the day this session falls on. Optional because the flat
+    # `schedules` list is kept for the mobile app, which predates dated weeks.
+    date: Optional[str] = None
+
+
+class ScheduleDay(BaseModel):
+    date: str                              # "2026-09-07"
+    weekday: str                           # "Monday"
+    building_hours: Optional[str] = None   # "7:00 a - 8:00 p", or "Closed"
+    # Holiday and no-programs notices posted per day, e.g.
+    # "Labor Day: Recreation Centers will be closed."
+    note: Optional[str] = None
+    sessions: List[Schedule] = []
+
+
+class ScheduleWeek(BaseModel):
+    start: str                             # Monday, ISO
+    end: str                               # Sunday, ISO
+    days: List[ScheduleDay] = []
 
 
 class Location(BaseModel):
@@ -270,7 +289,13 @@ class PoolData(BaseModel):
     closure_reason: Optional[str] = None
     closed_through: Optional[str] = None
     reopens: Optional[str] = None
+    # Flat, current week only, undated — the shape the mobile app already reads.
+    # Cleared for closed pools, as before.
     schedules: List[Schedule] = []
+    # This week and next, with real dates, per-day building hours and holiday
+    # notices. Populated for every pool, including closed ones: a pool that is
+    # shut this week may have a full timetable next week (Chelsea reopens 9/8).
+    schedule_weeks: List[ScheduleWeek] = []
 
 
 def fetch(url: str) -> str:
@@ -417,27 +442,35 @@ def parse_pool_detail(pool_code: str) -> dict:
     return {"membership_required": bool(MEMBERSHIP_RE.search(text))}
 
 
-def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str], List[dict]]:
-    """Schedules plus any closure notices posted on the schedule page.
+def monday_of(d: date) -> date:
+    """The Monday of the week containing `d`. Parks weeks run Monday–Sunday."""
+    return d - timedelta(days=d.weekday())
+
+
+def parse_schedule(
+    pool_code: str, week_start: Optional[date] = None
+) -> Tuple[Optional[ScheduleWeek], List[str], List[str], List[dict]]:
+    """One week of pool schedule, plus any closure notices on the page.
 
     The notices matter as much as the table: a center shut for repairs simply
     has no schedule rows, and the only statement that it is shut lives in an
     alert box on this page. Returning both keeps it to one request.
+
+    `week_start` must be a Monday; the site serves that exact week at
+    /schedule/<YYYY-MM-DD>. Omitted, it serves the current week — but we always
+    pass one so the result is deterministic rather than dependent on when the
+    scrape ran relative to midnight.
     """
-    url = f"{BASE_URL}/facilities/recreationcenters/{pool_code}/schedule"
+    week_start = week_start or monday_of(date.today())
+    url = f"{BASE_URL}/facilities/recreationcenters/{pool_code}/schedule/{week_start.isoformat()}"
     try:
         html = fetch(url)
     except requests.RequestException as e:
-        print(f"  Could not fetch schedule for {pool_code}: {e}")
-        return [], [], [], []
+        print(f"  Could not fetch schedule for {pool_code} ({week_start}): {e}")
+        return None, [], [], []
 
     soup = BeautifulSoup(html, "html.parser")
-    raw_notices = [
-        re.sub(r"\s+", " ", d.get_text(" ", strip=True))
-        for d in soup.find_all("div", class_="alert-error")
-    ]
-    notices = clean_notices(raw_notices)
-    links = extract_notice_links(soup.find_all("div", class_="alert-error"))
+
     pool_heading = next(
         (
             h for h in soup.find_all(["h2", "h3"])
@@ -445,23 +478,95 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
         ),
         None,
     )
-    if not pool_heading:
-        return [], notices, raw_notices, links
+    table = pool_heading.find_next("table", class_="schedule-table") if pool_heading else None
 
-    table = pool_heading.find_next("table", class_="schedule-table")
-    if not table:
-        return [], notices, raw_notices, links
+    # Page-level closure notices only. Each day cell carries its own
+    # `div.alert-error` ("There are no programs at this pool today."), which is
+    # a per-day fact, not a closure announcement — scoping the scan to alerts
+    # outside the table keeps those out of the pool's notes.
+    def outside_table(div) -> bool:
+        return table is None or table not in div.parents
+
+    alerts = [d for d in soup.find_all("div", class_="alert-error") if outside_table(d)]
+    raw_notices = [re.sub(r"\s+", " ", d.get_text(" ", strip=True)) for d in alerts]
+    notices = clean_notices(raw_notices)
+    links = extract_notice_links(alerts)
+
+    if table is None:
+        return None, notices, raw_notices, links
 
     rows = table.find_all("tr")
     if len(rows) < 2:
-        return [], notices, raw_notices, links
+        return None, notices, raw_notices, links
 
     day_headers = [c.get_text(" ", strip=True) for c in rows[0].find_all(["th", "td"])]
     day_columns = rows[1].find_all("td")
 
-    schedules: List[Schedule] = []
-    for day_label, cell in zip(day_headers, day_columns):
-        day = DAY_DATE_SUFFIX_RE.sub("", day_label).strip()
+    # A week with no programs at all collapses the body into ONE colspan cell
+    # ("There are no programs at this pool today.") instead of seven. Zipping
+    # that against seven headers would pair it with Monday and silently drop
+    # Tuesday–Sunday, leaving a one-day week.
+    week_note: Optional[str] = None
+    if len(day_columns) != len(day_headers):
+        if len(day_columns) == 1:
+            week_note = re.sub(r"\s+", " ", day_columns[0].get_text(" ", strip=True)) or None
+        else:
+            print(
+                f"  {pool_code}: {len(day_columns)} schedule cells for "
+                f"{len(day_headers)} days ({week_start}) — skipping week"
+            )
+            return None, notices, raw_notices, links
+        day_columns = [None] * len(day_headers)
+
+    days: List[ScheduleDay] = []
+    for i, (day_label, cell) in enumerate(zip(day_headers, day_columns)):
+        weekday = DAY_DATE_SUFFIX_RE.sub("", day_label).strip()
+        day_date = week_start + timedelta(days=i)
+
+        # The header carries "Monday 9/7". Confirm it against the date we asked
+        # for: if the site ever ignores the date in the URL, the columns would
+        # silently be labelled with the wrong dates.
+        stamped = re.search(r"(\d{1,2})/(\d{1,2})\s*$", day_label)
+        if stamped and (int(stamped.group(1)), int(stamped.group(2))) != (
+            day_date.month,
+            day_date.day,
+        ):
+            print(
+                f"  {pool_code}: schedule column {day_label!r} does not match "
+                f"requested {day_date} — skipping week {week_start}"
+            )
+            return None, notices, raw_notices, links
+
+        if cell is None:
+            days.append(ScheduleDay(
+                date=day_date.isoformat(),
+                weekday=weekday,
+                note=week_note,
+            ))
+            continue
+
+        hrs_el = cell.find("div", class_="center-hrs")
+        building_hours = None
+        if hrs_el:
+            # "Building Hours\n7:00 a - 8:00 p" -> "7:00 a - 8:00 p"
+            text = re.sub(r"\s+", " ", hrs_el.get_text(" ", strip=True))
+            building_hours = re.sub(r"^\s*Building Hours\s*", "", text).strip() or None
+
+        # A holiday block is `div.alert` with an <h3> title; the plain
+        # "no programs" line is `div.alert-error`.
+        notes: List[str] = []
+        for alert in cell.find_all("div", class_="alert"):
+            classes = alert.get("class") or []
+            title = alert.find("h3")
+            body = re.sub(r"\s+", " ", alert.get_text(" ", strip=True))
+            if title:
+                heading = title.get_text(" ", strip=True)
+                rest = body[len(heading):].strip(" :.")
+                notes.append(f"{heading}: {rest}." if rest else heading)
+            elif "alert-error" in classes:
+                notes.append(body)
+
+        sessions: List[Schedule] = []
         for program in cell.find_all("p", class_="program"):
             link = program.find("a", class_="program-popup")
             if not link:
@@ -478,13 +583,27 @@ def parse_schedule(pool_code: str) -> Tuple[List[Schedule], List[str], List[str]
                     continue
                 else:
                     time_text += child.get_text(" ", strip=True)
-            time_text = time_text.strip()
-            schedules.append(Schedule(
+            sessions.append(Schedule(
                 session_type=session_type,
-                days=day,
-                time=time_text,
+                days=weekday,
+                time=time_text.strip(),
+                date=day_date.isoformat(),
             ))
-    return schedules, notices, raw_notices, links
+
+        days.append(ScheduleDay(
+            date=day_date.isoformat(),
+            weekday=weekday,
+            building_hours=building_hours,
+            note=" ".join(notes) or None,
+            sessions=sessions,
+        ))
+
+    week = ScheduleWeek(
+        start=week_start.isoformat(),
+        end=(week_start + timedelta(days=6)).isoformat(),
+        days=days,
+    )
+    return week, notices, raw_notices, links
 
 
 def scrape_nyc_pools() -> List[dict]:
@@ -560,19 +679,35 @@ def scrape_nyc_pools() -> List[dict]:
             reduced_hours = any(REDUCED_HOURS_RE.search(n) for n in details.get("raw_notices") or [])
             notice_links = list(details.get("notice_links") or [])
 
+            # Both weeks, for every pool regardless of status. A pool shut this
+            # week can have a full timetable next week, and that is precisely
+            # what the dated week filter exists to show.
             schedules: List[Schedule] = []
-            if status == "open" and pool_code:
-                print(f"  Fetching schedule for {pool_name} ({pool_code})...")
-                schedules, schedule_notices, schedule_raw, schedule_links = parse_schedule(pool_code)
-                for link in schedule_links:
-                    if link["url"] not in {l["url"] for l in notice_links}:
-                        notice_links.append(link)
-                for n in schedule_notices:
-                    if n not in notices:
-                        notices.append(n)
-                reduced_hours = reduced_hours or any(
-                    REDUCED_HOURS_RE.search(n) for n in schedule_raw
-                )
+            schedule_weeks: List[ScheduleWeek] = []
+            if pool_code:
+                this_monday = monday_of(date.today())
+                for offset, week_start in enumerate((this_monday, this_monday + timedelta(days=7))):
+                    print(f"  Fetching schedule for {pool_name} ({pool_code}) week of {week_start}...")
+                    week, schedule_notices, schedule_raw, schedule_links = parse_schedule(
+                        pool_code, week_start
+                    )
+                    if week:
+                        schedule_weeks.append(week)
+                        if offset == 0:
+                            schedules = [s for d in week.days for s in d.sessions]
+                    # Notices are the same banner on both pages; take them from
+                    # the current week so a next-week fetch can't change status.
+                    if offset:
+                        continue
+                    for link in schedule_links:
+                        if link["url"] not in {l["url"] for l in notice_links}:
+                            notice_links.append(link)
+                    for n in schedule_notices:
+                        if n not in notices:
+                            notices.append(n)
+                    reduced_hours = reduced_hours or any(
+                        REDUCED_HOURS_RE.search(n) for n in schedule_raw
+                    )
 
             # The listing page only says "currently closed" for long-term
             # closures. A center shut for a week of repairs still reads as open
@@ -584,6 +719,10 @@ def scrape_nyc_pools() -> List[dict]:
             if status == "open" and notes and CLOSURE_RE.search(notes):
                 print(f"  {pool_name}: closure notice found — marking closed")
                 status = "closed"
+                # The flat list feeds callers that render a timetable with no
+                # status check; a posted schedule for a locked building would
+                # send someone to the door. `schedule_weeks` keeps the real
+                # data — the site gates it on status itself.
                 schedules = []
 
             all_pools.append(PoolData(
@@ -610,6 +749,7 @@ def scrape_nyc_pools() -> List[dict]:
                 closed_through=find_closed_through(notes) if status == "closed" else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,
                 schedules=schedules,
+                schedule_weeks=schedule_weeks,
             ).model_dump())
 
     return all_pools

@@ -12,7 +12,8 @@ lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
 
 ```
 scraper.py            → writes nyc_pools_live.json + nyc_pools_meta.json
-                        (3 requests per pool: listing, rec center page, detail page)
+                        (4 requests per pool: facility page, pool detail page, and
+                        the schedule page twice — this week and next)
 scripts/refresh.sh    → runs scraper, sanity-checks, commits, pushes (launchd)
 src/App.jsx           → imports the JSON at build time, renders the UI
 src/faq.js            → FAQ copy, shared by the UI and the build-time SEO output
@@ -382,3 +383,81 @@ Code:
 - **Data going stale:** if `meta.updated_at` is drifting past ~36h, the primary
   Mac has been off. Either wake it and `launchctl kickstart` the agent (label
   in DEPLOY.md), or run `./scripts/refresh.sh --if-stale 36` from the other Mac.
+
+## Dated schedules (this week / next week)
+
+NYC Parks serves **any** week of a rec center's schedule at
+
+```
+/facilities/recreationcenters/<POOL_CODE>/schedule/<YYYY-MM-DD>   # a Monday
+```
+
+The undated `/schedule` is just that endpoint defaulting to the current week.
+The scraper passes an explicit Monday for both weeks, so a run that straddles
+midnight can't produce a half-shifted result.
+
+The day-column headers read `Monday 9/7`. The scraper used to strip that date
+(`DAY_DATE_SUFFIX_RE`) and keep only the weekday, which is why the schedule data
+was an undated recurring grid and why a "next week" filter had nothing to filter
+on. It now keeps the date, and cross-checks each column's `m/d` against the date
+requested — if the site ever ignores the date in the URL, the week is dropped
+rather than silently mislabelled.
+
+Each day cell also carries things the old parser discarded:
+
+| Markup | Meaning |
+| --- | --- |
+| `div.center-hrs` | that day's building hours, or `Closed` |
+| `div.alert` + `h3` | holiday notice — "Labor Day: Recreation Centers will be closed." |
+| `div.alert-error` | "There are no programs at this pool today." |
+| `p.program` | a session: time, `a.program-popup` name, `span.room` |
+
+**A week with no programs at all collapses the body row into one `colspan`
+cell** ("There are no programs scheduled at this time") instead of seven. Zip
+that against seven headers and you pair it with Monday and lose Tuesday–Sunday,
+leaving a one-day week. `parse_schedule` detects the mismatch, and emits seven
+empty days carrying the week-level note. Any other header/cell count mismatch
+drops the week rather than guessing.
+
+**Page-level notices are now scoped to alerts outside the schedule table.**
+`div.alert-error` is used both for real closure banners and for the per-day
+"no programs" line inside the grid; the old page-wide `find_all` swept up both.
+
+### Two shapes, on purpose
+
+- `schedules` — flat, undated, **current week only**, cleared when the pool is
+  closed. This is what the **mobile app** reads; leave its shape alone. Adding
+  dated rows here would list Monday twice.
+- `schedule_weeks` — `[{start, end, days: [{date, weekday, building_hours,
+  note, sessions}]}]`, both weeks, populated even for closed pools. The website
+  uses this.
+
+Why closed pools still get weeks: Chelsea (M260) is closed as of 2026-09-05 and
+reopens 9/8 with 17 sessions in the 9/7–9/13 week. Keeping the data means the
+reopening is representable. **The grid still hides it** — `App.jsx` filters
+`status !== 'closed'` before any date filtering, so Chelsea stays in the closed
+list even under the next-week filter. That is the conservative reading of the
+"don't send someone to a locked door" rule; if you want reopening pools to
+surface in the week they reopen, that filter is the line to change.
+
+### What the dates fixed
+
+Filtering is now by calendar date, not weekday name, so **Today on a holiday is
+genuinely empty**. Before this change, selecting Today on Labor Day (9/7) would
+have shown every pool's usual Monday sessions — all 13 centers are closed.
+
+Verified 2026-09-05, this week vs next: Chelsea 0→17, Constance Baker Motley
+19→0, Shirley Chisholm 23→9, St. John's 37→30, Gertrude Ederle 17→14, Roy
+Wilkins 16→13. The two week buttons are not cosmetic.
+
+### Filter values vs. labels
+
+The day pills persist to `localStorage`. Their **values** are stable
+(`Today` / `Tomorrow` / `ThisWeek` / `NextWeek`); only the **labels** carry
+dates. Storing a label would invalidate everyone's saved filter every Monday.
+The pre-dated value `Week` migrates to `ThisWeek` (`usePersistedFilter`'s
+`migrations` argument).
+
+Labels are derived from `schedule_weeks` rather than the reader's clock
+(`scheduleWeeks()` in `utils.js`), so if a refresh is missed the buttons name
+the weeks we actually have. The staleness banner is what flags the gap.

@@ -15,6 +15,7 @@ import {
   statusBadgeLabel,
   fullAddress,
   poolAnchorId,
+  dayStamp,
 } from '../utils'
 
 function StatusBadge({ pool }) {
@@ -34,7 +35,8 @@ function ScheduleRow({ schedule }) {
     <li className="rounded-lg bg-sky-50 p-3 ring-1 ring-inset ring-sky-100">
       <p className="text-sm font-semibold text-sky-900">{schedule.session_type}</p>
       <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
-        <span className="text-xs text-slate-500">{schedule.days}</span>
+        {/* "Mon 9/7" once the data carries dates; bare weekday otherwise. */}
+        <span className="text-xs text-slate-500">{dayStamp(schedule)}</span>
         {/* Lane swim times are the hero — big and bold */}
         <span className="text-base font-bold tabular-nums text-sky-700">
           {schedule.time}
