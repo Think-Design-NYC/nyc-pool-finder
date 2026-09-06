@@ -40,7 +40,7 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "schedules": []
     },
@@ -82,6 +82,11 @@
             },
             {
                 "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p"
+            },
+            {
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "11:00 a - 1:00 p"
             },
@@ -94,6 +99,11 @@
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
@@ -129,6 +139,11 @@
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "3:30 p - 4:45 p"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "5:00 p - 7:00 p"
             },
             {
                 "session_type": "Lap Swim",
@@ -318,17 +333,21 @@
         "pool_code": "B270",
         "status": "closed",
         "location": {
-            "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
-            "cross_streets": null,
-            "city": "New York",
+            "address": "1555 Linden Boulevard",
+            "cross_streets": "Linden Blvd. and Hegeman Ave.",
+            "city": "Brooklyn",
             "state": "NY",
-            "zip_code": null,
-            "building_hours": null
+            "zip_code": "11212",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 12:00 AM",
+                "Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "schedules": []
     },
     {
@@ -511,7 +530,7 @@
         },
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "schedules": [
             {
