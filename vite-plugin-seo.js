@@ -17,6 +17,7 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
+import { CALL_AHEAD_NOTE } from './src/copy.js'
 import {
   ACTIVITIES,
   boroughsPresent,
@@ -327,6 +328,7 @@ function buildFallbackHtml() {
   <h1>NYC Indoor Pool Finder</h1>
   <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(openBoroughList)}</p>
+  <p>${esc(CALL_AHEAD_NOTE)}</p>
   ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${sections}
   <section>
@@ -385,6 +387,7 @@ function buildFallbackHtml() {
       : ''
   }
   <section><h2>Frequently asked questions</h2>${faq}</section>
+  <p>Schedules are scraped from <a href="https://www.nycgovparks.org/facilities/indoor-pools" rel="nofollow">nycgovparks.org</a> and can change without notice. ${esc(CALL_AHEAD_NOTE)}</p>
   <footer><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
 </div>`
 }

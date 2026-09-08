@@ -187,7 +187,7 @@ time — it reads `nyc_pools_live.json` and:
 **The fallback markup must keep saying what React says.** If the two diverge a
 crawler comparing raw vs. rendered HTML reads it as cloaking. Anything shared is
 shared through a module for exactly this reason — [src/faq.js](src/faq.js),
-[src/membership.js](src/membership.js), and `poolAnchorId()` in
+[src/membership.js](src/membership.js), [src/copy.js](src/copy.js), and `poolAnchorId()` in
 [src/utils.js](src/utils.js) (so JSON-LD `@id` fragments match the rendered card
 `id`s).
 
@@ -200,6 +200,19 @@ two disagreed on the same sentence. `boroughsPresent(pools, isOpen)` is the
 open-pool list for the subhead; `boroughsPresent(pools)` is every borough with a
 pool, for the "NYC Parks operates 13 pools across …" copy. **If you change the `<h1>`, the headings or the body copy in
 `SeoContent.jsx`, change the fallback in `vite-plugin-seo.js` to match.**
+
+### Call ahead (added 2026-09-08)
+
+`CALL_AHEAD_NOTE` in [src/copy.js](src/copy.js) — *"Please call ahead before
+planning your swim: the Rec Center will have the most up-to-date information."*
+— renders under the open-count line in the header and again in the closing
+source disclaimer, in both React and the fallback.
+
+It exists because on 2026-09-08 Chelsea Pool was found drained while NYC Parks
+still published a full lap-swim timetable for it; the site faithfully repeated
+that. The scrape can only ever be as good as what Parks has posted, and the
+building itself is the only authority on whether there is water in the pool.
+Don't remove it to save vertical space.
 
 ### Naming
 

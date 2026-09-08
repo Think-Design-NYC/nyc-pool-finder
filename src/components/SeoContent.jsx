@@ -1,5 +1,6 @@
 import { FAQ } from '../faq'
 import { boroughsPresent, joinBoroughs } from '../utils'
+import { CALL_AHEAD_NOTE } from '../copy'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -100,7 +101,7 @@ export default function SeoContent({ pools, openNames }) {
         >
           nycgovparks.org
         </a>{' '}
-        and can change without notice. Call the pool before making a trip.
+        and can change without notice. {CALL_AHEAD_NOTE}
       </p>
     </section>
   )
