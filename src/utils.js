@@ -33,6 +33,44 @@ export function poolAnchorId(pool) {
   return `pool-${base.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`
 }
 
+// Borough display order. Shared so the filter pills, the prose in `SeoContent`
+// and the build-time SEO fallback all order and name boroughs identically.
+export const BOROUGH_ORDER = [
+  'Manhattan',
+  'Brooklyn',
+  'Queens',
+  'Bronx',
+  'Staten Island',
+  'Other',
+]
+
+export const isOpen = (pool) => pool?.status === 'open'
+
+// Boroughs with at least one pool matching `predicate`, in BOROUGH_ORDER.
+//
+// Copy that names boroughs has to derive them from the data. The subhead used
+// to hardcode "Manhattan, Brooklyn, Queens & the Bronx" and went on claiming
+// the Bronx for months after St. Mary's closed, while the SEO fallback — which
+// did derive its list — said something different on the same line.
+export function boroughsPresent(pools, predicate = () => true) {
+  const present = new Set()
+  for (const p of pools ?? []) {
+    if (predicate(p)) present.add(getBorough(p))
+  }
+  return BOROUGH_ORDER.filter((b) => present.has(b))
+}
+
+// The Bronx is the one borough that takes an article in running prose.
+const withArticle = (b) => (b === 'Bronx' ? 'the Bronx' : b)
+
+// "Manhattan, Brooklyn & the Bronx". `conjunction` is the word before the last
+// item — "&" in a statement, "or" when offering a choice.
+export function joinBoroughs(names, conjunction = '&') {
+  const list = names.map(withArticle)
+  if (list.length <= 1) return list[0] ?? ''
+  return `${list.slice(0, -1).join(', ')} ${conjunction} ${list[list.length - 1]}`
+}
+
 export const STATUS_STYLES = {
   open: {
     label: 'Open',

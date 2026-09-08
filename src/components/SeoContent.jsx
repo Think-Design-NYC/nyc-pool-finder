@@ -1,4 +1,5 @@
 import { FAQ } from '../faq'
+import { boroughsPresent, joinBoroughs } from '../utils'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -10,7 +11,9 @@ import {
 // *rendered* DOM, which means the static fallback in vite-plugin-seo.js is gone
 // by the time it looks — the keyword-bearing content has to live here too.
 export default function SeoContent({ pools, openNames }) {
-  const boroughs = [...new Set(pools.map((p) => p.borough).filter(Boolean))]
+  // Every borough with a pool, open or not — this sentence is about the system,
+  // not today's status. Shared with the SEO fallback so both name the same set.
+  const boroughs = boroughsPresent(pools)
 
   return (
     <section className="mx-auto mt-12 max-w-6xl border-t border-slate-200 pt-8">
@@ -19,7 +22,7 @@ export default function SeoContent({ pools, openNames }) {
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
         NYC Parks operates {pools.length} indoor public pools across{' '}
-        {boroughs.join(', ')}. Every one of them sits inside a recreation center, so
+        {joinBoroughs(boroughs)}. Every one of them sits inside a recreation center, so
         you need a Recreation Center membership to swim. This page pulls the current
         lap swim, open swim, family swim and water exercise schedules straight from
         nycgovparks.org each morning, so you can see which pools are open now and when
@@ -70,7 +73,7 @@ export default function SeoContent({ pools, openNames }) {
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
         Unlike the city&apos;s outdoor pools — which run only from late June through
         Labor Day — indoor pools are open year-round. Filter by borough to find a
-        pool near you in Manhattan, Brooklyn, Queens or the Bronx.
+        pool near you in {joinBoroughs(boroughs, 'or')}.
       </p>
 
       <h2 className="mt-8 text-lg font-bold text-slate-900">

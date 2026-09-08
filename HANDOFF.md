@@ -189,7 +189,16 @@ crawler comparing raw vs. rendered HTML reads it as cloaking. Anything shared is
 shared through a module for exactly this reason — [src/faq.js](src/faq.js),
 [src/membership.js](src/membership.js), and `poolAnchorId()` in
 [src/utils.js](src/utils.js) (so JSON-LD `@id` fragments match the rendered card
-`id`s). **If you change the `<h1>`, the headings or the body copy in
+`id`s).
+
+**Borough names in prose are derived, never typed** (`boroughsPresent()` +
+`joinBoroughs()` in [src/utils.js](src/utils.js), used by `App.jsx`,
+`SeoContent.jsx` and the fallback). Fixed 2026-09-08: the React subhead
+hardcoded "Manhattan, Brooklyn, Queens & the Bronx" and had gone on claiming the
+Bronx after St. Mary's closed, while the fallback computed its own list — the
+two disagreed on the same sentence. `boroughsPresent(pools, isOpen)` is the
+open-pool list for the subhead; `boroughsPresent(pools)` is every borough with a
+pool, for the "NYC Parks operates 13 pools across …" copy. **If you change the `<h1>`, the headings or the body copy in
 `SeoContent.jsx`, change the fallback in `vite-plugin-seo.js` to match.**
 
 ### Naming
@@ -233,6 +242,184 @@ given a second `Sitemap:` line on 2026-09-01 because the Yoast
 `sitemap_index.xml` didn't include `/pools/`. That line is now dead and should
 be removed via **Yoast SEO → Tools → File editor → robots.txt** (or SFTP/SSH).
 It was never deployable from this repo.
+
+## SEO roadmap — per-pool pages, planned 2026-09-08
+
+From an outside SEO consultation on 2026-09-08, then checked against the repo
+by a Codex review the same day (corrections folded in below). **Nothing in this
+section is built yet.** It records which recommendations are real for *this*
+site, which were already done, which to ignore, and the order to build the rest
+in.
+
+### Partly satisfied already — read this before re-doing anything
+
+The consultation's "make schedules readable page content, not just React filter
+output" and "show last-updated times" are **already handled for crawlers that
+don't run JS, but less completely than the SEO section above implies.** The
+fallback in `buildFallbackHtml()` renders `pool.schedules` — the legacy flat,
+undated, current-week list — not `schedule_weeks`. So it carries this week's
+sessions for open pools, addresses, cross streets, phone, membership table, FAQ
+and the scrape date, and it omits **next week, per-day building hours and
+holiday lines** entirely. Closed pools appear in it by name and closure
+sentence only, since their flat list is deliberately empty.
+
+Structured data, `robots.txt` and `sitemap.xml` do already exist. See the SEO
+section above.
+
+### The four gaps that are real
+
+1. **Googlebot renders JS, and the rendered DOM loses the schedule tables the
+   raw HTML has.** This is the sharp version of the consultation's headline
+   concern, and the static fallback does *not* fix it. `createRoot()` wipes the
+   mirror on mount. What replaces it is *not* strictly a subset — React always
+   renders `ClosedPoolList` and all of `SeoContent` (membership, FAQ, boilerplate)
+   — but the pool cards are filtered to the defaults, Manhattan / Lap Swim /
+   Today. So the timetables are the part that vanishes: on a Tuesday afternoon
+   in September that's three Manhattan pools' remaining lap-swim slots, against
+   a raw page carrying every open pool's current week.
+
+   Two caveats worth keeping straight. The count is **clock-dependent**, not a
+   fixed property — `isPastToday()` reads the live clock and drops sessions that
+   have already ended, so late in the day the rendered page can be nearly empty.
+   And the raw page is not the richer one in every respect either: it lacks next
+   week and building hours, per the note above. The two representations differ in
+   *both* directions, which is precisely the drift the fallback invariant exists
+   to prevent.
+
+2. **No per-pool URLs.** All 13 pools share one URL and a `#pool-…` anchor. The
+   hypothesis — and it is a hypothesis, not something this repo can verify — is
+   that thirteen documents can each rank for their own "\<pool name\> schedule"
+   long tail, where one document with thirteen anchors realistically competes
+   for one. Worth testing; don't write it down as arithmetic.
+
+3. **No shareable filtered URLs.** Filter state lives only in `localStorage` —
+   no query params, no history entries, nothing to link to or share. UX debt as
+   much as SEO: the back button does nothing and "here's family swim on
+   Saturday" cannot be sent to anyone.
+
+4. **Missing fields.** No lat/lng (so no "near me" sort and no geo coordinates
+   in the JSON-LD), no accessibility, transit or parking data. lat/lng most
+   likely comes from NYC Open Data rather than the Parks facility HTML, which
+   doesn't carry it — see Step 4 on why that shouldn't necessarily become
+   scraper work.
+
+### What to ignore, and why
+
+- **"Municipal pools"** — not a phrase New Yorkers search. The proposed
+  homepage line ("Search municipal indoor pools by location, activity, date and
+  time") also drops **Indoor**, which is load-bearing here; see Naming above.
+  The current `<h1>` and subhead are better targeted than the suggested
+  replacement, and changing them means syncing four places.
+- **Generic `[city] indoor pool schedule` targeting** — template advice.
+  Avoiding bare "NYC pools open now" was a deliberate call: in summer that
+  query wants the free *outdoor* pools this site doesn't cover, and the traffic
+  would bounce. See Keyword targeting above.
+- **"Seek links from the municipality"** — NYC Parks will not link to a
+  third-party scraper of its own pages. Realistic link targets are neighborhood
+  blogs, r/nyc, swim clubs and Masters teams.
+
+### Build order
+
+**Step 1 — static per-pool pages at `/pool/<slug>/`.** Emit them in
+`generateBundle` via `this.emitFile`, as **fully static HTML with no React
+mount**. That is the point: with no JS replacing the markup there is no
+rendered-vs-raw divergence to police, and the pages need no routing, no SPA
+rewrite and no hydration. Each carries its own `<title>`, description,
+canonical, `PublicSwimmingPool` JSON-LD, the full dated two-week timetable from
+`schedule_weeks` (not the flat `schedules` list — closed pools have an empty
+flat list but often a real timetable next week), per-day building hours,
+holiday notices, phone, cross streets, membership copy, and a link back to the
+finder.
+
+Don't bolt thirteen more templates onto `vite-plugin-seo.js` as it stands. The
+plugin already hand-builds the fallback while React separately renders the same
+claims; a third renderer in the same file makes drift likelier. Factor the
+shared view-model (status phrase, dated week, holiday lines, membership block)
+into helpers and put the page template in its own module the plugin consumes.
+
+Gotchas for this step:
+
+- **The `/pools/*` redirect does not do what you'd assume.** It is
+  `to = "/:splat"`, forced 301 — so `/pools/chelsea-pool/` redirects to
+  `/chelsea-pool/`, which then 404s (there is deliberately no SPA catch-all).
+  The plural namespace is still unusable without changing that rule; it just
+  fails differently than "everything lands on the homepage".
+- **Don't derive the slug from `poolAnchorId()`.** That helper prefers
+  `pool.pool_code`, so stripping the `pool-` prefix yields `/pool/m164/`, not
+  `/pool/asser-levy-pool/`. Write a name-based slug helper with collision
+  handling (fall back to appending the code), and keep the anchor ids as they
+  are so existing `#pool-…` links survive.
+- **Escaping is not optional.** The existing fallback runs every interpolated
+  value through `esc()` and escapes `<` inside the JSON-LD block. Any new page
+  generator must do both — scraped copy is untrusted input.
+- **`holiday` and `note` are different things** — show the holiday line,
+  never promote the generic "no programs scheduled" note. Same invariant as
+  the cards.
+- **A closed pool with a future timetable must not read as open.** The
+  homepage derives the return date from the first day with sessions and wears
+  an amber "Reopens …" badge rather than a green "Open". Pool pages need the
+  same current-status / future-timetable distinction, or a page will state a
+  timetable for a locked building.
+- **Static pages have no staleness banner.** React warns past
+  `STALE_AFTER_HOURS`; a static page printing the scrape date does not warn
+  anyone when the residential-Mac refresh has silently stopped. Decide
+  deliberately: either render a build-time-honest date only, or give the pages
+  a tiny inline script that does the same 48h comparison the app does.
+- **Reconsider precaching these pages.** `workbox.globPatterns` matches
+  `**/*.html`, so they'd be picked up automatically — but the bundle already
+  contains every schedule and is the intended offline source, so this
+  duplicates the same data across 13 documents, and a precached *static* page
+  has no update prompt (that UI lives in React). Leaning toward adding
+  `/pool/**` to `globIgnores` and keeping offline on the app shell.
+- **Cache headers.** Only `/index.html` currently gets
+  `max-age=0, must-revalidate`. Add the equivalent for `/pool/*/index.html` —
+  these change daily.
+- JSON-LD `@id` and `url` for each pool currently point at `${SITE_URL}#pool-…`.
+  Once a real page exists they should point at it instead, with the homepage
+  anchors still resolving.
+- Styling must stay in a scoped `<style>` block, same reason as the fallback:
+  the plugin runs after Tailwind has scanned sources.
+- Add every page to `sitemap.xml` (15 URLs total with the homepage and
+  `/privacy/`), `lastmod` from the scrape timestamp as the homepage already does.
+- **7 of 13 pools are closed as of 2026-09-08** (summer closures ending
+  mid-September). Their pages will be thin until they reopen. Build them
+  anyway — people search closed pools by name, and the page is the right place
+  to say "closed through mid-September, here's when it's back" — but expect
+  nothing from them until the timetables return.
+
+**Step 2 — make the rendered DOM stop dropping pools.** Closes gap 1, but
+*not* by bolting a second full pool index under the grid: React already renders
+filtered cards, the closed list and the SEO section, so a thirteen-row status
+table duplicating all of it earns its space only if a reader wants it. Better
+shape: link each card and each `ClosedPoolList` entry to its pool page, then add
+one compact semantic directory covering only the pools the active filters
+excluded, so every pool is reachable from the rendered DOM under any filter
+state. The depth then lives on the pool pages, and the fallback can be trimmed
+toward what React renders rather than the reverse — noting that this adds a
+third representation to keep in sync, and nothing tests drift.
+
+**Step 3 — filter state in the URL.** `?borough=&activity=&day=`, read on
+mount, written on change. Use **`pushState` for user-initiated filter changes**
+— that's what makes Back traverse them — and reserve `replaceState` for the
+initial normalization of a bare or legacy URL. `localStorage` stays the
+fallback for a visit with no query string. Gives shareable links and the "pools
+open now" / "family swim Saturday" URLs the consultation asked for. No Netlify
+change needed — query strings don't touch routing, and the deliberate absence
+of an SPA catch-all still holds.
+
+**Step 4 — location and facility metadata.** lat/lng, accessibility, nearest
+subway lines; unlocks "near me" sorting and `geo` in the JSON-LD. **Probably
+not scraper work.** This data is stable, while `scraper.py` is the fragile
+daily path — four requests per pool, residential IP only — and coupling a
+second source's schema to it means an outage there can break the daily refresh.
+Prefer a hand-reviewed enrichment file keyed by `pool_code`, merged at build
+time. Either way the fields land on the pool object in `nyc_pools_live.json`
+only: `nyc_pools_meta.json` holds nothing but `updated_at` and `pool_count`,
+and `schedules` is frozen for the mobile app.
+
+**Step 5 — human-only, unchanged.** Search Console property + sitemap
+submission (still parked, see below), the og-image replacement, and link
+outreach to neighborhood blogs and swim clubs.
 
 ## Data refresh (runs locally, not on GitHub)
 
@@ -360,14 +547,18 @@ left to age out behind the 301.
 
 Code:
 
+- **Per-pool pages, homepage pool index, filter state in the URL** — planned
+  but not built; the reasoning, build order and gotchas are in
+  [SEO roadmap](#seo-roadmap--per-pool-pages-planned-2026-09-08) above. Start
+  there before touching SEO, and note the `/pools/*` redirect trap.
 - Scrape membership pricing instead of hand-maintaining it — the URL is
   stable and the markup is a clean table.
 - Geolocation / "pools near me" sort (needs lat/lng in the scraped data;
-  currently only address + zip).
+  currently only address + zip). Step 4 of the SEO roadmap.
 - Surface a clear empty-state when a borough/activity/day combo has no
   matches *because everything ended for today* vs. *no schedule at all*.
-- Add a small banner if `meta.updated_at` is more than ~48h old (scraper
-  silently failing).
+- ~~Add a small banner if `meta.updated_at` is more than ~48h old~~ — **done**;
+  `STALE_AFTER_HOURS` in `src/utils.js` and the banner in `App.jsx`.
 
 ## Operational checks
 

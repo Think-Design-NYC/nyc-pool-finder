@@ -19,6 +19,9 @@ import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
 import {
   ACTIVITIES,
+  boroughsPresent,
+  joinBoroughs,
+  isOpen,
   statusLabel,
   statusBadgeLabel,
   poolAnchorId as anchorId,
@@ -311,7 +314,11 @@ function buildFallbackHtml() {
       `<section><h3>${esc(f.q)}</h3><p>${esc(f.a(pools.filter((p) => p.status === 'open').map((p) => p.pool_name)))}</p></section>`,
   ).join('')
 
-  const boroughs = byBorough.map(([b]) => b).join(', ')
+  // Two different lists, on purpose: the subhead counts boroughs with an OPEN
+  // pool, the "Indoor swimming in New York City" paragraph describes the whole
+  // system. Both come from the same helpers React uses, so the wording matches.
+  const openBoroughList = joinBoroughs(boroughsPresent(pools, isOpen))
+  const allBoroughList = joinBoroughs(boroughsPresent(pools))
 
   // Mirrors what React renders once it mounts — same headings, same claims.
   // Divergence here would read as cloaking to a crawler that checks both.
@@ -319,12 +326,12 @@ function buildFallbackHtml() {
 <div id="seo-fallback">
   <h1>NYC Indoor Pool Finder</h1>
   <p>Public pools open now — lap swim &amp; open swim schedules</p>
-  <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(boroughs)}.</p>
+  <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(openBoroughList)}</p>
   ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>
-    <p>NYC Parks operates ${pools.length} indoor public pools across ${esc(boroughs)}. Every one of
+    <p>NYC Parks operates ${pools.length} indoor public pools across ${esc(allBoroughList)}. Every one of
     them sits inside a recreation center, so you need a Recreation Center membership to swim. This
     page pulls the current lap swim, open swim, family swim and water exercise schedules straight
     from nycgovparks.org each morning, so you can see which pools are open now and when the next
@@ -344,7 +351,8 @@ function buildFallbackHtml() {
     excludes every center with a pool. ${esc(IDNYC_NOTE)}
     <a href="${esc(MEMBERSHIP_URL)}" rel="nofollow">Full membership details</a>.</p>
     <p>Unlike the city&apos;s outdoor pools — which run only from late June through Labor Day —
-    indoor pools are open year-round.</p>
+    indoor pools are open year-round. Filter by borough to find a pool near you in
+    ${esc(joinBoroughs(boroughsPresent(pools), 'or'))}.</p>
   </section>
   ${
     closed.length

@@ -10,6 +10,10 @@ import ClosedPoolList from './components/ClosedPoolList'
 import UpdatePrompt from './components/UpdatePrompt'
 import {
   getBorough,
+  BOROUGH_ORDER,
+  boroughsPresent,
+  joinBoroughs,
+  isOpen,
   ACTIVITIES,
   matchesActivity,
   DAY_FILTERS,
@@ -25,8 +29,6 @@ import {
   describeAge,
   STALE_AFTER_HOURS,
 } from './utils'
-
-const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Other']
 
 // localStorage can throw (private mode, storage disabled); on failure this
 // degrades to plain useState.
@@ -118,10 +120,11 @@ export default function App() {
     [selectedDay, weeks],
   )
 
-  const openNames = useMemo(
-    () => pools.filter((p) => p.status === 'open').map((p) => p.pool_name),
-    [],
-  )
+  const openNames = useMemo(() => pools.filter(isOpen).map((p) => p.pool_name), [])
+
+  // Derived, never hardcoded: this line claimed the Bronx long after St. Mary's
+  // closed. Mirrored in the SEO fallback through the same helper.
+  const openBoroughList = useMemo(() => joinBoroughs(boroughsPresent(pools, isOpen)), [])
 
   const lastUpdated = useMemo(() => {
     if (!meta.updated_at) return null
@@ -202,8 +205,8 @@ export default function App() {
             )}
           </p>
           <p className="mt-1 text-sm font-medium text-slate-600">
-            {openNames.length} of {pools.length} NYC indoor pools open today across
-            Manhattan, Brooklyn, Queens &amp; the Bronx
+            {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
+            {openBoroughList}
           </p>
         </div>
         <a
