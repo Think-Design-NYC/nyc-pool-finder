@@ -107,7 +107,8 @@ before assuming a path:
 
 | Machine | Repo path | Role |
 | --- | --- | --- |
-| Primary | `/Users/rshah/Claude/Projects/pool-finder/` | scheduled refresh, daily 06:00 |
+| Primary | `/Users/rshah/Claude/Projects/pool-finder-refresh/` | scheduled refresh, daily 06:00 — dedicated clone pinned to `main`, never develop here |
+| Primary | `/Users/rshah/Claude/Projects/pool-finder/` | development |
 | Secondary | `/Users/rshah/Claude/Projects/nyc-pool-finder/` | development, manual refresh |
 
 ### Primary — macOS launchd (daily at 06:00 local)
@@ -115,8 +116,10 @@ before assuming a path:
 A LaunchAgent runs [scripts/refresh.sh](scripts/refresh.sh) every day:
 
 - **Plist:** `~/Library/LaunchAgents/com.thinkdesign.poolfinder-refresh.plist`
-- **Script path:** `/Users/rshah/Claude/Projects/pool-finder/scripts/refresh.sh`
-  (the old "Local Sites" checkout is gone)
+- **Script path:** `/Users/rshah/Claude/Projects/pool-finder-refresh/scripts/refresh.sh`
+  (a dedicated clone: in Sep 2026 the job pointed at the dev checkout, which sat
+  on a feature branch with a pre-guard refresh.sh, and data refreshes silently
+  landed off-main while the live site went stale)
 - **Log:** `~/Library/Logs/poolfinder-refresh.log`
 - **Venv:** `.venv/` in the repo (`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`)
 - Push auth uses the existing `gh`/git credentials in the login keychain.
