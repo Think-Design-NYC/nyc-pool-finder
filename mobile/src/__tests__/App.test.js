@@ -2,6 +2,15 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react-nativ
 
 import App from '../../App';
 
+jest.mock('../lib/data', () => {
+  const fixtures = require('../__fixtures__/pools');
+  return {
+    ...jest.requireActual('../lib/data'),
+    BUNDLED_POOLS: fixtures.FIXTURE_POOLS,
+    BUNDLED_META: fixtures.FIXTURE_META,
+  };
+});
+
 beforeEach(() => {
   // Monday, Aug 31 2026, 10:00 local — deterministic Today/Tomorrow filters.
   jest.useFakeTimers({ advanceTimers: true, now: new Date(2026, 7, 31, 10, 0, 0) });
@@ -19,7 +28,7 @@ test('renders the bundled pools under the default filters', async () => {
   await render(<App />);
 
   expect(await screen.findByText('NYC Indoor Pool Finder')).toBeTruthy();
-  // Manhattan / Lap Swim / Today defaults: Chelsea has Monday lap swim.
+  // Manhattan / Lap Swim / Today defaults: fixture Chelsea has Monday lap swim.
   expect(await screen.findByText('Chelsea Pool')).toBeTruthy();
   // Closed Manhattan pool has no schedules, so the activity filter drops it.
   expect(screen.queryByText('Hansborough Pool')).toBeNull();
