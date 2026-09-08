@@ -1,12 +1,16 @@
-# NYC Pool Finder
+# NYC Indoor Pool Finder — https://pools.thinkdesign.com/
 #
-# NOTE: this file is served at /pools/robots.txt, which crawlers ignore —
-# robots.txt is only honoured at the domain root. The effective robots.txt
-# for thinkdesign.com is managed in WordPress; this file is kept for
-# reference and in case the site ever moves to its own domain root.
-# Submit the sitemap directly in Google Search Console.
+# The site now lives at the root of its own subdomain (Netlify), so THIS file is
+# the effective robots.txt and is honoured by crawlers. Before the move it was
+# served at thinkdesign.com/pools/robots.txt and ignored, and the real one was a
+# hand-edited static file at the WordPress web root on WP Engine.
+#
+# That WP Engine robots.txt still carries a second Sitemap line pointing at
+# https://thinkdesign.com/pools/sitemap.xml (added 2026-09-01). Drop it once the
+# /pools/ 301 to this subdomain is in place — it is no longer this repo's
+# concern, and it cannot be deployed from here.
 
 User-agent: *
 Allow: /
 
-Sitemap: https://thinkdesign.com/pools/sitemap.xml
+Sitemap: https://pools.thinkdesign.com/sitemap.xml

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-**NYC Indoor Pool Finder** — a static React/Vite site listing NYC's 13 indoor public pools and their schedules, scraped from nycgovparks.org. Live at https://thinkdesign.com/pools/ on WP Engine (repo `Think-Design-NYC/nyc-pool-finder`, deploys from `main`; the old GitHub Pages URL now serves only a redirect).
+**NYC Indoor Pool Finder** — a static React/Vite site listing NYC's 13 indoor public pools and their schedules, scraped from nycgovparks.org. Live at https://pools.thinkdesign.com/ on Netlify (repo `Think-Design-NYC/nyc-pool-finder`, Netlify's Git integration builds from `main`; the old GitHub Pages URL and thinkdesign.com/pools/ now redirect here).
 
 **[HANDOFF.md](HANDOFF.md) is the authoritative deep-dive** — scraper field sources, SEO rationale, gotchas, open follow-ups. Read it before non-trivial work, and keep it current when you change how things work.
 
@@ -13,7 +13,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev          # vite dev server
 npm run build        # build to dist/ (also runs the SEO plugin: JSON-LD, fallback HTML, sitemap)
-npm run preview      # serve the built dist/
+npm run preview      # serve the built dist/ (the ONLY way to exercise the service worker)
+python3 scripts/make_icons.py   # regenerate public/icons/* (needs system python3 + Pillow)
 
 # Scraper (Python; needs the venv — see below)
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # one-time setup
@@ -25,11 +26,15 @@ No test suite, no linter.
 
 ## Architecture
 
-**Data is baked in at build time** — `App.jsx` imports `nyc_pools_live.json` directly; there is no runtime fetch. A data refresh is therefore a commit, which triggers the deploy (`.github/workflows/deploy.yml`: WP Engine `thinkdesignprd` via `wpengine/github-action-wpe-site-deploy`, plus a GitHub Pages job that publishes only a redirect page).
+**Data is baked in at build time** — `App.jsx` imports `nyc_pools_live.json` directly; there is no runtime fetch. A data refresh is therefore a commit, which triggers a Netlify build (config in `netlify.toml`). `.github/workflows/deploy.yml` deploys nothing any more — it only runs a build check and publishes the GitHub Pages redirect page.
 
 ```
-scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (3 requests/pool)
+scraper.py            → nyc_pools_live.json + nyc_pools_meta.json (4 requests/pool:
+                        facility, detail, and the schedule page twice — this week + next)
 scripts/refresh.sh    → runs scraper, refuses to commit if <8 pools scraped
+netlify.toml          → Netlify build command, publish dir, headers, /pools/* → / 301
+vite.config.js        → VitePWA: manifest, service worker, precache rules
+scripts/make_icons.py → regenerates the PWA icon set (committed, not hand-made)
 src/App.jsx           → filter state, imports the JSON, renders the UI
 src/utils.js          → borough inference (zip prefix), activity regexes, day/time matching, poolAnchorId()
 src/faq.js            → FAQ copy shared by UI and build-time SEO output
@@ -37,7 +42,7 @@ src/membership.js     → membership prices, hand-maintained (NOT scraped)
 vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into #root, sitemap.xml
 ```
 
-**The scraper cannot run in CI.** nycgovparks.org returns 403 to datacenter IPs; it runs on a residential IP (currently Ray's Mac, daily 06:00 via launchd — see DEPLOY.md). `refresh.sh` silently falls back to system `python3` if `.venv/` is missing, and then fails on imports — the venv is required.
+**The scraper cannot run in CI.** nycgovparks.org returns 403 to datacenter IPs; it runs on a residential IP. The primary Mac runs `refresh.sh` daily at 06:00 via launchd (no Raspberry Pi); the secondary Mac has no scheduled job, but `refresh.sh --if-stale 36` can be run there by hand and no-ops unless the published data is already >36h old. `refresh.sh` refuses to run off `main`. See DEPLOY.md. `refresh.sh` silently falls back to system `python3` if `.venv/` is missing, and then fails on imports — the venv is required.
 
 ## Invariants (violating these breaks things quietly)
 
@@ -45,7 +50,15 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 - **The site name is "NYC Indoor Pool Finder" — "Indoor" is load-bearing** (NYC's ~50 outdoor pools are a separate free system). The name appears in `index.html` meta tags, the `App.jsx` `<h1>`, the fallback `<h1>`, and the JSON-LD `WebSite`/`WebPage` nodes; keep them in sync.
 - **All 13 pools require a paid Recreation Center membership — never let "free" into the copy.** Prices in `src/membership.js` are hand-typed; `MEMBERSHIP_CHECKED` is the date they were last verified and must be bumped by hand, never derived from the build date. Never quote the $100/yr tier — it excludes every center with a pool (name the "Access to All Centers" tier instead).
 - **Fallback markup can't use Tailwind classes** — the SEO plugin runs after Tailwind scans sources, so classes introduced there get purged. It uses a scoped `<style>` block.
-- **Vite `base` is `/pools/`** — assets 404 if the site's path on thinkdesign.com changes without updating `vite.config.js`.
+- **`schedules` is frozen for the mobile app; `schedule_weeks` is the real source.** NYC Parks serves any week at `/facilities/recreationcenters/<code>/schedule/<Monday>`, so the scraper pulls this week and next with real dates, per-day building hours and holiday notices. `schedules` stays a flat, undated, current-week list because the mobile app reads it — the site itself must use `schedule_weeks`. Adding dated rows to `schedules` would make Monday appear twice and break the app.
+- **`schedule_weeks` is populated for closed pools too, and `schedules` is not.** A pool shut this week can have a full timetable next week (Chelsea reopens 9/8). The flat list is still cleared on closure so nothing renders a timetable for a locked building.
+- **`holiday` and `note` on a schedule day are different things.** `holiday` ("Labor Day: Recreation Centers will be closed.") explains an empty day and is shown; `note` ("There are no programs at this pool today.") restates an empty list and is not. The scraper splits them from the markup — don't re-derive it with a regex.
+- **A closed pool is promoted into the grid only for a range it actually reopens in**, and then it must leave the closed list — appearing in both would state two different things about the same pool. `reopeningDate()` derives the return date from the first day in range that has sessions, never from the closure prose, and the card wears an amber "Reopens Tue 9/8" badge rather than a green "Open".
+- **The service worker must never be cached.** `netlify.toml` sends `sw.js` and `manifest.webmanifest` with `max-age=0, must-revalidate`. A cached `sw.js` pins every returning visitor to an old build and no update prompt can ever fire.
+- **Offline works because the data is in the bundle, not because the JSON is cached.** `App.jsx` imports the JSON at build time, so precaching the app shell precaches the schedules. `dist/nyc_pools_*.json` is deliberately excluded from the precache (`globIgnores`) — it exists only for the mobile app and the website never fetches it.
+- **`registerType` is `'prompt'`, not `'autoUpdate'`.** Swapping the schedule out from under someone mid-read is worse than a stale minute. If the prompt is ignored, the existing 48h staleness banner still fires: `meta.updated_at` is baked into the cached bundle and compared against the live clock, so a stale cache correctly reports itself as stale.
+- **`npm run dev` has no service worker** (`devOptions.enabled: false`) — a SW caching a hot-reloading bundle is a debugging trap. Use `npm run build && npm run preview` to test PWA behaviour.
+- **Vite `base` is `/`, matching the subdomain root.** If the site ever moves back to a subpath, `base` in `vite.config.js` *and* `SITE_URL` in `vite-plugin-seo.js` must both change — they are separate constants and nothing checks they agree.
 
 ## UI behavior worth knowing
 

@@ -8,16 +8,35 @@ import {
   ExternalLink,
   Building2,
 } from 'lucide-react'
-import { getBorough, getStatusStyle, fullAddress, poolAnchorId } from '../utils'
+import {
+  getBorough,
+  getStatusStyle,
+  statusLabel,
+  statusBadgeLabel,
+  fullAddress,
+  poolAnchorId,
+  dayStamp,
+  parseISODate,
+  holidaysForFilter,
+} from '../utils'
 
-function StatusBadge({ status }) {
-  const s = getStatusStyle(status)
+// "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
+// selected week. It must never read as "Open": the badge is amber, not green,
+// and names the date rather than the status.
+function reopensLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `Reopens ${dayStamp({ date: iso })}` : 'Reopens later'
+}
+
+function StatusBadge({ pool }) {
+  const reopening = Boolean(pool.reopens_on)
+  const s = reopening ? getStatusStyle('transitioning') : getStatusStyle(pool.status)
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ${s.badge}`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${s.dot}`} />
-      {s.label}
+      {reopening ? reopensLabel(pool.reopens_on) : statusBadgeLabel(pool)}
     </span>
   )
 }
@@ -27,7 +46,8 @@ function ScheduleRow({ schedule }) {
     <li className="rounded-lg bg-sky-50 p-3 ring-1 ring-inset ring-sky-100">
       <p className="text-sm font-semibold text-sky-900">{schedule.session_type}</p>
       <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
-        <span className="text-xs text-slate-500">{schedule.days}</span>
+        {/* "Mon 9/7" once the data carries dates; bare weekday otherwise. */}
+        <span className="text-xs text-slate-500">{dayStamp(schedule)}</span>
         {/* Lane swim times are the hero — big and bold */}
         <span className="text-base font-bold tabular-nums text-sky-700">
           {schedule.time}
@@ -40,14 +60,17 @@ function ScheduleRow({ schedule }) {
   )
 }
 
-export default function PoolCard({ pool, activityLabel = 'Swim' }) {
+export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }) {
   const loc = pool.location ?? {}
   const address = fullAddress(loc)
   const mapsUrl = pool.pool_name
     ? `https://maps.google.com/?q=${encodeURIComponent(`${pool.pool_name} New York NY`)}`
     : null
   const hours = loc.building_hours
-  const isClosed = pool.status === 'closed'
+  // A reopening pool is closed *now* but has a real timetable in view, so it
+  // renders its schedule and wears the amber closure note rather than the red.
+  const reopening = Boolean(pool.reopens_on)
+  const isClosed = pool.status === 'closed' && !reopening
 
   return (
     <article
@@ -64,10 +87,17 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
             {getBorough(pool)}
           </p>
         </div>
-        <StatusBadge status={pool.status} />
+        <StatusBadge pool={pool} />
       </header>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
+        {/* NYC Parks repeats a ~400-character summer reduced-hours notice on
+            every affected pool. The scraper strips it and sets this flag; the
+            actual hours are in the schedule below. */}
+        {pool.reduced_hours && !isClosed && (
+          <p className="text-sm text-slate-500">Reduced summer hours</p>
+        )}
+
         {/* Location & contact */}
         <div className="space-y-1.5 text-sm text-slate-600">
           {address && (
@@ -136,7 +166,26 @@ export default function PoolCard({ pool, activityLabel = 'Swim' }) {
             <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
               <Waves size={14} className="text-sky-500" />
               {activityLabel} Times
+              {reopening && (
+                <span className="font-medium normal-case tracking-normal text-amber-700">
+                  · from {dayStamp({ date: pool.reopens_on })}
+                </span>
+              )}
             </h3>
+            {/* Explains a gap in the list below: the day is missing because the
+                centers are shut, not because this pool has no sessions. */}
+            {holidays.map((h) => (
+              <p
+                key={h.date}
+                className="mb-2 flex items-start gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-xs text-amber-800 ring-1 ring-inset ring-amber-100"
+              >
+                <Info size={13} className="mt-0.5 shrink-0" />
+                <span>
+                  <span className="font-semibold">{dayStamp({ date: h.date })}</span>{' '}
+                  {h.holiday}
+                </span>
+              </p>
+            ))}
             <ul className="space-y-2">
               {pool.schedules.map((s, i) => (
                 <ScheduleRow key={i} schedule={s} />

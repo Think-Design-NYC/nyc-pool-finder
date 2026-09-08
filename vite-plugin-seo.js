@@ -17,7 +17,12 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { poolAnchorId as anchorId } from './src/utils.js'
+import {
+  ACTIVITIES,
+  statusLabel,
+  statusBadgeLabel,
+  poolAnchorId as anchorId,
+} from './src/utils.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -25,7 +30,7 @@ import {
   MEMBERSHIP_URL,
 } from './src/membership.js'
 
-export const SITE_URL = 'https://thinkdesign.com/pools/'
+export const SITE_URL = 'https://pools.thinkdesign.com/'
 
 const BOROUGH_ORDER = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island']
 
@@ -114,17 +119,20 @@ const parksUrl = (pool) =>
     : undefined
 
 // Distinct swim programs offered, e.g. "Adult Lap Swim" -> "Lap Swim".
+//
+// Derived from the same ACTIVITIES table the UI filters on, so a new program
+// type is classified identically in the pills and in the JSON-LD. This used to
+// be a hand-maintained copy of those regexes and had already drifted: it never
+// emitted Swim Team at all.
 function activityTags(pool) {
   const tags = new Set()
   for (const s of pool.schedules ?? []) {
     const t = s.session_type ?? ''
-    if (/lap swim/i.test(t)) tags.add('Lap Swim')
-    else if (/family swim/i.test(t)) tags.add('Family Swim')
-    else if (/open swim|general swim/i.test(t)) tags.add('Open Swim')
-    else if (/learn to swim/i.test(t)) tags.add('Learn to Swim')
-    else if (/water (exercise|aerobics)/i.test(t)) tags.add('Water Exercise')
+    for (const a of ACTIVITIES) {
+      if (a.match(t)) tags.add(a.key)
+    }
   }
-  return [...tags]
+  return ACTIVITIES.map((a) => a.key).filter((k) => tags.has(k))
 }
 
 function poolLd(pool, position) {
@@ -232,26 +240,52 @@ function buildJsonLd() {
   }
 }
 
+// The scrape date, formatted as the React header formats it. Pinned to New York
+// so a CI build (UTC) and a local build don't disagree about the day.
+function lastUpdatedLabel() {
+  if (!meta.updated_at) return null
+  const t = new Date(meta.updated_at)
+  if (Number.isNaN(t.getTime())) return null
+  return t.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'America/New_York',
+  })
+}
+
 // Static mirror of the React UI for non-JS crawlers. Replaced on mount.
+//
+// NOTE: App.jsx also renders a "schedules may be out of date" banner past
+// STALE_AFTER_HOURS. There is deliberately no counterpart here, and that is not
+// drift. This HTML is regenerated only by a deploy, and deploys are triggered by
+// data-refresh commits — so at build time the data is always fresh, and a stale
+// site is serving a fallback built back when it wasn't. Build-time staleness
+// detection is impossible by construction. The scrape date below is the honest
+// static equivalent: a crawler can read it and judge freshness itself.
 function buildFallbackHtml() {
   const openCount = pools.filter((p) => p.status === 'open').length
-  const byBorough = BOROUGH_ORDER.map((b) => [b, pools.filter((p) => p.borough === b)]).filter(
-    ([, list]) => list.length,
-  )
+  // Mirrors App.jsx: closed pools leave the borough grid and get their own list
+  // at the bottom, so they stay visible under every filter combination.
+  const closed = pools.filter((p) => p.status === 'closed')
+  const byBorough = BOROUGH_ORDER.map((b) => [
+    b,
+    pools.filter((p) => p.borough === b && p.status !== 'closed'),
+  ]).filter(([, list]) => list.length)
 
   const sections = byBorough
     .map(([borough, list]) => {
       const cards = list
         .map((pool) => {
           const loc = pool.location ?? {}
-          const isOpen = pool.status === 'open'
           const sessions = (pool.schedules ?? [])
             .filter((s) => !NON_PUBLIC_SESSION.test(s.session_type ?? ''))
             .map((s) => `<li>${esc(s.days)} — ${esc(s.session_type)}: ${esc(s.time)}</li>`)
             .join('')
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
-  <h3>${esc(pool.pool_name)} <span class="sf-badge">${isOpen ? 'Open' : 'Closed'}</span></h3>
+  <h3>${esc(pool.pool_name)} <span class="sf-badge">${esc(statusBadgeLabel(pool))}</span></h3>
+  ${pool.reduced_hours ? '<p>Reduced summer hours</p>' : ''}
   <p>${esc(
     [
       loc.address,
@@ -286,6 +320,7 @@ function buildFallbackHtml() {
   <h1>NYC Indoor Pool Finder</h1>
   <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(boroughs)}.</p>
+  ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>
@@ -311,7 +346,38 @@ function buildFallbackHtml() {
     <p>Unlike the city&apos;s outdoor pools — which run only from late June through Labor Day —
     indoor pools are open year-round.</p>
   </section>
+  ${
+    closed.length
+      ? `<section><h2>Currently closed (${closed.length})</h2><ul>${closed
+          .map((pool) => {
+            // Mirrors ClosedPoolList.jsx: closure sentence, a number to call,
+            // and whatever project page the notice linked to.
+            const links = [
+              ...(pool.notice_links ?? []).map(
+                (l) => `<a href="${esc(l.url)}" rel="nofollow">${esc(l.text)}</a>`,
+              ),
+              pool.url
+                ? `<a href="${esc(pool.url)}" rel="nofollow">NYC Parks page</a>`
+                : null,
+            ].filter(Boolean)
+            const contact = [
+              pool.phone
+                ? `<a href="tel:${esc(pool.phone.replace(/[^+\d]/g, ''))}">${esc(pool.phone)}</a>`
+                : null,
+              ...links,
+            ].filter(Boolean)
+            return (
+              `<li id="${esc(anchorId(pool))}"><strong>${esc(pool.pool_name)}</strong>` +
+              ` — ${esc(statusLabel(pool))}` +
+              (contact.length ? `<br />${contact.join(' · ')}` : '') +
+              `</li>`
+            )
+          })
+          .join('')}</ul></section>`
+      : ''
+  }
   <section><h2>Frequently asked questions</h2>${faq}</section>
+  <footer><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
 </div>`
 }
 
@@ -323,6 +389,7 @@ const FALLBACK_STYLE = `
 #seo-fallback h3{font-size:1rem;margin:0 0 .25rem}
 #seo-fallback .sf-card{border:1px solid #e2e8f0;border-radius:.75rem;padding:.85rem;margin:.6rem 0}
 #seo-fallback .sf-badge{font-size:.7rem;font-weight:600;color:#475569}
+#seo-fallback .sf-closure{font-weight:600;color:#92400e}
 #seo-fallback ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem;color:#475569}
 #seo-fallback table{border-collapse:collapse;margin:.5rem 0;font-size:.85rem}
 #seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
@@ -352,17 +419,36 @@ export default function seoPlugin() {
     },
 
     generateBundle() {
+      // lastmod comes from the scrape timestamp, not the build date, so it
+      // stays truthful: a rebuild that changed no data must not claim the
+      // content is newer than it is.
       const lastmod = (meta.updated_at || '').slice(0, 10)
+      // Only genuinely indexable pages belong here. Pool anchors (#pool-…) are
+      // fragments, not URLs — crawlers ignore them in a sitemap; each pool is
+      // addressable through its JSON-LD @id instead. Anything listed here must
+      // NOT carry a noindex, or Search Console reports the contradiction as
+      // "Submitted URL marked 'noindex'".
+      const pages = [
+        { loc: SITE_URL, lastmod, changefreq: 'daily', priority: '1.0' },
+        // The privacy page changes on its own schedule and has no scrape date
+        // to point at, so it carries no lastmod rather than a guessed one.
+        { loc: `${SITE_URL}privacy/`, changefreq: 'yearly', priority: '0.3' },
+      ]
+      const urls = pages
+        .map(
+          (p) => `  <url>
+    <loc>${p.loc}</loc>${p.lastmod ? `\n    <lastmod>${p.lastmod}</lastmod>` : ''}
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`,
+        )
+        .join('\n')
       this.emitFile({
         type: 'asset',
         fileName: 'sitemap.xml',
         source: `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${SITE_URL}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+${urls}
 </urlset>
 `,
       })
