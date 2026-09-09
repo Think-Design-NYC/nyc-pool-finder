@@ -594,10 +594,10 @@ left to age out behind the 301.
 
 Code:
 
-- **Per-pool pages, homepage pool index, filter state in the URL** — planned
-  but not built; the reasoning, build order and gotchas are in
-  [SEO roadmap](#seo-roadmap--per-pool-pages-planned-2026-09-08) above. Start
-  there before touching SEO, and note the `/pools/*` redirect trap.
+- ~~Per-pool pages, homepage pool index, filter state in the URL~~ —
+  **Steps 1–3 built 2026-09-08**, browser-verified. See
+  [SEO roadmap](#seo-roadmap--per-pool-pages-planned-2026-09-08) above; Step 4
+  (location metadata) is the only code step left, and Step 5 needs a human.
 - Scrape membership pricing instead of hand-maintaining it — the URL is
   stable and the markup is a clean table.
 - Geolocation / "pools near me" sort (needs lat/lng in the scraped data;
