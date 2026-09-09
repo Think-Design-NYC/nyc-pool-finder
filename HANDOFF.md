@@ -411,10 +411,15 @@ Gotchas for this step:
   to say "closed through mid-September, here's when it's back" — but expect
   nothing from them until the timetables return.
 
-**Step 2 — make the rendered DOM stop dropping pools.** *(Half done: cards and
-the closed list now link to pool pages, which was the linking half. Still to do:
-the compact directory of pools the active filters excluded, so every pool is
-reachable from the rendered DOM under any filter state.)* Closes gap 1, but
+**Step 2 — make the rendered DOM stop dropping pools. — BUILT 2026-09-08.**
+Cards and the closed list link to pool pages, and
+[PoolDirectory](src/components/PoolDirectory.jsx) lists whatever the active
+filters excluded, computed as the complement of the two rendered lists rather
+than by re-deriving the filters — so it cannot fall out of step with them. Every
+filter state now totals 13 pools on the page. Worth knowing how bad this was:
+with the default Manhattan / Lap Swim / Today filters late in the day,
+`isPastToday()` empties the grid completely, so the rendered DOM contained no
+open pool at all while the fallback listed five. The original reasoning follows: Closes gap 1, but
 *not* by bolting a second full pool index under the grid: React already renders
 filtered cards, the closed list and the SEO section, so a thirteen-row status
 table duplicating all of it earns its space only if a reader wants it. Better

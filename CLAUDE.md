@@ -69,5 +69,6 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 ## UI behavior worth knowing
 
 - Filter defaults: Manhattan / Lap Swim / Today. Borough pills are dynamic (a borough hides when nothing matches the active filters).
+- **Every pool stays reachable under every filter state.** `PoolDirectory` lists the pools the active filters excluded — links only, no schedules. Without it the rendered DOM was a strict subset of the crawlable fallback: on a weekday evening the default Manhattan / Lap Swim / Today filters can leave the grid empty, and every open pool vanished from the page Googlebot indexes. It has no counterpart in the fallback on purpose — that markup filters nothing, so its excluded set is always empty.
 - There is no "show closed" toggle: closed pools have no schedules, so any activity/day filter drops them naturally; unfiltered they show and sort last (open → transitioning → closed).
 - Activity matching is regex-based (`ACTIVITIES` in `utils.js`); a new session-type string from the scraper that matches no bucket becomes invisible under activity filters.
