@@ -66,6 +66,14 @@ export default defineConfig({
         // already contains every schedule, so nothing is lost offline.
         globIgnores: ['**/nyc_pools_*.json', 'pool/**/*.html'],
         navigateFallback: '/index.html',
+        // Without this the SW answers EVERY navigation with the precached app
+        // shell, so /pool/<slug>/ silently served the homepage to anyone who
+        // had the service worker installed — invisible to curl, which has no
+        // SW, and the reason this shipped broken. The pool pages are real
+        // documents, not SPA routes: they must go to the network. They are also
+        // excluded from the precache (globIgnores), so there is nothing cached
+        // to fall back to and this must stay in sync with that decision.
+        navigateFallbackDenylist: [/^\/pool\//],
         // Without this, an offline visit to /privacy/ misses the precached
         // 'privacy/index.html' and falls through to the app shell.
         directoryIndex: 'index.html',

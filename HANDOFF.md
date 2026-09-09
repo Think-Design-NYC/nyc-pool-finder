@@ -389,6 +389,12 @@ Gotchas for this step:
   anyone when the residential-Mac refresh has silently stopped. Decide
   deliberately: either render a build-time-honest date only, or give the pages
   a tiny inline script that does the same 48h comparison the app does.
+- **`navigateFallbackDenylist` is not optional.** Shipped broken on
+  2026-09-08: excluding the pages from the precache without denylisting them
+  meant the SW's navigation route served the precached `/index.html` for every
+  `/pool/<slug>/` request, so returning visitors were bounced to the homepage.
+  Every curl check passed — curl has no service worker. Test PWA behaviour with
+  `npm run build && npm run preview` in a real browser, not with curl.
 - **Reconsider precaching these pages.** `workbox.globPatterns` matches
   `**/*.html`, so they'd be picked up automatically — but the bundle already
   contains every schedule and is the intended offline source, so this
