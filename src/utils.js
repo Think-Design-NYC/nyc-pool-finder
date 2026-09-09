@@ -238,6 +238,31 @@ export const ACTIVITIES = [
   { key: 'Water Polo', match: (s) => /water polo/i.test(s) },
 ]
 
+// The full option lists the filters accept, defaults included. Shared so the
+// persisted value, the URL parameter and the pill list can't disagree about
+// what a valid filter is.
+export const BOROUGH_FILTERS = ['All Boroughs', ...BOROUGH_ORDER]
+export const ACTIVITY_FILTERS = ['All activities', ...ACTIVITIES.map((a) => a.key)]
+
+// Filter values as URL slugs: "All Boroughs" -> all-boroughs, "Children/Teen
+// Swim" -> children-teen-swim, "ThisWeek" -> this-week. The camel-case split
+// runs first so the two week values don't collapse to thisweek/nextweek.
+export function filterSlug(value) {
+  return String(value ?? '')
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+// Slug back to the canonical value, or null when it matches nothing. Unknown
+// slugs are dropped rather than guessed — a hand-edited URL falls back to the
+// stored filter instead of rendering an empty page.
+export function filterFromSlug(slug, allowed) {
+  if (!slug) return null
+  return allowed.find((v) => filterSlug(v) === slug) ?? null
+}
+
 export function matchesActivity(sessionType, activityKey) {
   if (!activityKey) return true
   const a = ACTIVITIES.find((x) => x.key === activityKey)
@@ -254,6 +279,31 @@ const WEEK_STARTS_ON = 1
 // options are labelled with their dates, which change every Monday, so using a
 // label as the persisted value would invalidate the stored filter each week.
 export const DAY_FILTERS = ['Today', 'Tomorrow', 'ThisWeek', 'NextWeek']
+
+// Filter state <-> query string. Deliberately writes all three parameters at
+// once: a shared link should pin the whole view, not inherit two thirds of it
+// from whatever the recipient happened to have in localStorage.
+export function filtersToSearch({ borough, activity, day }) {
+  const params = new URLSearchParams()
+  params.set('borough', filterSlug(borough))
+  params.set('activity', filterSlug(activity))
+  params.set('day', filterSlug(day))
+  return `?${params.toString()}`
+}
+
+// Only the parameters that are present AND valid. Missing ones are left to the
+// caller's stored/default value, so a partial URL still works.
+export function filtersFromSearch(search) {
+  const params = new URLSearchParams(search ?? '')
+  const out = {}
+  const borough = filterFromSlug(params.get('borough'), BOROUGH_FILTERS)
+  const activity = filterFromSlug(params.get('activity'), ACTIVITY_FILTERS)
+  const day = filterFromSlug(params.get('day'), DAY_FILTERS)
+  if (borough) out.borough = borough
+  if (activity) out.activity = activity
+  if (day) out.day = day
+  return out
+}
 
 export function isWeekFilter(dayKey) {
   // 'Week' is the pre-dated-labels value that may still be in localStorage.

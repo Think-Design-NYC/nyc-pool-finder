@@ -436,7 +436,16 @@ state. The depth then lives on the pool pages, and the fallback can be trimmed
 toward what React renders rather than the reverse — noting that this adds a
 third representation to keep in sync, and nothing tests drift.
 
-**Step 3 — filter state in the URL.** `?borough=&activity=&day=`, read on
+**Step 3 — filter state in the URL. — BUILT 2026-09-08.** Shipped as planned,
+with one thing the plan missed: the first history entry has to be normalised
+with `replaceState` on mount. Without it, Back out of a filter change lands on
+the bare URL, which re-reads `localStorage` — which that very change just wrote
+— so the reader gets the view they were backing out of. Verified in real Chrome
+over the DevTools protocol (bare-URL normalisation, deep link, push on click,
+Back, Forward, garbage parameters); curl cannot see any of this. The original
+plan follows:
+
+`?borough=&activity=&day=`, read on
 mount, written on change. Use **`pushState` for user-initiated filter changes**
 — that's what makes Back traverse them — and reserve `replaceState` for the
 initial normalization of a bare or legacy URL. `localStorage` stays the

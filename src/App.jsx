@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Phone, Waves } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
 import pools from '../nyc_pools_live.json'
@@ -13,6 +13,10 @@ import UpdatePrompt from './components/UpdatePrompt'
 import {
   getBorough,
   BOROUGH_ORDER,
+  BOROUGH_FILTERS,
+  ACTIVITY_FILTERS,
+  filtersToSearch,
+  filtersFromSearch,
   boroughsPresent,
   joinBoroughs,
   isOpen,
@@ -34,47 +38,105 @@ import {
   STALE_AFTER_HOURS,
 } from './utils'
 
-// localStorage can throw (private mode, storage disabled); on failure this
-// degrades to plain useState.
-function usePersistedFilter(key, defaultValue, validValues, migrations = {}) {
-  const [value, setValue] = useState(() => {
+// Filter state lives in three places, in this precedence order:
+//
+//   1. the query string  — so a view can be linked, shared and bookmarked;
+//   2. localStorage      — so a bare visit resumes where you left off;
+//   3. the defaults      — Manhattan / Lap Swim / Today.
+//
+// A URL parameter always wins, because someone who followed a link asked for
+// that view specifically. Missing or unrecognised parameters fall through to
+// the stored value rather than resetting the whole page, so a hand-trimmed URL
+// still works.
+const FILTERS = {
+  borough: { key: 'poolfinder.borough', allowed: BOROUGH_FILTERS, fallback: 'Manhattan' },
+  activity: { key: 'poolfinder.activity', allowed: ACTIVITY_FILTERS, fallback: 'Lap Swim' },
+  day: {
+    key: 'poolfinder.day',
+    allowed: DAY_FILTERS,
+    fallback: 'Today',
+    // Anyone who had the old undated "Week" pill selected lands on this week.
+    migrations: { Week: 'ThisWeek' },
+  },
+}
+
+// localStorage can throw (private mode, storage disabled); every access here
+// degrades to the defaults rather than taking the page down with it.
+function storedFilters() {
+  const out = {}
+  for (const [name, cfg] of Object.entries(FILTERS)) {
+    out[name] = cfg.fallback
     try {
-      const stored = localStorage.getItem(key)
-      const migrated = migrations[stored] ?? stored
-      if (validValues.includes(migrated)) return migrated
+      const raw = localStorage.getItem(cfg.key)
+      const migrated = cfg.migrations?.[raw] ?? raw
+      if (cfg.allowed.includes(migrated)) out[name] = migrated
     } catch {
-      // fall through to default
+      // keep the fallback
     }
-    return defaultValue
-  })
-  useEffect(() => {
-    try {
-      localStorage.setItem(key, value)
-    } catch {
-      // ignore
+  }
+  return out
+}
+
+function persistFilters(filters) {
+  try {
+    for (const [name, cfg] of Object.entries(FILTERS)) {
+      localStorage.setItem(cfg.key, filters[name])
     }
-  }, [key, value])
-  return [value, setValue]
+  } catch {
+    // ignore — the URL still carries the state
+  }
+}
+
+function readFilters() {
+  return { ...storedFilters(), ...filtersFromSearch(window.location.search) }
 }
 
 export default function App() {
-  const [selectedBorough, setSelectedBorough] = usePersistedFilter(
-    'poolfinder.borough',
-    'Manhattan',
-    ['All Boroughs', ...BOROUGH_ORDER],
+  const [filters, setFilters] = useState(readFilters)
+  const { borough: selectedBorough, activity: selectedActivity, day: selectedDay } = filters
+
+  // A filter the reader chose: push a history entry so Back returns to the
+  // previous view, and write all three parameters so the URL is shareable
+  // whole. Automatic corrections use replace instead — see resetBorough.
+  const commitFilters = useCallback((next, { push = true } = {}) => {
+    setFilters(next)
+    persistFilters(next)
+    const url = `${window.location.pathname}${filtersToSearch(next)}`
+    if (push) window.history.pushState(next, '', url)
+    else window.history.replaceState(next, '', url)
+  }, [])
+
+  const setFilter = useCallback(
+    (name, value) => commitFilters({ ...filters, [name]: value }),
+    [commitFilters, filters],
   )
-  const [selectedActivity, setSelectedActivity] = usePersistedFilter(
-    'poolfinder.activity',
-    'Lap Swim',
-    ['All activities', ...ACTIVITIES.map((a) => a.key)],
-  )
-  const [selectedDay, setSelectedDay] = usePersistedFilter(
-    'poolfinder.day',
-    'Today',
-    DAY_FILTERS,
-    // Anyone who had the old undated "Week" pill selected lands on this week.
-    { Week: 'ThisWeek' },
-  )
+
+  const setSelectedBorough = useCallback((v) => setFilter('borough', v), [setFilter])
+  const setSelectedActivity = useCallback((v) => setFilter('activity', v), [setFilter])
+  const setSelectedDay = useCallback((v) => setFilter('day', v), [setFilter])
+
+  // Normalise the first history entry so it carries explicit parameters.
+  //
+  // Without this, Back out of a filter change lands on the bare URL, which
+  // re-reads localStorage — and that change just wrote to it — so the reader
+  // gets the view they were trying to leave. Replace, never push: this is the
+  // app describing the state it's already in, not a navigation. Mount only.
+  useEffect(() => {
+    const initial = readFilters()
+    window.history.replaceState(
+      initial,
+      '',
+      `${window.location.pathname}${filtersToSearch(initial)}`,
+    )
+  }, [])
+
+  // Back/forward: re-read the URL rather than trusting the state we pushed, so
+  // a hand-edited or externally-shared URL is handled the same way.
+  useEffect(() => {
+    const onPopState = () => setFilters(readFilters())
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   // The two weeks the scrape covers. Both the button labels and the date
   // filtering come from these, so the UI can't claim a week the data lacks.
@@ -100,9 +162,12 @@ export default function App() {
 
   useEffect(() => {
     if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
-      setSelectedBorough('All Boroughs')
+      // Replace, not push: this is the app correcting an impossible combination,
+      // not a choice the reader made. A pushed entry would make Back land on the
+      // same dead filter and immediately bounce forward again.
+      commitFilters({ ...filters, borough: 'All Boroughs' }, { push: false })
     }
-  }, [boroughs, selectedBorough])
+  }, [boroughs, selectedBorough, commitFilters, filters])
 
   const activities = useMemo(() => {
     const present = new Set()
