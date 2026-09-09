@@ -8,6 +8,7 @@ import FilterBar from './components/FilterBar'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
+import PoolDirectory from './components/PoolDirectory'
 import UpdatePrompt from './components/UpdatePrompt'
 import {
   getBorough,
@@ -198,6 +199,17 @@ export default function App() {
       })
   }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, weeks, reopening])
 
+  // The complement of what's already on screen. Computed from the rendered
+  // lists rather than by re-deriving the filters, so it can't fall out of step
+  // with them: whatever the grid and the closed list don't show, this does.
+  const otherPools = useMemo(() => {
+    const shown = new Set([
+      ...visiblePools.map((p) => p.pool_name),
+      ...closedPools.map((p) => p.pool_name),
+    ])
+    return pools.filter((p) => !shown.has(p.pool_name))
+  }, [visiblePools, closedPools])
+
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
       <header className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-4 pt-6">
@@ -303,6 +315,8 @@ export default function App() {
       </main>
 
       <ClosedPoolList pools={closedPools} slugs={slugs} />
+
+      <PoolDirectory pools={otherPools} slugs={slugs} />
 
       <SeoContent pools={pools} openNames={openNames} />
 

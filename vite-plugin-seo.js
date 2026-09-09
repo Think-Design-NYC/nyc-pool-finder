@@ -128,6 +128,13 @@ function lastUpdatedLabel() {
 
 // Static mirror of the React UI for non-JS crawlers. Replaced on mount.
 //
+// NOTE: App.jsx also renders <PoolDirectory> — the pools its filters excluded.
+// There is deliberately no counterpart here, and that is not drift. This markup
+// filters nothing, so its "excluded" set is always empty; the directory exists
+// precisely so the *rendered* DOM ends up listing every pool the way this
+// fallback already does. The two agree on the union, which is what parity means
+// here.
+//
 // NOTE: App.jsx also renders a "schedules may be out of date" banner past
 // STALE_AFTER_HOURS. There is deliberately no counterpart here, and that is not
 // drift. This HTML is regenerated only by a deploy, and deploys are triggered by
