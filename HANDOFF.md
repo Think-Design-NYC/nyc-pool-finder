@@ -8,6 +8,41 @@ lap-swim / open-swim / etc. schedules, sourced from `nycgovparks.org`.
   should too — see Hosting)
 - **Repo:** `Think-Design-NYC/nyc-pool-finder` (default branch `main`)
 
+## Where things stand (handed off 2026-09-08)
+
+Steps 1–3 of the [SEO roadmap](#seo-roadmap--per-pool-pages-planned-2026-09-08)
+shipped today and are verified in a real browser:
+
+- **13 per-pool pages** at `/pool/<slug>/`, static HTML, full dated two-week
+  timetable. Sitemap is 15 URLs.
+- **`PoolDirectory`** — the rendered DOM no longer drops pools the filters
+  exclude. Every filter state now lists all 13.
+- **Filter state in the URL** — `?borough=&activity=&day=`, shareable, Back works.
+- **Chelsea Pool** re-scraped to closed (found drained in person while NYC Parks
+  still published a timetable), and `CALL_AHEAD_NOTE` added because of it.
+- **Borough names in copy are derived**, no longer hardcoded.
+
+Three things are waiting on a human, and one of them gates everything else:
+
+1. **Google Search Console** — a verified property, then submit the sitemap.
+   Nothing built today gets crawled on a schedule until this exists. See
+   [Search Console](#search-console--parked-and-why-its-fiddly).
+2. **`public/og-image.png`** — see [Images](#images-og-card-icons-and-a-known-gap).
+3. **Re-verify membership prices** — see
+   [Membership pricing](#membership-pricing-the-one-thing-that-isnt-scraped).
+
+Step 4 (location metadata) is the only remaining code step in the roadmap.
+
+**A verification lesson from today, worth keeping:** the pool pages shipped
+broken — the service worker's `navigateFallback` served the homepage for every
+`/pool/<slug>/` request — and every check passed, because every check was a
+`curl` and curl has no service worker. A user found it in one click. Anything
+touching the service worker, filters, history or rendered DOM must be tested in
+a real browser. There is no test suite; `npm run build && npm run preview` plus
+a browser is the harness. Headless Chrome over the DevTools protocol works with
+no new dependencies (Chrome is installed, and node has a built-in `WebSocket`) —
+that is how Step 3 was verified end to end against production.
+
 ## How the pieces fit
 
 ```
@@ -171,6 +206,59 @@ against NYC Parks and is rendered on the page as "As of …". It is deliberately
 numbers nobody had looked at. Bump it by hand when you re-check.
 
 Source of truth: <https://www.nycgovparks.org/programs/recreation-centers/membership>
+
+### The stakes went up on 2026-09-08 — please re-verify
+
+These prices used to appear on one page. They now appear on **fifteen**: the
+homepage (rendered table + no-JS fallback), all 13 pool pages, and the FAQ — and
+they feed `priceRange` in the JSON-LD of every `PublicSwimmingPool` node, which
+is the copy Google may surface directly in a result. A stale number is now a
+stale number in structured data, quoted by search engines, on every pool.
+
+`MEMBERSHIP_CHECKED` currently reads **Aug 31, 2026**. Nobody has re-checked
+since. Two failure modes to avoid, both of which make the page lie:
+
+- Updating a price without bumping `MEMBERSHIP_CHECKED` — the page then claims
+  the new figure was verified on the old date.
+- Bumping `MEMBERSHIP_CHECKED` without actually opening the Parks page — the
+  date is the entire trust signal; it is worth nothing if it is applied by
+  habit. Read the source, then bump it.
+
+**The real fix is to scrape it.** The membership URL is stable and the markup is
+a clean table, so this is a small, well-shaped job. Do it as a *separate* fetch
+from the pool scrape and fail soft: if the membership page can't be parsed, keep
+the last-known values rather than blanking prices across fifteen pages — and
+keep `MEMBERSHIP_CHECKED` honest by setting it from the successful fetch date
+rather than the build date. Note that this is the one place where deriving the
+date automatically is correct, precisely because a machine really did look.
+
+## Images (og card, icons, and a known gap)
+
+**`public/og-image.png` is a placeholder** — a 548×289 copy of the Think Design
+logo. Social cards want **1200×630**. Every share of the site currently renders
+a squashed logo, and it is referenced twice in `index.html` (`og:image` and
+`twitter:image`), so replacing the file is the whole job: same path, same name,
+no code change.
+
+**The pool pages have no `og:image` at all.** Added 2026-09-08 with `og:type`,
+`og:site_name`, `og:title`, `og:description` and `og:url` but no image, so a
+shared pool link renders as a bare text card. This is a one-line addition in
+`pool-page.js`, deliberately not made yet because it would point at the bad
+placeholder — do it at the same time as the replacement above. The genuinely
+good version would be a per-pool card (pool name + borough + status), generated
+at build time; that is a bigger job and probably not worth it before the generic
+one exists.
+
+**Favicons and PWA icons are generated, not hand-made.** `python3
+scripts/make_icons.py` regenerates everything under `public/icons/` and needs
+system `python3` with Pillow — not the project venv. The output is committed.
+The favicon is the square PWA mark rather than the og image, because a 548×289
+image squashes unreadably into a browser tab. Icons are also referenced by
+`vite.config.js`'s manifest block; if you rename any of them, change both.
+
+**Never change an icon casually on a PWA** — an installed home-screen icon is
+how people find the app, and the manifest is served `max-age=0` precisely so a
+change propagates, which cuts both ways.
 
 ## SEO
 
@@ -454,15 +542,49 @@ open now" / "family swim Saturday" URLs the consultation asked for. No Netlify
 change needed — query strings don't touch routing, and the deliberate absence
 of an SPA catch-all still holds.
 
-**Step 4 — location and facility metadata.** lat/lng, accessibility, nearest
-subway lines; unlocks "near me" sorting and `geo` in the JSON-LD. **Probably
-not scraper work.** This data is stable, while `scraper.py` is the fragile
-daily path — four requests per pool, residential IP only — and coupling a
-second source's schema to it means an outage there can break the daily refresh.
-Prefer a hand-reviewed enrichment file keyed by `pool_code`, merged at build
-time. Either way the fields land on the pool object in `nyc_pools_live.json`
-only: `nyc_pools_meta.json` holds nothing but `updated_at` and `pool_count`,
-and `schedules` is frozen for the mobile app.
+**Step 4 — location and facility metadata.** The only code step left. lat/lng,
+accessibility, nearest subway lines and parking; unlocks "pools near me"
+sorting, `geo` in the JSON-LD, and the transit line each card is already built
+to show.
+
+**Do not put this in `scraper.py`.** That is the fragile daily path — four
+requests per pool, residential IP only, 403 from any datacenter — and it is what
+keeps the site's schedules alive. Coupling a second source's schema to it means
+an outage or a markup change *there* breaks the daily refresh *here*, and the
+failure would look like stale schedules rather than missing coordinates. This
+data is also stable in a way schedules are not: a pool's latitude does not
+change daily, so paying a daily fetch cost for it buys nothing.
+
+Preferred shape: a hand-reviewed `data/pool_meta.json` keyed by `pool_code`
+(`M260`, `B245`, …), committed, merged onto the pool objects at build time. 13
+rows. It can be assembled once by hand in an afternoon and reviewed by eye,
+which matters for coordinates — a wrong one sends someone to the wrong borough,
+and nothing downstream can detect it.
+
+Where the fields land: on the **pool object in `nyc_pools_live.json`** only.
+`nyc_pools_meta.json` holds nothing but `updated_at` and `pool_count`, and
+`schedules` is frozen for the mobile app — see the invariants.
+
+**`nearest_subway` is already wired end to end except for the data.**
+[PoolCard.jsx](src/components/PoolCard.jsx) renders `loc.nearest_subway` behind
+a truthiness check, with a train icon, and has since before today; the scraper
+has never produced the field, so the branch has simply never run. Populating it
+lights up existing UI with no component changes. Anything else new — coordinates,
+accessibility, parking — needs UI written for it, and needs adding to the pool
+pages and the fallback too, or the parity invariant breaks.
+
+Sourcing notes (unverified — check before relying on them): NYC Open Data
+publishes DPR facility datasets that should carry coordinates keyed by property
+code, which is what `pool_code` is; accessibility is described in prose on the
+individual NYC Parks facility pages rather than as structured data, so it may
+need reading by hand. Neither has been confirmed from this repo.
+
+Once coordinates exist, `poolNode()` in [pool-schema.js](pool-schema.js) should
+gain a `geo` property (`GeoCoordinates`), which is the single highest-value
+structured-data addition for "indoor pool near me" queries. A "near me" *sort*
+additionally needs the browser geolocation permission — a prompt on a page that
+currently asks for nothing, so it should be opt-in behind a button rather than
+fired on load.
 
 **Step 5 — human-only, unchanged.** Search Console property + sitemap
 submission (still parked, see below), the og-image replacement, and link
@@ -556,8 +678,11 @@ Needs a human (can't be done from the repo):
 
 - **Submit `sitemap.xml` in Google Search Console** — see below, it's more
   involved than it sounds. Started 2026-08-03, parked before completion.
-- **Replace `public/og-image.png`.** It's a placeholder copy of the Think
-  Design logo at 548×289; social cards want 1200×630.
+- **Replace `public/og-image.png`** and then add `og:image` to the pool pages —
+  see [Images](#images-og-card-icons-and-a-known-gap).
+- **Re-verify membership prices** and bump `MEMBERSHIP_CHECKED`; they are now
+  quoted on 15 pages and in structured data. See
+  [Membership pricing](#the-stakes-went-up-on-2026-09-08--please-re-verify).
 - ~~Add the pool sitemap to the root robots.txt~~ — **done 2026-09-01.**
   Search Console submission is still parked (see below); the robots.txt line
   covers Bing and other crawlers in the meantime.
