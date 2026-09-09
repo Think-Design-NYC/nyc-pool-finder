@@ -17,7 +17,7 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { CALL_AHEAD_NOTE } from './src/copy.js'
+import { callAheadHtml } from './src/html.js'
 import {
   boroughsPresent,
   joinBoroughs,
@@ -207,7 +207,7 @@ function buildFallbackHtml() {
   <h1>NYC Indoor Pool Finder</h1>
   <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(openBoroughList)}</p>
-  <p>${esc(CALL_AHEAD_NOTE)}</p>
+  <p>${callAheadHtml()}</p>
   ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${sections}
   <section>
@@ -268,7 +268,7 @@ function buildFallbackHtml() {
       : ''
   }
   <section><h2>Frequently asked questions</h2>${faq}</section>
-  <p>Schedules are scraped from <a href="https://www.nycgovparks.org/facilities/indoor-pools" rel="nofollow">nycgovparks.org</a> and can change without notice. ${esc(CALL_AHEAD_NOTE)}</p>
+  <p>Schedules are scraped from <a href="https://www.nycgovparks.org/facilities/indoor-pools" rel="nofollow">nycgovparks.org</a> and can change without notice. ${callAheadHtml()}</p>
   <footer><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
 </div>`
 }
@@ -286,6 +286,7 @@ const FALLBACK_STYLE = `
 #seo-fallback table{border-collapse:collapse;margin:.5rem 0;font-size:.85rem}
 #seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
 #seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#475569}
+#seo-fallback .call-lead{text-transform:uppercase}
 </style>`
 
 export default function seoPlugin() {

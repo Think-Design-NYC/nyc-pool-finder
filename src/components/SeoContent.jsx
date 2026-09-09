@@ -1,6 +1,6 @@
 import { FAQ } from '../faq'
 import { boroughsPresent, joinBoroughs } from '../utils'
-import { CALL_AHEAD_NOTE } from '../copy'
+import CallAheadNote from './CallAheadNote'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -101,7 +101,7 @@ export default function SeoContent({ pools, openNames }) {
         >
           nycgovparks.org
         </a>{' '}
-        and can change without notice. {CALL_AHEAD_NOTE}
+        and can change without notice. <CallAheadNote />
       </p>
     </section>
   )

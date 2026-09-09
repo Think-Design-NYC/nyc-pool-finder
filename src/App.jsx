@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Phone, Waves } from 'lucide-react'
-import { CALL_AHEAD_NOTE } from './copy'
+import CallAheadNote from './components/CallAheadNote'
 import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
@@ -231,7 +231,7 @@ export default function App() {
           {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
           <p className="mt-2 flex items-start gap-1.5 text-sm text-slate-600">
             <Phone className="mt-0.5 shrink-0 text-slate-400" size={14} aria-hidden="true" />
-            <span>{CALL_AHEAD_NOTE}</span>
+            <CallAheadNote />
           </p>
         </div>
         <a

@@ -10,7 +10,7 @@
 // Tailwind has already scanned sources by the time this runs, so any class
 // introduced here would be purged.
 
-import { escapeHtml as esc } from './src/html.js'
+import { escapeHtml as esc, callAheadHtml } from './src/html.js'
 import { poolNode, parksUrl, NON_PUBLIC_SESSION } from './pool-schema.js'
 import {
   getBorough,
@@ -19,7 +19,6 @@ import {
   firstSessionDate,
   poolPath,
 } from './src/utils.js'
-import { CALL_AHEAD_NOTE } from './src/copy.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -137,6 +136,7 @@ body{margin:0;background:#f8fafc}
 .pp-closed{background:#fee2e2;color:#991b1b}
 .pp-soon{background:#fef3c7;color:#92400e}
 .pp-call{margin:1rem 0;border-radius:.6rem;background:#fff7ed;padding:.7rem .9rem;font-size:.9rem;color:#9a3412;border:1px solid #fed7aa}
+.pp .call-lead{text-transform:uppercase}
 .pp-notice{margin:1rem 0;border-radius:.6rem;background:#fef2f2;padding:.7rem .9rem;font-size:.9rem;color:#991b1b;border:1px solid #fecaca}
 .pp p{font-size:.92rem;color:#475569}
 .pp table{border-collapse:collapse;width:100%;max-width:34rem;margin:.35rem 0}
@@ -227,7 +227,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
   <p><span class="pp-status ${statusClass}">${esc(statusSentence(pool))}</span></p>
 
   ${pool.notes ? `<p class="pp-notice">${esc(pool.notes)}</p>` : ''}
-  <p class="pp-call">${esc(CALL_AHEAD_NOTE)}</p>
+  <p class="pp-call">${callAheadHtml()}</p>
 
   <section>
     <h2>Where it is</h2>
@@ -266,7 +266,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
     <p>Schedules are scraped from
     <a href="${esc(parksUrl(pool) ?? 'https://www.nycgovparks.org/facilities/indoor-pools')}" rel="nofollow">nycgovparks.org</a>
     and can change without notice.${updatedLabel ? ` Last updated ${esc(updatedLabel)}.` : ''}
-    ${esc(CALL_AHEAD_NOTE)}</p>
+    ${callAheadHtml()}</p>
     ${noticeLinks ? `<p>${noticeLinks}</p>` : ''}
     <p><a href="/">NYC Indoor Pool Finder</a> &middot; <a href="/privacy/">Privacy</a></p>
   </footer>

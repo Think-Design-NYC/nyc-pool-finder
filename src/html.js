@@ -10,3 +10,15 @@ export function escapeHtml(s) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 }
+
+import { CALL_AHEAD_LEAD, CALL_AHEAD_DETAIL } from './copy.js'
+
+// The call-ahead note as markup: uppercase bold lead, plain detail. Mirrors
+// what <CallAheadNote> renders in React — both sides need the same emphasis or
+// the fallback and the rendered DOM disagree on the page's most important
+// sentence. Callers style `.call-lead` in their own scoped block.
+export function callAheadHtml() {
+  return `<strong class="call-lead">${escapeHtml(CALL_AHEAD_LEAD)}</strong> ${escapeHtml(
+    CALL_AHEAD_DETAIL,
+  )}`
+}
