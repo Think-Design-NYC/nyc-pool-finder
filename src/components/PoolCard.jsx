@@ -60,7 +60,7 @@ function ScheduleRow({ schedule }) {
   )
 }
 
-export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }) {
+export default function PoolCard({ pool, href = null, activityLabel = 'Swim', holidays = [] }) {
   const loc = pool.location ?? {}
   const address = fullAddress(loc)
   const mapsUrl = pool.pool_name
@@ -81,7 +81,13 @@ export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }
       <header className="flex items-start justify-between gap-3 border-b border-slate-100 p-4">
         <div>
           <h2 className="text-lg font-bold leading-snug text-slate-900">
-            {pool.pool_name}
+            {href ? (
+              <a href={href} className="hover:text-sky-700 hover:underline">
+                {pool.pool_name}
+              </a>
+            ) : (
+              pool.pool_name
+            )}
           </h2>
           <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
             {getBorough(pool)}
@@ -213,9 +219,18 @@ export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }
         )}
       </div>
 
-      {/* Footer link */}
-      {pool.url && (
-        <footer className="border-t border-slate-100 px-4 py-2.5">
+      {/* Footer links */}
+      {(href || pool.url) && (
+        <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-slate-100 px-4 py-2.5">
+          {href && (
+            <a
+              href={href}
+              className="inline-flex items-center gap-1 text-xs font-medium text-sky-700 hover:underline"
+            >
+              Full schedule &amp; directions
+            </a>
+          )}
+          {pool.url && (
           <a
             href={pool.url}
             target="_blank"
@@ -226,6 +241,7 @@ export default function PoolCard({ pool, activityLabel = 'Swim', holidays = [] }
             Check latest schedule on nycgovparks.org
             <ExternalLink size={12} />
           </a>
+          )}
         </footer>
       )}
     </article>

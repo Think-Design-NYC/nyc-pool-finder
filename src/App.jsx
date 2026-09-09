@@ -15,6 +15,8 @@ import {
   boroughsPresent,
   joinBoroughs,
   isOpen,
+  poolSlugs,
+  poolHref,
   ACTIVITIES,
   matchesActivity,
   DAY_FILTERS,
@@ -126,6 +128,11 @@ export default function App() {
   // Derived, never hardcoded: this line claimed the Bronx long after St. Mary's
   // closed. Mirrored in the SEO fallback through the same helper.
   const openBoroughList = useMemo(() => joinBoroughs(boroughsPresent(pools, isOpen)), [])
+
+  // Every pool has its own static page at /pool/<slug>/ (emitted by
+  // vite-plugin-seo.js). Linking to them from here is what makes them
+  // crawlable — a page reachable only from sitemap.xml is an orphan.
+  const slugs = useMemo(() => poolSlugs(pools), [])
 
   const lastUpdated = useMemo(() => {
     if (!meta.updated_at) return null
@@ -286,6 +293,7 @@ export default function App() {
               <PoolCard
                 key={pool.pool_name}
                 pool={pool}
+                href={poolHref(pool, slugs)}
                 activityLabel={activityActive ? selectedActivity : 'Swim'}
                 holidays={holidaysForFilter(pool, selectedDay, weeks)}
               />
@@ -294,7 +302,7 @@ export default function App() {
         )}
       </main>
 
-      <ClosedPoolList pools={closedPools} />
+      <ClosedPoolList pools={closedPools} slugs={slugs} />
 
       <SeoContent pools={pools} openNames={openNames} />
 

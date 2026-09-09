@@ -58,7 +58,13 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,svg,webmanifest}'],
         // dist/nyc_pools_*.json exists only for the mobile app; the website
         // never fetches it. Precaching 150KB nobody reads is pure waste.
-        globIgnores: ['**/nyc_pools_*.json'],
+        //
+        // The per-pool pages are excluded for a different reason: they are
+        // static documents with no React mount, so they carry no update prompt.
+        // A precached copy would be pinned to whatever build first cached it,
+        // showing an old timetable with nothing to say so — and the app shell
+        // already contains every schedule, so nothing is lost offline.
+        globIgnores: ['**/nyc_pools_*.json', 'pool/**/*.html'],
         navigateFallback: '/index.html',
         // Without this, an offline visit to /privacy/ misses the precached
         // 'privacy/index.html' and falls through to the app shell.

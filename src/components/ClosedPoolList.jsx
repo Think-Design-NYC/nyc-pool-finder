@@ -1,4 +1,4 @@
-import { getBorough, statusLabel, poolAnchorId } from '../utils'
+import { getBorough, statusLabel, poolAnchorId, poolHref } from '../utils'
 
 // Closed pools, always shown, below the grid.
 //
@@ -15,7 +15,7 @@ import { getBorough, statusLabel, poolAnchorId } from '../utils'
 //
 // The anchor id stays on each row so /#pool-m260 and the JSON-LD `url`
 // for a closed pool still resolve.
-export default function ClosedPoolList({ pools }) {
+export default function ClosedPoolList({ pools, slugs = null }) {
   if (!pools.length) return null
 
   return (
@@ -31,7 +31,15 @@ export default function ClosedPoolList({ pools }) {
             className="scroll-mt-4 px-4 py-3"
           >
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-              <span className="font-semibold text-slate-900">{pool.pool_name}</span>
+              <span className="font-semibold text-slate-900">
+                {poolHref(pool, slugs) ? (
+                  <a href={poolHref(pool, slugs)} className="hover:text-sky-700 hover:underline">
+                    {pool.pool_name}
+                  </a>
+                ) : (
+                  pool.pool_name
+                )}
+              </span>
               <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
                 {getBorough(pool)}
               </span>

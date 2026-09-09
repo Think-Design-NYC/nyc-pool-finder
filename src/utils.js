@@ -35,6 +35,63 @@ export function poolAnchorId(pool) {
 
 // Borough display order. Shared so the filter pills, the prose in `SeoContent`
 // and the build-time SEO fallback all order and name boroughs identically.
+// URL slug for a pool's own page. Name-based, not code-based: `/pool/chelsea-pool/`
+// is worth having where `/pool/m260/` is not, and `poolAnchorId()` prefers the
+// facility code — so the two are deliberately derived separately rather than one
+// from the other. Anchor ids stay as they are so existing `#pool-…` links live on.
+export function slugifyPoolName(name) {
+  return String(name ?? '')
+    .toLowerCase()
+    // Drop apostrophes rather than turning them into separators, so
+    // "St. John's Pool" is st-johns-pool and not st-john-s-pool.
+    .replace(/['\u2019]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+// Slugs for a whole set of pools, keyed by `poolAnchorId(pool)` — the identity
+// that is already unique. Two pools that slugify the same both get the Parks
+// facility code appended, so a future "Chelsea Pool" in another borough can't
+// silently take over an existing URL.
+export function poolSlugs(pools) {
+  const counts = new Map()
+  for (const p of pools ?? []) {
+    const base = slugifyPoolName(p.pool_name)
+    counts.set(base, (counts.get(base) ?? 0) + 1)
+  }
+  const out = new Map()
+  for (const p of pools ?? []) {
+    const base = slugifyPoolName(p.pool_name)
+    const unique = counts.get(base) > 1 && p.pool_code
+      ? `${base}-${p.pool_code.toLowerCase()}`
+      : base
+    out.set(poolAnchorId(p), unique)
+  }
+  return out
+}
+
+// Site-root-relative path to a pool page. Singular `/pool/` on purpose: the
+// plural `/pools/*` is claimed by a forced legacy 301 in netlify.toml.
+export const poolPath = (slug) => `/pool/${slug}/`
+
+export function poolHref(pool, slugs) {
+  const slug = slugs?.get(poolAnchorId(pool))
+  return slug ? poolPath(slug) : null
+}
+
+// The first date this pool has any session, across every scraped week, or null.
+// A closed pool with a future timetable must read as "reopens <date>", never as
+// open — same invariant the cards hold, applied to the whole scrape window
+// rather than a selected filter range.
+export function firstSessionDate(pool) {
+  const dates = (pool?.schedule_weeks ?? [])
+    .flatMap((w) => w.days ?? [])
+    .filter((d) => (d.sessions?.length ?? 0) > 0)
+    .map((d) => d.date)
+    .sort()
+  return dates[0] ?? null
+}
+
 export const BOROUGH_ORDER = [
   'Manhattan',
   'Brooklyn',

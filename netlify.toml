@@ -11,8 +11,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# The site is a single page with anchor-only navigation (#pool-…), so there is
-# deliberately no SPA catch-all rewrite — unknown paths should 404, not 200.
+# The homepage is a single page with anchor-only navigation (#pool-…); each pool
+# additionally has a real static document at /pool/<slug>/ emitted at build time.
+# There is deliberately no SPA catch-all rewrite — unknown paths should 404, not
+# 200 — and /pool/ is singular because /pools/* is claimed by the 301 below.
 
 # Old subpath URLs, in case anything links to pools.thinkdesign.com/pools/.
 [[redirects]]
@@ -55,6 +57,14 @@
 
 [[headers]]
   for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The per-pool pages carry the schedules, which change daily — same treatment
+# as index.html. Without this they'd fall under Netlify's default and a CDN
+# copy could serve last week's timetable.
+[[headers]]
+  for = "/pool/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 

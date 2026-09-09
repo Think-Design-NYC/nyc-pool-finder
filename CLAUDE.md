@@ -39,7 +39,12 @@ src/App.jsx           → filter state, imports the JSON, renders the UI
 src/utils.js          → borough inference (zip prefix), activity regexes, day/time matching, poolAnchorId()
 src/faq.js            → FAQ copy shared by UI and build-time SEO output
 src/membership.js     → membership prices, hand-maintained (NOT scraped)
-vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into #root, sitemap.xml
+src/copy.js           → prose shared by UI and SEO output (CALL_AHEAD_NOTE)
+src/html.js           → escapeHtml() for the build-time generators
+pool-schema.js        → schema.org PublicSwimmingPool node, shared (build-time only)
+pool-page.js          → static HTML for one pool page (build-time only)
+vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into #root,
+                        /pool/<slug>/index.html × 13, sitemap.xml
 ```
 
 **The scraper cannot run in CI.** nycgovparks.org returns 403 to datacenter IPs; it runs on a residential IP. The primary Mac runs `refresh.sh` daily at 06:00 via launchd (no Raspberry Pi); the secondary Mac has no scheduled job, but `refresh.sh --if-stale 36` can be run there by hand and no-ops unless the published data is already >36h old. `refresh.sh` refuses to run off `main`. See DEPLOY.md. `refresh.sh` silently falls back to system `python3` if `.venv/` is missing, and then fails on imports — the venv is required.
@@ -54,6 +59,7 @@ vite-plugin-seo.js    → build-time JSON-LD, no-JS fallback HTML injected into 
 - **`schedule_weeks` is populated for closed pools too, and `schedules` is not.** A pool shut this week can have a full timetable next week (Chelsea did this in Sep 2026, before its repair closure). The flat list is still cleared on closure so nothing renders a timetable for a locked building.
 - **`holiday` and `note` on a schedule day are different things.** `holiday` ("Labor Day: Recreation Centers will be closed.") explains an empty day and is shown; `note` ("There are no programs at this pool today.") restates an empty list and is not. The scraper splits them from the markup — don't re-derive it with a regex.
 - **A closed pool is promoted into the grid only for a range it actually reopens in**, and then it must leave the closed list — appearing in both would state two different things about the same pool. `reopeningDate()` derives the return date from the first day in range that has sessions, never from the closure prose, and the card wears an amber "Reopens Tue 9/8" badge rather than a green "Open".
+- **Each pool has a real page at `/pool/<slug>/`, emitted at build time as fully static HTML.** No React mount, no app bundle — so there is no rendered-vs-raw divergence to police on them. Slugs are name-based (`poolSlugs()`), deliberately NOT derived from `poolAnchorId()`, which prefers the facility code and would give `/pool/m260/`. The path is singular: `/pools/*` is a forced 301 in `netlify.toml`. Pool pages are excluded from the precache (`globIgnores`) because a static page carries no update prompt and would pin a reader to an old timetable.
 - **The service worker must never be cached.** `netlify.toml` sends `sw.js` and `manifest.webmanifest` with `max-age=0, must-revalidate`. A cached `sw.js` pins every returning visitor to an old build and no update prompt can ever fire.
 - **Offline works because the data is in the bundle, not because the JSON is cached.** `App.jsx` imports the JSON at build time, so precaching the app shell precaches the schedules. `dist/nyc_pools_*.json` is deliberately excluded from the precache (`globIgnores`) — it exists only for the mobile app and the website never fetches it.
 - **`registerType` is `'prompt'`, not `'autoUpdate'`.** Swapping the schedule out from under someone mid-read is worse than a stale minute. If the prompt is ignored, the existing 48h staleness banner still fires: `meta.updated_at` is baked into the cached bundle and compared against the live clock, so a stale cache correctly reports itself as stale.

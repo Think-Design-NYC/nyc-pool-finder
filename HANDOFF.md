@@ -333,7 +333,18 @@ section above.
 
 ### Build order
 
-**Step 1 — static per-pool pages at `/pool/<slug>/`.** Emit them in
+**Step 1 — static per-pool pages at `/pool/<slug>/`. — BUILT 2026-09-08.**
+All 13 pages ship: [pool-page.js](pool-page.js) renders one static document per
+pool, [pool-schema.js](pool-schema.js) holds the shared `PublicSwimmingPool`
+node (moved out of the plugin so the homepage graph and the pages can't
+disagree), and `poolSlugs()` / `poolPath()` in [src/utils.js](src/utils.js) own
+the URLs. The homepage JSON-LD now points at those pages instead of `#pool-…`
+fragments, the sitemap carries 15 URLs, `/pool/*` gets `max-age=0` in
+`netlify.toml`, and the pages are excluded from the precache. Cards and the
+closed list link to them, so they are not orphans. The original plan follows,
+for the reasoning:
+
+Emit them in
 `generateBundle` via `this.emitFile`, as **fully static HTML with no React
 mount**. That is the point: with no JS replacing the markup there is no
 rendered-vs-raw divergence to police, and the pages need no routing, no SPA
@@ -400,7 +411,10 @@ Gotchas for this step:
   to say "closed through mid-September, here's when it's back" — but expect
   nothing from them until the timetables return.
 
-**Step 2 — make the rendered DOM stop dropping pools.** Closes gap 1, but
+**Step 2 — make the rendered DOM stop dropping pools.** *(Half done: cards and
+the closed list now link to pool pages, which was the linking half. Still to do:
+the compact directory of pools the active filters excluded, so every pool is
+reachable from the rendered DOM under any filter state.)* Closes gap 1, but
 *not* by bolting a second full pool index under the grid: React already renders
 filtered cards, the closed list and the SEO section, so a thirteen-row status
 table duplicating all of it earns its space only if a reader wants it. Better
