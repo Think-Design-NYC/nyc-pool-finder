@@ -18,7 +18,7 @@
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
+        "notes": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -156,7 +156,7 @@
         "borough": "Manhattan",
         "pool_name": "Chelsea Pool",
         "pool_code": "M260",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "430 West 25th Street",
             "cross_streets": "9th & 10th avenues",
@@ -172,10 +172,10 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The indoor pool at Chelsea Recreation Center is currently closed for scheduled repairs. We apologize for any inconvenience caused.",
+        "notes": null,
         "reduced_hours": true,
         "notice_links": [],
-        "closure_reason": "for repairs",
+        "closure_reason": null,
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -325,7 +325,7 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Summer Pool Hours at Constance Baker Motley Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
@@ -800,7 +800,7 @@
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Summer Pool Hours at Gertrude Ederle Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
@@ -1559,68 +1559,6 @@
         "schedules": [],
         "schedule_weeks": [
             {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 12:00 a",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
-            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -1862,7 +1800,7 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Summer Pool Hours at Shirley Chisholm Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
@@ -1894,9 +1832,21 @@
                 "date": "2026-09-08"
             },
             {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "11:00 a - 2:45 p",
+                "date": "2026-09-09"
+            },
+            {
                 "session_type": "Closed for Cleaning",
                 "days": "Wednesday",
                 "time": "3:00 p - 4:00 p",
+                "date": "2026-09-09"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:45 p",
                 "date": "2026-09-09"
             },
             {
@@ -1936,9 +1886,21 @@
                 "date": "2026-09-11"
             },
             {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "1:00 p - 2:45 p",
+                "date": "2026-09-11"
+            },
+            {
                 "session_type": "Closed for Cleaning",
                 "days": "Friday",
                 "time": "3:00 p - 4:00 p",
+                "date": "2026-09-11"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "4:00 p - 7:00 p",
                 "date": "2026-09-11"
             },
             {
@@ -1957,6 +1919,12 @@
                 "session_type": "General Swim",
                 "days": "Sunday",
                 "time": "1:30 p - 2:45 p",
+                "date": "2026-09-13"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Sunday",
+                "time": "3:00 p - 4:00 p",
                 "date": "2026-09-13"
             }
         ],
@@ -2014,9 +1982,21 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 2:45 p",
+                                "date": "2026-09-09"
+                            },
+                            {
                                 "session_type": "Closed for Cleaning",
                                 "days": "Wednesday",
                                 "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-09"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:45 p",
                                 "date": "2026-09-09"
                             },
                             {
@@ -2074,9 +2054,21 @@
                                 "date": "2026-09-11"
                             },
                             {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:45 p",
+                                "date": "2026-09-11"
+                            },
+                            {
                                 "session_type": "Closed for Cleaning",
                                 "days": "Friday",
                                 "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-11"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "4:00 p - 7:00 p",
                                 "date": "2026-09-11"
                             }
                         ]
@@ -2112,6 +2104,12 @@
                                 "session_type": "General Swim",
                                 "days": "Sunday",
                                 "time": "1:30 p - 2:45 p",
+                                "date": "2026-09-13"
+                            },
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Sunday",
+                                "time": "3:00 p - 4:00 p",
                                 "date": "2026-09-13"
                             }
                         ]
@@ -2184,9 +2182,21 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 2:45 p",
+                                "date": "2026-09-16"
+                            },
+                            {
                                 "session_type": "Closed for Cleaning",
                                 "days": "Wednesday",
                                 "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-16"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:45 p",
                                 "date": "2026-09-16"
                             },
                             {
@@ -2244,9 +2254,21 @@
                                 "date": "2026-09-18"
                             },
                             {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:45 p",
+                                "date": "2026-09-18"
+                            },
+                            {
                                 "session_type": "Closed for Cleaning",
                                 "days": "Friday",
                                 "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-18"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "4:00 p - 7:00 p",
                                 "date": "2026-09-18"
                             }
                         ]
@@ -2315,8 +2337,8 @@
         },
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
-        "membership_required": true,
-        "notes": null,
+        "membership_required": null,
+        "notes": "Summer Pool Hours at St, John's Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
@@ -2843,7 +2865,7 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Flushing Meadows Corona Park Aquatics Center will be temporarily closed beginning Sunday, August 30, 2026, for approximately three weeks to accommodate pre-scheduled maintenance. The Aquatics Center is expected to reopen on September 21. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will no",
+        "notes": "Flushing Meadows Corona Park Aquatics Center will be temporarily closed beginning Sunday, August 30, 2026, for approximately three weeks to accommodate pre-scheduled maintenance. The Aquatics Center is expected to reopen on September 21. Updated expanded Fall schedules will begin on this date, these schedules will be posted on the website and posted at the facility. Tide Gate Bridge Construction D",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": "for maintenance",
@@ -2997,7 +3019,7 @@
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Summer Pool Hours at Roy Wilkins Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
