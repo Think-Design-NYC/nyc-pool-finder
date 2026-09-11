@@ -156,7 +156,7 @@
         "borough": "Manhattan",
         "pool_name": "Chelsea Pool",
         "pool_code": "M260",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "430 West 25th Street",
             "cross_streets": "9th & 10th avenues",
@@ -172,10 +172,10 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "The indoor pool at Chelsea Recreation Center is currently closed for scheduled repairs. We apologize for the inconvenience.",
         "reduced_hours": true,
         "notice_links": [],
-        "closure_reason": null,
+        "closure_reason": "for repairs",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -324,7 +324,7 @@
         },
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Summer Pool Hours at Constance Baker Motley Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
@@ -1559,6 +1559,68 @@
         "schedules": [],
         "schedule_weeks": [
             {
+                "start": "2026-09-07",
+                "end": "2026-09-13",
+                "days": [
+                    {
+                        "date": "2026-09-07",
+                        "weekday": "Monday",
+                        "building_hours": "Closed",
+                        "holiday": "Labor Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-08",
+                        "weekday": "Tuesday",
+                        "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-09",
+                        "weekday": "Wednesday",
+                        "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-10",
+                        "weekday": "Thursday",
+                        "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-11",
+                        "weekday": "Friday",
+                        "building_hours": "7:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-12",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 12:00 a",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-13",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    }
+                ]
+            },
+            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -1628,15 +1690,12 @@
         "pool_code": "B085",
         "status": "closed",
         "location": {
-            "address": "261 Bedford Avenue",
-            "cross_streets": "Bedford Avenue and Metropolitan Avenue",
-            "city": "Brooklyn",
+            "address": "Bedford and Metropolitan Avenues",
+            "cross_streets": null,
+            "city": "New York",
             "state": "NY",
-            "zip_code": "11211",
-            "building_hours": {
-                "Monday_Friday": "7:00 AM - 10:00 PM",
-                "Saturday_Sunday": "8:00 AM - 4:00 PM"
-            }
+            "zip_code": null,
+            "building_hours": null
         },
         "phone": "(718) 599-5707",
         "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
@@ -2337,7 +2396,7 @@
         },
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Summer Pool Hours at St, John's Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
@@ -3027,12 +3086,6 @@
         "reopens": null,
         "schedules": [
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "11:00 a - 2:00 p",
-                "date": "2026-09-08"
-            },
-            {
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "2:15 p - 4:45 p",
@@ -3125,12 +3178,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-08"
-                            },
                             {
                                 "session_type": "General Swim",
                                 "days": "Tuesday",
@@ -3410,8 +3457,33 @@
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 6:00 p",
                         "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:00 a - 10:45 a",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "2:00 p - 3:45 p",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Sunday",
+                                "time": "4:00 p - 5:30 p",
+                                "date": "2026-09-20"
+                            }
+                        ]
                     }
                 ]
             }
