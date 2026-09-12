@@ -68,18 +68,13 @@ function renderDay(day) {
         `<tr><td>${esc(s.session_type)}</td><td class="pp-time">${esc(s.time)}</td></tr>`,
     )
     .join('')
-  // `holiday` explains an empty day and is shown; `note` ("There are no
-  // programs at this pool today") merely restates an empty list and is not.
-  const holiday = day.holiday ? `<p class="pp-holiday">${esc(day.holiday)}</p>` : ''
   const hours = day.building_hours
     ? `<p class="pp-hours">Building hours: ${esc(day.building_hours)}</p>`
     : ''
   const body = rows
     ? `<table><tbody>${rows}</tbody></table>`
-    : holiday
-      ? ''
-      : '<p class="pp-empty">No swim sessions scheduled.</p>'
-  return `<div class="pp-day"><h4>${esc(dayHeading(day.date))}</h4>${hours}${holiday}${body}</div>`
+    : '<p class="pp-empty">No swim sessions scheduled.</p>'
+  return `<div class="pp-day"><h4>${esc(dayHeading(day.date))}</h4>${hours}${body}</div>`
 }
 
 function renderWeeks(pool) {
@@ -145,7 +140,6 @@ body{margin:0;background:#f8fafc}
 .pp-day{margin-bottom:.5rem}
 .pp-week{margin-bottom:1.5rem}
 .pp-hours,.pp-empty,.pp-note{font-size:.8rem;color:#94a3b8;margin:.15rem 0}
-.pp-holiday{font-size:.82rem;color:#92400e;margin:.15rem 0;font-weight:500}
 .pp-foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.78rem;color:#94a3b8}
 .pp-foot a{color:#64748b}
 `

@@ -440,7 +440,7 @@ rewrite and no hydration. Each carries its own `<title>`, description,
 canonical, `PublicSwimmingPool` JSON-LD, the full dated two-week timetable from
 `schedule_weeks` (not the flat `schedules` list — closed pools have an empty
 flat list but often a real timetable next week), per-day building hours,
-holiday notices, phone, cross streets, membership copy, and a link back to the
+phone, cross streets, membership copy, and a link back to the
 finder.
 
 Don't bolt thirteen more templates onto `vite-plugin-seo.js` as it stands. The
@@ -464,9 +464,10 @@ Gotchas for this step:
 - **Escaping is not optional.** The existing fallback runs every interpolated
   value through `esc()` and escapes `<` inside the JSON-LD block. Any new page
   generator must do both — scraped copy is untrusted input.
-- **`holiday` and `note` are different things** — show the holiday line,
-  never promote the generic "no programs scheduled" note. Same invariant as
-  the cards.
+- **`holiday` and `note` are different things** — neither is rendered any
+  more (the holiday line was removed from cards and pool pages on 2026-09-12),
+  but if one comes back it should be `holiday`, never the generic "no programs
+  scheduled" note.
 - **A closed pool with a future timetable must not read as open.** The
   homepage derives the return date from the first day with sessions and wears
   an amber "Reopens …" badge rather than a green "Open". Pool pages need the
@@ -885,7 +886,8 @@ the SEO section.
 selected range. Cards used to render each as an amber line above the session
 list ("Mon 9/7 Labor Day: Recreation Centers will be closed."); that notice was
 removed on 2026-09-12 — it repeated on every card and lingered all week after
-the holiday had passed. Pool pages still show the holiday line under its day.
+the holiday had passed. Pool pages dropped it the same day; an empty day there
+just reads "No swim sessions scheduled."
 
 `holidaysInRange(pools, …)` is the page-level counterpart, and exists for the
 case the per-card version cannot cover: **when a holiday empties the grid there
