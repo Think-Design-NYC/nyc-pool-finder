@@ -324,7 +324,7 @@
         },
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Summer Pool Hours at Constance Baker Motley Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
@@ -1690,12 +1690,15 @@
         "pool_code": "B085",
         "status": "closed",
         "location": {
-            "address": "Bedford and Metropolitan Avenues",
-            "cross_streets": null,
-            "city": "New York",
+            "address": "261 Bedford Avenue",
+            "cross_streets": "Bedford Avenue and Metropolitan Avenue",
+            "city": "Brooklyn",
             "state": "NY",
-            "zip_code": null,
-            "building_hours": null
+            "zip_code": "11211",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 10:00 PM",
+                "Saturday_Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 599-5707",
         "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
