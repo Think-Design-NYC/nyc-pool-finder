@@ -882,11 +882,10 @@ the SEO section.
 ## Holiday closures on the cards
 
 `holidaysForFilter(pool, dayKey, weeks)` returns the named closures inside the
-selected range; `PoolCard` renders each as an amber line above the session list,
-so a missing weekday reads as "the centers are shut" rather than "this pool has
-nothing on". Verified 2026-09-05: nothing renders under Today or this week, and
-every card under 9/7–9/13 carries "Mon 9/7 Labor Day: Recreation Centers will be
-closed."
+selected range. Cards used to render each as an amber line above the session
+list ("Mon 9/7 Labor Day: Recreation Centers will be closed."); that notice was
+removed on 2026-09-12 — it repeated on every card and lingered all week after
+the holiday had passed. Pool pages still show the holiday line under its day.
 
 `holidaysInRange(pools, …)` is the page-level counterpart, and exists for the
 case the per-card version cannot cover: **when a holiday empties the grid there

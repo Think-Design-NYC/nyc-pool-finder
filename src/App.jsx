@@ -29,7 +29,6 @@ import {
   scheduleWeeks,
   sessionsForFilter,
   reopeningDate,
-  holidaysForFilter,
   holidaysInRange,
   dayStamp,
   isPastToday,
@@ -372,7 +371,6 @@ export default function App() {
                 pool={pool}
                 href={poolHref(pool, slugs)}
                 activityLabel={activityActive ? selectedActivity : 'Swim'}
-                holidays={holidaysForFilter(pool, selectedDay, weeks)}
               />
             ))}
           </div>
