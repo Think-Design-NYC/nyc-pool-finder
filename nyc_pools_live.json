@@ -171,7 +171,7 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "The indoor pool at Chelsea Recreation Center is currently closed for scheduled repairs. We apologize for the inconvenience.",
         "reduced_hours": true,
         "notice_links": [],
@@ -326,7 +326,7 @@
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
         "notes": "Summer Pool Hours at Constance Baker Motley Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
-        "reduced_hours": true,
+        "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
         "closed_through": null,
@@ -427,6 +427,18 @@
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p",
                 "date": "2026-09-11"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 12:00 p",
+                "date": "2026-09-12"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "12:30 p - 2:45 p",
+                "date": "2026-09-12"
             }
         ],
         "schedule_weeks": [
@@ -580,7 +592,20 @@
                         "building_hours": "8:00 a - 3:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 12:00 p",
+                                "date": "2026-09-12"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "12:30 p - 2:45 p",
+                                "date": "2026-09-12"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-13",
@@ -767,7 +792,20 @@
                         "building_hours": "8:00 a - 3:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 12:00 p",
+                                "date": "2026-09-19"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "12:30 p - 2:45 p",
+                                "date": "2026-09-19"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-20",
@@ -801,7 +839,7 @@
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
         "notes": "Summer Pool Hours at Gertrude Ederle Recreation Center will end on Sunday, September 20, 2026. Updated expanded Fall schedules will begin on Monday, September 21, these schedules will be posted on the website and posted at the facility.",
-        "reduced_hours": true,
+        "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
         "closed_through": null,
@@ -1390,7 +1428,7 @@
         },
         "phone": "(212) 242-5228",
         "url": "https://www.nycgovparks.org/parks/M103/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building\u2019s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
         "reduced_hours": false,
         "notice_links": [
@@ -3080,7 +3118,7 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Summer Pool Hours at Roy Wilkins Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
