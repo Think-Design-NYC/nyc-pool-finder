@@ -241,6 +241,88 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-09-26"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 2:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Sunday",
+                                "time": "9:45 a - 11:30 a",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Adult Open Play Water Polo",
+                                "days": "Sunday",
+                                "time": "11:45 a - 1:45 p",
+                                "date": "2026-09-27"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
