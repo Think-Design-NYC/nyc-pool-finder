@@ -27,68 +27,6 @@
         "schedules": [],
         "schedule_weeks": [
             {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "9:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    }
-                ]
-            },
-            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -149,6 +87,68 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
             }
         ]
     },
@@ -171,77 +171,15 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "The indoor pool at Chelsea Recreation Center is currently closed for scheduled repairs. We apologize for the inconvenience.",
-        "reduced_hours": true,
+        "reduced_hours": false,
         "notice_links": [],
         "closure_reason": "for repairs",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 2:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -334,289 +272,138 @@
         "schedules": [
             {
                 "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "11:00 a - 1:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "1:15 p - 3:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "3:30 p - 4:45 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "11:00 a - 1:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "1:15 p - 3:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "3:30 p - 4:45 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Tuesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 1:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "1:15 p - 3:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "3:30 p - 4:45 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 1:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "1:15 p - 3:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "3:30 p - 4:45 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Thursday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Friday",
                 "time": "11:00 a - 1:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "1:15 p - 3:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Friday",
                 "time": "3:30 p - 4:45 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:00 p",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
             },
             {
                 "session_type": "General Swim",
                 "days": "Saturday",
                 "time": "12:30 p - 2:45 p",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
             }
         ],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 1:00 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "1:15 p - 3:00 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "3:30 p - 4:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Tuesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-08"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Wednesday",
-                                "time": "11:00 a - 1:00 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "1:15 p - 3:00 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Wednesday",
-                                "time": "3:30 p - 4:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Thursday",
-                                "time": "11:00 a - 1:00 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "1:15 p - 3:00 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "3:30 p - 4:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Thursday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Friday",
-                                "time": "11:00 a - 1:00 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "1:15 p - 3:00 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Friday",
-                                "time": "3:30 p - 4:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 3:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 12:00 p",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "12:30 p - 2:45 p",
-                                "date": "2026-09-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -813,6 +600,68 @@
                         "building_hours": "Closed",
                         "holiday": null,
                         "note": null,
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
                         "sessions": []
                     }
                 ]
@@ -847,241 +696,108 @@
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "11:00 a - 2:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "2:15 p - 4:45 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Tuesday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Wednesday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Thursday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Friday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:30 p",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
             },
             {
                 "session_type": "General Open Swim",
                 "days": "Saturday",
                 "time": "12:45 p - 3:30 p",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
             }
         ],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "General Open Swim",
-                                "days": "Tuesday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-08"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Open Swim",
-                                "days": "Wednesday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Open Swim",
-                                "days": "Thursday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Open Swim",
-                                "days": "Friday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 12:30 p",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "General Open Swim",
-                                "days": "Saturday",
-                                "time": "12:45 p - 3:30 p",
-                                "date": "2026-09-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -1244,6 +960,176 @@
                     },
                     {
                         "date": "2026-09-20",
+                        "weekday": "Sunday",
+                        "building_hours": "Closed",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 2:00 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Monday",
+                                "time": "2:15 p - 4:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-21"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 2:00 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Tuesday",
+                                "time": "2:15 p - 4:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-22"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 2:00 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Wednesday",
+                                "time": "2:15 p - 4:45 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-23"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 2:00 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Thursday",
+                                "time": "2:15 p - 4:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-24"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 2:00 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Friday",
+                                "time": "2:15 p - 4:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-25"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 12:30 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Saturday",
+                                "time": "12:45 p - 3:30 p",
+                                "date": "2026-09-26"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-27",
                         "weekday": "Sunday",
                         "building_hours": "Closed",
                         "holiday": null,
@@ -1288,68 +1174,6 @@
         "schedules": [],
         "schedule_weeks": [
             {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 6:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
-            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -1403,6 +1227,68 @@
                     },
                     {
                         "date": "2026-09-20",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
                         "weekday": "Sunday",
                         "building_hours": null,
                         "holiday": null,
@@ -1428,7 +1314,7 @@
         },
         "phone": "(212) 242-5228",
         "url": "https://www.nycgovparks.org/parks/M103/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building\u2019s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
         "reduced_hours": false,
         "notice_links": [
@@ -1442,68 +1328,6 @@
         "reopens": null,
         "schedules": [],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -1558,6 +1382,68 @@
                     },
                     {
                         "date": "2026-09-20",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
                         "weekday": "Sunday",
                         "building_hours": null,
                         "holiday": null,
@@ -1597,68 +1483,6 @@
         "schedules": [],
         "schedule_weeks": [
             {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 12:00 a",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
-            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -1712,6 +1536,68 @@
                     },
                     {
                         "date": "2026-09-20",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
                         "weekday": "Sunday",
                         "building_hours": null,
                         "holiday": null,
@@ -1755,68 +1641,6 @@
         "schedules": [],
         "schedule_weeks": [
             {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
-            {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
                 "days": [
@@ -1877,6 +1701,68 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
             }
         ]
     },
@@ -1908,314 +1794,139 @@
         "reopens": null,
         "schedules": [
             {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "11:00 a - 2:45 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Monday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-09-14"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
                 "time": "11:00 a - 2:45 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Closed for Cleaning",
                 "days": "Tuesday",
                 "time": "3:00 p - 4:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:45 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Tuesday",
                 "time": "6:00 p - 7:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 2:45 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Closed for Cleaning",
                 "days": "Wednesday",
                 "time": "3:00 p - 4:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "4:00 p - 5:45 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "5:45 p - 7:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 2:45 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Closed for Cleaning",
                 "days": "Thursday",
                 "time": "3:00 p - 4:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "4:00 p - 5:45 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Thursday",
                 "time": "6:00 p - 7:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "11:00 a - 12:45 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Friday",
                 "time": "1:00 p - 2:45 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Closed for Cleaning",
                 "days": "Friday",
                 "time": "3:00 p - 4:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Family Swim",
                 "days": "Friday",
                 "time": "4:00 p - 7:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
-                "session_type": "Open Lap Swim",
-                "days": "Sunday",
-                "time": "8:00 a - 11:45 a",
-                "date": "2026-09-13"
+                "session_type": "Bootcamp in the Pool",
+                "days": "Saturday",
+                "time": "10:15 a - 11:00 a",
+                "date": "2026-09-19"
             },
             {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "12:00 p - 1:15 p",
-                "date": "2026-09-13"
+                "session_type": "Hydro Blast",
+                "days": "Saturday",
+                "time": "11:15 a - 12:00 p",
+                "date": "2026-09-19"
             },
             {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "1:30 p - 2:45 p",
-                "date": "2026-09-13"
+                "session_type": "High Impact Water",
+                "days": "Saturday",
+                "time": "12:15 p - 1:00 p",
+                "date": "2026-09-19"
             },
             {
-                "session_type": "Closed for Cleaning",
-                "days": "Sunday",
-                "time": "3:00 p - 4:00 p",
-                "date": "2026-09-13"
+                "session_type": "Water Aerobics",
+                "days": "Saturday",
+                "time": "1:15 p - 2:00 p",
+                "date": "2026-09-19"
             }
         ],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 2:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Tuesday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Tuesday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-08"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "11:00 a - 2:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Wednesday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "5:45 p - 7:00 p",
-                                "date": "2026-09-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "11:00 a - 2:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Thursday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Thursday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "11:00 a - 12:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "1:00 p - 2:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Friday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "4:00 p - 7:00 p",
-                                "date": "2026-09-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 12:00 a",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 11:45 a",
-                                "date": "2026-09-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "12:00 p - 1:15 p",
-                                "date": "2026-09-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "1:30 p - 2:45 p",
-                                "date": "2026-09-13"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Sunday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-13"
-                            }
-                        ]
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -2415,6 +2126,103 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Monday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-21"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Tuesday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-22"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Wednesday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-23"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Thursday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-24"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": "6:30 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Closed for Cleaning",
+                                "days": "Friday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-09-25"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 12:00 a",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    }
+                ]
             }
         ]
     },
@@ -2446,434 +2254,13 @@
         "reopens": null,
         "schedules": [
             {
-                "session_type": "General Swim",
-                "days": "Tuesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-09-08"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "12:15 p - 1:45 p",
-                "date": "2026-09-08"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Tuesday",
-                "time": "2:00 p - 2:45 p",
-                "date": "2026-09-08"
-            },
-            {
                 "session_type": "Children/Teen Swim",
-                "days": "Tuesday",
+                "days": "Monday",
                 "time": "3:00 p - 4:15 p",
-                "date": "2026-09-08"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Tuesday",
-                "time": "4:30 p - 5:45 p",
-                "date": "2026-09-08"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "6:00 p - 7:00 p",
-                "date": "2026-09-08"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "11:00 a - 12:15 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "12:30 p - 1:30 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "1:45 p - 2:45 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Wednesday",
-                "time": "3:00 p - 4:15 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Wednesday",
-                "time": "4:30 p - 5:45 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "6:00 p - 7:00 p",
-                "date": "2026-09-09"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "11:00 a - 12:15 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "12:30 p - 1:45 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "2:00 p - 2:45 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Thursday",
-                "time": "3:00 p - 4:15 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Thursday",
-                "time": "4:30 p - 5:45 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "6:00 p - 7:00 p",
-                "date": "2026-09-10"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "11:00 a - 12:15 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "12:30 p - 1:30 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "1:45 p - 2:45 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Friday",
-                "time": "3:00 p - 4:15 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Friday",
-                "time": "4:30 p - 5:45 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "6:00 p - 7:00 p",
-                "date": "2026-09-11"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 9:15 a",
-                "date": "2026-09-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "9:30 a - 10:30 a",
-                "date": "2026-09-12"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Saturday",
-                "time": "10:45 a - 12:00 p",
-                "date": "2026-09-12"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Saturday",
-                "time": "12:15 p - 1:30 p",
-                "date": "2026-09-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "2:00 p - 2:45 p",
-                "date": "2026-09-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "3:00 p - 4:00 p",
-                "date": "2026-09-12"
+                "date": "2026-09-14"
             }
         ],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "12:15 p - 1:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "2:00 p - 2:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Tuesday",
-                                "time": "3:00 p - 4:15 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Tuesday",
-                                "time": "4:30 p - 5:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-08"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "11:00 a - 12:15 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "12:30 p - 1:30 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "1:45 p - 2:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Wednesday",
-                                "time": "3:00 p - 4:15 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Wednesday",
-                                "time": "4:30 p - 5:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "11:00 a - 12:15 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "12:30 p - 1:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "2:00 p - 2:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Thursday",
-                                "time": "3:00 p - 4:15 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Thursday",
-                                "time": "4:30 p - 5:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "11:00 a - 12:15 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "12:30 p - 1:30 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "1:45 p - 2:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Friday",
-                                "time": "3:00 p - 4:15 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "4:30 p - 5:45 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-09-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 11:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 9:15 a",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "9:30 a - 10:30 a",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Saturday",
-                                "time": "10:45 a - 12:00 p",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Saturday",
-                                "time": "12:15 p - 1:30 p",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "2:00 p - 2:45 p",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Saturday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-09-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 5:45 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -2942,6 +2329,68 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
             }
         ]
     },
@@ -2973,68 +2422,6 @@
         "reopens": "September 21",
         "schedules": [],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "9:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "9:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -3096,6 +2483,68 @@
                         "sessions": []
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
             }
         ]
     },
@@ -3118,7 +2567,7 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Summer Pool Hours at Roy Wilkins Recreation Center will end on Saturday, September 19, 2026. Updated expanded Fall schedules will begin on Sunday, September 20, these schedules will be posted on the website and posted at the facility.",
         "reduced_hours": true,
         "notice_links": [],
@@ -3127,218 +2576,127 @@
         "reopens": null,
         "schedules": [
             {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "11:00 a - 2:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "2:15 p - 4:45 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p",
+                "date": "2026-09-14"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "11:00 a - 2:00 p",
+                "date": "2026-09-15"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Tuesday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Tuesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-08"
+                "date": "2026-09-15"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Wednesday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-09"
+                "date": "2026-09-16"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
                 "time": "11:00 a - 2:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "General Swim",
                 "days": "Thursday",
                 "time": "2:15 p - 4:45 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Thursday",
                 "time": "5:00 p - 7:00 p",
-                "date": "2026-09-10"
+                "date": "2026-09-17"
             },
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "11:00 a - 3:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "General Swim",
                 "days": "Friday",
                 "time": "3:00 p - 7:00 p",
-                "date": "2026-09-11"
+                "date": "2026-09-18"
             },
             {
                 "session_type": "Open Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 11:45 a",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
             },
             {
                 "session_type": "General Swim",
                 "days": "Saturday",
                 "time": "12:00 p - 4:00 p",
-                "date": "2026-09-12"
+                "date": "2026-09-19"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Sunday",
+                "time": "8:00 a - 10:45 a",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Sunday",
+                "time": "11:00 a - 2:00 p",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "2:00 p - 3:45 p",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Sunday",
+                "time": "4:00 p - 5:30 p",
+                "date": "2026-09-20"
             }
         ],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-08"
-                            },
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Tuesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-08"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-09"
-                            },
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Wednesday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "11:00 a - 2:00 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "2:15 p - 4:45 p",
-                                "date": "2026-09-10"
-                            },
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Thursday",
-                                "time": "5:00 p - 7:00 p",
-                                "date": "2026-09-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "6:00 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "11:00 a - 3:00 p",
-                                "date": "2026-09-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "3:00 p - 7:00 p",
-                                "date": "2026-09-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 8:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 11:45 a",
-                                "date": "2026-09-12"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "12:00 p - 4:00 p",
-                                "date": "2026-09-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 6:00 p",
-                        "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -3527,6 +2885,225 @@
                         ]
                     }
                 ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:45 p - 4:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 9:30 p",
+                                "date": "2026-09-21"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "12:45 p - 3:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Tuesday",
+                                "time": "6:00 p - 9:30 p",
+                                "date": "2026-09-22"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "12:45 p - 4:45 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 9:30 p",
+                                "date": "2026-09-23"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "12:45 p - 3:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Thursday",
+                                "time": "6:00 p - 9:30 p",
+                                "date": "2026-09-24"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": "6:00 a - 10:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "12:45 p - 3:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "4:00 p - 6:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 p - 9:30 p",
+                                "date": "2026-09-25"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 12:00 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "12:15 p - 4:00 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "Saturday Night Lights: Teen Open Swim",
+                                "days": "Saturday",
+                                "time": "4:00 p - 7:30 p",
+                                "date": "2026-09-26"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-09-27",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 6:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:00 a - 10:45 a",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "2:00 p - 3:45 p",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Sunday",
+                                "time": "4:00 p - 5:30 p",
+                                "date": "2026-09-27"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
@@ -3562,68 +3139,6 @@
         "reopens": null,
         "schedules": [],
         "schedule_weeks": [
-            {
-                "start": "2026-09-07",
-                "end": "2026-09-13",
-                "days": [
-                    {
-                        "date": "2026-09-07",
-                        "weekday": "Monday",
-                        "building_hours": "Closed",
-                        "holiday": "Labor Day: Recreation Centers will be closed.",
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-08",
-                        "weekday": "Tuesday",
-                        "building_hours": "7:00 a - 9:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-09",
-                        "weekday": "Wednesday",
-                        "building_hours": "7:00 a - 9:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-10",
-                        "weekday": "Thursday",
-                        "building_hours": "7:00 a - 9:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-11",
-                        "weekday": "Friday",
-                        "building_hours": "7:00 a - 9:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-12",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    },
-                    {
-                        "date": "2026-09-13",
-                        "weekday": "Sunday",
-                        "building_hours": "Closed",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": []
-                    }
-                ]
-            },
             {
                 "start": "2026-09-14",
                 "end": "2026-09-20",
@@ -3678,6 +3193,68 @@
                     },
                     {
                         "date": "2026-09-20",
+                        "weekday": "Sunday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    }
+                ]
+            },
+            {
+                "start": "2026-09-21",
+                "end": "2026-09-27",
+                "days": [
+                    {
+                        "date": "2026-09-21",
+                        "weekday": "Monday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-22",
+                        "weekday": "Tuesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-23",
+                        "weekday": "Wednesday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-24",
+                        "weekday": "Thursday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-25",
+                        "weekday": "Friday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-26",
+                        "weekday": "Saturday",
+                        "building_hours": null,
+                        "holiday": null,
+                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-09-27",
                         "weekday": "Sunday",
                         "building_hours": null,
                         "holiday": null,
