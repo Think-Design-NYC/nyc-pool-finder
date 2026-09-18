@@ -3,7 +3,7 @@
         "borough": "Manhattan",
         "pool_name": "Asser Levy Pool",
         "pool_code": "M164",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "392 Asser Levy Place",
             "cross_streets": "East 23rd Street & FDR Drive",
@@ -18,11 +18,11 @@
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
+        "notes": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
-        "closed_through": "mid-September",
+        "closed_through": null,
         "reopens": null,
         "schedules": [],
         "schedule_weeks": [
@@ -95,57 +95,201 @@
                     {
                         "date": "2026-09-21",
                         "weekday": "Monday",
-                        "building_hours": null,
+                        "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 11:00 a",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Monday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-21"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-22",
                         "weekday": "Tuesday",
-                        "building_hours": null,
+                        "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 11:00 a",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-22"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-23",
                         "weekday": "Wednesday",
-                        "building_hours": null,
+                        "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 11:00 a",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:00 p",
+                                "date": "2026-09-23"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-24",
                         "weekday": "Thursday",
-                        "building_hours": null,
+                        "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 11:00 a",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Thursday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-24"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-25",
                         "weekday": "Friday",
-                        "building_hours": null,
+                        "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 11:00 a",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Friday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-09-25"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-26",
                         "weekday": "Saturday",
-                        "building_hours": null,
+                        "building_hours": "9:00 a - 4:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "9:00 a - 11:00 a",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Saturday",
+                                "time": "11:00 a - 2:00 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "2:30 p - 3:45 p",
+                                "date": "2026-09-26"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-27",
                         "weekday": "Sunday",
-                        "building_hours": null,
+                        "building_hours": "Closed",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": null,
                         "sessions": []
                     }
                 ]
@@ -3020,6 +3164,36 @@
                 "days": "Saturday",
                 "time": "3:00 p - 4:00 p",
                 "date": "2026-09-19"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Sunday",
+                "time": "8:15 a - 9:45 a",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "10:00 a - 11:15 a",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Sunday",
+                "time": "11:30 a - 1:15 p",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "Children/Teen Swim",
+                "days": "Sunday",
+                "time": "1:30 p - 2:30 p",
+                "date": "2026-09-20"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Sunday",
+                "time": "2:45 p - 4:15 p",
+                "date": "2026-09-20"
             }
         ],
         "schedule_weeks": [
@@ -3308,8 +3482,39 @@
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 5:45 p",
                         "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:15 a - 9:45 a",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "10:00 a - 11:15 a",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "11:30 a - 1:15 p",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "Children/Teen Swim",
+                                "days": "Sunday",
+                                "time": "1:30 p - 2:30 p",
+                                "date": "2026-09-20"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "2:45 p - 4:15 p",
+                                "date": "2026-09-20"
+                            }
+                        ]
                     }
                 ]
             },
@@ -3320,58 +3525,419 @@
                     {
                         "date": "2026-09-21",
                         "weekday": "Monday",
-                        "building_hours": null,
+                        "building_hours": "6:00 a - 10:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 8:30 a",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "St. John's: Adult Water Exercise",
+                                "days": "Monday",
+                                "time": "8:45 a - 9:15 a",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "9:30 a - 11:00 a",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "11:15 a - 1:00 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "1:15 p - 2:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Children",
+                                "days": "Monday",
+                                "time": "3:00 p - 3:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Monday",
+                                "time": "4:00 p - 4:45 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-09-21"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:45 p - 9:30 p",
+                                "date": "2026-09-21"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-22",
                         "weekday": "Tuesday",
-                        "building_hours": null,
+                        "building_hours": "6:00 a - 10:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 8:30 a",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "St. John's: Adult Water Exercise",
+                                "days": "Tuesday",
+                                "time": "8:45 a - 9:15 a",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "9:30 a - 11:00 a",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "11:15 a - 1:00 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "1:15 p - 2:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Children",
+                                "days": "Tuesday",
+                                "time": "3:00 p - 3:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 4:45 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Women's General Swim",
+                                "days": "Tuesday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-09-22"
+                            },
+                            {
+                                "session_type": "Women's Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:45 p - 9:30 p",
+                                "date": "2026-09-22"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-23",
                         "weekday": "Wednesday",
-                        "building_hours": null,
+                        "building_hours": "6:00 a - 10:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 8:30 a",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "St. John's: Adult Water Exercise",
+                                "days": "Wednesday",
+                                "time": "8:45 a - 9:15 a",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "9:30 a - 11:00 a",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "11:15 a - 1:00 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Children",
+                                "days": "Wednesday",
+                                "time": "3:00 p - 3:45 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 4:45 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-09-23"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:45 p - 9:30 p",
+                                "date": "2026-09-23"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-24",
                         "weekday": "Thursday",
-                        "building_hours": null,
+                        "building_hours": "6:00 a - 10:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 8:30 a",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "St. John's: Adult Water Exercise",
+                                "days": "Thursday",
+                                "time": "8:45 a - 9:15 a",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "9:30 a - 11:00 a",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "11:15 a - 1:00 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "1:15 p - 2:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Children",
+                                "days": "Thursday",
+                                "time": "3:00 p - 3:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Thursday",
+                                "time": "4:00 p - 4:45 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Thursday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-09-24"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:45 p - 9:30 p",
+                                "date": "2026-09-24"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-25",
                         "weekday": "Friday",
-                        "building_hours": null,
+                        "building_hours": "6:00 a - 10:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 8:30 a",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "St. John's: Adult Water Exercise",
+                                "days": "Friday",
+                                "time": "8:45 a - 9:15 a",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "9:30 a - 11:00 a",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "11:15 a - 1:00 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "1:15 p - 2:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Children",
+                                "days": "Friday",
+                                "time": "3:00 p - 3:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Friday",
+                                "time": "4:00 p - 4:45 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-09-25"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:45 p - 9:30 p",
+                                "date": "2026-09-25"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-26",
                         "weekday": "Saturday",
-                        "building_hours": null,
+                        "building_hours": "8:00 a - 11:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:30 a",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "10:45 a - 1:45 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:45 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "Children - SNL",
+                                "days": "Saturday",
+                                "time": "4:00 p - 6:30 p",
+                                "date": "2026-09-26"
+                            },
+                            {
+                                "session_type": "Teen/Young Adult Swim - SNL",
+                                "days": "Saturday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-09-26"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-09-27",
                         "weekday": "Sunday",
-                        "building_hours": null,
+                        "building_hours": "8:00 a - 5:45 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:15 a - 9:45 a",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "10:00 a - 11:15 a",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "11:30 a - 1:15 p",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Children/Teen Swim",
+                                "days": "Sunday",
+                                "time": "1:30 p - 2:30 p",
+                                "date": "2026-09-27"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "2:45 p - 4:15 p",
+                                "date": "2026-09-27"
+                            }
+                        ]
                     }
                 ]
             }
