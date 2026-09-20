@@ -648,8 +648,9 @@ Filter helpers live in `src/utils.js`:
 - `ACTIVITIES` + `matchesActivity` — regex-based session-type matching
   (Lap Swim, Open Swim, Family Swim, Learn to Swim, Water Exercise, Swim
   Team). Open Swim explicitly excludes "lap" to avoid double-matching.
-- `matchesDay` — "Today" / "Tomorrow" / "Week" against the schedule's
-  `days` string.
+- `matchesDay` — legacy weekday-name matching against the flat schedule's
+  `days` string, for data scraped before `schedule_weeks` existed. Maps all
+  four day tokens (offsets 0–3 from today) to a weekday name.
 - `isPastToday` — when "Today" is active, hides schedules whose end time
   has already passed (parses `"9:45 a-11:15 a"` style ranges).
 
@@ -812,13 +813,12 @@ drops the week rather than guessing.
 Why closed pools still get weeks: Chelsea (M260) is closed as of 2026-09-05 and
 reopens 9/8 with 17 sessions in the 9/7–9/13 week.
 
-### Reopening pools surface in the week they reopen
+### Reopening pools surface on the day they reopen
 
-`reopeningDate(pool, dayKey, weeks)` returns the first date **inside the
-selected range** on which a closed pool actually has sessions, or null. A pool
-it returns a date for is promoted into the grid for that range and removed from
-the closed list — being in both would have the same pool saying two different
-things.
+`reopeningDate(pool, dayKey)` returns the first date **on the selected day** on
+which a closed pool actually has sessions, or null. A pool it returns a date
+for is promoted into the grid for that day and removed from the closed list —
+being in both would have the same pool saying two different things.
 
 The date comes from the timetable, never from the closure prose. For Chelsea
 three independent sources agree on 2026-09-08, which is the check worth
@@ -839,9 +839,10 @@ gains "· from Tue 9/8". `isClosed` in `PoolCard` becomes
 `status === 'closed' && !reopening`, which is what lets the timetable render at
 all — so if you add another closed-pool branch there, check both flags.
 
-Under Today / Tomorrow / this-week nothing is promoted (verified), so the
-default view is byte-identical to before and the build-time SEO fallback — which
-mirrors the *unfiltered* view — needs no matching change.
+Since 2026-09-20 the day filters are single days (Today / Tomorrow / +2 / +3),
+so promotion is per-day: a closed pool joins the grid only when the selected
+day itself has sessions. The build-time SEO fallback mirrors the *unfiltered*
+view and needs no matching change.
 
 ### What the dates fixed
 
@@ -851,19 +852,33 @@ have shown every pool's usual Monday sessions — all 13 centers are closed.
 
 Verified 2026-09-05, this week vs next: Chelsea 0→17, Constance Baker Motley
 19→0, Shirley Chisholm 23→9, St. John's 37→30, Gertrude Ederle 17→14, Roy
-Wilkins 16→13. The two week buttons are not cosmetic.
+Wilkins 16→13. (The week pills these numbers justified were replaced by
+single-day pills on 2026-09-20; the dated filtering they proved remains.)
 
-### Filter values vs. labels
+### Filter values vs. labels (redesigned 2026-09-20)
 
-The day pills persist to `localStorage`. Their **values** are stable
-(`Today` / `Tomorrow` / `ThisWeek` / `NextWeek`); only the **labels** carry
-dates. Storing a label would invalidate everyone's saved filter every Monday.
-The pre-dated value `Week` migrates to `ThisWeek` (`usePersistedFilter`'s
-`migrations` argument).
+The four day pills are **relative**: internal tokens `Today` / `Tomorrow` /
+`Plus2` / `Plus3` mean offsets 0–3 from the reader's today, and the +2/+3
+labels are weekday names that roll forward daily (on a Sunday:
+`Today · Tomorrow · Tuesday · Wednesday`).
 
-Labels are derived from `schedule_weeks` rather than the reader's clock
-(`scheduleWeeks()` in `utils.js`), so if a refresh is missed the buttons name
-the weeks we actually have. The staleness banner is what flags the gap.
+What persists — in the URL *and* localStorage — is the **resolved ISO date**
+(`?day=2026-09-22`), not the token, so a copied link pins the calendar day the
+sharer meant. Reading maps the date back by offset from the reader's today:
+0–3 selects the matching pill (a "Tuesday" link shared Sunday, opened Monday,
+arrives as the *Tomorrow* pill — still Tuesday's schedule); anything past or
+beyond the window falls through URL → stored → the Today default. That
+fall-through is also the migration story: stale stored dates self-clean, the
+legacy raw `Today`/`Tomorrow` tokens still read, and the retired week values
+(`ThisWeek` / `NextWeek` / `Week`, plus old `?day=thisweek` links) land on
+Today. The token↔date pair is `dateForDayFilter` / `dayFilterValue` in
+`utils.js`.
+
+Labels come from the clock, not the scraped weeks — a weekday name can't claim
+data we lack the way a dated week label could. If a refresh is missed, the
+selected day is simply empty and the staleness banner flags the gap. The old
+week pills (7-day session grids) were removed as too dense to be useful; the
+pool pages' two-week tables are now the only whole-week view.
 
 ## The privacy page is indexable (changed 2026-09-05)
 
@@ -888,8 +903,7 @@ the SEO section.
 
 ## Holiday closures on the cards
 
-`holidaysForFilter(pool, dayKey, weeks)` returns the named closures inside the
-selected range. Cards used to render each as an amber line above the session
+`holidaysForFilter(pool, dayKey)` returns the named closures on the selected day. Cards used to render each as an amber line above the session
 list ("Mon 9/7 Labor Day: Recreation Centers will be closed."); that notice was
 removed on 2026-09-12 — it repeated on every card and lingered all week after
 the holiday had passed. Pool pages dropped it the same day; an empty day there

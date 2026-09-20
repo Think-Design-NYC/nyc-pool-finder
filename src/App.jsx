@@ -24,9 +24,7 @@ import {
   poolHref,
   ACTIVITIES,
   matchesActivity,
-  DAY_FILTERS,
   dayFilterOptions,
-  scheduleWeeks,
   sessionsForFilter,
   reopeningDate,
   holidaysInRange,
@@ -35,6 +33,8 @@ import {
   dataAgeHours,
   describeAge,
   STALE_AFTER_HOURS,
+  dayFilterValue,
+  dateForDayFilter,
 } from './utils'
 
 // Filter state lives in three places, in this precedence order:
@@ -46,16 +46,21 @@ import {
 // A URL parameter always wins, because someone who followed a link asked for
 // that view specifically. Missing or unrecognised parameters fall through to
 // the stored value rather than resetting the whole page, so a hand-trimmed URL
-// still works.
+// still works. The `day` parameter is the resolved ISO date, not a token — see
+// `filtersToSearch` in utils.js.
 const FILTERS = {
   borough: { key: 'poolfinder.borough', allowed: BOROUGH_FILTERS, fallback: 'Manhattan' },
   activity: { key: 'poolfinder.activity', allowed: ACTIVITY_FILTERS, fallback: 'Lap Swim' },
   day: {
     key: 'poolfinder.day',
-    allowed: DAY_FILTERS,
     fallback: 'Today',
-    // Anyone who had the old undated "Week" pill selected lands on this week.
-    migrations: { Week: 'ThisWeek' },
+    // Persisted as the resolved ISO date, not the token — see filtersToSearch.
+    // A stale stored date parses to null and self-cleans to Today; a day pick
+    // is not a durable preference the way borough/activity are. dayFilterValue
+    // also still reads the legacy 'Today'/'Tomorrow' tokens, and retires any
+    // unrecognised value (including old week keys) to the fallback.
+    parse: dayFilterValue,
+    serialize: dateForDayFilter,
   },
 }
 
@@ -67,8 +72,8 @@ function storedFilters() {
     out[name] = cfg.fallback
     try {
       const raw = localStorage.getItem(cfg.key)
-      const migrated = cfg.migrations?.[raw] ?? raw
-      if (cfg.allowed.includes(migrated)) out[name] = migrated
+      const value = cfg.parse ? cfg.parse(raw) : cfg.allowed.includes(raw) ? raw : null
+      if (value) out[name] = value
     } catch {
       // keep the fallback
     }
@@ -79,7 +84,7 @@ function storedFilters() {
 function persistFilters(filters) {
   try {
     for (const [name, cfg] of Object.entries(FILTERS)) {
-      localStorage.setItem(cfg.key, filters[name])
+      localStorage.setItem(cfg.key, cfg.serialize ? cfg.serialize(filters[name]) : filters[name])
     }
   } catch {
     // ignore — the URL still carries the state
@@ -137,10 +142,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  // The two weeks the scrape covers. Both the button labels and the date
-  // filtering come from these, so the UI can't claim a week the data lacks.
-  const weeks = useMemo(() => scheduleWeeks(pools), [])
-  const dayOptions = useMemo(() => dayFilterOptions(weeks), [weeks])
+  const dayOptions = useMemo(() => dayFilterOptions(), [])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const hidePast = selectedDay === 'Today'
@@ -148,7 +150,7 @@ export default function App() {
   const boroughs = useMemo(() => {
     const present = new Set()
     for (const p of pools) {
-      const hasMatch = sessionsForFilter(p, selectedDay, weeks).some(
+      const hasMatch = sessionsForFilter(p, selectedDay).some(
         (s) =>
           (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
           (!hidePast || !isPastToday(s.time)),
@@ -157,7 +159,7 @@ export default function App() {
       present.add(getBorough(p))
     }
     return BOROUGH_ORDER.filter((b) => present.has(b))
-  }, [activityActive, hidePast, selectedActivity, selectedDay, weeks])
+  }, [activityActive, hidePast, selectedActivity, selectedDay])
 
   useEffect(() => {
     if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
@@ -184,8 +186,8 @@ export default function App() {
   // but they're also needed page-level: on a day every centre is shut, no card
   // renders at all and the empty state would otherwise blame the filters.
   const rangeHolidays = useMemo(
-    () => holidaysInRange(pools, selectedDay, weeks),
-    [selectedDay, weeks],
+    () => holidaysInRange(pools, selectedDay),
+    [selectedDay],
   )
 
   const openNames = useMemo(() => pools.filter(isOpen).map((p) => p.pool_name), [])
@@ -223,11 +225,11 @@ export default function App() {
   const reopening = useMemo(() => {
     const out = new Map()
     for (const p of pools) {
-      const date = reopeningDate(p, selectedDay, weeks)
+      const date = reopeningDate(p, selectedDay)
       if (date) out.set(p.pool_name, date)
     }
     return out
-  }, [selectedDay, weeks])
+  }, [selectedDay])
 
   // Every closed pool, always — they're listed at the bottom rather than in the
   // grid. Filtering by activity or day used to hide them completely (a closed
@@ -248,7 +250,7 @@ export default function App() {
         // Always resolve through the dated weeks: "Today" now means this
         // calendar date, so a holiday closure genuinely empties the day
         // instead of showing that weekday's usual sessions.
-        const filtered = sessionsForFilter(p, selectedDay, weeks).filter(
+        const filtered = sessionsForFilter(p, selectedDay).filter(
           (s) =>
             (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
             (!hidePast || !isPastToday(s.time)),
@@ -261,7 +263,7 @@ export default function App() {
         const rank = { open: 0, transitioning: 1 }
         return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
       })
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, weeks, reopening])
+  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, reopening])
 
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step

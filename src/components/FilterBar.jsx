@@ -5,7 +5,7 @@ function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-w
     <div className="flex flex-1 gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
       {options.map((o) => {
         // Borough/activity pills are plain strings; the day pills carry a label
-        // that differs from the stored value (dates, which change weekly).
+        // that differs from the stored token (weekday names that roll daily).
         const { value, label, ariaLabel } = typeof o === 'string' ? { value: o, label: o } : o
         return (
           <button

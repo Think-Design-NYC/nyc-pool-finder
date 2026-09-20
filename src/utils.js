@@ -245,8 +245,8 @@ export const BOROUGH_FILTERS = ['All Boroughs', ...BOROUGH_ORDER]
 export const ACTIVITY_FILTERS = ['All activities', ...ACTIVITIES.map((a) => a.key)]
 
 // Filter values as URL slugs: "All Boroughs" -> all-boroughs, "Children/Teen
-// Swim" -> children-teen-swim, "ThisWeek" -> this-week. The camel-case split
-// runs first so the two week values don't collapse to thisweek/nextweek.
+// Swim" -> children-teen-swim, "Plus2" -> plus-2. The camel-case split runs
+// first so compound values don't collapse to a single run of characters.
 export function filterSlug(value) {
   return String(value ?? '')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -271,24 +271,55 @@ export function matchesActivity(sessionType, activityKey) {
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-// Weeks run Monday–Sunday, matching how NYC Parks paginates its schedule
-// pages (/schedule/<Monday>) and the labels the day filter shows.
-const WEEK_STARTS_ON = 1
+// The day filter's stable values — offsets from the reader's today, so a tab
+// left open past midnight keeps meaning "+2 days from now". These are NOT
+// what the URL or localStorage carry: the persisted form is the resolved ISO
+// date (see filtersToSearch), so a copied link pins the calendar day the
+// sharer meant. Labels roll forward daily.
+export const DAY_FILTERS = ['Today', 'Tomorrow', 'Plus2', 'Plus3']
 
-// The day filter's stable values. These are NOT the button labels: the two week
-// options are labelled with their dates, which change every Monday, so using a
-// label as the persisted value would invalidate the stored filter each week.
-export const DAY_FILTERS = ['Today', 'Tomorrow', 'ThisWeek', 'NextWeek']
+const DAY_OFFSETS = { Today: 0, Tomorrow: 1, Plus2: 2, Plus3: 3 }
+
+// 'Plus2' on 2026-09-20 -> '2026-09-22'.
+export function dateForDayFilter(dayKey, from = new Date()) {
+  const d = new Date(from.getFullYear(), from.getMonth(), from.getDate())
+  d.setDate(d.getDate() + (DAY_OFFSETS[dayKey] ?? 0))
+  return toISODate(d)
+}
+
+// '2026-09-22' back to the token it means for this reader today, or null
+// when the date is past, beyond the four-pill window, or not a date at all —
+// callers fall through to their stored/default value. Math.round absorbs the
+// off-by-an-hour a DST boundary introduces into the millisecond difference.
+export function dayFilterFromDate(iso, from = new Date()) {
+  const d = parseISODate(iso)
+  if (!d) return null
+  const today = new Date(from.getFullYear(), from.getMonth(), from.getDate())
+  const offset = Math.round((d - today) / 86400000)
+  return DAY_FILTERS[offset] ?? null
+}
 
 // Filter state <-> query string. Deliberately writes all three parameters at
 // once: a shared link should pin the whole view, not inherit two thirds of it
-// from whatever the recipient happened to have in localStorage.
+// from whatever the recipient happened to have in localStorage. The day is
+// written as the date it currently resolves to — sharing "Tuesday" shares
+// that Tuesday, not "whatever is two days out when you open this".
 export function filtersToSearch({ borough, activity, day }) {
   const params = new URLSearchParams()
   params.set('borough', filterSlug(borough))
   params.set('activity', filterSlug(activity))
-  params.set('day', filterSlug(day))
+  params.set('day', dateForDayFilter(day))
   return `?${params.toString()}`
+}
+
+// A persisted day value back to a token: an ISO date (the normal case), a
+// legacy raw 'Today'/'Tomorrow' from pre-2026-09-20 localStorage, or a legacy
+// 'today'/'tomorrow' URL slug from an old bookmark. Anything unrecognised
+// returns null — callers fall through to their stored/default value, so old
+// links (including old week-filter bookmarks) land on Today.
+export function dayFilterValue(raw, from = new Date()) {
+  if (raw === 'Today' || raw === 'Tomorrow') return raw
+  return dayFilterFromDate(raw, from) ?? filterFromSlug(raw, ['Today', 'Tomorrow'])
 }
 
 // Only the parameters that are present AND valid. Missing ones are left to the
@@ -298,16 +329,11 @@ export function filtersFromSearch(search) {
   const out = {}
   const borough = filterFromSlug(params.get('borough'), BOROUGH_FILTERS)
   const activity = filterFromSlug(params.get('activity'), ACTIVITY_FILTERS)
-  const day = filterFromSlug(params.get('day'), DAY_FILTERS)
+  const day = dayFilterValue(params.get('day'))
   if (borough) out.borough = borough
   if (activity) out.activity = activity
   if (day) out.day = day
   return out
-}
-
-export function isWeekFilter(dayKey) {
-  // 'Week' is the pre-dated-labels value that may still be in localStorage.
-  return dayKey === 'ThisWeek' || dayKey === 'NextWeek' || dayKey === 'Week'
 }
 
 // "2026-09-07" -> local midnight. `new Date(iso)` would parse it as UTC and
@@ -322,103 +348,45 @@ export function toISODate(d) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
 
-// Midnight on the Monday of the week containing `date`.
-export function startOfWeek(date = new Date()) {
-  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate())
-  d.setDate(d.getDate() - ((d.getDay() - WEEK_STARTS_ON + 7) % 7))
-  return d
-}
-
-export function weekRange(weeksAhead = 0, from = new Date()) {
-  const start = startOfWeek(from)
-  start.setDate(start.getDate() + weeksAhead * 7)
-  const end = new Date(start)
-  end.setDate(end.getDate() + 6)
-  return { start, end }
-}
-
 const shortDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`
 const longDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
 
-// "9/7 – 9/13"
-export function weekLabel(week) {
-  const start = parseISODate(week?.start)
-  const end = parseISODate(week?.end)
-  return start && end ? `${shortDate(start)} – ${shortDate(end)}` : ''
-}
-
-// The two weeks the scrape actually covers, newest data wins. Labels come from
-// the data rather than the reader's clock: if a refresh has been missed the
-// buttons should name the weeks we have, not the weeks we wish we had — the
-// staleness banner is what flags the gap.
-export function scheduleWeeks(pools) {
-  const seen = new Map()
-  for (const p of pools ?? []) {
-    for (const w of p.schedule_weeks ?? []) {
-      if (w?.start && !seen.has(w.start)) seen.set(w.start, { start: w.start, end: w.end })
+// The four day pills. Labels derive from the reader's clock — Today/Tomorrow
+// always did, and a weekday name can't claim data we lack the way a dated
+// week label could. A day with no data falls through to the empty-grid
+// message and the staleness banner, same as Today does now.
+export function dayFilterOptions(from = new Date()) {
+  const weekday = (d) => d.toLocaleDateString('en-US', { weekday: 'long' })
+  return DAY_FILTERS.map((value) => {
+    if (value === 'Today' || value === 'Tomorrow') return { value, label: value }
+    const d = parseISODate(dateForDayFilter(value, from))
+    return {
+      value,
+      label: weekday(d),
+      // A bare weekday name read aloud doesn't say which one; the date does.
+      ariaLabel: `${weekday(d)}, ${longDate(d)}`,
     }
-  }
-  return [...seen.values()].sort((a, b) => a.start.localeCompare(b.start)).slice(0, 2)
-}
-
-export function dayFilterOptions(weeks = [], from = new Date()) {
-  const fallback = [0, 1].map((n) => {
-    const { start, end } = weekRange(n, from)
-    return { start: toISODate(start), end: toISODate(end) }
   })
-  const [thisWeek, nextWeek] = weeks.length === 2 ? weeks : fallback
-  return [
-    { value: 'Today', label: 'Today' },
-    { value: 'Tomorrow', label: 'Tomorrow' },
-    ...[
-      ['ThisWeek', thisWeek, 'This'],
-      ['NextWeek', nextWeek, 'Next'],
-    ].map(([value, week, which]) => {
-      const start = parseISODate(week.start)
-      const end = parseISODate(week.end)
-      return {
-        value,
-        label: weekLabel(week),
-        // "9/7 – 9/13" read aloud is not obviously a date range.
-        ariaLabel: `${which} week, ${longDate(start)} to ${longDate(end)}`,
-      }
-    }),
-  ]
 }
 
-// The ISO dates a filter selects. Today/Tomorrow resolve against the reader's
-// clock; the week filters against the dates in the scraped data.
-export function datesForFilter(dayKey, weeks = [], from = new Date()) {
-  if (dayKey === 'Today' || dayKey === 'Tomorrow') {
-    const d = new Date(from.getFullYear(), from.getMonth(), from.getDate())
-    if (dayKey === 'Tomorrow') d.setDate(d.getDate() + 1)
-    return new Set([toISODate(d)])
-  }
-  const week = weeks[dayKey === 'NextWeek' ? 1 : 0]
-  if (!week) return null
-  const out = new Set()
-  const start = parseISODate(week.start)
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(start)
-    d.setDate(d.getDate() + i)
-    out.add(toISODate(d))
-  }
-  return out
+// The single ISO date a filter selects, resolved against the reader's clock.
+export function datesForFilter(dayKey, from = new Date()) {
+  return new Set([dateForDayFilter(dayKey, from)])
 }
 
 // Flattens the dated weeks down to the sessions a filter selects. Falls back to
 // the undated `schedules` list (weekday-name matching) for data scraped before
 // schedule_weeks existed, so an old JSON still renders.
-export function sessionsForFilter(pool, dayKey, weeks = [], from = new Date()) {
+export function sessionsForFilter(pool, dayKey, from = new Date()) {
   const dated = pool?.schedule_weeks ?? []
   if (!dated.length) {
     return (pool?.schedules ?? []).filter((s) => matchesDay(s.days, dayKey))
   }
-  const dates = datesForFilter(dayKey, weeks, from)
+  const dates = datesForFilter(dayKey, from)
   const out = []
   for (const w of dated) {
     for (const day of w.days ?? []) {
-      if (dates && !dates.has(day.date)) continue
+      if (!dates.has(day.date)) continue
       for (const s of day.sessions ?? []) out.push({ ...s, date: day.date, days: day.weekday })
     }
   }
@@ -430,12 +398,12 @@ export function sessionsForFilter(pool, dayKey, weeks = [], from = new Date()) {
 // date in the selected range that actually has sessions, or null. The caller
 // uses it both to decide whether to surface the pool and to label when it
 // comes back, so the date is never guessed from the closure prose.
-export function reopeningDate(pool, dayKey, weeks = [], from = new Date()) {
+export function reopeningDate(pool, dayKey, from = new Date()) {
   if (pool?.status !== 'closed') return null
-  const dates = datesForFilter(dayKey, weeks, from)
+  const dates = datesForFilter(dayKey, from)
   const days = (pool.schedule_weeks ?? []).flatMap((w) => w.days ?? [])
   const withSessions = days
-    .filter((d) => (d.sessions?.length ?? 0) > 0 && (!dates || dates.has(d.date)))
+    .filter((d) => (d.sessions?.length ?? 0) > 0 && dates.has(d.date))
     .map((d) => d.date)
     .sort()
   return withSessions[0] ?? null
@@ -445,14 +413,14 @@ export function reopeningDate(pool, dayKey, weeks = [], from = new Date()) {
 // Only `holiday` is surfaced, never `note` — "There are no programs at this
 // pool today" restates an empty list, while "Recreation Centers will be closed"
 // explains it.
-export function holidaysForFilter(pool, dayKey, weeks = [], from = new Date()) {
-  const dates = datesForFilter(dayKey, weeks, from)
+export function holidaysForFilter(pool, dayKey, from = new Date()) {
+  const dates = datesForFilter(dayKey, from)
   const out = []
   const seen = new Set()
   for (const w of pool?.schedule_weeks ?? []) {
     for (const day of w.days ?? []) {
       if (!day.holiday) continue
-      if (dates && !dates.has(day.date)) continue
+      if (!dates.has(day.date)) continue
       if (seen.has(day.date)) continue
       seen.add(day.date)
       out.push({ date: day.date, holiday: day.holiday })
@@ -463,10 +431,10 @@ export function holidaysForFilter(pool, dayKey, weeks = [], from = new Date()) {
 
 // The same, across every pool — for the case where a holiday empties the grid
 // entirely and there is no card left to carry the explanation.
-export function holidaysInRange(pools, dayKey, weeks = [], from = new Date()) {
+export function holidaysInRange(pools, dayKey, from = new Date()) {
   const seen = new Map()
   for (const p of pools ?? []) {
-    for (const h of holidaysForFilter(p, dayKey, weeks, from)) {
+    for (const h of holidaysForFilter(p, dayKey, from)) {
       if (!seen.has(h.date)) seen.set(h.date, h)
     }
   }
@@ -482,10 +450,9 @@ export function dayStamp(session) {
 
 // Legacy weekday-name matching, kept for data without schedule_weeks.
 export function matchesDay(scheduleDays, dayKey) {
-  if (!dayKey || isWeekFilter(dayKey)) return true
+  if (!dayKey) return true
   const now = new Date()
-  const offset = dayKey === 'Tomorrow' ? 1 : 0
-  const target = DAY_NAMES[(now.getDay() + offset) % 7]
+  const target = DAY_NAMES[(now.getDay() + (DAY_OFFSETS[dayKey] ?? 0)) % 7]
   return new RegExp(`\\b${target}\\b`, 'i').test(scheduleDays ?? '')
 }
 
