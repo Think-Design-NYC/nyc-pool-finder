@@ -386,6 +386,11 @@ export default function App() {
       {/* Mirrored in the SEO fallback (vite-plugin-seo.js) — if this changes,
           change it there too or crawlers see different markup than visitors. */}
       <footer className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-4 text-xs text-slate-400">
+        <img
+          src="/qr-code.svg"
+          alt="QR code for pools.thinkdesign.com"
+          className="mb-3 w-[min(190px,50vw)] rounded-lg border border-slate-200"
+        />
         <a href="/privacy/" className="underline hover:text-sky-700">
           Privacy
         </a>

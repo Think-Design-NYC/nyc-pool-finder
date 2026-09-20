@@ -142,6 +142,7 @@ body{margin:0;background:#f8fafc}
 .pp-hours,.pp-empty,.pp-note{font-size:.8rem;color:#94a3b8;margin:.15rem 0}
 .pp-foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.78rem;color:#94a3b8}
 .pp-foot a{color:#64748b}
+.pp-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:.75rem 0}
 `
 
 export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
@@ -262,6 +263,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
     and can change without notice.${updatedLabel ? ` Last updated ${esc(updatedLabel)}.` : ''}
     ${callAheadHtml()}</p>
     ${noticeLinks ? `<p>${noticeLinks}</p>` : ''}
+    <img class="pp-qr" src="/qr-code.svg" alt="QR code for pools.thinkdesign.com" />
     <p><a href="/">NYC Indoor Pool Finder</a> &middot; <a href="/privacy/">Privacy</a></p>
   </footer>
 </main>

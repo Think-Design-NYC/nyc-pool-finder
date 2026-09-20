@@ -269,7 +269,7 @@ function buildFallbackHtml() {
   }
   <section><h2>Frequently asked questions</h2>${faq}</section>
   <p>Schedules are scraped from <a href="https://www.nycgovparks.org/facilities/indoor-pools" rel="nofollow">nycgovparks.org</a> and can change without notice. ${callAheadHtml()}</p>
-  <footer><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
+  <footer><img class="sf-qr" src="/qr-code.svg" alt="QR code for pools.thinkdesign.com" /><a href="/privacy/">Privacy</a> &middot; <a href="https://thinkdesign.com">Think Design</a></footer>
 </div>`
 }
 
@@ -287,6 +287,7 @@ const FALLBACK_STYLE = `
 #seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
 #seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#475569}
 #seo-fallback .call-lead{text-transform:uppercase}
+#seo-fallback .sf-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:0 0 .75rem}
 </style>`
 
 export default function seoPlugin() {

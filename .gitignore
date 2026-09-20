@@ -10,6 +10,9 @@ __pycache__/
 .venv/
 venv/
 
+# Brainstorming session artifacts (superpowers visual companion)
+.superpowers/
+
 # OS / editor
 .DS_Store
 *.log

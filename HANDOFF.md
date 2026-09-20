@@ -260,6 +260,12 @@ image squashes unreadably into a browser tab. Icons are also referenced by
 how people find the app, and the manifest is served `max-age=0` precisely so a
 change propagates, which cuts both ways.
 
+**`public/qr-code.svg` encodes `https://pools.thinkdesign.com/`** and renders in
+the footers of the homepage (React *and* the SEO fallback — parity applies) and
+all 13 pool pages. Committed, not built: regenerate only if the domain changes,
+with the command in the XML comment at the top of the file
+(`npx qrcode -t svg -o public/qr-code.svg "https://pools.thinkdesign.com/"`).
+
 ## SEO
 
 The app is client-rendered, so the HTML the host serves would otherwise be an empty
