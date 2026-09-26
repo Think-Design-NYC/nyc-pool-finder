@@ -1292,7 +1292,7 @@
         "borough": "Manhattan",
         "pool_name": "Constance Baker Motley Pool",
         "pool_code": "M130",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "348 East 54th Street",
             "cross_streets": "1st & 2nd Avenues",
@@ -1307,13 +1307,116 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The indoor pool at Constance Baker Motley Recreation Center is temporarily closed for maintenance on Friday, September 25 from 10:30 a.m. - 12:30 p.m.",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
-        "closure_reason": "for maintenance",
+        "closure_reason": null,
         "closed_through": null,
         "reopens": null,
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-09-21"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-09-21"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-09-21"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-09-22"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-09-22"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-09-22"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-09-23"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-09-23"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-09-23"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-09-24"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-09-24"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-09-24"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-09-25"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-09-25"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-09-25"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 12:00 p",
+                "date": "2026-09-26"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "12:30 p - 2:45 p",
+                "date": "2026-09-26"
+            }
+        ],
         "schedule_weeks": [
             {
                 "start": "2026-09-21",
