@@ -383,12 +383,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "7:00 a - 11:00 a",
-                                "date": "2026-09-28"
-                            },
-                            {
                                 "session_type": "General Open Swim",
                                 "days": "Monday",
                                 "time": "11:00 a - 2:00 p",
@@ -4820,7 +4814,7 @@
         "borough": "Queens",
         "pool_name": "Flushing Meadows Corona Park Pool & Rink",
         "pool_code": "Q099",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "131-04 Meridian Rd",
             "cross_streets": "Avery Avenue and College Point Boulevard",
@@ -4836,10 +4830,10 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Flushing Meadows Corona Park Aquatics Center is temporarily closed for pre-scheduled maintenance. We expect to reopen later this week. Updated expanded Fall schedules will begin on this date, these schedules will be posted on the website and posted at the facility. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Par",
+        "notes": "Flushing Meadows Corona Park Aquatics Center remains temporarily closed as we address an unexpected mechanical issue. We hope to open in the middle of next week. We appreciate your continued patience and understanding and will provide an updated reopening date as soon as possible. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Me",
         "reduced_hours": false,
         "notice_links": [],
-        "closure_reason": "for maintenance",
+        "closure_reason": null,
         "closed_through": null,
         "reopens": null,
         "schedules": [],
