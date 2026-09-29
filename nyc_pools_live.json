@@ -18,7 +18,7 @@
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -587,7 +587,7 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1295,7 +1295,7 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1767,7 +1767,7 @@
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -2240,7 +2240,7 @@
         "phone": "(212) 234-9603",
         "url": "https://www.nycgovparks.org/parks/M131/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
         "reduced_hours": false,
         "notice_links": [
             {
@@ -2248,7 +2248,7 @@
                 "url": "https://www.nycgovparks.org/planning-and-building/capital-project-tracker/project/6326"
             }
         ],
-        "closure_reason": "for construction",
+        "closure_reason": "for reconstruction",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -2383,7 +2383,7 @@
         "borough": "Manhattan",
         "pool_name": "Tony Dapolito Pool",
         "pool_code": "M103",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "1 Clarkson Street",
             "cross_streets": "Clarkson Street at 7th Avenue South",
@@ -2395,10 +2395,15 @@
         "phone": "(212) 242-5228",
         "url": "https://www.nycgovparks.org/parks/M103/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building\u2019s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
         "reduced_hours": false,
-        "notice_links": [],
-        "closure_reason": null,
+        "notice_links": [
+            {
+                "text": "Clarkson Street Corridor Input Portal",
+                "url": "https://www.nycgovparks.org/planning-and-building/planning/clarkson-street-corridor"
+            }
+        ],
+        "closure_reason": "due to the building's condition",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -2549,7 +2554,7 @@
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": "for construction",
@@ -2702,7 +2707,7 @@
         "phone": "(718) 599-5707",
         "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "Metropolitan Recreation Center is currently closed due to a mechanical issue which has resulted in poor dehumidification and air circulation. For the health and safety of our patrons, the Center must remain closed until we are able to install a full dehumidification system in the natatorium through our planned Capital renovation. For more information, please visit NYC Parks Capital Project Tracker",
         "reduced_hours": false,
         "notice_links": [
             {
@@ -2710,7 +2715,7 @@
                 "url": "https://www.nycgovparks.org/planning-and-building/capital-project-tracker/project/10796"
             }
         ],
-        "closure_reason": "for construction",
+        "closure_reason": "due to a mechanical issue",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -2861,7 +2866,7 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -3563,7 +3568,7 @@
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -4794,7 +4799,7 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "Flushing Meadows Corona Park Aquatics Center remains temporarily closed as we address an unexpected mechanical issue. We hope to open in the middle of next week. We appreciate your continued patience and understanding and will provide an updated reopening date as soon as possible. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Me",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -4948,7 +4953,7 @@
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": null,
         "reduced_hours": true,
         "notice_links": [],
         "closure_reason": null,
@@ -5566,7 +5571,7 @@
         "phone": "(718) 402-5157",
         "url": "https://www.nycgovparks.org/parks/X045/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Important Storm-Related Advisory New Yorkers: the storm is still underway, and quiet stretches can give way to strong gusts at any moment. Winds are bringing down trees, loosening facades and scaffolding, and knocking down power lines across the city. If you're outside, use caution in parks and anywhere with trees, keep clear of scaffolding, cranes, and construction sites, and stay far away from a",
+        "notes": "St. Mary's Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
         "reduced_hours": false,
         "notice_links": [
             {
@@ -5574,7 +5579,7 @@
                 "url": "https://www.nycgovparks.org/planning-and-building/capital-project-tracker/project/6324"
             }
         ],
-        "closure_reason": "for construction",
+        "closure_reason": "for reconstruction",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
