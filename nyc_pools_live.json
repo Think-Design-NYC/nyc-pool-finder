@@ -571,7 +571,7 @@
         "borough": "Manhattan",
         "pool_name": "Chelsea Pool",
         "pool_code": "M260",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "430 West 25th Street",
             "cross_streets": "9th & 10th avenues",
@@ -587,194 +587,13 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
-        "schedules": [
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 11:00 a",
-                "date": "2026-09-28"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Monday",
-                "time": "11:15 a - 1:00 p",
-                "date": "2026-09-28"
-            },
-            {
-                "session_type": "Water Aerobics",
-                "days": "Monday",
-                "time": "1:15 p - 2:15 p",
-                "date": "2026-09-28"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Monday",
-                "time": "2:30 p - 4:30 p",
-                "date": "2026-09-28"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "4:45 p - 7:00 p",
-                "date": "2026-09-28"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 10:00 a",
-                "date": "2026-09-29"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Tuesday",
-                "time": "10:15 a - 12:00 p",
-                "date": "2026-09-29"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "12:15 p - 2:15 p",
-                "date": "2026-09-29"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Tuesday",
-                "time": "2:30 p - 4:30 p",
-                "date": "2026-09-29"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "4:45 p - 7:00 p",
-                "date": "2026-09-29"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 11:00 a",
-                "date": "2026-09-30"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Wednesday",
-                "time": "11:15 a - 1:00 p",
-                "date": "2026-09-30"
-            },
-            {
-                "session_type": "Water Aerobics",
-                "days": "Wednesday",
-                "time": "1:15 p - 2:15 p",
-                "date": "2026-09-30"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Wednesday",
-                "time": "2:30 p - 4:30 p",
-                "date": "2026-09-30"
-            },
-            {
-                "session_type": "Adult Open Play Water Polo",
-                "days": "Wednesday",
-                "time": "4:30 p - 7:00 p",
-                "date": "2026-09-30"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 10:00 a",
-                "date": "2026-10-01"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Thursday",
-                "time": "10:15 a - 12:00 p",
-                "date": "2026-10-01"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "12:15 p - 2:15 p",
-                "date": "2026-10-01"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Thursday",
-                "time": "2:30 p - 4:30 p",
-                "date": "2026-10-01"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "4:45 p - 7:00 p",
-                "date": "2026-10-01"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:00 a - 11:00 a",
-                "date": "2026-10-02"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Friday",
-                "time": "11:15 a - 1:00 p",
-                "date": "2026-10-02"
-            },
-            {
-                "session_type": "Water Aerobics",
-                "days": "Friday",
-                "time": "1:15 p - 2:15 p",
-                "date": "2026-10-02"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Friday",
-                "time": "2:30 p - 4:30 p",
-                "date": "2026-10-02"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "4:45 p - 7:00 p",
-                "date": "2026-10-02"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "8:00 a - 10:30 a",
-                "date": "2026-10-03"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Saturday",
-                "time": "10:45 a - 1:00 p",
-                "date": "2026-10-03"
-            },
-            {
-                "session_type": "Adult Open Play Water Polo",
-                "days": "Saturday",
-                "time": "1:15 p - 3:45 p",
-                "date": "2026-10-03"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "8:00 a - 11:00 a",
-                "date": "2026-10-04"
-            },
-            {
-                "session_type": "General Open Swim",
-                "days": "Sunday",
-                "time": "11:15 a - 1:45 p",
-                "date": "2026-10-04"
-            }
-        ],
+        "schedules": [],
         "schedule_weeks": [
             {
                 "start": "2026-09-28",
@@ -5852,6 +5671,12 @@
                             },
                             {
                                 "session_type": "General Open Swim",
+                                "days": "Monday",
+                                "time": "3:00 p - 5:45 p",
+                                "date": "2026-10-05"
+                            },
+                            {
+                                "session_type": "St. Marys: Swim Prep",
                                 "days": "Monday",
                                 "time": "3:00 p - 5:45 p",
                                 "date": "2026-10-05"
