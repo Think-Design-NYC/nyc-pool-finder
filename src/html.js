@@ -11,7 +11,7 @@ export function escapeHtml(s) {
     .replace(/"/g, '&quot;')
 }
 
-import { CALL_AHEAD_LEAD, CALL_AHEAD_DETAIL } from './copy.js'
+import { CALL_AHEAD_LEAD, CALL_AHEAD_DETAIL, NEWS } from './copy.js'
 
 // The call-ahead note as markup: uppercase bold lead, plain detail. Mirrors
 // what <CallAheadNote> renders in React — both sides need the same emphasis or
@@ -21,4 +21,14 @@ export function callAheadHtml() {
   return `<strong class="call-lead">${escapeHtml(CALL_AHEAD_LEAD)}</strong> ${escapeHtml(
     CALL_AHEAD_DETAIL,
   )}`
+}
+
+// The announcement banner as markup; mirrors <NewsBanner>. Scoped styles live
+// in vite-plugin-seo.js under `.sf-news`.
+export function newsHtml() {
+  return `<aside class="sf-news"><strong>${escapeHtml(NEWS.headline)}.</strong> ${escapeHtml(
+    NEWS.summary,
+  )} <a href="${escapeHtml(NEWS.sourceUrl)}" rel="noopener">Read the ${escapeHtml(
+    NEWS.source,
+  )} story</a>.</aside>`
 }

@@ -17,7 +17,7 @@
 import pools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
-import { callAheadHtml } from './src/html.js'
+import { callAheadHtml, newsHtml } from './src/html.js'
 import {
   boroughsPresent,
   joinBoroughs,
@@ -209,6 +209,7 @@ function buildFallbackHtml() {
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(openBoroughList)}</p>
   <p>${callAheadHtml()}</p>
   ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
+  ${newsHtml()}
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>
@@ -287,6 +288,7 @@ const FALLBACK_STYLE = `
 #seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
 #seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#475569}
 #seo-fallback .call-lead{text-transform:uppercase}
+#seo-fallback .sf-news{background:#f0f9ff;border:1px solid #bae6fd;border-radius:.75rem;padding:.75rem 1rem;margin:.75rem 0;font-size:.9rem;color:#0c4a6e}
 #seo-fallback .sf-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:0 0 .75rem}
 </style>`
 

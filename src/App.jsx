@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Phone, Waves } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
+import NewsBanner from './components/NewsBanner'
 import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
@@ -314,6 +315,9 @@ export default function App() {
           />
         </a>
       </header>
+
+      {/* Mirrored in the SEO fallback via newsHtml(). */}
+      <NewsBanner />
 
       {staleFor && (
         <div

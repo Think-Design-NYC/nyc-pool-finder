@@ -16,3 +16,20 @@ export const CALL_AHEAD_DETAIL =
   'the Rec Center will have the most up-to-date information.'
 
 export const CALL_AHEAD_NOTE = `${CALL_AHEAD_LEAD} ${CALL_AHEAD_DETAIL}`
+
+// The announcement banner at the top of the page, shared by <NewsBanner> and
+// the fallback's newsHtml() for the same parity reason as the call-ahead note.
+// Hand-written from the cited story, never scraped. There is no expiry on
+// purpose: React and the build-time fallback would judge it at different times
+// and disagree. Delete it (and its two render sites) once it stops being news.
+// Added 2026-10-04 when St. Mary's reopened (the scraper picked it up on 9/30).
+export const NEWS = {
+  headline: "St. Mary's Recreation Center pool has reopened in the Bronx",
+  summary:
+    "After nearly four years closed, St. Mary's Recreation Center in Mott Haven reopened on " +
+    'September 30, 2026, following a $20.7 million renovation. The work repaired the indoor ' +
+    'pool and added a new pool deck, lobby and an elevator to every floor. It is the only ' +
+    'indoor pool NYC Parks runs in the Bronx.',
+  source: 'Bronx Times',
+  sourceUrl: 'https://www.bxtimes.com/st-marys-recreation-center-reopens-after-renovation/',
+}
