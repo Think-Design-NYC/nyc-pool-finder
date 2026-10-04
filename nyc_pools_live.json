@@ -24,6 +24,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "General Open Swim",
@@ -589,8 +590,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Manhattan",
@@ -618,6 +618,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -1299,8 +1300,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Manhattan",
@@ -1327,6 +1327,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "Lap Swim",
@@ -1772,8 +1773,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Manhattan",
@@ -1800,6 +1800,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -2245,8 +2246,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Manhattan",
@@ -2279,6 +2279,7 @@
         "closure_reason": "for reconstruction",
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [],
         "schedule_weeks": [
             {
@@ -2405,8 +2406,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Manhattan",
@@ -2435,6 +2435,7 @@
         "closure_reason": "due to the building's condition",
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [],
         "schedule_weeks": [
             {
@@ -2561,8 +2562,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Brooklyn",
@@ -2590,6 +2590,7 @@
         "closure_reason": "for construction",
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [],
         "schedule_weeks": [
             {
@@ -2716,8 +2717,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Brooklyn",
@@ -2749,6 +2749,7 @@
         "closure_reason": "due to a mechanical issue",
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [],
         "schedule_weeks": [
             {
@@ -2875,8 +2876,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Brooklyn",
@@ -2904,6 +2904,12 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [
+            {
+                "start": "2026-10-04",
+                "end": "2026-10-17"
+            }
+        ],
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -3361,12 +3367,6 @@
                     }
                 ]
             }
-        ],
-        "closures": [
-            {
-                "start": "2026-10-04",
-                "end": "2026-10-17"
-            }
         ]
     },
     {
@@ -3395,6 +3395,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -4598,8 +4599,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Queens",
@@ -4627,6 +4627,7 @@
         "closure_reason": "due to a mechanical issue",
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [],
         "schedule_weeks": [
             {
@@ -4753,8 +4754,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Queens",
@@ -4782,6 +4782,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "Adult Lap Swim",
@@ -5373,8 +5374,7 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     },
     {
         "borough": "Bronx",
@@ -5401,6 +5401,7 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
+        "closures": [],
         "schedules": [
             {
                 "session_type": "General Open Swim",
@@ -5870,7 +5871,6 @@
                     }
                 ]
             }
-        ],
-        "closures": []
+        ]
     }
 ]
