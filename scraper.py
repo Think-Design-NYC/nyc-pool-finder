@@ -82,6 +82,70 @@ _MONTHS = (
     r"|November|December)"
 )
 
+# "remains temporarily closed" — CLOSURE_RE needs is/are/will be, so Flushing
+# Meadows' notice slipped past it and the pool read as open with no sessions.
+REMAINS_CLOSED_RE = re.compile(
+    r"\b(?:recreation center|aquatics center|indoor pool|the pool|center|pool)s?\b"
+    r"[^.]{0,80}?\bremains?\b[^.]{0,20}?\bclosed\b",
+    re.IGNORECASE,
+)
+
+# A closure about some other part of the building. Chelsea's "the gymnasium at
+# Chelsea Recreation Center will be closed for voting preparation" matched
+# CLOSURE_RE through "Recreation Center" and shut the pool for it.
+NON_POOL_RE = re.compile(
+    r"\b(?:gym|gymnasium|auditorium|fitness|weight room|field|rink|playground)\b",
+    re.IGNORECASE,
+)
+POOL_WORD_RE = re.compile(r"\b(?:pool|aquatics?|natatorium|swim\w*)\b", re.IGNORECASE)
+
+# "Beginning Sunday, October 4 through Saturday, October 17 the indoor pool ...
+# will be closed". A dated closure is not a closure today unless today is in it.
+CLOSURE_WINDOW_RE = re.compile(
+    rf"\b(?:beginning|starting|from)\s+(?:\w+day,?\s+)?({_MONTHS})\s+(\d{{1,2}})"
+    rf"(?:,\s*(\d{{4}}))?\s+(?:through|until|to|-)\s+(?:\w+day,?\s+)?"
+    rf"({_MONTHS})\s+(\d{{1,2}})(?:,\s*(\d{{4}}))?",
+    re.IGNORECASE,
+)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<!\bSt)(?<=[.!?])\s+")
+
+
+def _month_day(month: str, day: str, year: Optional[str], default_year: int) -> date:
+    return datetime.strptime(f"{month} {day} {year or default_year}", "%B %d %Y").date()
+
+
+def classify_closure(notes: Optional[str], today: date) -> Tuple[bool, List[dict]]:
+    """Read pool closures out of the notices, with their dates.
+
+    Returns (closed_now, windows). `windows` is every dated closure, past or
+    future, as {"start", "end"} ISO dates, so the caller can empty those days of
+    the timetable. `closed_now` is true for an undated closure, or a dated one
+    that contains today — a notice announcing next month's closure must not
+    close the pool today.
+    """
+    closed_now, windows = False, []
+    for sentence in _SENTENCE_SPLIT_RE.split(notes or ""):
+        if not (CLOSURE_RE.search(sentence) or REMAINS_CLOSED_RE.search(sentence)):
+            continue
+        if NON_POOL_RE.search(sentence) and not POOL_WORD_RE.search(sentence):
+            continue
+        m = CLOSURE_WINDOW_RE.search(sentence)
+        if not m:
+            closed_now = True
+            continue
+        try:
+            start = _month_day(m[1], m[2], m[3], today.year)
+            end = _month_day(m[4], m[5], m[6], start.year)
+            if end < start:  # "December 28 through January 4"
+                end = _month_day(m[4], m[5], m[6], start.year + 1)
+        except ValueError:
+            closed_now = True
+            continue
+        windows.append({"start": start.isoformat(), "end": end.isoformat()})
+        if start <= today <= end:
+            closed_now = True
+    return closed_now, windows
+
 # "The center will reopen to the public on Tuesday, September 8." Months are
 # spelled out explicitly rather than matched as a generic capitalised word,
 # because IGNORECASE would otherwise let any word through.
@@ -292,6 +356,9 @@ class PoolData(BaseModel):
     closure_reason: Optional[str] = None
     closed_through: Optional[str] = None
     reopens: Optional[str] = None
+    # Dated closure windows from the notices, {"start", "end"} ISO. Their days
+    # are already emptied in `schedule_weeks`; kept so a reader can be told why.
+    closures: List[dict] = []
     # Flat, current week only, undated — the shape the mobile app already reads.
     # Cleared for closed pools, as before.
     schedules: List[Schedule] = []
@@ -721,7 +788,8 @@ def scrape_nyc_pools() -> List[dict]:
             # closed building would still match the day/activity filters and
             # send someone to a locked door.
             notes = " ".join(notices)[:400] or None
-            if status == "open" and notes and CLOSURE_RE.search(notes):
+            closed_now, closures = classify_closure(notes, date.today())
+            if status == "open" and closed_now:
                 print(f"  {pool_name}: closure notice found — marking closed")
                 status = "closed"
                 # The flat list feeds callers that render a timetable with no
@@ -729,6 +797,18 @@ def scrape_nyc_pools() -> List[dict]:
                 # send someone to the door. `schedule_weeks` keeps the real
                 # data — the site gates it on status itself.
                 schedules = []
+            # A dated closure empties exactly its own days, wherever they fall.
+            # NYC Parks keeps posting the regular timetable through a repair
+            # closure, and the site filters on sessions, so Shirley Chisholm
+            # would otherwise be listed as open for a pool with no water in it.
+            if closures:
+                def in_closure(d: str) -> bool:
+                    return any(c["start"] <= d <= c["end"] for c in closures)
+                for week in schedule_weeks:
+                    for day in week.days:
+                        if in_closure(day.date):
+                            day.sessions = []
+                schedules = [s for s in schedules if not (s.date and in_closure(s.date))]
 
             all_pools.append(PoolData(
                 borough=borough,
@@ -751,8 +831,21 @@ def scrape_nyc_pools() -> List[dict]:
                     else []
                 ),
                 closure_reason=find_closure_reason(notes) if status == "closed" else None,
-                closed_through=find_closed_through(notes) if status == "closed" else None,
+                closed_through=(
+                    find_closed_through(notes)
+                    or next(
+                        (
+                            datetime.fromisoformat(c["end"]).strftime("%B %-d")
+                            for c in closures
+                            if c["start"] <= date.today().isoformat() <= c["end"]
+                        ),
+                        None,
+                    )
+                )
+                if status == "closed"
+                else None,
                 reopens=find_reopen_date(notes) if status == "closed" else None,
+                closures=closures,
                 schedules=schedules,
                 schedule_weeks=schedule_weeks,
             ).model_dump())

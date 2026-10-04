@@ -589,13 +589,14 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Manhattan",
         "pool_name": "Chelsea Pool",
         "pool_code": "M260",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "430 West 25th Street",
             "cross_streets": "9th & 10th avenues",
@@ -617,7 +618,188 @@
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 11:00 a",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "11:15 a - 1:00 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Water Aerobics",
+                "days": "Monday",
+                "time": "1:15 p - 2:15 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "2:30 p - 4:30 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "4:45 p - 7:00 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 10:00 a",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Tuesday",
+                "time": "10:15 a - 12:00 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "12:15 p - 2:15 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Tuesday",
+                "time": "2:30 p - 4:30 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "4:45 p - 7:00 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 11:00 a",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Wednesday",
+                "time": "11:15 a - 1:00 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Water Aerobics",
+                "days": "Wednesday",
+                "time": "1:15 p - 2:15 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Wednesday",
+                "time": "2:30 p - 4:30 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Adult Open Play Water Polo",
+                "days": "Wednesday",
+                "time": "4:30 p - 7:00 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 10:00 a",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Thursday",
+                "time": "10:15 a - 12:00 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "12:15 p - 2:15 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Thursday",
+                "time": "2:30 p - 4:30 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "4:45 p - 7:00 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 11:00 a",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Friday",
+                "time": "11:15 a - 1:00 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Water Aerobics",
+                "days": "Friday",
+                "time": "1:15 p - 2:15 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Friday",
+                "time": "2:30 p - 4:30 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "4:45 p - 7:00 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 10:30 a",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Saturday",
+                "time": "10:45 a - 1:00 p",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "Adult Open Play Water Polo",
+                "days": "Saturday",
+                "time": "1:15 p - 3:45 p",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Sunday",
+                "time": "8:00 a - 11:00 a",
+                "date": "2026-10-04"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Sunday",
+                "time": "11:15 a - 1:45 p",
+                "date": "2026-10-04"
+            }
+        ],
         "schedule_weeks": [
             {
                 "start": "2026-09-28",
@@ -1117,7 +1299,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Manhattan",
@@ -1589,7 +1772,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Manhattan",
@@ -2061,7 +2245,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Manhattan",
@@ -2220,7 +2405,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Manhattan",
@@ -2375,7 +2561,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Brooklyn",
@@ -2529,7 +2716,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Brooklyn",
@@ -2687,13 +2875,14 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Brooklyn",
         "pool_name": "Shirley Chisholm Recreation Center Pool",
         "pool_code": "B250",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "3105 Farragut Place",
             "cross_streets": null,
@@ -2712,10 +2901,173 @@
         "notes": "Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
         "reduced_hours": false,
         "notice_links": [],
-        "closure_reason": "for repairs",
+        "closure_reason": null,
         "closed_through": null,
         "reopens": null,
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "6:30 a - 10:00 a",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "10:15 a - 2:45 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Monday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "4:00 p - 5:45 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "6:00 p - 9:30 p",
+                "date": "2026-09-28"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "6:30 a - 2:45 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Tuesday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:45 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "6:00 p - 9:30 p",
+                "date": "2026-09-29"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "6:30 a - 10:00 a",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "10:15 a - 2:45 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Wednesday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:45 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "6:00 p - 9:30 p",
+                "date": "2026-09-30"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "6:30 a - 2:45 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Thursday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "4:00 p - 5:45 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "6:00 p - 9:30 p",
+                "date": "2026-10-01"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Friday",
+                "time": "6:30 a - 10:00 a",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "10:15 a - 2:45 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Closed for Cleaning",
+                "days": "Friday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "4:00 p - 5:45 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "6:00 p - 9:30 p",
+                "date": "2026-10-02"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 11:00 a",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "11:15 a - 1:00 p",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "1:15 p - 2:45 p",
+                "date": "2026-10-03"
+            },
+            {
+                "session_type": "Pool Closed For Cleaning",
+                "days": "Saturday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-10-03"
+            }
+        ],
         "schedule_weeks": [
             {
                 "start": "2026-09-28",
@@ -2943,32 +3295,7 @@
                         "building_hours": "8:00 a - 4:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 11:00 a",
-                                "date": "2026-10-04"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "11:15 a - 1:00 p",
-                                "date": "2026-10-04"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "1:15 p - 2:45 p",
-                                "date": "2026-10-04"
-                            },
-                            {
-                                "session_type": "Pool Closed For Cleaning",
-                                "days": "Sunday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-04"
-                            }
-                        ]
+                        "sessions": []
                     }
                 ]
             },
@@ -2982,38 +3309,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "6:30 a - 10:00 a",
-                                "date": "2026-10-05"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "10:15 a - 2:45 p",
-                                "date": "2026-10-05"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Monday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-05"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-05"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-10-05"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-06",
@@ -3021,32 +3317,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "6:30 a - 2:45 p",
-                                "date": "2026-10-06"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Tuesday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-06"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-06"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-10-06"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-07",
@@ -3054,38 +3325,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "6:30 a - 10:00 a",
-                                "date": "2026-10-07"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "10:15 a - 2:45 p",
-                                "date": "2026-10-07"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Wednesday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-07"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-07"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-10-07"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-08",
@@ -3093,32 +3333,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "6:30 a - 2:45 p",
-                                "date": "2026-10-08"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Thursday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-08"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-08"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-10-08"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-09",
@@ -3126,38 +3341,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "6:30 a - 10:00 a",
-                                "date": "2026-10-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "10:15 a - 2:45 p",
-                                "date": "2026-10-09"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Friday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-09"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-10-09"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-10",
@@ -3165,32 +3349,7 @@
                         "building_hours": "8:00 a - 12:00 a",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 11:00 a",
-                                "date": "2026-10-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "11:15 a - 1:00 p",
-                                "date": "2026-10-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "1:15 p - 2:45 p",
-                                "date": "2026-10-10"
-                            },
-                            {
-                                "session_type": "Pool Closed For Cleaning",
-                                "days": "Saturday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-10"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-11",
@@ -3201,6 +3360,12 @@
                         "sessions": []
                     }
                 ]
+            }
+        ],
+        "closures": [
+            {
+                "start": "2026-10-04",
+                "end": "2026-10-17"
             }
         ]
     },
@@ -4433,13 +4598,14 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Queens",
         "pool_name": "Flushing Meadows Corona Park Pool & Rink",
         "pool_code": "Q099",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "131-04 Meridian Rd",
             "cross_streets": "Avery Avenue and College Point Boulevard",
@@ -4458,7 +4624,7 @@
         "notes": "Flushing Meadows Corona Park Aquatics Center remains temporarily closed as we address an unexpected mechanical issue. We hope to open in the middle of next week. We appreciate your continued patience and understanding and will provide an updated reopening date as soon as possible. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Me",
         "reduced_hours": false,
         "notice_links": [],
-        "closure_reason": null,
+        "closure_reason": "due to a mechanical issue",
         "closed_through": null,
         "reopens": null,
         "schedules": [],
@@ -4587,7 +4753,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Queens",
@@ -5206,7 +5373,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     },
     {
         "borough": "Bronx",
@@ -5702,6 +5870,7 @@
                     }
                 ]
             }
-        ]
+        ],
+        "closures": []
     }
 ]

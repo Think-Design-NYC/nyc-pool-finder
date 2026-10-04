@@ -148,6 +148,16 @@ Parsing notes, all learned the hard way from real pages:
   closed that way has its `schedules` cleared — a posted timetable for a closed
   building would still satisfy the day/activity filters and send someone to a
   locked door.
+- **Closure notices are read by `classify_closure()`, which is subject- and
+  date-aware.** (1) A closure sentence about the gym/field/etc. with no pool word
+  is ignored — Chelsea's "gymnasium ... will be closed for voting" (Oct 22) used
+  to mark the whole pool closed. (2) "Beginning <date> through <date>" is a
+  window, stored in `closures`; the pool is `closed` only while today is inside
+  it, and the window's days are emptied in `schedule_weeks` and `schedules`
+  (NYC Parks keeps posting the normal timetable through a repair closure, so
+  Shirley Chisholm listed sessions for a drained pool). (3) "remains temporarily
+  closed" counts (Flushing). Known gap: a pool with a *future* window is not in
+  the closed list for those days, only in the "other pools" directory.
 - **`CLOSURE_RE`'s trailing lookahead is load-bearing.** "The pool is closed on
   Sundays" appears in the reduced-hours notice carried by five pools that are
   very much open; without the day-of-week exclusion every one of them gets
