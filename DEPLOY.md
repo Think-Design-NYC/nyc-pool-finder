@@ -135,6 +135,18 @@ launchctl bootout   gui/$UID/com.thinkdesign.poolfinder-refresh                 
 If the Mac is asleep at 06:00, launchd runs the job on the next wake. The job only
 fires while the user is logged in (it needs the login keychain for `git push`).
 
+### Failure notification and the browser fallback
+
+`refresh.sh` raises a macOS notification ("Pool Finder refresh failed") on any
+non-zero exit. The usual cause is nycgovparks.org's bot challenge (HTTP 405,
+`x-amzn-waf-action: captcha`), which blocks the scraper even from a residential
+IP. Fallback: open `scripts/collect.html`, follow its steps in a real browser
+(it saves `nycgov_cache.json`), then:
+
+```bash
+NYC_POOLS_CACHE=~/Downloads/nycgov_cache.json ./scripts/refresh.sh
+```
+
 ### Manual fallback — `--if-stale`
 
 The scheduled job only fires while the primary Mac is awake and logged in, so

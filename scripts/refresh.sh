@@ -38,6 +38,18 @@ cd "$REPO_DIR"
 
 echo "=== $(date -u +%Y-%m-%dT%H:%M:%SZ) refreshing pool data ==="
 
+# Tell a human when this fails. nycgovparks.org sits behind a bot challenge that
+# can block the scraper at any time, and the site then quietly goes stale. The
+# fallback is scripts/collect.html: save the pages in a real browser, then
+# NYC_POOLS_CACHE=~/Downloads/nycgov_cache.json ./scripts/refresh.sh
+notify_on_failure() {
+  local code=$?
+  [ "$code" -eq 0 ] && return
+  echo "ERROR: refresh failed (exit $code)"
+  osascript -e 'display notification "Scrape failed — run the browser fallback (scripts/collect.html). Log: ~/Library/Logs/poolfinder-refresh.log" with title "Pool Finder refresh failed" sound name "Basso"' >/dev/null 2>&1 || true
+}
+trap notify_on_failure EXIT
+
 # Guard: this script commits and pushes, so it must never run off main. Without
 # this, a scheduled run that fires while a checkout sits on a feature branch
 # lands the refresh commit on that branch and pushes it.

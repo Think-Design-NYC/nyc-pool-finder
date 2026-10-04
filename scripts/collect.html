@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collect pool pages</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; color: #0f172a; }
+  ol li { margin: .5rem 0 }
+  pre { background: #f1f5f9; padding: .75rem; border-radius: 6px; overflow: auto; font-size: 13px }
+  button { font: inherit; padding: .5rem 1rem; border-radius: 6px; border: 0; background: #0284c7; color: #fff; cursor: pointer }
+  .note { color: #475569; font-size: 14px }
+</style>
+</head>
+<body>
+<h1>Collect NYC pool pages</h1>
+<p class="note">This page can't fetch nycgovparks.org itself — browsers block a local file from reading another site. So the
+download runs <em>on</em> nycgovparks.org, in your own browser session, after you've passed its check.</p>
+<ol>
+  <li><button id="copy">Copy script</button></li>
+  <li>Open <a href="https://www.nycgovparks.org/facilities/indoor-pools" target="_blank" rel="noopener">nycgovparks.org/facilities/indoor-pools</a>
+      and complete the captcha if shown, until the real pool list loads.</li>
+  <li>Open DevTools (⌥⌘J), paste the script into the Console, press Return. (Chrome may ask you to type
+      <code>allow pasting</code> first.)</li>
+  <li>Wait about 30 seconds. It saves <code>nycgov_cache.json</code> to Downloads.</li>
+  <li>In the repo: <pre>NYC_POOLS_CACHE=~/Downloads/nycgov_cache.json ./scripts/refresh.sh</pre></li>
+</ol>
+<p class="note">About 52 page loads, one every ~0.5s — what opening each pool page by hand would do. If any page returns the
+challenge instead of content, the script stops and says so rather than saving junk.</p>
+<pre id="show"></pre>
+<script type="text/plain" id="snippet">
+(async () => {
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const base = location.origin;
+  if (!/nycgovparks\.org$/.test(location.hostname)) return console.error('Run this on nycgovparks.org');
+  const pages = {};
+  const get = async (path) => {
+    const res = await fetch(path, { credentials: 'same-origin' });
+    const text = await res.text();
+    if (!res.ok || res.headers.get('x-amzn-waf-action') || !/<html/i.test(text)) {
+      throw new Error(`${path}: HTTP ${res.status} — bot check not passed; reload, solve the captcha, rerun`);
+    }
+    pages[base + path] = text;
+    await sleep(500);
+    return text;
+  };
+  const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const monday = new Date();
+  monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+  const nextMonday = new Date(monday);
+  nextMonday.setDate(monday.getDate() + 7);
+
+  const listing = await get('/facilities/indoor-pools');
+  const codes = [...new Set([...listing.matchAll(/\/parks\/([A-Z0-9]+)\/facilities\/indoor-pools/g)].map((m) => m[1]))];
+  console.log(`${codes.length} pools:`, codes.join(' '));
+  for (const c of codes) {
+    console.log('fetching', c);
+    await get(`/facilities/recreationcenters/${c}`);
+    await get(`/parks/${c}/facilities/indoor-pools`);
+    await get(`/facilities/recreationcenters/${c}/schedule/${iso(monday)}`);
+    await get(`/facilities/recreationcenters/${c}/schedule/${iso(nextMonday)}`);
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(pages)], { type: 'application/json' }));
+  a.download = 'nycgov_cache.json';
+  a.click();
+  console.log('Saved nycgov_cache.json —', Object.keys(pages).length, 'pages');
+})().catch((e) => console.error('STOPPED:', e.message));
+</script>
+<script>
+  const code = document.getElementById('snippet').textContent.trim();
+  document.getElementById('show').textContent = code;
+  document.getElementById('copy').onclick = async (e) => {
+    try { await navigator.clipboard.writeText(code); e.target.textContent = 'Copied'; }
+    catch { e.target.textContent = 'Select the script below and copy it'; }
+  };
+</script>
+</body>
+</html>

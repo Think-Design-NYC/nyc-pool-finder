@@ -1,4 +1,5 @@
 import json
+import os
 import re
 from datetime import date, datetime, timedelta, timezone
 
@@ -368,7 +369,21 @@ class PoolData(BaseModel):
     schedule_weeks: List[ScheduleWeek] = []
 
 
+_CACHE: Optional[Dict[str, str]] = None
+
+
 def fetch(url: str) -> str:
+    # NYC_POOLS_CACHE=<file>: read pages saved by scripts/collect.html instead of
+    # requesting them. For when nycgovparks.org's bot challenge blocks requests.
+    cache_path = os.environ.get("NYC_POOLS_CACHE")
+    if cache_path:
+        global _CACHE
+        if _CACHE is None:
+            with open(os.path.expanduser(cache_path), encoding="utf-8") as f:
+                _CACHE = json.load(f)
+        if url not in _CACHE:
+            raise requests.HTTPError(f"not in {cache_path}: {url}")
+        return _CACHE[url]
     resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return resp.text
