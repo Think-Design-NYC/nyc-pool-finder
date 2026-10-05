@@ -1017,3 +1017,21 @@ doesn't shave it. iOS ignores the manifest for the home-screen label and uses
 There is already a mobile app consuming `nyc_pools_live.json`. An installable
 PWA covers overlapping ground; worth deciding whether they complement each other
 or whether one should be retired, before investing further in either.
+
+## News articles (added 2026-10-04)
+
+`public/news/st-marys-reopening/` is a hand-written static article (Ray's first
+visit after St. Mary's reopened), with its photos beside it. Like `/privacy/` it
+is a plain file Vite copies to `dist/`: no React mount, no build-time generation,
+so there is no fallback parity to police inside it. Wiring:
+
+- Linked from the news banner via `NEWS.postUrl` / `NEWS.postLabel` in
+  `src/copy.js`; both render sites (`<NewsBanner>` and `newsHtml()`) read them.
+  Deleting `NEWS` later should not delete the article, only the banner link.
+- Listed in the sitemap in `vite-plugin-seo.js` with a hand-set `lastmod`; bump
+  it when the article is edited.
+- The HTML is precached by the service worker (same as `/privacy/`); the JPGs
+  are not, because `globPatterns` has no `jpg`. Photos were resized to 1600px
+  and had EXIF (including GPS) stripped; do the same for any new ones.
+- Membership facts in the article are hand-typed from `src/membership.js`
+  (checked Aug 31, 2026). If those prices change, update the article too.

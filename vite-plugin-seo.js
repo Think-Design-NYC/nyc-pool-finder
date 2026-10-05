@@ -347,6 +347,14 @@ export default function seoPlugin() {
         // The privacy page changes on its own schedule and has no scrape date
         // to point at, so it carries no lastmod rather than a guessed one.
         { loc: `${SITE_URL}privacy/`, changefreq: 'yearly', priority: '0.3' },
+        // Hand-written article in public/news/. Its lastmod is the date it was
+        // last edited by hand; bump it when the article changes.
+        {
+          loc: `${SITE_URL}news/st-marys-reopening/`,
+          lastmod: '2026-10-04',
+          changefreq: 'monthly',
+          priority: '0.6',
+        },
       ]
       const urls = pages
         .map(
