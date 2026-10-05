@@ -20,6 +20,10 @@ export default function NewsBanner() {
         >
           Read the {NEWS.source} story
         </a>
+        , or{' '}
+        <a href={NEWS.postUrl} className="font-medium underline underline-offset-2">
+          {NEWS.postLabel.charAt(0).toLowerCase() + NEWS.postLabel.slice(1)}
+        </a>
         .
       </p>
     </aside>

@@ -30,5 +30,7 @@ export function newsHtml() {
     NEWS.summary,
   )} <a href="${escapeHtml(NEWS.sourceUrl)}" rel="noopener">Read the ${escapeHtml(
     NEWS.source,
-  )} story</a>.</aside>`
+  )} story</a>, or <a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(
+    NEWS.postLabel.charAt(0).toLowerCase() + NEWS.postLabel.slice(1),
+  )}</a>.</aside>`
 }

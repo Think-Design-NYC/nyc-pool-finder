@@ -32,4 +32,7 @@ export const NEWS = {
     'indoor pool NYC Parks runs in the Bronx.',
   source: 'Bronx Times',
   sourceUrl: 'https://www.bxtimes.com/st-marys-recreation-center-reopens-after-renovation/',
+  // Our own write-up of a first visit, a static page in public/news/.
+  postUrl: '/news/st-marys-reopening/',
+  postLabel: 'Read our visit report, with photos',
 }
