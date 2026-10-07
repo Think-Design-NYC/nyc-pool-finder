@@ -2968,58 +2968,77 @@
                     {
                         "date": "2026-10-12",
                         "weekday": "Monday",
-                        "building_hours": null,
+                        "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-10-13",
                         "weekday": "Tuesday",
-                        "building_hours": null,
+                        "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-10-14",
                         "weekday": "Wednesday",
-                        "building_hours": null,
+                        "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-10-15",
                         "weekday": "Thursday",
-                        "building_hours": null,
+                        "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": null,
                         "sessions": []
                     },
                     {
                         "date": "2026-10-16",
                         "weekday": "Friday",
-                        "building_hours": null,
+                        "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-10-17",
                         "weekday": "Saturday",
-                        "building_hours": null,
+                        "building_hours": "8:00 a - 12:00 a",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
                         "date": "2026-10-18",
                         "weekday": "Sunday",
-                        "building_hours": null,
+                        "building_hours": "8:00 a - 4:00 p",
                         "holiday": null,
-                        "note": "There are no programs scheduled at this time, please try the next 7 days or check back later.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:00 a - 10:00 a",
+                                "date": "2026-10-18"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "1:00 p - 3:00 p",
+                                "date": "2026-10-18"
+                            },
+                            {
+                                "session_type": "Swim Prep",
+                                "days": "Sunday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-10-18"
+                            }
+                        ]
                     }
                 ]
             }
