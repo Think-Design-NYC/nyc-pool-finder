@@ -1309,7 +1309,7 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The elevator at this location is currently out of service. Please call the front desk for updates at 212-754-5411.",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1601,7 +1601,14 @@
                         "building_hours": "7:00 a - 8:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:00 p - 3:30 p",
+                                "date": "2026-10-12"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-13",
@@ -1614,6 +1621,12 @@
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Tuesday",
                                 "time": "2:30 p - 3:30 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
                                 "date": "2026-10-13"
                             },
                             {
@@ -1653,6 +1666,12 @@
                                 "date": "2026-10-15"
                             },
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "For Returning 2025-2026 Members - Constance Baker Motley Gators Swim Team",
                                 "days": "Thursday",
                                 "time": "5:00 p - 6:30 p",
@@ -1677,6 +1696,12 @@
                                 "session_type": "Constance Baker Motley: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 7:00 p",
                                 "date": "2026-10-16"
                             }
                         ]
@@ -3033,7 +3058,7 @@
                                 "date": "2026-10-18"
                             },
                             {
-                                "session_type": "Swim Prep",
+                                "session_type": "Shirley Chisholm: Swim Prep",
                                 "days": "Sunday",
                                 "time": "3:00 p - 4:00 p",
                                 "date": "2026-10-18"
@@ -3874,6 +3899,12 @@
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Tuesday",
                                 "time": "8:30 a - 9:30 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "St. John's: Swim Prep",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-13"
                             }
                         ]
@@ -5660,6 +5691,12 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "St. Mary's: Swim Prep",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-13"
                             }
                         ]
