@@ -522,7 +522,7 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Asser Levy Lightnings Swim Team",
+                                "session_type": "Asser Levy Lightnings Swim Team",
                                 "days": "Wednesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
@@ -585,7 +585,7 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "For Returning 2025-2026 Members - Asser Levy Lightnings Swim Team",
+                                "session_type": "Asser Levy Lightnings Swim Team",
                                 "days": "Saturday",
                                 "time": "8:30 a - 10:00 a",
                                 "date": "2026-10-17"
@@ -1114,6 +1114,24 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday -",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class B Tuesday -",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class C Tuesday -",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "General Open Swim",
                                 "days": "Tuesday",
                                 "time": "1:15 p - 3:45 p",
@@ -1153,13 +1171,13 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Chelsea Blue Dolphins Swim Team",
+                                "session_type": "Chelsea Blue Dolphins Swim Team",
                                 "days": "Wednesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Metropolitan Sharks Swim Team",
+                                "session_type": "Metropolitan Sharks Swim Team",
                                 "days": "Wednesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
@@ -1240,7 +1258,7 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "For Returning 2025-2026 Members - Chelsea Blue Dolphins Swim Team",
+                                "session_type": "Chelsea Blue Dolphins Swim Team",
                                 "days": "Saturday",
                                 "time": "8:00 a - 9:30 a",
                                 "date": "2026-10-17"
@@ -1258,7 +1276,7 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Metropolitan Sharks Swim Team",
+                                "session_type": "Metropolitan Sharks Swim Team",
                                 "days": "Saturday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-17"
@@ -1411,12 +1429,6 @@
                 "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "8:00 a - 12:00 p",
-                "date": "2026-10-10"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 2:45 p",
                 "date": "2026-10-10"
             }
         ],
@@ -1572,12 +1584,6 @@
                                 "days": "Saturday",
                                 "time": "8:00 a - 12:00 p",
                                 "date": "2026-10-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "12:30 p - 2:45 p",
-                                "date": "2026-10-10"
                             }
                         ]
                     },
@@ -1603,9 +1609,21 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-12"
+                            },
+                            {
                                 "session_type": "General Swim",
                                 "days": "Monday",
                                 "time": "12:00 p - 3:30 p",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "4:00 p - 7:00 p",
                                 "date": "2026-10-12"
                             }
                         ]
@@ -1617,6 +1635,18 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-13"
+                            },
                             {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Tuesday",
@@ -1630,7 +1660,7 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Constance Baker Motley Gators Swim Team",
+                                "session_type": "Constance Baker Motley Gators Swim Team",
                                 "days": "Tuesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-13"
@@ -1645,9 +1675,27 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "2:30 p - 3:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:00 p",
                                 "date": "2026-10-14"
                             }
                         ]
@@ -1659,6 +1707,18 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-15"
+                            },
                             {
                                 "session_type": "Constance Baker Motley: Adult Learn to Swim Beginner (Thursday)",
                                 "days": "Thursday",
@@ -1672,7 +1732,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Constance Baker Motley Gators Swim Team",
+                                "session_type": "Constance Baker Motley Gators Swim Team",
                                 "days": "Thursday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-15"
@@ -1686,6 +1746,18 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-16"
+                            },
                             {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Friday",
@@ -1714,7 +1786,7 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "For Returning 2025-2026 Members - Constance Baker Motley Gators Swim Team",
+                                "session_type": "Constance Baker Motley Gators Swim Team",
                                 "days": "Saturday",
                                 "time": "8:00 a - 9:30 a",
                                 "date": "2026-10-17"
@@ -1723,6 +1795,12 @@
                                 "session_type": "Constance Baker Motley: Children's Learn to Swim - Saturday Water Test",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-17"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:45 p",
                                 "date": "2026-10-17"
                             },
                             {
@@ -2103,7 +2181,7 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Gertrude Ederle Sealions Swim Team",
+                                "session_type": "Gertrude Ederle Sealions Swim Team",
                                 "days": "Tuesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-13"
@@ -2169,7 +2247,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Gertrude Ederle Sealions Swim Team",
+                                "session_type": "Gertrude Ederle Sealions Swim Team",
                                 "days": "Thursday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-15"
@@ -2229,7 +2307,7 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Gertrude Ederle Sealions Swim Team",
+                                "session_type": "Gertrude Ederle Sealions Swim Team",
                                 "days": "Saturday",
                                 "time": "8:00 a - 9:30 a",
                                 "date": "2026-10-17"
@@ -2933,7 +3011,7 @@
                         "weekday": "Monday",
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": null,
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
@@ -2949,7 +3027,7 @@
                         "weekday": "Wednesday",
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": null,
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
@@ -2965,7 +3043,7 @@
                         "weekday": "Friday",
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": null,
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
@@ -2973,7 +3051,7 @@
                         "weekday": "Saturday",
                         "building_hours": "8:00 a - 12:00 a",
                         "holiday": null,
-                        "note": null,
+                        "note": "There are no programs at this pool today.",
                         "sessions": []
                     },
                     {
@@ -3027,7 +3105,7 @@
                         "weekday": "Friday",
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs at this pool today.",
+                        "note": null,
                         "sessions": []
                     },
                     {
@@ -3049,18 +3127,6 @@
                                 "session_type": "Open Lap Swim",
                                 "days": "Sunday",
                                 "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-18"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "1:00 p - 3:00 p",
-                                "date": "2026-10-18"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Swim Prep",
-                                "days": "Sunday",
-                                "time": "3:00 p - 4:00 p",
                                 "date": "2026-10-18"
                             }
                         ]
@@ -3923,7 +3989,7 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - St. John's Finmen Swim Team",
+                                "session_type": "St. John's Finmen Swim Team",
                                 "days": "Wednesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
@@ -3986,7 +4052,7 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "For Returning 2025-2026 Members - St. John's Finmen Swim Team",
+                                "session_type": "St. John's Finmen Swim Team",
                                 "days": "Saturday",
                                 "time": "9:00 a - 10:30 a",
                                 "date": "2026-10-17"
@@ -4432,7 +4498,7 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - FMAC Aquacades Swim Team",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-13"
@@ -4483,7 +4549,7 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - FMAC Aquacades Swim Team",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-14"
@@ -4540,7 +4606,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - FMAC Aquacades Swim Team",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Thursday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-15"
@@ -4561,15 +4627,15 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Lap Swim",
-                                "days": "Friday",
-                                "time": "6:00 a - 9:30 p",
-                                "date": "2026-10-16"
-                            },
-                            {
                                 "session_type": "Open Swim",
                                 "days": "Friday",
                                 "time": "6:00 a - 10:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "6:00 a - 9:30 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -4591,7 +4657,7 @@
                                 "date": "2026-10-16"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - FMAC Aquacades Swim Team",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Friday",
                                 "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-16"
@@ -4630,7 +4696,7 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - FMAC Aquacades Swim Team",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Saturday",
                                 "time": "11:00 a - 1:00 p",
                                 "date": "2026-10-17"
@@ -5082,8 +5148,27 @@
                         "weekday": "Monday",
                         "building_hours": "6:00 a - 10:00 p",
                         "holiday": null,
-                        "note": "There are no programs at this pool today.",
-                        "sessions": []
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 12:30 p",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:45 p - 4:45 p",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 9:30 p",
+                                "date": "2026-10-12"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-13",
@@ -5099,9 +5184,21 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Roy Wilkins Piranhas Swim Team",
+                                "session_type": "Synchronized Swimming",
+                                "days": "Tuesday",
+                                "time": "1:15 p - 3:45 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Roy Wilkins Piranhas Swim Team",
                                 "days": "Tuesday",
                                 "time": "5:00 p - 6:30 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Tuesday",
+                                "time": "6:45 p - 9:30 p",
                                 "date": "2026-10-13"
                             }
                         ]
@@ -5114,6 +5211,12 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 9:45 a",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "Roy Wilkins: Adult Learn to Swim Beginner (Wednesday)",
                                 "days": "Wednesday",
                                 "time": "1:15 p - 2:15 p",
@@ -5123,6 +5226,12 @@
                                 "session_type": "Roy Wilkins: Senior Water Exercise",
                                 "days": "Wednesday",
                                 "time": "2:30 p - 3:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Wednesday",
+                                "time": "6:45 p - 9:30 p",
                                 "date": "2026-10-14"
                             }
                         ]
@@ -5141,7 +5250,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - Roy Wilkins Piranhas Swim Team",
+                                "session_type": "Roy Wilkins Piranhas Swim Team",
                                 "days": "Thursday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-15"
@@ -5155,6 +5264,12 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 9:45 a",
+                                "date": "2026-10-16"
+                            },
                             {
                                 "session_type": "Roy Wilkins: Senior Learn to Swim Beginner (Friday)",
                                 "days": "Friday",
@@ -5172,6 +5287,12 @@
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Friday",
+                                "time": "6:30 p - 9:30 p",
+                                "date": "2026-10-16"
                             }
                         ]
                     },
@@ -5183,7 +5304,13 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "For Returning 2025-2026 Members - Roy Wilkins Piranhas Swim Team",
+                                "session_type": "Open Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:00 a",
+                                "date": "2026-10-17"
+                            },
+                            {
+                                "session_type": "Roy Wilkins Piranhas Swim Team",
                                 "days": "Saturday",
                                 "time": "9:00 a - 10:30 a",
                                 "date": "2026-10-17"
@@ -5192,6 +5319,12 @@
                                 "session_type": "Roy Wilkins: Children's Learn to Swim - Saturday Water Test",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-17"
+                            },
+                            {
+                                "session_type": "Saturday Night Lights: Teen Game Night",
+                                "days": "Saturday",
+                                "time": "5:00 p - 7:30 p",
                                 "date": "2026-10-17"
                             }
                         ]
@@ -5733,7 +5866,7 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - St. Mary's Marlins Swim Team",
+                                "session_type": "St. Mary's Marlins Swim Team",
                                 "days": "Wednesday",
                                 "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
@@ -5826,7 +5959,7 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "For Returning 2025-2026 Members - St. Mary's Marlins Swim Team",
+                                "session_type": "St. Mary's Marlins Swim Team",
                                 "days": "Saturday",
                                 "time": "2:00 p - 3:30 p",
                                 "date": "2026-10-17"
