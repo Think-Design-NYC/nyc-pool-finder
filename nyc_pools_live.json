@@ -477,9 +477,27 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at Asser Levy Class A Tuesday - PS 20 (Clinton Hill School)",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "General Open Swim",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 2:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class B Tuesday - PS 138",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-13"
                             },
                             {
@@ -510,6 +528,18 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Swim For Life at Asser Levy Class A Wednesday - PS 1",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class C Wednesday - PS 46",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "Asser Levy: Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "1:00 p - 2:00 p",
@@ -537,6 +567,24 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Swim For Life at Asser Levy Class A Thursday - PS 20 (Clinton Hill School)",
+                                "days": "Thursday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class B Thursday - PS 20 (Clinical Hill School)",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class C Thursday - p 12X 045",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "Asser Levy: Adult Learn to Swim (Thursday)",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
@@ -557,6 +605,24 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class A Friday - PS 19",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class B Friday - PS 19",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class C Friday - PS 188",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-16"
+                            },
                             {
                                 "session_type": "Asser Levy: Adult Water Exercise",
                                 "days": "Friday",
@@ -1089,7 +1155,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Monday",
-                                "time": "7:15 a - 10:00 a",
+                                "time": "7:00 a - 10:00 a",
                                 "date": "2026-10-12"
                             },
                             {
@@ -1110,23 +1176,23 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Tuesday",
-                                "time": "7:15 a - 10:00 a",
+                                "time": "7:00 a - 10:00 a",
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Tuesday -",
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday - P 12x 045",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class B Tuesday -",
+                                "session_type": "Swim For Life at Chelsea Class B Tuesday - PS 129",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class C Tuesday -",
+                                "session_type": "Swim For Life at Chelsea Class C Tuesday - P 12x 045",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-13"
@@ -1155,7 +1221,25 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Wednesday",
-                                "time": "7:15 a - 10:00 a",
+                                "time": "7:00 a - 10:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class A Wednesday - P 12x 045",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class B Wednesday - PS 94K",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class C Wednesday - P 12x 045",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -1194,7 +1278,13 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Thursday",
-                                "time": "7:15 a - 10:00 a",
+                                "time": "7:00 a - 10:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class B Thursday - PS 94K",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-15"
                             },
                             {
@@ -1221,7 +1311,13 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
-                                "time": "7:15 a - 10:00 a",
+                                "time": "7:00 a - 10:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class C Friday - P 12x 045",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -1792,6 +1888,12 @@
                                 "date": "2026-10-17"
                             },
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:45 a",
+                                "date": "2026-10-17"
+                            },
+                            {
                                 "session_type": "Constance Baker Motley: Children's Learn to Swim - Saturday Water Test",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
@@ -2169,6 +2271,24 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Tuesday - PS 85",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Tuesday - PS 138",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Tuesday - PS 12x 045",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "Gertrude Ederle: Adult Water Exercise",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 1:45 p",
@@ -2199,6 +2319,24 @@
                                 "session_type": "Adult Lap Swim",
                                 "days": "Wednesday",
                                 "time": "7:00 a - 9:45 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Wednesday - PS 85",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Wednesday - PS 138",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Wednesday - PS 92",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -2235,6 +2373,24 @@
                                 "date": "2026-10-15"
                             },
                             {
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+                                "days": "Thursday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Thursday - PS 140",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Thursday - P12x 045",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
@@ -2265,6 +2421,18 @@
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
                                 "time": "7:00 a - 9:45 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Friday - Thurgood Marshall",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Friday - PS 140",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -2301,12 +2469,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 12:30 p",
-                                "date": "2026-10-17"
-                            },
-                            {
                                 "session_type": "Gertrude Ederle Sealions Swim Team",
                                 "days": "Saturday",
                                 "time": "8:00 a - 9:30 a",
@@ -2321,7 +2483,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Saturday",
-                                "time": "12:45 p - 3:30 p",
+                                "time": "1:15 p - 4:00 p",
                                 "date": "2026-10-17"
                             }
                         ]
@@ -3968,6 +4130,24 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at St. John's Class A Tuesday - PS 5",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class B Tuesday - PS 372K",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class C Tuesday - PS 282",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "St. John's: Swim Prep",
                                 "days": "Tuesday",
                                 "time": "5:00 p - 6:30 p",
@@ -3986,6 +4166,24 @@
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Wednesday",
                                 "time": "8:30 a - 9:30 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class A Wednesday - The Bedford Village School",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class B Wednesday - PS 114",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class C Wednesday - PS 270",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -4016,6 +4214,18 @@
                                 "date": "2026-10-15"
                             },
                             {
+                                "session_type": "Swim For Life at St. John's Class A Thursday - PS 308",
+                                "days": "Thursday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class C Thursday - PS 282",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "St. John's: Adult Water Exercise",
                                 "days": "Thursday",
                                 "time": "6:30 p - 7:15 p",
@@ -4034,6 +4244,24 @@
                                 "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
                                 "days": "Friday",
                                 "time": "8:30 a - 9:30 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class A Friday - Brooklyn Charter School",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class B Friday - PS 372K",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. John's Class C Friday - PS 16",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -4486,6 +4714,24 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at FMAC Class A Tuesday - PS 24Q",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class B Tuesday - PS 81",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
@@ -4525,15 +4771,15 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Open Swim",
-                                "days": "Wednesday",
-                                "time": "6:00 a - 10:00 a",
-                                "date": "2026-10-14"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Wednesday",
                                 "time": "6:00 a - 9:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Open Swim",
+                                "days": "Wednesday",
+                                "time": "6:00 a - 10:00 a",
                                 "date": "2026-10-14"
                             },
                             {
@@ -4543,21 +4789,33 @@
                                 "date": "2026-10-14"
                             },
                             {
+                                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 24Q",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class B Wednesday - PS 24Q",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Wednesday",
                                 "time": "2:00 p - 9:30 p",
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 7:30 p",
-                                "date": "2026-10-14"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Wednesday, 4pm)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 6:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "FMAC Aquacades Swim Team",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -4576,15 +4834,33 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Open Swim",
+                                "days": "Thursday",
+                                "time": "6:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "Lap Swim",
                                 "days": "Thursday",
                                 "time": "6:00 a - 9:30 p",
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "Open Swim",
+                                "session_type": "Swim For Life at FMAC Class A Thursday - PS 24Q",
                                 "days": "Thursday",
-                                "time": "6:00 a - 11:00 a",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class B Thursday - PS 24Q",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class C Thursday - PS 124",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-15"
                             },
                             {
@@ -4639,9 +4915,27 @@
                                 "date": "2026-10-16"
                             },
                             {
+                                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Friday",
                                 "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class B Friday - PS 24Q",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class C Friday - PS 124",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -4702,13 +4996,13 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-17"
@@ -4723,13 +5017,13 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Lap Swim",
+                                "session_type": "Open Swim",
                                 "days": "Sunday",
                                 "time": "9:00 a - 7:30 p",
                                 "date": "2026-10-18"
                             },
                             {
-                                "session_type": "Open Swim",
+                                "session_type": "Lap Swim",
                                 "days": "Sunday",
                                 "time": "9:00 a - 7:30 p",
                                 "date": "2026-10-18"
@@ -5167,6 +5461,12 @@
                                 "days": "Monday",
                                 "time": "5:00 p - 9:30 p",
                                 "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "Open Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 9:30 p",
+                                "date": "2026-10-12"
                             }
                         ]
                     },
@@ -5184,9 +5484,33 @@
                                 "date": "2026-10-13"
                             },
                             {
+                                "session_type": "Swim For Life at Roy Wilkins Class A Tuesday - PS 118Q",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Roy Wilkins Class B Tuesday - PS 104",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Roy Wilkins Class C Tuesday - Goldie Maple Academy 27Q333",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
                                 "session_type": "Synchronized Swimming",
                                 "days": "Tuesday",
                                 "time": "1:15 p - 3:45 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 4:45 p",
                                 "date": "2026-10-13"
                             },
                             {
@@ -5217,6 +5541,18 @@
                                 "date": "2026-10-14"
                             },
                             {
+                                "session_type": "Swim For Life at Roy Wilkins Class A Wednesday - PS 118Q",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Roy Wilkins Class B Wednesday - PS 104",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "Roy Wilkins: Adult Learn to Swim Beginner (Wednesday)",
                                 "days": "Wednesday",
                                 "time": "1:15 p - 2:15 p",
@@ -5226,6 +5562,12 @@
                                 "session_type": "Roy Wilkins: Senior Water Exercise",
                                 "days": "Wednesday",
                                 "time": "2:30 p - 3:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -5250,6 +5592,12 @@
                                 "date": "2026-10-15"
                             },
                             {
+                                "session_type": "Swim For Life at Roy Wilkins Class B Thursday - PS 104",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
                                 "session_type": "Roy Wilkins Piranhas Swim Team",
                                 "days": "Thursday",
                                 "time": "5:00 p - 6:30 p",
@@ -5271,6 +5619,24 @@
                                 "date": "2026-10-16"
                             },
                             {
+                                "session_type": "Swim For Life at Roy Wilkins Class A Friday - PS 147Q",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Roy Wilkins Class B Friday - PS 104",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Roy Wilkins Class C Friday - Goldie Maple Academy 27Q333",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
                                 "session_type": "Roy Wilkins: Senior Learn to Swim Beginner (Friday)",
                                 "days": "Friday",
                                 "time": "2:00 p - 3:00 p",
@@ -5286,6 +5652,12 @@
                                 "session_type": "Roy Wilkins: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "5:15 p - 6:00 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -5324,7 +5696,7 @@
                             {
                                 "session_type": "Saturday Night Lights: Teen Game Night",
                                 "days": "Saturday",
-                                "time": "5:00 p - 7:30 p",
+                                "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-17"
                             }
                         ]
@@ -5815,7 +6187,7 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class B Tuesday -",
+                                "session_type": "Swim For Life at St. Mary's Class B Tuesday - PS 72",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-13"
@@ -5848,19 +6220,19 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class A Wednesday -",
+                                "session_type": "Swim For Life at St. Mary's Class A Wednesday - PS 16",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class B Wednesday -",
+                                "session_type": "Swim For Life at St. Mary's Class B Wednesday - PS 72",
                                 "days": "Wednesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class C Wednesday -",
+                                "session_type": "Swim For Life at St. Mary's Class C Wednesday - PS 16",
                                 "days": "Wednesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-14"
@@ -5887,7 +6259,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class A Thursday -",
+                                "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-15"
@@ -5899,7 +6271,7 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class C Thursday -",
+                                "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
                                 "days": "Thursday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-15"
@@ -5926,7 +6298,7 @@
                                 "date": "2026-10-16"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class B Friday -",
+                                "session_type": "Swim For Life at St. Mary's Class B Friday - PS 41",
                                 "days": "Friday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-16"
