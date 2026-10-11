@@ -666,6 +666,29 @@ Filter helpers live in `src/utils.js`:
 
 Pool sort order: open → transitioning → closed.
 
+### Collapsible pool cards (added 2026-10-10)
+
+Cards in the grid start collapsed: header (name, borough, status badge, arrow)
+plus the filtered session times as chips. Clicking anywhere on the header —
+name or arrow — opens the full card (notice, address, transit, phone, session
+list, building hours, links). The click handler sits on `<header>`; the name is
+a real `<button aria-expanded>` so keyboard and screen readers work, and its
+clicks bubble up to the header. Don't add an `onClick` to the button too, or a
+click toggles twice.
+
+- Open state is a `Set` of `poolAnchorId`s in `App.jsx` (`openCards`), not in
+  the card, so one control can drive the grid: it reads "Expand all" until
+  every visible card is open, then "Collapse all". A `#pool-m260` hash (on load
+  or on `hashchange`) opens that card. Nothing is persisted; every visit starts
+  collapsed.
+- A pool with `notes` shows an amber (red if closed) **Notice** button on the
+  collapsed card. It opens the card and scrolls the notice — now first in the
+  body — into view, so a warning is never silently behind the arrow.
+- The collapsed body uses `hidden`, not conditional rendering, so the rendered
+  DOM still contains everything the crawlable fallback does.
+- The name no longer links to `/pool/<slug>/`; "Full schedule & directions",
+  listed right under the phone number in the opened card, does.
+
 ## Known gotchas
 
 - **`.venv/` is required and gitignored.** A fresh clone can't run
