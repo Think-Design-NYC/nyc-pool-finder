@@ -31,8 +31,8 @@ export default defineConfig({
         scope: '/',
         display: 'standalone',
         orientation: 'portrait',
-        theme_color: '#0284c7',
-        background_color: '#f8fafc',
+        theme_color: '#0b2a4a',
+        background_color: '#f4f7fa',
         categories: ['sports', 'health', 'travel'],
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -55,7 +55,7 @@ export default defineConfig({
         // The pool data is imported at build time, so the JS bundle *is* the
         // data — precaching the shell gives genuinely useful offline access to
         // full schedules, which is the point at a pool door with no signal.
-        globPatterns: ['**/*.{js,css,html,png,svg,webmanifest}'],
+        globPatterns: ['**/*.{js,css,html,png,svg,webmanifest,woff2}'],
         // dist/nyc_pools_*.json exists only for the mobile app; the website
         // never fetches it. Precaching 150KB nobody reads is pure waste.
         //

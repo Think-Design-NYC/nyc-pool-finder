@@ -131,8 +131,8 @@ export function joinBoroughs(names, conjunction = '&') {
 export const STATUS_STYLES = {
   open: {
     label: 'Open',
-    badge: 'bg-emerald-100 text-emerald-800 ring-emerald-600/20',
-    dot: 'bg-emerald-500',
+    badge: 'bg-open/10 text-emerald-800 ring-open/25',
+    dot: 'bg-open',
   },
   closed: {
     label: 'Closed',

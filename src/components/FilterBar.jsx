@@ -1,6 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 
-function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-white shadow-sm' }) {
+function PillRow({ options, selected, onSelect, activeClass = 'bg-deep-end text-white shadow-sm' }) {
   return (
     <div className="flex flex-1 gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
       {options.map((o) => {
@@ -14,7 +14,7 @@ function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-w
             aria-label={ariaLabel}
             aria-pressed={selected === value}
             className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium tabular-nums transition-colors ${
-              selected === value ? activeClass : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              selected === value ? activeClass : 'bg-white text-deep-end ring-1 ring-inset ring-line hover:bg-deck'
             }`}
           >
             {label}
@@ -25,7 +25,7 @@ function PillRow({ options, selected, onSelect, activeClass = 'bg-sky-600 text-w
   )
 }
 
-function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-sky-700 ring-sky-200' }) {
+function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-deep-end ring-deep-end/40' }) {
   const isDefault = selected === options[0]
   return (
     <label className="relative flex-1">
@@ -35,8 +35,8 @@ function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-sk
         onChange={(e) => onSelect(e.target.value)}
         className={`w-full appearance-none rounded-full py-1.5 pl-4 pr-9 text-sm font-medium ring-1 ring-inset focus:outline-none focus:ring-2 ${
           isDefault
-            ? 'bg-slate-100 text-slate-700 ring-slate-200'
-            : `bg-white ${accentClass}`
+            ? 'bg-white text-deep-end ring-line'
+            : `bg-shallow ${accentClass}`
         }`}
       >
         {options.map((o) => (
@@ -47,7 +47,7 @@ function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-sk
       </select>
       <ChevronDown
         size={15}
-        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted"
       />
     </label>
   )
@@ -66,7 +66,7 @@ export default function FilterBar({
 }) {
   const hasActivities = activities && activities.length > 0
   return (
-    <div className="sticky top-0 z-10 -mx-4 border-b border-slate-200 bg-white/90 px-4 py-3 backdrop-blur">
+    <div className="sticky top-0 z-10 -mx-4 border-b border-line bg-deck/90 px-4 py-3 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-2">
         {/* Mobile: dropdowns for borough + activity */}
         <div className="flex items-center gap-2 md:hidden">
@@ -82,7 +82,7 @@ export default function FilterBar({
               options={['All activities', ...activities]}
               selected={selectedActivity}
               onSelect={onSelectActivity}
-              accentClass="text-emerald-700 ring-emerald-200"
+              accentClass="text-tile-blue ring-tile-blue/40"
             />
           )}
         </div>
@@ -101,7 +101,7 @@ export default function FilterBar({
               options={['All activities', ...activities]}
               selected={selectedActivity}
               onSelect={onSelectActivity}
-              activeClass="bg-emerald-600 text-white shadow-sm"
+              activeClass="bg-tile-blue text-white shadow-sm"
             />
           </div>
         )}
@@ -110,7 +110,7 @@ export default function FilterBar({
           options={dayOptions}
           selected={selectedDay}
           onSelect={onSelectDay}
-          activeClass="bg-orange-500 text-white shadow-sm"
+          activeClass="bg-shallow text-deep-end ring-1 ring-inset ring-tile-blue"
         />
       </div>
     </div>

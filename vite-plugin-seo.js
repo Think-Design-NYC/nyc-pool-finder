@@ -276,26 +276,26 @@ function buildFallbackHtml() {
 
 const FALLBACK_STYLE = `
 <style id="seo-fallback-style">
-#seo-fallback{max-width:72rem;margin:0 auto;padding:1.5rem 1rem;font-family:ui-sans-serif,system-ui,sans-serif;color:#0f172a;line-height:1.5}
-#seo-fallback h1{font-size:1.6rem;margin:0 0 .5rem}
+#seo-fallback{max-width:72rem;margin:0 auto;padding:1.5rem 1rem;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;color:#0b2a4a;line-height:1.5}
+#seo-fallback h1{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:1.6rem;margin:0 0 .5rem}
 #seo-fallback h2{font-size:1.15rem;margin:1.75rem 0 .5rem}
 #seo-fallback h3{font-size:1rem;margin:0 0 .25rem}
-#seo-fallback .sf-card{border:1px solid #e2e8f0;border-radius:.75rem;padding:.85rem;margin:.6rem 0}
-#seo-fallback .sf-badge{font-size:.7rem;font-weight:600;color:#475569}
+#seo-fallback .sf-card{border:1px solid #dce4ec;border-radius:.75rem;padding:.85rem;margin:.6rem 0}
+#seo-fallback .sf-badge{font-size:.7rem;font-weight:600;color:#5a6e85}
 #seo-fallback .sf-closure{font-weight:600;color:#92400e}
-#seo-fallback ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem;color:#475569}
+#seo-fallback ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem;color:#5a6e85}
 #seo-fallback table{border-collapse:collapse;margin:.5rem 0;font-size:.85rem}
-#seo-fallback th,#seo-fallback td{border-bottom:1px solid #e2e8f0;padding:.35rem .9rem .35rem 0;text-align:left}
-#seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#475569}
+#seo-fallback th,#seo-fallback td{border-bottom:1px solid #dce4ec;padding:.35rem .9rem .35rem 0;text-align:left}
+#seo-fallback p{margin:.25rem 0;font-size:.9rem;color:#5a6e85}
 #seo-fallback .call-lead{text-transform:uppercase}
-#seo-fallback .sf-news{background:#f0f9ff;border:1px solid #bae6fd;border-radius:.75rem;padding:.75rem 1rem;margin:.75rem 0;font-size:.9rem;color:#0c4a6e}
+#seo-fallback .sf-news{background:#eef9fd;border:1px solid #d6f1fa;border-radius:.75rem;padding:.75rem 1rem;margin:.75rem 0;font-size:.9rem;color:#0b2a4a}
 #seo-fallback .sf-news strong a{color:inherit;text-decoration:none}
 #seo-fallback .sf-news p{margin:0}
 #seo-fallback .sf-news figure{margin:.75rem 0 0}
 #seo-fallback .sf-news img{display:block;width:100%;height:auto;border-radius:.5rem}
 #seo-fallback .sf-news figcaption{margin-top:.25rem;font-size:.75rem;opacity:.7}
 @media (min-width:768px){#seo-fallback .sf-news{display:flex;gap:1.25rem;align-items:flex-start}#seo-fallback .sf-news p,#seo-fallback .sf-news figure{flex:1;margin:0}}
-#seo-fallback .sf-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:0 0 .75rem}
+#seo-fallback .sf-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #dce4ec;border-radius:.5rem;margin:0 0 .75rem}
 </style>`
 
 export default function seoPlugin() {

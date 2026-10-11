@@ -34,20 +34,20 @@ export default function UpdatePrompt() {
   return (
     <div
       role="status"
-      className="fixed inset-x-3 bottom-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-xl bg-slate-900 px-4 py-3 text-sm text-white shadow-lg"
+      className="fixed inset-x-3 bottom-3 z-20 mx-auto flex max-w-md items-center gap-3 rounded-xl bg-deep-end px-4 py-3 text-sm text-white shadow-lg"
     >
-      <RefreshCw size={16} className="shrink-0 text-sky-300" />
+      <RefreshCw size={16} className="shrink-0 text-shallow" />
       <span className="flex-1">Updated pool schedules are available.</span>
       <button
         onClick={() => updateServiceWorker(true)}
-        className="shrink-0 rounded-lg bg-sky-500 px-3 py-1 font-semibold hover:bg-sky-400"
+        className="shrink-0 rounded-lg bg-tile-blue px-3 py-1 font-semibold hover:bg-tile-blue/85"
       >
         Refresh
       </button>
       <button
         onClick={() => setNeedRefresh(false)}
         aria-label="Dismiss"
-        className="shrink-0 text-slate-400 hover:text-white"
+        className="shrink-0 text-muted/80 hover:text-white"
       >
         <X size={16} />
       </button>

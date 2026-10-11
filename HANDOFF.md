@@ -1006,10 +1006,25 @@ spec's 24h bypass) — so update prompts still fire. To make it correct, add a
 Cloudflare Cache Rule bypassing `/sw.js`. That is a dashboard change, not a repo
 one.
 
+### Fonts
+
+The brand faces — Bricolage Grotesque (headings), Instrument Sans (body), DM
+Mono (session times) — are self-hosted in `public/fonts/`, never loaded from a
+font CDN. They are Latin-subset woff2 files copied out of the Fontsource 5.3.0
+packages (not installed as dependencies), with their OFL licences alongside.
+`public/fonts/fonts.css` declares them and is linked, not bundled, so the app,
+the no-JS fallback, the pool pages, the news article and the privacy page all
+share one stylesheet. Tailwind's `font-sans` / `font-display` / `font-mono`
+point at them (`src/index.css`). The woff2 files are precached for offline use.
+Their filenames aren't content-hashed, so `/fonts/*` must not be given an
+immutable cache header.
+
 ### Icons
 
-`scripts/make_icons.py` draws them — sky-600 ground, the same waves motif as the
-header — and is committed so any size can be regenerated. It needs Pillow, which
+`scripts/make_icons.py` draws them — the Figma "Logo/App icon": a white map pin
+with two waves and a lane-red dot on tile blue (`#1668e3`), from the Figma path
+data — and is committed so any size can be regenerated. The header uses the
+same mark the other way round (blue pin, white waves) via `LogoMark.jsx`. It needs Pillow, which
 system `python3` has; it is deliberately **not** in `requirements.txt`, because
 that file is the scraper's and `refresh.sh` must stay lean.
 

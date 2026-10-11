@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ChevronsDownUp, ChevronsUpDown, Phone, Waves } from 'lucide-react'
+import { ChevronsDownUp, ChevronsUpDown, Phone } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
+import LogoMark from './components/LogoMark'
 import NewsBanner from './components/NewsBanner'
 import pools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
@@ -313,42 +314,45 @@ export default function App() {
     })
 
   return (
-    <div className="min-h-screen bg-slate-50 px-4 pb-12">
-      <header className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-4 pt-6">
-        <div>
-          <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-900">
-            <Waves className="text-sky-600" size={26} />
-            NYC Indoor Pool Finder
-          </h1>
-          <p className="mt-1 text-sm text-slate-500">
-            Public pools open now — lap swim &amp; open swim schedules
-            {lastUpdated && (
-              <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
-            )}
-          </p>
-          <p className="mt-1 text-sm font-medium text-slate-600">
-            {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
-            {openBoroughList}
-          </p>
-          {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
-          <p className="mt-2 flex items-start gap-1.5 text-sm text-slate-600">
-            <Phone className="mt-0.5 shrink-0 text-slate-400" size={14} aria-hidden="true" />
-            <CallAheadNote />
-          </p>
+    <div className="min-h-screen bg-deck px-4 pb-12">
+      <header className="-mx-4 mb-4 bg-deep-end px-4 text-white">
+        <div className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-5 pt-6">
+          <div>
+            <h1 className="flex items-center gap-2 font-display text-2xl font-bold tracking-tight">
+              <LogoMark className="size-9 shrink-0" />
+              NYC Indoor Pool Finder
+            </h1>
+            <p className="mt-1 text-sm text-white/75">
+              Public pools open now — lap swim &amp; open swim schedules
+              {lastUpdated && (
+                <span className="text-white/60"> · Last updated: {lastUpdated}</span>
+              )}
+            </p>
+            <p className="mt-1 text-sm font-medium text-white/90">
+              {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
+              {openBoroughList}
+            </p>
+            {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
+            <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
+              <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
+              <CallAheadNote />
+            </p>
+          </div>
+          <a
+            href="https://thinkdesign.com"
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
+            aria-label="Think Design"
+          >
+            {/* The logo is purple artwork; knocked out to white on the navy band. */}
+            <img
+              src={thinkDesignLogo}
+              alt="Think Design"
+              className="h-10 w-auto brightness-0 invert"
+            />
+          </a>
         </div>
-        <a
-          href="https://thinkdesign.com"
-          target="_blank"
-          rel="noreferrer"
-          className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
-          aria-label="Think Design"
-        >
-          <img
-            src={thinkDesignLogo}
-            alt="Think Design"
-            className="h-10 w-auto"
-          />
-        </a>
       </header>
 
       {/* Mirrored in the SEO fallback via newsHtml(). */}
@@ -388,10 +392,10 @@ export default function App() {
 
       <main className="mx-auto mt-5 max-w-6xl">
         {visiblePools.length === 0 ? (
-          <div className="rounded-2xl bg-white p-10 text-center text-slate-500 ring-1 ring-slate-200">
+          <div className="rounded-2xl bg-white p-10 text-center text-muted ring-1 ring-line">
             {rangeHolidays.length > 0 ? (
               <>
-                <p className="font-medium text-slate-700">
+                <p className="font-medium text-deep-end">
                   {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
                   recreation centers are closed.
                 </p>
@@ -411,7 +415,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={toggleAllCards}
-                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-sky-700 hover:bg-sky-50"
+                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-tile-blue hover:bg-shallow/40"
                 >
                   {allCardsOpen ? (
                     <ChevronsDownUp size={14} aria-hidden="true" />
@@ -449,13 +453,13 @@ export default function App() {
 
       {/* Mirrored in the SEO fallback (vite-plugin-seo.js) — if this changes,
           change it there too or crawlers see different markup than visitors. */}
-      <footer className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-4 text-xs text-slate-400">
+      <footer className="mx-auto mt-10 max-w-6xl border-t border-line pt-4 text-xs text-muted/80">
         <img
           src="/qr-code.svg"
           alt="QR code for pools.thinkdesign.com"
-          className="mb-3 w-[min(190px,50vw)] rounded-lg border border-slate-200"
+          className="mb-3 w-[min(190px,50vw)] rounded-lg border border-line"
         />
-        <a href="/privacy/" className="underline hover:text-sky-700">
+        <a href="/privacy/" className="underline hover:text-tile-blue">
           Privacy
         </a>
         <span className="mx-2" aria-hidden="true">
@@ -465,7 +469,7 @@ export default function App() {
           href="https://thinkdesign.com"
           target="_blank"
           rel="noreferrer"
-          className="underline hover:text-sky-700"
+          className="underline hover:text-tile-blue"
         >
           Think Design
         </a>

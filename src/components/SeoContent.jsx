@@ -17,11 +17,11 @@ export default function SeoContent({ pools, openNames }) {
   const boroughs = boroughsPresent(pools)
 
   return (
-    <section className="mx-auto mt-12 max-w-6xl border-t border-slate-200 pt-8">
-      <h2 className="text-lg font-bold text-slate-900">
+    <section className="mx-auto mt-12 max-w-6xl border-t border-line pt-8">
+      <h2 className="text-lg font-bold text-deep-end">
         Indoor swimming in New York City
       </h2>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
         NYC Parks operates {pools.length} indoor public pools across{' '}
         {joinBoroughs(boroughs)}. Every one of them sits inside a recreation center, so
         you need a Recreation Center membership to swim. This page pulls the current
@@ -31,26 +31,26 @@ export default function SeoContent({ pools, openNames }) {
         pages.
       </p>
 
-      <h3 className="mt-6 text-sm font-bold text-slate-900">
+      <h3 className="mt-6 text-sm font-bold text-deep-end">
         What a Recreation Center membership costs
       </h3>
-      <p className="mt-1 text-xs text-slate-400">As of {MEMBERSHIP_CHECKED}</p>
+      <p className="mt-1 text-xs text-muted/80">As of {MEMBERSHIP_CHECKED}</p>
       <div className="mt-2 max-w-2xl overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-400">
+            <tr className="border-b border-line text-xs uppercase tracking-wide text-muted/80">
               <th scope="col" className="py-2 pr-4 font-semibold">Who</th>
               <th scope="col" className="py-2 font-semibold">Cost</th>
             </tr>
           </thead>
           <tbody>
             {MEMBERSHIP_TIERS.map((tier) => (
-              <tr key={tier.who} className="border-b border-slate-100 align-top">
-                <td className="py-2 pr-4 text-slate-600">{tier.who}</td>
+              <tr key={tier.who} className="border-b border-line/60 align-top">
+                <td className="py-2 pr-4 text-muted">{tier.who}</td>
                 <td className="py-2">
-                  <span className="font-semibold text-slate-800">{tier.price}</span>
+                  <span className="font-semibold text-deep-end">{tier.price}</span>
                   {tier.note && (
-                    <span className="block text-xs text-slate-400">{tier.note}</span>
+                    <span className="block text-xs text-muted/80">{tier.note}</span>
                   )}
                 </td>
               </tr>
@@ -58,46 +58,46 @@ export default function SeoContent({ pools, openNames }) {
           </tbody>
         </table>
       </div>
-      <p className="mt-2 max-w-3xl text-xs leading-relaxed text-slate-500">
+      <p className="mt-2 max-w-3xl text-xs leading-relaxed text-muted">
         Prices are for the &ldquo;Access to All Centers&rdquo; package — the cheaper
         $100/year tier excludes every center with a pool. {IDNYC_NOTE}{' '}
         <a
           href={MEMBERSHIP_URL}
           target="_blank"
           rel="noreferrer"
-          className="underline hover:text-sky-700"
+          className="underline hover:text-tile-blue"
         >
           Full membership details
         </a>
         .
       </p>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
         Unlike the city&apos;s outdoor pools — which run only from late June through
         Labor Day — indoor pools are open year-round. Filter by borough to find a
         pool near you in {joinBoroughs(boroughs, 'or')}.
       </p>
 
-      <h2 className="mt-8 text-lg font-bold text-slate-900">
+      <h2 className="mt-8 text-lg font-bold text-deep-end">
         Frequently asked questions
       </h2>
       <dl className="mt-3 max-w-3xl space-y-4">
         {FAQ.map((item) => (
           <div key={item.q}>
-            <dt className="text-sm font-semibold text-slate-800">{item.q}</dt>
-            <dd className="mt-1 text-sm leading-relaxed text-slate-600">
+            <dt className="text-sm font-semibold text-deep-end">{item.q}</dt>
+            <dd className="mt-1 text-sm leading-relaxed text-muted">
               {item.a(openNames)}
             </dd>
           </div>
         ))}
       </dl>
 
-      <p className="mt-8 text-xs text-slate-400">
+      <p className="mt-8 text-xs text-muted/80">
         Schedules are scraped from{' '}
         <a
           href="https://www.nycgovparks.org/facilities/indoor-pools"
           target="_blank"
           rel="noreferrer"
-          className="underline hover:text-sky-700"
+          className="underline hover:text-tile-blue"
         >
           nycgovparks.org
         </a>{' '}
