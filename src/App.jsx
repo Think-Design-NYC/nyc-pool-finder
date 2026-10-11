@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Phone, Waves } from 'lucide-react'
+import { ChevronsDownUp, ChevronsUpDown, Phone, Waves } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
 import NewsBanner from './components/NewsBanner'
 import pools from '../nyc_pools_live.json'
@@ -22,6 +22,7 @@ import {
   joinBoroughs,
   isOpen,
   poolSlugs,
+  poolAnchorId,
   poolHref,
   ACTIVITIES,
   matchesActivity,
@@ -98,6 +99,27 @@ function readFilters() {
 
 export default function App() {
   const [filters, setFilters] = useState(readFilters)
+  // Which pool cards are expanded, by anchor id. Cards start collapsed; a
+  // #pool-m260 link (on load or later) opens its card.
+  const [openCards, setOpenCards] = useState(() => {
+    const id = window.location.hash.slice(1)
+    return new Set(id ? [id] : [])
+  })
+  useEffect(() => {
+    const onHash = () => {
+      const id = window.location.hash.slice(1)
+      if (id) setOpenCards((prev) => new Set(prev).add(id))
+    }
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+  const toggleCard = useCallback((id) => {
+    setOpenCards((prev) => {
+      const next = new Set(prev)
+      if (!next.delete(id)) next.add(id)
+      return next
+    })
+  }, [])
   const { borough: selectedBorough, activity: selectedActivity, day: selectedDay } = filters
 
   // A filter the reader chose: push a history entry so Back returns to the
@@ -277,6 +299,19 @@ export default function App() {
     return pools.filter((p) => !shown.has(p.pool_name))
   }, [visiblePools, closedPools])
 
+  // One control for the grid: "Expand all" until every visible card is open.
+  const visibleIds = visiblePools.map(poolAnchorId)
+  const allCardsOpen = visibleIds.length > 0 && visibleIds.every((id) => openCards.has(id))
+  const toggleAllCards = () =>
+    setOpenCards((prev) => {
+      const next = new Set(prev)
+      for (const id of visibleIds) {
+        if (allCardsOpen) next.delete(id)
+        else next.add(id)
+      }
+      return next
+    })
+
   return (
     <div className="min-h-screen bg-slate-50 px-4 pb-12">
       <header className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-4 pt-6">
@@ -370,16 +405,39 @@ export default function App() {
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {visiblePools.map((pool) => (
-              <PoolCard
-                key={pool.pool_name}
-                pool={pool}
-                href={poolHref(pool, slugs)}
-                activityLabel={activityActive ? selectedActivity : 'Swim'}
-              />
-            ))}
-          </div>
+          <>
+            {visiblePools.length > 1 && (
+              <div className="mb-2 flex justify-end">
+                <button
+                  type="button"
+                  onClick={toggleAllCards}
+                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-sky-700 hover:bg-sky-50"
+                >
+                  {allCardsOpen ? (
+                    <ChevronsDownUp size={14} aria-hidden="true" />
+                  ) : (
+                    <ChevronsUpDown size={14} aria-hidden="true" />
+                  )}
+                  {allCardsOpen ? 'Collapse all' : 'Expand all'}
+                </button>
+              </div>
+            )}
+            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {visiblePools.map((pool) => {
+                const id = poolAnchorId(pool)
+                return (
+                  <PoolCard
+                    key={pool.pool_name}
+                    pool={pool}
+                    href={poolHref(pool, slugs)}
+                    activityLabel={activityActive ? selectedActivity : 'Swim'}
+                    open={openCards.has(id)}
+                    onToggle={() => toggleCard(id)}
+                  />
+                )
+              })}
+            </div>
+          </>
         )}
       </main>
 
