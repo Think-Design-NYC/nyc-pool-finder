@@ -1028,6 +1028,12 @@ so there is no fallback parity to police inside it. Wiring:
 - Linked from the news banner via `NEWS.postUrl` / `NEWS.postLabel` in
   `src/copy.js`; both render sites (`<NewsBanner>` and `newsHtml()`) read them.
   Deleting `NEWS` later should not delete the article, only the banner link.
+- The banner also shows the article's shallow-end pool photo at half width
+  (`NEWS.photo`; stacked under the text below `md`), linked to the article.
+  `pool-shallow-end-800.jpg` is an 800px copy made for the banner, with the
+  1600px original in `srcset` for 2x screens. Neither is precached, so the
+  banner photo is missing offline. The banner deliberately no longer links the
+  Bronx Times; the article still cites it.
 - Listed in the sitemap in `vite-plugin-seo.js` with a hand-set `lastmod`; bump
   it when the article is edited.
 - The HTML is precached by the service worker (same as `/privacy/`); the JPGs
