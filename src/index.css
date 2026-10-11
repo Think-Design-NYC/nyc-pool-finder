@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+/* Brand palette from the Figma "Pool Finder — Brand + UI" file (v4 tokens).
+   The build-time pages (pool-page.js, the SEO fallback, the news and privacy
+   pages) can't use Tailwind, so they repeat these hex values by hand — change
+   them there too. */
+@theme {
+  --color-deep-end: #0b2a4a; /* header band, headings, body text */
+  --color-tile-blue: #1668e3; /* links, primary actions, the logo mark */
+  --color-shallow: #d6f1fa; /* tinted surfaces */
+  --color-lane-red: #f2542d; /* accent: the dot in the mark, "now" */
+  --color-deck: #f4f7fa; /* page background */
+  --color-line: #dce4ec; /* borders and dividers */
+  --color-muted: #5a6e85; /* secondary text */
+  --color-open: #10976a; /* open status */
+
+  /* Faces are declared in public/fonts/fonts.css, linked from index.html. */
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}

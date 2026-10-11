@@ -7,10 +7,10 @@ export default function NewsBanner() {
   return (
     <aside
       aria-label="News"
-      className="mx-auto mb-4 flex max-w-6xl flex-col gap-3 rounded-xl bg-sky-50 px-4 py-3 text-sm text-sky-950 ring-1 ring-sky-600/20 md:flex-row md:items-start md:gap-5"
+      className="mx-auto mb-4 flex max-w-6xl flex-col gap-3 rounded-xl bg-shallow/40 px-4 py-3 text-sm text-deep-end ring-1 ring-tile-blue/20 md:flex-row md:items-start md:gap-5"
     >
       <div className="flex items-start gap-3 md:w-1/2">
-        <Newspaper className="mt-0.5 shrink-0 text-sky-600" size={18} aria-hidden="true" />
+        <Newspaper className="mt-0.5 shrink-0 text-tile-blue" size={18} aria-hidden="true" />
         <p>
           <strong className="font-semibold">
             <a href={NEWS.postUrl} className="hover:underline">
@@ -34,10 +34,10 @@ export default function NewsBanner() {
             width={NEWS.photo.width}
             height={NEWS.photo.height}
             alt={NEWS.photo.alt}
-            className="block h-auto w-full rounded-lg bg-sky-100"
+            className="block h-auto w-full rounded-lg bg-shallow"
           />
         </a>
-        <figcaption className="mt-1 text-xs text-sky-900/70">{NEWS.photo.caption}</figcaption>
+        <figcaption className="mt-1 text-xs text-deep-end/70">{NEWS.photo.caption}</figcaption>
       </figure>
     </aside>
   )

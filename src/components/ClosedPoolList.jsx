@@ -20,10 +20,10 @@ export default function ClosedPoolList({ pools, slugs = null }) {
 
   return (
     <section className="mx-auto mt-10 max-w-6xl">
-      <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
+      <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">
         Currently closed ({pools.length})
       </h2>
-      <ul className="divide-y divide-slate-200 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+      <ul className="divide-y divide-line overflow-hidden rounded-2xl bg-white ring-1 ring-line">
         {pools.map((pool) => (
           <li
             key={pool.pool_name}
@@ -31,26 +31,26 @@ export default function ClosedPoolList({ pools, slugs = null }) {
             className="scroll-mt-4 px-4 py-3"
           >
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-              <span className="font-semibold text-slate-900">
+              <span className="font-semibold text-deep-end">
                 {poolHref(pool, slugs) ? (
-                  <a href={poolHref(pool, slugs)} className="hover:text-sky-700 hover:underline">
+                  <a href={poolHref(pool, slugs)} className="hover:text-tile-blue hover:underline">
                     {pool.pool_name}
                   </a>
                 ) : (
                   pool.pool_name
                 )}
               </span>
-              <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
+              <span className="text-xs font-medium uppercase tracking-wide text-muted/80">
                 {getBorough(pool)}
               </span>
             </div>
 
             <p className="mt-0.5 text-sm text-amber-800">{statusLabel(pool)}</p>
 
-            <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+            <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
               {pool.phone && (
                 <a
-                  className="font-medium text-sky-700 hover:underline"
+                  className="font-medium text-tile-blue hover:underline"
                   href={`tel:${pool.phone.replace(/[^+\d]/g, '')}`}
                 >
                   {pool.phone}
@@ -60,7 +60,7 @@ export default function ClosedPoolList({ pools, slugs = null }) {
                 <span key={link.url} className="flex items-center gap-2">
                   <span aria-hidden="true">·</span>
                   <a
-                    className="text-sky-700 hover:underline"
+                    className="text-tile-blue hover:underline"
                     href={link.url}
                     target="_blank"
                     rel="noreferrer"
@@ -73,7 +73,7 @@ export default function ClosedPoolList({ pools, slugs = null }) {
                 <span className="flex items-center gap-2">
                   <span aria-hidden="true">·</span>
                   <a
-                    className="text-sky-700 hover:underline"
+                    className="text-tile-blue hover:underline"
                     href={pool.url}
                     target="_blank"
                     rel="noreferrer"

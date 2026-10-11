@@ -167,16 +167,16 @@ function metaDescription(pool) {
 
 const STYLE = `
 :root{color-scheme:light}
-body{margin:0;background:#f8fafc}
-.pp{max-width:52rem;margin:0 auto;padding:1.5rem 1rem 3rem;font-family:ui-sans-serif,system-ui,sans-serif;color:#0f172a;line-height:1.55}
-.pp a{color:#0369a1}
+body{margin:0;background:#f4f7fa}
+.pp{max-width:52rem;margin:0 auto;padding:1.5rem 1rem 3rem;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;color:#0b2a4a;line-height:1.55}
+.pp a{color:#1668e3}
 .pp-back{display:inline-block;margin-bottom:1rem;font-size:.85rem;text-decoration:none}
 .pp-back:hover{text-decoration:underline}
-.pp h1{font-size:1.75rem;margin:0 0 .25rem;letter-spacing:-.02em}
-.pp h2{font-size:1.15rem;margin:2rem 0 .5rem;padding-top:1rem;border-top:1px solid #e2e8f0}
-.pp h3{font-size:1rem;margin:1.25rem 0 .5rem;color:#0f172a}
-.pp h4{font-size:.85rem;margin:.9rem 0 .25rem;color:#334155}
-.pp-borough{margin:0 0 .75rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+.pp h1{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:1.75rem;margin:0 0 .25rem;letter-spacing:-.02em}
+.pp h2{font-size:1.15rem;margin:2rem 0 .5rem;padding-top:1rem;border-top:1px solid #dce4ec}
+.pp h3{font-size:1rem;margin:1.25rem 0 .5rem;color:#0b2a4a}
+.pp h4{font-size:.85rem;margin:.9rem 0 .25rem;color:#0b2a4a}
+.pp-borough{margin:0 0 .75rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5a6e85}
 .pp-status{display:inline-block;border-radius:999px;padding:.25rem .7rem;font-size:.8rem;font-weight:600}
 .pp-open{background:#d1fae5;color:#065f46}
 .pp-closed{background:#fee2e2;color:#991b1b}
@@ -184,19 +184,19 @@ body{margin:0;background:#f8fafc}
 .pp-call{margin:1rem 0;border-radius:.6rem;background:#fff7ed;padding:.7rem .9rem;font-size:.9rem;color:#9a3412;border:1px solid #fed7aa}
 .pp .call-lead{text-transform:uppercase}
 .pp-notice{margin:1rem 0;border-radius:.6rem;background:#fef2f2;padding:.7rem .9rem;font-size:.9rem;color:#991b1b;border:1px solid #fecaca}
-.pp p{font-size:.92rem;color:#475569}
+.pp p{font-size:.92rem;color:#5a6e85}
 .pp table{border-collapse:collapse;width:100%;max-width:34rem;margin:.35rem 0}
-.pp td,.pp th{border-bottom:1px solid #e2e8f0;padding:.35rem .75rem .35rem 0;text-align:left;font-size:.88rem;color:#475569}
-.pp-time{font-variant-numeric:tabular-nums;font-weight:600;color:#0369a1;white-space:nowrap}
+.pp td,.pp th{border-bottom:1px solid #dce4ec;padding:.35rem .75rem .35rem 0;text-align:left;font-size:.88rem;color:#5a6e85}
+.pp-time{font-family:'DM Mono',ui-monospace,monospace;font-weight:500;color:#1668e3;white-space:nowrap}
 .pp-day{margin-bottom:.5rem}
 .pp-week{margin-bottom:1.5rem}
-.pp-hours,.pp-empty,.pp-note{font-size:.8rem;color:#94a3b8;margin:.15rem 0}
-.pp-foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.78rem;color:#94a3b8}
-.pp-foot a{color:#64748b}
+.pp-hours,.pp-empty,.pp-note{font-size:.8rem;color:#5a6e85;margin:.15rem 0}
+.pp-foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #dce4ec;font-size:.78rem;color:#5a6e85}
+.pp-foot a{color:#5a6e85}
 .pp-near{list-style:none;padding:0;margin:.35rem 0}
-.pp-near li{padding:.35rem 0;border-bottom:1px solid #e2e8f0;font-size:.92rem;color:#475569}
+.pp-near li{padding:.35rem 0;border-bottom:1px solid #dce4ec;font-size:.92rem;color:#5a6e85}
 .pp-near a{font-weight:600}
-.pp-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:.75rem 0}
+.pp-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #dce4ec;border-radius:.5rem;margin:.75rem 0}
 `
 
 // Links to the other pools, nearest first, with the distance and whether each
@@ -374,7 +374,7 @@ export function renderPoolPage({
 <meta name="description" content="${esc(metaDescription(pool))}" />
 <link rel="canonical" href="${esc(url)}" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-<meta name="theme-color" content="#0284c7" />
+<meta name="theme-color" content="#0b2a4a" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="NYC Indoor Pool Finder" />
 <meta property="og:title" content="${esc(pool.pool_name)}, ${esc(placeLabel(pool, { skipIfNamed: true }))} — Schedule &amp; Hours" />
@@ -382,6 +382,7 @@ export function renderPoolPage({
 <meta property="og:url" content="${esc(url)}" />
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="stylesheet" href="/fonts/fonts.css" />
 <style>${STYLE}</style>
 <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>
 </head>

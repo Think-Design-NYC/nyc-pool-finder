@@ -46,15 +46,15 @@ function StatusBadge({ pool }) {
 
 function ScheduleRow({ schedule }) {
   return (
-    <li className="rounded-lg bg-sky-50 p-3 ring-1 ring-inset ring-sky-100">
-      <p className="text-sm font-semibold text-sky-900">{schedule.session_type}</p>
+    <li className="rounded-lg bg-shallow/40 p-3 ring-1 ring-inset ring-shallow">
+      <p className="text-sm font-semibold text-deep-end">{schedule.session_type}</p>
       <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
         {/* "Mon 9/7" once the data carries dates; bare weekday otherwise. */}
-        <span className="text-xs text-slate-500">{dayStamp(schedule)}</span>
+        <span className="text-xs text-muted">{dayStamp(schedule)}</span>
         {/* Lane swim times are the hero — big and bold */}
-        <span className="text-base font-bold tabular-nums text-sky-700">{schedule.time}</span>
+        <span className="font-mono text-base font-medium text-tile-blue">{schedule.time}</span>
       </div>
-      {schedule.notes && <p className="mt-1 text-xs italic text-slate-500">{schedule.notes}</p>}
+      {schedule.notes && <p className="mt-1 text-xs italic text-muted">{schedule.notes}</p>}
     </li>
   )
 }
@@ -67,13 +67,13 @@ function TimeChips({ schedules }) {
   return (
     <ul className="flex flex-wrap gap-1.5">
       {schedules.map((s, i) => (
-        <li key={i} className="rounded-md bg-sky-50 px-2 py-1 ring-1 ring-inset ring-sky-100">
+        <li key={i} className="rounded-md bg-shallow/40 px-2 py-1 ring-1 ring-inset ring-shallow">
           {mixed && (
-            <span className="block text-[11px] leading-tight text-sky-900/70">
+            <span className="block text-[11px] leading-tight text-deep-end/70">
               {s.session_type}
             </span>
           )}
-          <span className="text-sm font-semibold tabular-nums text-sky-700">{s.time}</span>
+          <span className="font-mono text-sm font-medium text-tile-blue">{s.time}</span>
         </li>
       ))}
     </ul>
@@ -114,34 +114,34 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
   return (
     <article
       id={id}
-      className="flex scroll-mt-4 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition-shadow hover:shadow-md"
+      className="flex scroll-mt-4 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-line transition-shadow hover:shadow-md"
     >
       {/* The whole header toggles, arrow included. The name is the real
           button (keyboard, screen readers); its clicks bubble up to here. */}
       <header
         onClick={onToggle}
         className={`group flex cursor-pointer items-start justify-between gap-3 p-4 ${
-          open ? 'border-b border-slate-100' : ''
+          open ? 'border-b border-line/60' : ''
         }`}
       >
         <div className="min-w-0">
-          <h2 className="text-lg font-bold leading-snug text-slate-900">
+          <h2 className="text-lg font-bold leading-snug text-deep-end">
             <button
               type="button"
               aria-expanded={open}
               aria-controls={bodyId}
-              className="rounded text-left group-hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+              className="rounded text-left group-hover:text-tile-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-tile-blue"
             >
               {pool.pool_name}
             </button>
           </h2>
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted/80">
             {cardSubtitle(pool)}
           </p>
         </div>
         <div className="flex shrink-0 items-start gap-1.5">
           <StatusBadge pool={pool} />
-          <span className="-mr-1 rounded-full p-0.5 text-slate-400 group-hover:bg-slate-100 group-hover:text-sky-700">
+          <span className="-mr-1 rounded-full p-0.5 text-muted/80 group-hover:bg-deck group-hover:text-tile-blue">
             <ChevronDown
               size={20}
               aria-hidden="true"
@@ -197,21 +197,21 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             every affected pool. The scraper strips it and sets this flag; the
             actual hours are in the schedule below. */}
           {pool.reduced_hours && !isClosed && (
-            <p className="text-sm text-slate-500">Reduced summer hours</p>
+            <p className="text-sm text-muted">Reduced summer hours</p>
           )}
 
           {/* Location & contact */}
-          <div className="space-y-1.5 text-sm text-slate-600">
+          <div className="space-y-1.5 text-sm text-muted">
             {address && (
               <p className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-slate-400" />
+                <MapPin size={16} className="mt-0.5 shrink-0 text-muted/80" />
                 <span>
                   {mapsUrl ? (
                     <a
                       href={mapsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="hover:text-sky-700 hover:underline"
+                      className="hover:text-tile-blue hover:underline"
                     >
                       {loc.address}
                     </a>
@@ -219,10 +219,10 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
                     loc.address
                   )}
                   {loc.cross_streets && (
-                    <span className="text-slate-400"> ({loc.cross_streets})</span>
+                    <span className="text-muted/80"> ({loc.cross_streets})</span>
                   )}
                   {(loc.city || loc.zip_code) && (
-                    <span className="block text-slate-400">
+                    <span className="block text-muted/80">
                       {[loc.city, loc.state].filter(Boolean).join(', ')} {loc.zip_code}
                     </span>
                   )}
@@ -231,16 +231,16 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             )}
             {loc.nearest_subway && (
               <p className="flex items-start gap-2">
-                <TrainFront size={16} className="mt-0.5 shrink-0 text-slate-400" />
+                <TrainFront size={16} className="mt-0.5 shrink-0 text-muted/80" />
                 <span>{loc.nearest_subway}</span>
               </p>
             )}
             {pool.phone && (
               <p className="flex items-center gap-2">
-                <Phone size={16} className="shrink-0 text-slate-400" />
+                <Phone size={16} className="shrink-0 text-muted/80" />
                 <a
                   href={`tel:${pool.phone.replace(/[^+\d]/g, '')}`}
-                  className="font-medium text-sky-700 hover:underline"
+                  className="font-medium text-tile-blue hover:underline"
                 >
                   {pool.phone}
                 </a>
@@ -248,8 +248,8 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             )}
             {href && (
               <p className="flex items-center gap-2">
-                <CalendarDays size={16} className="shrink-0 text-slate-400" />
-                <a href={href} className="font-medium text-sky-700 hover:underline">
+                <CalendarDays size={16} className="shrink-0 text-muted/80" />
+                <a href={href} className="font-medium text-tile-blue hover:underline">
                   Full schedule &amp; directions
                 </a>
               </p>
@@ -259,8 +259,8 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
           {/* Swim schedules */}
           {schedules.length > 0 && (
             <section>
-              <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <Waves size={14} className="text-sky-500" />
+              <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
+                <Waves size={14} className="text-tile-blue" />
                 {activityLabel} Times
                 {reopening && (
                   <span className="font-medium normal-case tracking-normal text-amber-700">
@@ -279,11 +279,11 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
           {/* Building hours, when available */}
           {hours && (
             <details className="group text-sm">
-              <summary className="flex cursor-pointer items-center gap-1.5 font-medium text-slate-500 hover:text-slate-700">
+              <summary className="flex cursor-pointer items-center gap-1.5 font-medium text-muted hover:text-deep-end">
                 <Building2 size={15} />
                 Building hours
               </summary>
-              <ul className="mt-2 space-y-1 pl-6 text-slate-600">
+              <ul className="mt-2 space-y-1 pl-6 text-muted">
                 {Object.entries(hours).map(([day, time]) => (
                   <li key={day} className="flex justify-between gap-4">
                     <span>{day.replaceAll('_', ' – ')}</span>
@@ -298,12 +298,12 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
         {/* Footer link */}
         {/* Riverbank's schedule is a PDF on parks.ny.gov, not a scraped page. */}
         {(pool.schedule_pdf || pool.url) && (
-          <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-slate-100 px-4 py-2.5">
+          <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-line/60 px-4 py-2.5">
             <a
               href={pool.schedule_pdf || pool.url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-sky-700"
+              className="inline-flex items-center gap-1 text-xs font-medium text-muted/80 hover:text-tile-blue"
             >
               <Clock size={12} />
               Check latest schedule on {officialPage(pool).host}
