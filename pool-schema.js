@@ -141,6 +141,19 @@ export function poolNode(pool, url) {
     }
     if (loc.zip_code) node.address.postalCode = loc.zip_code
   }
+  // From data/pool_meta.json (merged by withPoolMeta). Coordinates are the
+  // single strongest structured-data signal for "pool near me" searches.
+  if (pool.place?.lat != null) {
+    node.geo = {
+      '@type': 'GeoCoordinates',
+      latitude: pool.place.lat,
+      longitude: pool.place.lng,
+    }
+    node.hasMap = `https://www.google.com/maps/search/?api=1&query=${pool.place.lat},${pool.place.lng}`
+  }
+  if (pool.place?.neighborhood) {
+    node.containedInPlace = { '@type': 'Place', name: pool.place.neighborhood }
+  }
   if (pool.phone) node.telephone = pool.phone
   if (parksUrl(pool)) node.sameAs = parksUrl(pool)
   if (hours.length) node.openingHoursSpecification = hours

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ChevronsDownUp, ChevronsUpDown, Phone, Waves } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
 import NewsBanner from './components/NewsBanner'
-import pools from '../nyc_pools_live.json'
+import rawPools from '../nyc_pools_live.json'
 import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
@@ -38,6 +38,10 @@ import {
   dayFilterValue,
   dateForDayFilter,
 } from './utils'
+import { withPoolMeta } from './poolMeta'
+
+// Neighborhood, coordinates and nearest subway, from data/pool_meta.json.
+const pools = withPoolMeta(rawPools)
 
 // Filter state lives in three places, in this precedence order:
 //

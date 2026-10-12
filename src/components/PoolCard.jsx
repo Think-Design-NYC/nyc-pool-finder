@@ -135,6 +135,7 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             </button>
           </h2>
           <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+            {pool.place?.neighborhood ? `${pool.place.neighborhood} · ` : ''}
             {getBorough(pool)}
           </p>
         </div>
