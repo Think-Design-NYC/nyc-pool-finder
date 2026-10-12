@@ -14,7 +14,7 @@
 // scanned sources and built the stylesheet, so classes introduced here would be
 // purged.
 
-import pools from './nyc_pools_live.json'
+import rawPools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
 import { callAheadHtml, newsHtml } from './src/html.js'
@@ -31,6 +31,7 @@ import {
 import { escapeHtml as esc } from './src/html.js'
 import { NON_PUBLIC_SESSION, parksUrl, poolNode } from './pool-schema.js'
 import { renderPoolPage } from './pool-page.js'
+import { withPoolMeta } from './src/poolMeta.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -39,6 +40,10 @@ import {
 } from './src/membership.js'
 
 export const SITE_URL = 'https://pools.thinkdesign.com/'
+
+// Same merge App.jsx does, so the fallback and the pool pages carry the same
+// neighborhood and subway lines as the rendered cards.
+const pools = withPoolMeta(rawPools)
 
 // One slug table for the whole build: the JSON-LD, the fallback links, the
 // emitted pages and the sitemap must all agree on a pool's URL.
@@ -164,6 +169,7 @@ function buildFallbackHtml() {
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
   <h3><a href="${esc(poolPath(SLUGS.get(anchorId(pool))))}">${esc(pool.pool_name)}</a> <span class="sf-badge">${esc(statusBadgeLabel(pool))}</span></h3>
+  ${pool.place?.neighborhood ? `<p>${esc(pool.place.neighborhood)}</p>` : ''}
   ${pool.reduced_hours ? '<p>Reduced summer hours</p>' : ''}
   <p>${esc(
     [
@@ -175,6 +181,7 @@ function buildFallbackHtml() {
       .filter(Boolean)
       .join(' ') || `${borough}, New York, NY`,
   )}${pool.phone ? ` · <a href="tel:${esc(pool.phone.replace(/[^+\d]/g, ''))}">${esc(pool.phone)}</a>` : ''}</p>
+  ${loc.nearest_subway ? `<p>${esc(loc.nearest_subway)}</p>` : ''}
   ${pool.notes ? `<p>${esc(pool.notes)}</p>` : ''}
   ${sessions ? `<ul>${sessions}</ul>` : ''}
   <p><a href="${esc(poolPath(SLUGS.get(anchorId(pool))))}">Full ${esc(pool.pool_name)} schedule, hours &amp; directions</a>${
@@ -329,7 +336,7 @@ export default function seoPlugin() {
         this.emitFile({
           type: 'asset',
           fileName: `pool/${slug}/index.html`,
-          source: renderPoolPage({ pool, slug, siteUrl: SITE_URL, updatedLabel }),
+          source: renderPoolPage({ pool, slug, siteUrl: SITE_URL, updatedLabel, pools, slugs: SLUGS }),
         })
       }
 

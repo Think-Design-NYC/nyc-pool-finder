@@ -1,0 +1,523 @@
+{
+  "B085": {
+    "pool_name": "Metropolitan Pool",
+    "neighborhood": "Williamsburg",
+    "lat": 40.71502,
+    "lng": -73.96032,
+    "subway": [
+      {
+        "station": "Bedford Av",
+        "routes": [
+          "L"
+        ],
+        "miles": 0.24
+      },
+      {
+        "station": "Marcy Av",
+        "routes": [
+          "M",
+          "J",
+          "Z"
+        ],
+        "miles": 0.48
+      },
+      {
+        "station": "Metropolitan Av – Lorimer St",
+        "routes": [
+          "L",
+          "G"
+        ],
+        "miles": 0.49
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "B62",
+      "Q59",
+      "B32"
+    ],
+    "bus_miles": 0.25
+  },
+  "B245": {
+    "pool_name": "St. John's Pool",
+    "neighborhood": "Crown Heights",
+    "lat": 40.67389,
+    "lng": -73.9349,
+    "subway": [
+      {
+        "station": "Crown Hts-Utica Av",
+        "routes": [
+          "3",
+          "4"
+        ],
+        "miles": 0.36
+      },
+      {
+        "station": "Utica Av",
+        "routes": [
+          "A",
+          "C"
+        ],
+        "miles": 0.44
+      },
+      {
+        "station": "Kingston Av",
+        "routes": [
+          "3"
+        ],
+        "miles": 0.49
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "B15",
+      "B65",
+      "B45",
+      "B46"
+    ],
+    "bus_miles": 0.25
+  },
+  "B250": {
+    "pool_name": "Shirley Chisholm Recreation Center Pool",
+    "neighborhood": "East Flatbush",
+    "lat": 40.63811,
+    "lng": -73.94706,
+    "subway": [
+      {
+        "station": "Newkirk Av-Little Haiti",
+        "routes": [
+          "2",
+          "5"
+        ],
+        "miles": 0.15
+      },
+      {
+        "station": "Flatbush Av-Brooklyn College",
+        "routes": [
+          "2",
+          "5"
+        ],
+        "miles": 0.37
+      },
+      {
+        "station": "Beverly Rd",
+        "routes": [
+          "2",
+          "5"
+        ],
+        "miles": 0.49
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "B44",
+      "B8",
+      "B44+",
+      "B49"
+    ],
+    "bus_miles": 0.25
+  },
+  "B270": {
+    "pool_name": "Brownsville Pool",
+    "neighborhood": "Brownsville",
+    "lat": 40.6564,
+    "lng": -73.90282,
+    "subway": [
+      {
+        "station": "New Lots Av",
+        "routes": [
+          "L"
+        ],
+        "miles": 0.25
+      },
+      {
+        "station": "East 105 St",
+        "routes": [
+          "L"
+        ],
+        "miles": 0.44
+      },
+      {
+        "station": "Junius St",
+        "routes": [
+          "3"
+        ],
+        "miles": 0.49
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "B15",
+      "B35",
+      "B60",
+      "B8"
+    ],
+    "bus_miles": 0.25
+  },
+  "M063": {
+    "pool_name": "Gertrude Ederle Pool",
+    "neighborhood": "Upper West Side",
+    "lat": 40.77147,
+    "lng": -73.98874,
+    "subway": [
+      {
+        "station": "66 St-Lincoln Center",
+        "routes": [
+          "1"
+        ],
+        "miles": 0.37
+      },
+      {
+        "station": "59 St-Columbus Circle",
+        "routes": [
+          "A",
+          "C",
+          "B",
+          "D",
+          "1"
+        ],
+        "miles": 0.42
+      },
+      {
+        "station": "72 St",
+        "routes": [
+          "1",
+          "2",
+          "3"
+        ],
+        "miles": 0.6
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "M11",
+      "M57",
+      "M12",
+      "M31"
+    ],
+    "bus_miles": 0.25
+  },
+  "M103": {
+    "pool_name": "Tony Dapolito Pool",
+    "neighborhood": "West Village",
+    "lat": 40.72962,
+    "lng": -74.00544,
+    "subway": [
+      {
+        "station": "Houston St",
+        "routes": [
+          "1"
+        ],
+        "miles": 0.09
+      },
+      {
+        "station": "Spring St",
+        "routes": [
+          "C",
+          "E"
+        ],
+        "miles": 0.25
+      },
+      {
+        "station": "Christopher St-Stonewall",
+        "routes": [
+          "1"
+        ],
+        "miles": 0.29
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "M20",
+      "M21",
+      "M11",
+      "M55",
+      "M8"
+    ],
+    "bus_miles": 0.25
+  },
+  "M130": {
+    "pool_name": "Constance Baker Motley Pool",
+    "neighborhood": "Midtown East",
+    "lat": 40.75648,
+    "lng": -73.96513,
+    "subway": [
+      {
+        "station": "Lexington Av/53 St – 51 St",
+        "routes": [
+          "E",
+          "F",
+          "6"
+        ],
+        "miles": 0.22
+      },
+      {
+        "station": "Lexington Av/59 St – 59 St",
+        "routes": [
+          "N",
+          "R",
+          "W",
+          "4",
+          "5",
+          "6"
+        ],
+        "miles": 0.44
+      },
+      {
+        "station": "Lexington Av/63 St",
+        "routes": [
+          "M",
+          "Q"
+        ],
+        "miles": 0.57
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "M15",
+      "M57",
+      "M15+",
+      "M31",
+      "M50",
+      "M101",
+      "M102",
+      "M103"
+    ],
+    "bus_miles": 0.25
+  },
+  "M131": {
+    "pool_name": "Hansborough Pool",
+    "neighborhood": "Central Harlem",
+    "lat": 40.81284,
+    "lng": -73.93934,
+    "subway": [
+      {
+        "station": "135 St",
+        "routes": [
+          "2",
+          "3"
+        ],
+        "miles": 0.12
+      },
+      {
+        "station": "125 St",
+        "routes": [
+          "2",
+          "3"
+        ],
+        "miles": 0.48
+      },
+      {
+        "station": "138 St-Grand Concourse",
+        "routes": [
+          "4",
+          "5"
+        ],
+        "miles": 0.5
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "BX33",
+      "M1",
+      "M102",
+      "M7"
+    ],
+    "bus_miles": 0.25
+  },
+  "M164": {
+    "pool_name": "Asser Levy Pool",
+    "neighborhood": "Kips Bay",
+    "lat": 40.73619,
+    "lng": -73.97566,
+    "subway": [
+      {
+        "station": "1 Av",
+        "routes": [
+          "L"
+        ],
+        "miles": 0.48
+      },
+      {
+        "station": "3 Av",
+        "routes": [
+          "L"
+        ],
+        "miles": 0.59
+      },
+      {
+        "station": "23 St-Baruch College",
+        "routes": [
+          "6"
+        ],
+        "miles": 0.63
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "M34+",
+      "M34A+",
+      "M23+",
+      "M9",
+      "M15",
+      "M15+"
+    ],
+    "bus_miles": 0.25
+  },
+  "M260": {
+    "pool_name": "Chelsea Pool",
+    "neighborhood": "Chelsea",
+    "lat": 40.74831,
+    "lng": -74.00222,
+    "subway": [
+      {
+        "station": "23 St",
+        "routes": [
+          "C",
+          "E"
+        ],
+        "miles": 0.27
+      },
+      {
+        "station": "23 St",
+        "routes": [
+          "1"
+        ],
+        "miles": 0.45
+      },
+      {
+        "station": "28 St",
+        "routes": [
+          "1"
+        ],
+        "miles": 0.47
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "M11",
+      "M23+"
+    ],
+    "bus_miles": 0.25
+  },
+  "Q099": {
+    "pool_name": "Flushing Meadows Corona Park Pool & Rink",
+    "neighborhood": "Flushing Meadows–Corona Park",
+    "lat": 40.75177,
+    "lng": -73.83737,
+    "subway": [
+      {
+        "station": "Mets-Willets Point",
+        "routes": [
+          "7"
+        ],
+        "miles": 0.48
+      },
+      {
+        "station": "Flushing-Main St",
+        "routes": [
+          "7"
+        ],
+        "miles": 0.66
+      },
+      {
+        "station": "111 St",
+        "routes": [
+          "7"
+        ],
+        "miles": 0.94
+      }
+    ],
+    "lirr": {
+      "station": "Mets-Willets Point",
+      "miles": 0.33
+    },
+    "buses": [
+      "Q58",
+      "Q98",
+      "Q90"
+    ],
+    "bus_miles": 0.5
+  },
+  "Q448": {
+    "pool_name": "Roy Wilkins Pool",
+    "neighborhood": "St. Albans",
+    "lat": 40.68705,
+    "lng": -73.76946,
+    "subway": [
+      {
+        "station": "Jamaica-179 St",
+        "routes": [
+          "F"
+        ],
+        "miles": 1.92
+      },
+      {
+        "station": "Jamaica Center-Parsons/Archer",
+        "routes": [
+          "E",
+          "J",
+          "Z"
+        ],
+        "miles": 1.96
+      },
+      {
+        "station": "169 St",
+        "routes": [
+          "F"
+        ],
+        "miles": 2.05
+      }
+    ],
+    "lirr": {
+      "station": "St. Albans",
+      "miles": 0.35
+    },
+    "buses": [
+      "Q84",
+      "Q5",
+      "Q85",
+      "Q86",
+      "Q87",
+      "Q89"
+    ],
+    "bus_miles": 0.25
+  },
+  "X045": {
+    "pool_name": "St. Mary's Pool",
+    "neighborhood": "Mott Haven",
+    "lat": 40.8115,
+    "lng": -73.91409,
+    "subway": [
+      {
+        "station": "3 Av-149 St",
+        "routes": [
+          "2",
+          "5"
+        ],
+        "miles": 0.37
+      },
+      {
+        "station": "Brook Av",
+        "routes": [
+          "6"
+        ],
+        "miles": 0.38
+      },
+      {
+        "station": "E 143 St-St Mary's St",
+        "routes": [
+          "6"
+        ],
+        "miles": 0.39
+      }
+    ],
+    "lirr": null,
+    "buses": [
+      "BX17",
+      "BX19",
+      "BX4"
+    ],
+    "bus_miles": 0.25
+  }
+}

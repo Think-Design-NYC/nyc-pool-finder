@@ -18,7 +18,17 @@ import {
   parseISODate,
   firstSessionDate,
   poolPath,
+  poolAnchorId,
 } from './src/utils.js'
+import {
+  busList,
+  busReach,
+  formatMiles,
+  isFarFromSubway,
+  nearbyPools,
+  placeLabel,
+  stationLabel,
+} from './src/poolMeta.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -104,14 +114,14 @@ function buildingHours(pool) {
 }
 
 function metaDescription(pool) {
-  const name = pool.pool_name
+  const name = `${pool.pool_name} in ${placeLabel(pool, { skipIfNamed: true })}`
   if (pool.status === 'closed') {
     const back = firstSessionDate(pool)
     return `${name} is currently closed${
       pool.closure_reason ? ` ${pool.closure_reason}` : ''
     }.${back ? ` Sessions resume ${shortDay(back)}.` : ''} Address, phone and the latest status for this NYC Parks indoor pool.`
   }
-  return `${name} indoor pool schedule — lap swim, open swim and family swim times for the next two weeks, plus address, recreation center hours and phone number.`
+  return `${name}: indoor pool schedule — lap swim, open swim and family swim times for the next two weeks, plus address, recreation center hours and phone number.`
 }
 
 const STYLE = `
@@ -142,10 +152,73 @@ body{margin:0;background:#f8fafc}
 .pp-hours,.pp-empty,.pp-note{font-size:.8rem;color:#94a3b8;margin:.15rem 0}
 .pp-foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.78rem;color:#94a3b8}
 .pp-foot a{color:#64748b}
+.pp-near{list-style:none;padding:0;margin:.35rem 0}
+.pp-near li{padding:.35rem 0;border-bottom:1px solid #e2e8f0;font-size:.92rem;color:#475569}
+.pp-near a{font-weight:600}
 .pp-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #e2e8f0;border-radius:.5rem;margin:.75rem 0}
 `
 
-export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
+// Links to the other pools, nearest first, with the distance and whether each
+// is open — a closed pool must say so before anyone sets off for it. Gives
+// every pool page a path to every other, rather than only back to the
+// homepage.
+function nearbyList(rows, slugs) {
+  return `<ul class="pp-near">${rows
+    .map(({ pool: p, miles }) => {
+      const href = poolPath(slugs.get(poolAnchorId(p)))
+      return `<li><a href="${esc(href)}">${esc(p.pool_name)}</a> — ${esc(placeLabel(p))}${
+        miles == null ? '' : ` · ${esc(formatMiles(miles))}`
+      } · ${esc(statusSentence(p))}</li>`
+    })
+    .join('')}</ul>`
+}
+
+function nearbySection(pool, pools, slugs) {
+  if (!slugs) return ''
+  const { sameBorough, otherBoroughs } = nearbyPools(pool, pools)
+  const borough = getBorough(pool)
+  const parts = []
+  if (sameBorough.length) {
+    parts.push(`<h2>Other indoor pools in ${esc(borough)}</h2>${nearbyList(sameBorough, slugs)}`)
+  }
+  if (otherBoroughs.length) {
+    parts.push(
+      `<h${sameBorough.length ? 3 : 2}>Nearest indoor pools in other boroughs</h${sameBorough.length ? 3 : 2}>${nearbyList(otherBoroughs, slugs)}`,
+    )
+  }
+  if (!parts.length) return ''
+  return `<section>${parts.join('')}<p class="pp-note">Distances are straight-line miles from ${esc(pool.pool_name)}.</p></section>`
+}
+
+function transitHtml(pool) {
+  const place = pool.place
+  const stations = place?.subway ?? []
+  if (!stations.length) return ''
+  const parts = []
+  if (isFarFromSubway(place)) {
+    // Listing three stations two miles off would read as directions.
+    parts.push(
+      `<p>No subway station within a mile — the closest is ${esc(stationLabel(stations[0]))}, ${esc(formatMiles(stations[0].miles))} away.</p>`,
+    )
+  } else {
+    parts.push(
+      `<p>Nearest subway stations:</p><ul>${stations
+        .map((s) => `<li>${esc(stationLabel(s))} — ${esc(formatMiles(s.miles))}</li>`)
+        .join('')}</ul>`,
+    )
+  }
+  if (place.lirr) {
+    parts.push(
+      `<p>LIRR: ${esc(place.lirr.station)} station — ${esc(formatMiles(place.lirr.miles))}</p>`,
+    )
+  }
+  if (place.buses?.length) {
+    parts.push(`<p>Buses stopping ${esc(busReach(place))}: ${esc(busList(place))}</p>`)
+  }
+  return parts.join('\n    ')
+}
+
+export function renderPoolPage({ pool, slug, siteUrl, updatedLabel, pools = [], slugs }) {
   const url = `${siteUrl.replace(/\/$/, '')}${poolPath(slug)}`
   const loc = pool.location ?? {}
   const borough = getBorough(pool)
@@ -161,7 +234,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
         '@type': 'WebPage',
         '@id': `${url}#webpage`,
         url,
-        name: `${pool.pool_name} — Schedule & Hours`,
+        name: `${pool.pool_name}, ${placeLabel(pool, { skipIfNamed: true })} — Schedule & Hours`,
         about: { '@id': url },
         isPartOf: { '@id': `${siteUrl}#website` },
         inLanguage: 'en-US',
@@ -199,14 +272,14 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>${esc(pool.pool_name)} — Schedule &amp; Hours | NYC Indoor Pool Finder</title>
+<title>${esc(pool.pool_name)}, ${esc(placeLabel(pool, { skipIfNamed: true }))} — Schedule &amp; Hours | NYC Indoor Pool Finder</title>
 <meta name="description" content="${esc(metaDescription(pool))}" />
 <link rel="canonical" href="${esc(url)}" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <meta name="theme-color" content="#0284c7" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="NYC Indoor Pool Finder" />
-<meta property="og:title" content="${esc(pool.pool_name)} — Schedule &amp; Hours" />
+<meta property="og:title" content="${esc(pool.pool_name)}, ${esc(placeLabel(pool, { skipIfNamed: true }))} — Schedule &amp; Hours" />
 <meta property="og:description" content="${esc(metaDescription(pool))}" />
 <meta property="og:url" content="${esc(url)}" />
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
@@ -218,7 +291,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
 <main class="pp">
   <a class="pp-back" href="/">&larr; All NYC indoor pools</a>
   <h1>${esc(pool.pool_name)}</h1>
-  <p class="pp-borough">${esc(borough)} · NYC Parks indoor pool</p>
+  <p class="pp-borough">${esc(placeLabel(pool))} · NYC Parks indoor pool</p>
   <p><span class="pp-status ${statusClass}">${esc(statusSentence(pool))}</span></p>
 
   ${pool.notes ? `<p class="pp-notice">${esc(pool.notes)}</p>` : ''}
@@ -228,6 +301,7 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
     <h2>Where it is</h2>
     <p>${esc(address || `${borough}, New York, NY`)}</p>
     ${pool.phone ? `<p>Phone: <a href="${esc(telHref(pool.phone))}">${esc(pool.phone)}</a></p>` : ''}
+    ${transitHtml(pool)}
     <p><a href="https://maps.google.com/?q=${encodeURIComponent(`${pool.pool_name} New York NY`)}" rel="nofollow">Directions on Google Maps</a></p>
   </section>
 
@@ -256,6 +330,8 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel }) {
     tier excludes every center with a pool. ${esc(IDNYC_NOTE)}
     <a href="${esc(MEMBERSHIP_URL)}" rel="nofollow">Full membership details</a>.</p>
   </section>
+
+  ${nearbySection(pool, pools, slugs)}
 
   <footer class="pp-foot">
     <p>Schedules are scraped from
