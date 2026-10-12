@@ -586,6 +586,16 @@ timetable: it is everyday service now (~87 trains a weekday), not the old
 event-day stop. Re-run the script when a pool is added or moves. Still not built: accessibility, parking,
 and the opt-in "near me" sort.
 
+**"Swim times today" on pool pages (2026-10-12).** Each pool page opens with
+the sessions for the scrape's calendar day (New York time, from
+`meta.updated_at`, not the build clock), stated with its date — "Swim times
+today — Sunday, Oct 11" and a one-sentence list grouped by session type. It's
+aimed at "where can I swim today" queries and answer engines. If the daily
+refresh is missed, the heading keeps naming the scrape date, which is honest
+but reads "today" for a past day; the refresh cadence is what keeps it true.
+Closed pools with nothing that day get no block (the status line covers it),
+and there is no holiday line, matching the 2026-09-12 decision.
+
 Original plan, kept for the reasoning: lat/lng,
 accessibility, nearest subway lines and parking; unlocks "pools near me"
 sorting, `geo` in the JSON-LD, and the transit line each card is already built

@@ -87,6 +87,41 @@ function renderDay(day) {
   return `<div class="pp-day"><h4>${esc(dayHeading(day.date))}</h4>${hours}${body}</div>`
 }
 
+// "Adult Lap Swim 7:00 a - 11:00 a, 2:30 p - 3:45 p; General Open Swim …" —
+// the sentence an answer engine can lift for "where can I swim today".
+function sessionsSentence(sessions) {
+  const byType = new Map()
+  for (const s of sessions) {
+    if (!byType.has(s.session_type)) byType.set(s.session_type, [])
+    byType.get(s.session_type).push(s.time)
+  }
+  return [...byType].map(([type, times]) => `${type} ${times.join(', ')}`).join('; ')
+}
+
+// The day the data was scraped, stated with its date. Builds follow the daily
+// refresh, so this is the current day; if a refresh is missed, the explicit
+// date keeps it honest rather than silently wrong. No holiday line — pool
+// pages dropped it on 2026-09-12 (see CLAUDE.md).
+function todaySection(pool, todayISO) {
+  if (!todayISO) return ''
+  const day = (pool.schedule_weeks ?? [])
+    .flatMap((w) => w.days ?? [])
+    .find((d) => d.date === todayISO)
+  if (!day) return ''
+  const sessions = (day.sessions ?? []).filter(
+    (s) => !NON_PUBLIC_SESSION.test(s.session_type ?? ''),
+  )
+  // A closed pool with nothing today already says so in the status line above.
+  if (!sessions.length && pool.status === 'closed') return ''
+  const body = sessions.length
+    ? `<p>${esc(pool.pool_name)} swim sessions on ${esc(dayHeading(todayISO))}: ${esc(sessionsSentence(sessions))}.</p>`
+    : `<p>No swim sessions are scheduled at ${esc(pool.pool_name)} on ${esc(dayHeading(todayISO))}.</p>`
+  return `<section>
+    <h2>Swim times today — ${esc(dayHeading(todayISO))}</h2>
+    ${body}
+  </section>`
+}
+
 function renderWeeks(pool) {
   const weeks = pool.schedule_weeks ?? []
   if (!weeks.length) return '<p>No schedule has been published for this pool.</p>'
@@ -218,7 +253,15 @@ function transitHtml(pool) {
   return parts.join('\n    ')
 }
 
-export function renderPoolPage({ pool, slug, siteUrl, updatedLabel, pools = [], slugs }) {
+export function renderPoolPage({
+  pool,
+  slug,
+  siteUrl,
+  updatedLabel,
+  todayISO,
+  pools = [],
+  slugs,
+}) {
   const url = `${siteUrl.replace(/\/$/, '')}${poolPath(slug)}`
   const loc = pool.location ?? {}
   const borough = getBorough(pool)
@@ -296,6 +339,8 @@ export function renderPoolPage({ pool, slug, siteUrl, updatedLabel, pools = [], 
 
   ${pool.notes ? `<p class="pp-notice">${esc(pool.notes)}</p>` : ''}
   <p class="pp-call">${callAheadHtml()}</p>
+
+  ${todaySection(pool, todayISO)}
 
   <section>
     <h2>Where it is</h2>

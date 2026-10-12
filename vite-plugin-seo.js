@@ -131,6 +131,18 @@ function lastUpdatedLabel() {
   })
 }
 
+// The scrape's calendar day in New York, as YYYY-MM-DD. The pool pages' "today"
+// block keys off this rather than the build clock: a static page can only
+// vouch for the day its data was fetched, and a code-only deploy at 11 pm
+// mustn't relabel yesterday morning's scrape as tomorrow.
+function scrapeDayISO() {
+  if (!meta.updated_at) return null
+  const t = new Date(meta.updated_at)
+  if (Number.isNaN(t.getTime())) return null
+  // en-CA formats as YYYY-MM-DD.
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(t)
+}
+
 // Static mirror of the React UI for non-JS crawlers. Replaced on mount.
 //
 // NOTE: App.jsx also renders <PoolDirectory> — the pools its filters excluded.
@@ -331,12 +343,21 @@ export default function seoPlugin() {
       // One static document per pool. No React mount, no app bundle — see the
       // header of pool-page.js for why these are deliberately not SPA routes.
       const updatedLabel = lastUpdatedLabel()
+      const todayISO = scrapeDayISO()
       for (const pool of pools) {
         const slug = SLUGS.get(anchorId(pool))
         this.emitFile({
           type: 'asset',
           fileName: `pool/${slug}/index.html`,
-          source: renderPoolPage({ pool, slug, siteUrl: SITE_URL, updatedLabel, pools, slugs: SLUGS }),
+          source: renderPoolPage({
+            pool,
+            slug,
+            siteUrl: SITE_URL,
+            updatedLabel,
+            todayISO,
+            pools,
+            slugs: SLUGS,
+          }),
         })
       }
 
