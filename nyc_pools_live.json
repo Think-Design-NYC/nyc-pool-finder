@@ -797,7 +797,13 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Monday",
-                "time": "7:00 a - 10:00 a",
+                "time": "7:00 a - 9:45 a",
+                "date": "2026-10-12"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "10:15 a - 1:00 p",
                 "date": "2026-10-12"
             },
             {
@@ -807,9 +813,21 @@
                 "date": "2026-10-12"
             },
             {
+                "session_type": "General Open Swim",
+                "days": "Monday",
+                "time": "2:30 p - 4:45 p",
+                "date": "2026-10-12"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "5:00 p - 7:00 p",
+                "date": "2026-10-12"
+            },
+            {
                 "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
-                "time": "7:00 a - 10:00 a",
+                "time": "7:00 a - 9:45 a",
                 "date": "2026-10-13"
             },
             {
@@ -845,7 +863,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Wednesday",
-                "time": "7:00 a - 10:00 a",
+                "time": "7:00 a - 9:45 a",
                 "date": "2026-10-14"
             },
             {
@@ -893,7 +911,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Thursday",
-                "time": "7:00 a - 10:00 a",
+                "time": "7:00 a - 9:45 a",
                 "date": "2026-10-15"
             },
             {
@@ -923,7 +941,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
-                "time": "7:00 a - 10:00 a",
+                "time": "7:00 a - 9:45 a",
                 "date": "2026-10-16"
             },
             {
@@ -965,7 +983,7 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
-                "time": "5:00 p - 7:00 p",
+                "time": "5:15 p - 7:00 p",
                 "date": "2026-10-16"
             },
             {
@@ -1020,13 +1038,31 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Monday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Monday",
+                                "time": "10:15 a - 1:00 p",
                                 "date": "2026-10-12"
                             },
                             {
                                 "session_type": "Water Aerobics",
                                 "days": "Monday",
                                 "time": "1:15 p - 2:15 p",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Monday",
+                                "time": "2:30 p - 4:45 p",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "5:00 p - 7:00 p",
                                 "date": "2026-10-12"
                             }
                         ]
@@ -1041,7 +1077,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Tuesday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-13"
                             },
                             {
@@ -1086,7 +1122,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Wednesday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-14"
                             },
                             {
@@ -1143,7 +1179,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Thursday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-15"
                             },
                             {
@@ -1182,7 +1218,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-16"
                             },
                             {
@@ -1224,7 +1260,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
-                                "time": "5:00 p - 7:00 p",
+                                "time": "5:15 p - 7:00 p",
                                 "date": "2026-10-16"
                             }
                         ]
@@ -1299,7 +1335,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Monday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-19"
                             },
                             {
@@ -1362,7 +1398,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Tuesday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-20"
                             },
                             {
@@ -1407,7 +1443,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Wednesday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-21"
                             },
                             {
@@ -1470,7 +1506,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Thursday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-22"
                             },
                             {
@@ -1509,7 +1545,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
-                                "time": "7:00 a - 10:00 a",
+                                "time": "7:00 a - 9:45 a",
                                 "date": "2026-10-23"
                             },
                             {
@@ -1551,7 +1587,7 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
-                                "time": "5:00 p - 7:00 p",
+                                "time": "5:15 p - 7:00 p",
                                 "date": "2026-10-23"
                             }
                         ]
@@ -1720,7 +1756,7 @@
                 "date": "2026-10-14"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "4:00 p - 7:00 p",
                 "date": "2026-10-14"
@@ -1919,7 +1955,7 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "Lap Swim",
+                                "session_type": "General Swim",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 7:00 p",
                                 "date": "2026-10-14"
@@ -2075,6 +2111,12 @@
                                 "days": "Monday",
                                 "time": "2:30 p - 3:30 p",
                                 "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "4:00 p - 7:00 p",
+                                "date": "2026-10-19"
                             }
                         ]
                     },
@@ -2116,6 +2158,12 @@
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "2:30 p - 3:30 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:00 p",
                                 "date": "2026-10-21"
                             }
                         ]
@@ -6198,6 +6246,12 @@
                                 "session_type": "Open Swim",
                                 "days": "Monday",
                                 "time": "2:00 p - 9:30 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "FMAC: Artistic Swimming",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:30 p",
                                 "date": "2026-10-19"
                             },
                             {
