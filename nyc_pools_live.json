@@ -741,6 +741,18 @@
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "Asser Levy: Children's Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "Asser Levy: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "Asser Levy: Parent and Tots Learn to Swim",
                                 "days": "Saturday",
                                 "time": "12:00 p - 12:30 p",
@@ -924,6 +936,12 @@
                 "session_type": "Swim For Life at Chelsea Class B Thursday - PS 94K",
                 "days": "Thursday",
                 "time": "11:00 a - 12:00 p",
+                "date": "2026-10-15"
+            },
+            {
+                "session_type": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p",
                 "date": "2026-10-15"
             },
             {
@@ -1192,6 +1210,12 @@
                                 "session_type": "Swim For Life at Chelsea Class B Thursday - PS 94K",
                                 "days": "Thursday",
                                 "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-15"
                             },
                             {
@@ -1522,6 +1546,12 @@
                                 "date": "2026-10-22"
                             },
                             {
+                                "session_type": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
                                 "session_type": "General Open Swim",
                                 "days": "Thursday",
                                 "time": "1:15 p - 3:45 p",
@@ -1603,6 +1633,18 @@
                                 "session_type": "Chelsea Blue Dolphins Swim Team",
                                 "days": "Saturday",
                                 "time": "8:00 a - 9:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "Chelsea: Children's Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "9:30 a - 10:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "Chelsea: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
                                 "date": "2026-10-24"
                             },
                             {
@@ -2233,6 +2275,12 @@
                                 "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 2)",
                                 "days": "Saturday",
                                 "time": "9:30 a - 10:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
                                 "date": "2026-10-24"
                             },
                             {
@@ -3087,6 +3135,12 @@
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "Gertrude Ederle: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "Gertrude Ederle: Parent and Tots Learn to Swim",
                                 "days": "Saturday",
                                 "time": "11:30 a - 12:00 p",
@@ -3839,15 +3893,8 @@
                         "weekday": "Sunday",
                         "building_hours": "8:00 a - 4:00 p",
                         "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-18"
-                            }
-                        ]
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
                     }
                 ]
             },
@@ -4064,12 +4111,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Open Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-24"
-                            },
-                            {
                                 "session_type": "Shirley Chisholm's Swim Team",
                                 "days": "Saturday",
                                 "time": "10:00 a - 11:30 a",
@@ -4114,12 +4155,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-25"
-                            },
                             {
                                 "session_type": "Shirley Chisholm: Adult Learn to Swim (Sunday)",
                                 "days": "Sunday",
@@ -5489,15 +5524,15 @@
         "closures": [],
         "schedules": [
             {
-                "session_type": "Lap Swim",
-                "days": "Monday",
-                "time": "6:00 a - 9:30 p",
-                "date": "2026-10-12"
-            },
-            {
                 "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "6:00 a - 10:00 a",
+                "date": "2026-10-12"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "6:00 a - 9:30 p",
                 "date": "2026-10-12"
             },
             {
@@ -5507,15 +5542,15 @@
                 "date": "2026-10-12"
             },
             {
-                "session_type": "Lap Swim",
-                "days": "Tuesday",
-                "time": "6:00 a - 9:30 p",
-                "date": "2026-10-13"
-            },
-            {
                 "session_type": "Open Swim",
                 "days": "Tuesday",
                 "time": "6:00 a - 11:00 a",
+                "date": "2026-10-13"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "6:00 a - 9:30 p",
                 "date": "2026-10-13"
             },
             {
@@ -5549,13 +5584,13 @@
                 "date": "2026-10-13"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
+                "session_type": "FMAC Aquacades Swim Team",
                 "days": "Tuesday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-13"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
+                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
                 "days": "Tuesday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-13"
@@ -5567,15 +5602,15 @@
                 "date": "2026-10-13"
             },
             {
-                "session_type": "Open Swim",
-                "days": "Wednesday",
-                "time": "6:00 a - 10:00 a",
-                "date": "2026-10-14"
-            },
-            {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "6:00 a - 9:30 p",
+                "date": "2026-10-14"
+            },
+            {
+                "session_type": "Open Swim",
+                "days": "Wednesday",
+                "time": "6:00 a - 10:00 a",
                 "date": "2026-10-14"
             },
             {
@@ -5609,15 +5644,15 @@
                 "date": "2026-10-14"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
-                "days": "Wednesday",
-                "time": "4:00 p - 7:30 p",
-                "date": "2026-10-14"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Wednesday, 4pm)",
                 "days": "Wednesday",
                 "time": "4:00 p - 6:00 p",
+                "date": "2026-10-14"
+            },
+            {
+                "session_type": "FMAC Aquacades Swim Team",
+                "days": "Wednesday",
+                "time": "4:00 p - 7:30 p",
                 "date": "2026-10-14"
             },
             {
@@ -5675,13 +5710,13 @@
                 "date": "2026-10-15"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
+                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Thursday, 4pm)",
                 "days": "Thursday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-15"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Thursday, 4pm)",
+                "session_type": "FMAC Aquacades Swim Team",
                 "days": "Thursday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-15"
@@ -5741,15 +5776,15 @@
                 "date": "2026-10-16"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
-                "days": "Friday",
-                "time": "4:00 p - 7:30 p",
-                "date": "2026-10-16"
-            },
-            {
                 "session_type": "FMAC: Adaptive Aquatics",
                 "days": "Friday",
                 "time": "4:00 p - 5:00 p",
+                "date": "2026-10-16"
+            },
+            {
+                "session_type": "FMAC Aquacades Swim Team",
+                "days": "Friday",
+                "time": "4:00 p - 7:30 p",
                 "date": "2026-10-16"
             },
             {
@@ -5759,13 +5794,13 @@
                 "date": "2026-10-16"
             },
             {
-                "session_type": "Open Swim",
+                "session_type": "Lap Swim",
                 "days": "Saturday",
                 "time": "9:00 a - 9:30 p",
                 "date": "2026-10-17"
             },
             {
-                "session_type": "Lap Swim",
+                "session_type": "Open Swim",
                 "days": "Saturday",
                 "time": "9:00 a - 9:30 p",
                 "date": "2026-10-17"
@@ -5820,15 +5855,15 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Lap Swim",
-                                "days": "Monday",
-                                "time": "6:00 a - 9:30 p",
-                                "date": "2026-10-12"
-                            },
-                            {
                                 "session_type": "Open Swim",
                                 "days": "Monday",
                                 "time": "6:00 a - 10:00 a",
+                                "date": "2026-10-12"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "6:00 a - 9:30 p",
                                 "date": "2026-10-12"
                             },
                             {
@@ -5847,15 +5882,15 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Lap Swim",
-                                "days": "Tuesday",
-                                "time": "6:00 a - 9:30 p",
-                                "date": "2026-10-13"
-                            },
-                            {
                                 "session_type": "Open Swim",
                                 "days": "Tuesday",
                                 "time": "6:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "6:00 a - 9:30 p",
                                 "date": "2026-10-13"
                             },
                             {
@@ -5889,13 +5924,13 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
+                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-13"
@@ -5916,15 +5951,15 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Open Swim",
-                                "days": "Wednesday",
-                                "time": "6:00 a - 10:00 a",
-                                "date": "2026-10-14"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Wednesday",
                                 "time": "6:00 a - 9:30 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Open Swim",
+                                "days": "Wednesday",
+                                "time": "6:00 a - 10:00 a",
                                 "date": "2026-10-14"
                             },
                             {
@@ -5958,15 +5993,15 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 7:30 p",
-                                "date": "2026-10-14"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Wednesday, 4pm)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 6:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "FMAC Aquacades Swim Team",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-14"
                             },
                             {
@@ -6033,13 +6068,13 @@
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
+                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Thursday, 4pm)",
                                 "days": "Thursday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-15"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Thursday, 4pm)",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Thursday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-15"
@@ -6108,15 +6143,15 @@
                                 "date": "2026-10-16"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
-                                "days": "Friday",
-                                "time": "4:00 p - 7:30 p",
-                                "date": "2026-10-16"
-                            },
-                            {
                                 "session_type": "FMAC: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "FMAC Aquacades Swim Team",
+                                "days": "Friday",
+                                "time": "4:00 p - 7:30 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -6135,13 +6170,13 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Open Swim",
+                                "session_type": "Lap Swim",
                                 "days": "Saturday",
                                 "time": "9:00 a - 9:30 p",
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "Lap Swim",
+                                "session_type": "Open Swim",
                                 "days": "Saturday",
                                 "time": "9:00 a - 9:30 p",
                                 "date": "2026-10-17"
@@ -6432,12 +6467,6 @@
                                 "date": "2026-10-22"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
-                                "days": "Thursday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
@@ -6445,6 +6474,12 @@
                             },
                             {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Thursday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-10-22"
@@ -8067,6 +8102,18 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Monday - PS 16",
                                 "days": "Monday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "1:30 p - 4:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "St. Mary's: Afterschool Learn to Swim (Monday)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
                                 "date": "2026-10-19"
                             },
                             {
