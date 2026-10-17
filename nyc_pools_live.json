@@ -798,7 +798,7 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+        "notes": "The elevator will be temporarily out of service on October 19, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1738,6 +1738,12 @@
                 "date": "2026-10-12"
             },
             {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-10-12"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Monday",
                 "time": "12:00 p - 3:30 p",
@@ -1748,6 +1754,12 @@
                 "days": "Monday",
                 "time": "4:00 p - 7:00 p",
                 "date": "2026-10-12"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-10-13"
             },
             {
                 "session_type": "Lap Swim",
@@ -1786,6 +1798,12 @@
                 "date": "2026-10-14"
             },
             {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-10-14"
+            },
+            {
                 "session_type": "General Swim",
                 "days": "Wednesday",
                 "time": "12:00 p - 2:30 p",
@@ -1802,6 +1820,12 @@
                 "days": "Wednesday",
                 "time": "4:00 p - 7:00 p",
                 "date": "2026-10-14"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-10-15"
             },
             {
                 "session_type": "Lap Swim",
@@ -1832,6 +1856,12 @@
                 "days": "Thursday",
                 "time": "5:00 p - 6:30 p",
                 "date": "2026-10-15"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-10-16"
             },
             {
                 "session_type": "Lap Swim",
@@ -1884,12 +1914,6 @@
             {
                 "session_type": "General Swim",
                 "days": "Saturday",
-                "time": "12:30 p - 2:45 p",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Saturday",
                 "time": "1:15 p - 2:45 p",
                 "date": "2026-10-17"
             },
@@ -1919,6 +1943,12 @@
                                 "date": "2026-10-12"
                             },
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-12"
+                            },
+                            {
                                 "session_type": "General Swim",
                                 "days": "Monday",
                                 "time": "12:00 p - 3:30 p",
@@ -1939,6 +1969,12 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-13"
+                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Tuesday",
@@ -1985,6 +2021,12 @@
                                 "date": "2026-10-14"
                             },
                             {
+                                "session_type": "Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-14"
+                            },
+                            {
                                 "session_type": "General Swim",
                                 "days": "Wednesday",
                                 "time": "12:00 p - 2:30 p",
@@ -2011,6 +2053,12 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-15"
+                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Thursday",
@@ -2050,6 +2098,12 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-16"
+                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Friday",
@@ -2110,12 +2164,6 @@
                             {
                                 "session_type": "General Swim",
                                 "days": "Saturday",
-                                "time": "12:30 p - 2:45 p",
-                                "date": "2026-10-17"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
                                 "time": "1:15 p - 2:45 p",
                                 "date": "2026-10-17"
                             },
@@ -2149,6 +2197,24 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:00 a - 2:30 a",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-19"
+                            },
+                            {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Monday",
                                 "time": "2:30 p - 3:30 p",
@@ -2169,6 +2235,24 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "12:00 a - 2:30 a",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-20"
+                            },
                             {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Tuesday",
@@ -2197,6 +2281,24 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "12:00 a - 2:30 a",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-21"
+                            },
+                            {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "2:30 p - 3:30 p",
@@ -2217,6 +2319,24 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "12:00 a - 2:30 a",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-22"
+                            },
                             {
                                 "session_type": "Constance Baker Motley: Adult Learn to Swim Beginner (Thursday)",
                                 "days": "Thursday",
@@ -2245,6 +2365,24 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "12:00 a - 2:30 a",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-10-23"
+                            },
+                            {
                                 "session_type": "Constance Baker Motley - Adult Water Exercise",
                                 "days": "Friday",
                                 "time": "2:30 p - 3:30 p",
@@ -2254,6 +2392,12 @@
                                 "session_type": "Constance Baker Motley: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 7:00 p",
                                 "date": "2026-10-23"
                             }
                         ]
@@ -2298,7 +2442,7 @@
                             {
                                 "session_type": "General Swim",
                                 "days": "Saturday",
-                                "time": "12:30 p - 2:45 p",
+                                "time": "1:15 p - 2:45 p",
                                 "date": "2026-10-24"
                             },
                             {
@@ -2525,7 +2669,7 @@
             {
                 "session_type": "General Open Swim",
                 "days": "Friday",
-                "time": "2:15 p - 4:45 p",
+                "time": "2:15 p - 3:45 p",
                 "date": "2026-10-16"
             },
             {
@@ -2555,7 +2699,7 @@
             {
                 "session_type": "General Open Swim",
                 "days": "Saturday",
-                "time": "1:15 p - 4:00 p",
+                "time": "1:15 p - 3:30 p",
                 "date": "2026-10-17"
             }
         ],
@@ -2784,7 +2928,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Friday",
-                                "time": "2:15 p - 4:45 p",
+                                "time": "2:15 p - 3:45 p",
                                 "date": "2026-10-16"
                             },
                             {
@@ -2823,7 +2967,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Saturday",
-                                "time": "1:15 p - 4:00 p",
+                                "time": "1:15 p - 3:30 p",
                                 "date": "2026-10-17"
                             }
                         ]
@@ -2933,7 +3077,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Tuesday",
-                                "time": "2:15 p - 4:45 p",
+                                "time": "2:15 p - 3:45 p",
                                 "date": "2026-10-20"
                             },
                             {
@@ -3041,7 +3185,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Thursday",
-                                "time": "2:15 p - 4:45 p",
+                                "time": "2:15 p - 3:45 p",
                                 "date": "2026-10-22"
                             },
                             {
@@ -3098,7 +3242,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Friday",
-                                "time": "2:15 p - 4:45 p",
+                                "time": "2:15 p - 3:45 p",
                                 "date": "2026-10-23"
                             },
                             {
@@ -3155,7 +3299,7 @@
                             {
                                 "session_type": "General Open Swim",
                                 "days": "Saturday",
-                                "time": "1:15 p - 4:00 p",
+                                "time": "1:15 p - 3:30 p",
                                 "date": "2026-10-24"
                             }
                         ]
@@ -3822,13 +3966,17 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting. Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": "for repairs",
         "closed_through": "October 17",
         "reopens": null,
         "closures": [
+            {
+                "start": "2026-10-22",
+                "end": "2026-11-02"
+            },
             {
                 "start": "2026-10-04",
                 "end": "2026-10-17"
@@ -3941,6 +4089,12 @@
                         "note": null,
                         "sessions": [
                             {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "6:30 a - 9:45 a",
+                                "date": "2026-10-19"
+                            },
+                            {
                                 "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
@@ -3979,6 +4133,12 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "6:30 a - 9:45 a",
+                                "date": "2026-10-20"
+                            },
                             {
                                 "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
                                 "days": "Tuesday",
@@ -4098,68 +4258,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
-                                "days": "Thursday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
-                                "days": "Thursday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
-                                "days": "Thursday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Water Aerobics",
-                                "days": "Thursday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Synchronized Swimming",
-                                "days": "Thursday",
-                                "time": "2:00 p - 3:30 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Thursday",
-                                "time": "3:30 p - 4:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Thursday)",
-                                "days": "Thursday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm's Swim Team",
-                                "days": "Thursday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-10-22"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-10-22"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-23",
@@ -4167,62 +4266,7 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Friday -",
-                                "days": "Friday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Friday -",
-                                "days": "Friday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Friday -",
-                                "days": "Friday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "1:00 p - 2:45 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Friday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adaptive Aquatics",
-                                "days": "Friday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-10-23"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "7:00 p - 9:30 p",
-                                "date": "2026-10-23"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-24",
@@ -4230,50 +4274,7 @@
                         "building_hours": "8:00 a - 12:00 a",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm's Swim Team",
-                                "days": "Saturday",
-                                "time": "10:00 a - 11:30 a",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Parent and Tots Learn to Swim (Saturday)",
-                                "days": "Saturday",
-                                "time": "11:30 a - 12:00 p",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "12:00 p - 3:00 p",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Saturday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Teen Learn to Swim (Saturday)",
-                                "days": "Saturday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Teen General Swim",
-                                "days": "Saturday",
-                                "time": "5:00 p - 7:30 p",
-                                "date": "2026-10-24"
-                            }
-                        ]
+                        "sessions": []
                     },
                     {
                         "date": "2026-10-25",
@@ -4281,44 +4282,7 @@
                         "building_hours": "8:00 a - 4:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-10-25"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 2 - Sunday)",
-                                "days": "Sunday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-10-25"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 1 - Sunday)",
-                                "days": "Sunday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-10-25"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adult Learn to Swim (Sunday)",
-                                "days": "Sunday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-10-25"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "1:00 p - 3:00 p",
-                                "date": "2026-10-25"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Swim Prep",
-                                "days": "Sunday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-10-25"
-                            }
-                        ]
+                        "sessions": []
                     }
                 ]
             }
@@ -4328,7 +4292,7 @@
         "borough": "Brooklyn",
         "pool_name": "St. John's Pool",
         "pool_code": "B245",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "1251 Prospect Place",
             "cross_streets": "Between Troy and Schenectady Avenues",
@@ -4344,393 +4308,14 @@
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the gymnasium at St. John\u2019s Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
         "closures": [],
-        "schedules": [
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 8:30 a",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Monday",
-                "time": "8:45 a - 9:15 a",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "9:30 a - 11:00 a",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "11:15 a - 1:00 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Children",
-                "days": "Monday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Teen Swim",
-                "days": "Monday",
-                "time": "4:00 p - 4:45 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Monday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Tuesday",
-                "time": "8:30 a - 9:30 a",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Tuesday - PS 5",
-                "days": "Tuesday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Tuesday - PS 372K",
-                "days": "Tuesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Tuesday - PS 282",
-                "days": "Tuesday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Tuesday",
-                "time": "3:00 p - 4:45 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "St. John's: Swim Prep",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Women's General Swim",
-                "days": "Tuesday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Women's Lap Swim",
-                "days": "Tuesday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-10-13"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Wednesday",
-                "time": "8:30 a - 9:30 a",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Wednesday - The Bedford Village School",
-                "days": "Wednesday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Wednesday - PS 114",
-                "days": "Wednesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Wednesday - PS 270",
-                "days": "Wednesday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Wednesday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Wednesday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Wednesday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-10-14"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "St. John's: Senior Learn to Swim Level 1 (Thursday)",
-                "days": "Thursday",
-                "time": "8:30 a - 9:30 a",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Thursday - PS 308",
-                "days": "Thursday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Thursday - PS 114",
-                "days": "Thursday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Thursday - PS 282",
-                "days": "Thursday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Thursday",
-                "time": "3:00 p - 4:45 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Thursday",
-                "time": "5:00 p - 6:15 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Thursday",
-                "time": "6:30 p - 7:15 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "7:30 p - 8:15 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "8:30 p - 9:30 p",
-                "date": "2026-10-15"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
-                "days": "Friday",
-                "time": "8:30 a - 9:30 a",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Friday - Brooklyn Charter School",
-                "days": "Friday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Friday - PS 372K",
-                "days": "Friday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Friday - PS 16",
-                "days": "Friday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "1:15 p - 1:45 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "2:00 p - 2:45 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Friday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "St. John's: Adaptive Aquatics",
-                "days": "Friday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Friday",
-                "time": "5:15 p - 6:30 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-10-16"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Saturday",
-                "time": "9:00 a - 10:30 a",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "10:45 a - 11:45 a",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "St. John's: Children's Learn to Swim - Saturday Water Test",
-                "days": "Saturday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Saturday",
-                "time": "2:00 p - 3:45 p",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "Children Swim (SNL)",
-                "days": "Saturday",
-                "time": "4:00 p - 6:30 p",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "Teen/Young Adult Swim - SNL",
-                "days": "Saturday",
-                "time": "7:00 p - 8:00 p",
-                "date": "2026-10-17"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "8:15 a - 9:45 a",
-                "date": "2026-10-18"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "10:00 a - 11:15 a",
-                "date": "2026-10-18"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Sunday",
-                "time": "11:30 a - 1:15 p",
-                "date": "2026-10-18"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Sunday",
-                "time": "1:30 p - 2:30 p",
-                "date": "2026-10-18"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "2:45 p - 4:15 p",
-                "date": "2026-10-18"
-            }
-        ],
+        "schedules": [],
         "schedule_weeks": [
             {
                 "start": "2026-10-12",
@@ -5735,13 +5320,13 @@
                 "date": "2026-10-13"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
+                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
                 "days": "Tuesday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-13"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
+                "session_type": "FMAC Aquacades Swim Team",
                 "days": "Tuesday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-10-13"
@@ -5765,13 +5350,13 @@
                 "date": "2026-10-14"
             },
             {
-                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
+                "session_type": "FMAC: Adult Water Exercise",
                 "days": "Wednesday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-10-14"
             },
             {
-                "session_type": "FMAC: Adult Water Exercise",
+                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
                 "days": "Wednesday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-10-14"
@@ -5897,13 +5482,13 @@
                 "date": "2026-10-16"
             },
             {
-                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
+                "session_type": "FMAC: Adult Water Exercise",
                 "days": "Friday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-10-16"
             },
             {
-                "session_type": "FMAC: Adult Water Exercise",
+                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
                 "days": "Friday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-10-16"
@@ -5969,13 +5554,13 @@
                 "date": "2026-10-17"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                 "days": "Saturday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-10-17"
             },
             {
-                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                 "days": "Saturday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-10-17"
@@ -6075,13 +5660,13 @@
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
+                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-13"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim Water Test Levels 3-6 (Tuesday, 4pm)",
+                                "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-10-13"
@@ -6114,13 +5699,13 @@
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-14"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
+                                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-14"
@@ -6264,13 +5849,13 @@
                                 "date": "2026-10-16"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Friday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-16"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
+                                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
                                 "days": "Friday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-10-16"
@@ -6345,13 +5930,13 @@
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-17"
                             },
                             {
-                                "session_type": "FMAC: Senior Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
+                                "session_type": "FMAC: Adult Learn to Swim Water Test Levels 1-3 (Saturday, 12 pm)",
                                 "days": "Saturday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-10-17"
