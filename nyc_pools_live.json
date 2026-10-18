@@ -52,12 +52,6 @@
             },
             {
                 "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "5:00 p - 7:00 p",
-                "date": "2026-10-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
                 "days": "Tuesday",
                 "time": "7:00 a - 11:00 a",
                 "date": "2026-10-13"
@@ -213,12 +207,6 @@
                 "date": "2026-10-17"
             },
             {
-                "session_type": "Adult Lap Swim",
-                "days": "Saturday",
-                "time": "9:00 a - 11:00 a",
-                "date": "2026-10-17"
-            },
-            {
                 "session_type": "Asser Levy: Children's Learn to Swim - Saturday Water Test",
                 "days": "Saturday",
                 "time": "12:00 p - 1:00 p",
@@ -259,12 +247,6 @@
                                 "session_type": "General Open Swim",
                                 "days": "Monday",
                                 "time": "4:00 p - 4:45 p",
-                                "date": "2026-10-12"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "5:00 p - 7:00 p",
                                 "date": "2026-10-12"
                             }
                         ]
@@ -466,12 +448,6 @@
                                 "session_type": "Asser Levy Lightnings Swim Team",
                                 "days": "Saturday",
                                 "time": "8:30 a - 10:00 a",
-                                "date": "2026-10-17"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Saturday",
-                                "time": "9:00 a - 11:00 a",
                                 "date": "2026-10-17"
                             },
                             {
@@ -3950,7 +3926,7 @@
         "borough": "Brooklyn",
         "pool_name": "Shirley Chisholm Recreation Center Pool",
         "pool_code": "B250",
-        "status": "closed",
+        "status": "open",
         "location": {
             "address": "3105 Farragut Place",
             "cross_streets": null,
@@ -3966,23 +3942,140 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting. Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
-        "closure_reason": "for repairs",
-        "closed_through": "October 17",
+        "closure_reason": null,
+        "closed_through": null,
         "reopens": null,
         "closures": [
             {
                 "start": "2026-10-22",
                 "end": "2026-11-02"
-            },
-            {
-                "start": "2026-10-04",
-                "end": "2026-10-17"
             }
         ],
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+                "days": "Tuesday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-13"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+                "days": "Tuesday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-10-13"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+                "days": "Tuesday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-13"
+            },
+            {
+                "session_type": "Water Aerobics",
+                "days": "Tuesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-13"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class A Wednesday -",
+                "days": "Wednesday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-14"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class B Wednesday -",
+                "days": "Wednesday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-10-14"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class C Wednesday -",
+                "days": "Wednesday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-14"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
+                "days": "Thursday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-15"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-10-15"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-15"
+            },
+            {
+                "session_type": "Water Aerobics",
+                "days": "Thursday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-15"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class A Friday -",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-16"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class B Friday -",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-10-16"
+            },
+            {
+                "session_type": "Swim For Life at Shirley Chisholm Class C Friday -",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-16"
+            },
+            {
+                "session_type": "Open Lap Swim",
+                "days": "Sunday",
+                "time": "8:00 a - 10:00 a",
+                "date": "2026-10-18"
+            },
+            {
+                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 2 - Sunday)",
+                "days": "Sunday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-18"
+            },
+            {
+                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 1 - Sunday)",
+                "days": "Sunday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-10-18"
+            },
+            {
+                "session_type": "Shirley Chisholm: Adult Learn to Swim (Sunday)",
+                "days": "Sunday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-18"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "1:00 p - 3:00 p",
+                "date": "2026-10-18"
+            },
+            {
+                "session_type": "Shirley Chisholm: Swim Prep",
+                "days": "Sunday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-10-18"
+            }
+        ],
         "schedule_weeks": [
             {
                 "start": "2026-10-12",
@@ -4002,7 +4095,32 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-13"
+                            },
+                            {
+                                "session_type": "Water Aerobics",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-13"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-14",
@@ -4010,7 +4128,26 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Wednesday -",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Wednesday -",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-14"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Wednesday -",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-14"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-15",
@@ -4018,7 +4155,32 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
+                                "days": "Thursday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-15"
+                            },
+                            {
+                                "session_type": "Water Aerobics",
+                                "days": "Thursday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-15"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-16",
@@ -4026,7 +4188,26 @@
                         "building_hours": "6:30 a - 10:00 p",
                         "holiday": null,
                         "note": null,
-                        "sessions": []
+                        "sessions": [
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Friday -",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Friday -",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-10-16"
+                            },
+                            {
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Friday -",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-16"
+                            }
+                        ]
                     },
                     {
                         "date": "2026-10-17",
@@ -4065,6 +4246,12 @@
                                 "session_type": "Shirley Chisholm: Adult Learn to Swim (Sunday)",
                                 "days": "Sunday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-18"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "1:00 p - 3:00 p",
                                 "date": "2026-10-18"
                             },
                             {
@@ -4116,6 +4303,12 @@
                                 "session_type": "Closed for Cleaning",
                                 "days": "Monday",
                                 "time": "3:00 p - 4:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:45 p",
                                 "date": "2026-10-19"
                             },
                             {
@@ -4185,6 +4378,18 @@
                                 "session_type": "Shirley Chisholm's Swim Team",
                                 "days": "Tuesday",
                                 "time": "5:00 p - 6:30 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "Shirley Chisholm: Adult Hydro-Fit",
+                                "days": "Tuesday",
+                                "time": "6:45 p - 7:30 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:45 p - 9:30 p",
                                 "date": "2026-10-20"
                             }
                         ]
@@ -5251,7 +5456,7 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
+        "notes": "The elevator at this location is currently out of service Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be p",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
