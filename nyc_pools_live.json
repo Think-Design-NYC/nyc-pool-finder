@@ -828,7 +828,7 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The elevator will be temporarily out of service on October 19, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+        "notes": "The elevator will be temporarily out of service on October 20, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1115,7 +1115,13 @@
             {
                 "session_type": "Adult Lap Swim",
                 "days": "Sunday",
-                "time": "8:00 a - 11:00 a",
+                "time": "8:00 a - 9:45 a",
+                "date": "2026-10-25"
+            },
+            {
+                "session_type": "General Open Swim",
+                "days": "Sunday",
+                "time": "10:00 a - 11:30 a",
                 "date": "2026-10-25"
             },
             {
@@ -1470,7 +1476,13 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Sunday",
-                                "time": "8:00 a - 11:00 a",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-10-25"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Sunday",
+                                "time": "10:00 a - 11:30 a",
                                 "date": "2026-10-25"
                             },
                             {
@@ -1827,7 +1839,13 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Sunday",
-                                "time": "8:00 a - 11:00 a",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-01"
+                            },
+                            {
+                                "session_type": "General Open Swim",
+                                "days": "Sunday",
+                                "time": "10:00 a - 11:30 a",
                                 "date": "2026-11-01"
                             },
                             {
@@ -1870,12 +1888,6 @@
         "closures": [],
         "schedules": [
             {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "12:00 a - 2:30 a",
-                "date": "2026-10-19"
-            },
-            {
                 "session_type": "Lap Swim",
                 "days": "Monday",
                 "time": "7:00 a - 11:45 a",
@@ -1898,12 +1910,6 @@
                 "days": "Monday",
                 "time": "4:00 p - 7:00 p",
                 "date": "2026-10-19"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Tuesday",
-                "time": "12:00 a - 2:30 a",
-                "date": "2026-10-20"
             },
             {
                 "session_type": "Lap Swim",
@@ -1936,12 +1942,6 @@
                 "date": "2026-10-20"
             },
             {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "12:00 a - 2:30 a",
-                "date": "2026-10-21"
-            },
-            {
                 "session_type": "Lap Swim",
                 "days": "Wednesday",
                 "time": "7:00 a - 11:45 a",
@@ -1964,12 +1964,6 @@
                 "days": "Wednesday",
                 "time": "4:00 p - 7:00 p",
                 "date": "2026-10-21"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "12:00 a - 2:30 a",
-                "date": "2026-10-22"
             },
             {
                 "session_type": "Lap Swim",
@@ -2000,12 +1994,6 @@
                 "days": "Thursday",
                 "time": "5:00 p - 6:30 p",
                 "date": "2026-10-22"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "12:00 a - 2:30 a",
-                "date": "2026-10-23"
             },
             {
                 "session_type": "Lap Swim",
@@ -2093,12 +2081,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-19"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Monday",
                                 "time": "7:00 a - 11:45 a",
@@ -2131,12 +2113,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-20"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Tuesday",
@@ -2177,12 +2153,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-21"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Wednesday",
                                 "time": "7:00 a - 11:45 a",
@@ -2215,12 +2185,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-22"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Thursday",
@@ -2260,12 +2224,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-23"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Friday",
@@ -2371,12 +2329,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-26"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Monday",
                                 "time": "7:00 a - 11:45 a",
@@ -2409,12 +2361,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-27"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Tuesday",
@@ -2455,12 +2401,6 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-28"
-                            },
-                            {
                                 "session_type": "Lap Swim",
                                 "days": "Wednesday",
                                 "time": "7:00 a - 11:45 a",
@@ -2493,12 +2433,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-29"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Thursday",
@@ -2538,12 +2472,6 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "12:00 a - 2:30 a",
-                                "date": "2026-10-30"
-                            },
                             {
                                 "session_type": "Lap Swim",
                                 "days": "Friday",
@@ -5766,6 +5694,12 @@
                 "date": "2026-10-19"
             },
             {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                "days": "Monday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-19"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Monday",
                 "time": "2:00 p - 9:30 p",
@@ -5778,9 +5712,39 @@
                 "date": "2026-10-19"
             },
             {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Monday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-19"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Monday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-19"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Monday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-19"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                "days": "Monday",
+                "time": "5:00 p - 6:00 p",
+                "date": "2026-10-19"
+            },
+            {
                 "session_type": "FMAC: Adult Water Exercise",
                 "days": "Monday",
                 "time": "6:00 p - 7:00 p",
+                "date": "2026-10-19"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim Level 1",
+                "days": "Monday",
+                "time": "7:00 p - 8:00 p",
                 "date": "2026-10-19"
             },
             {
@@ -6157,6 +6121,12 @@
                                 "date": "2026-10-19"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                                "days": "Monday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Monday",
                                 "time": "2:00 p - 9:30 p",
@@ -6169,9 +6139,39 @@
                                 "date": "2026-10-19"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Monday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Monday",
                                 "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-19"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim Level 1",
+                                "days": "Monday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-19"
                             }
                         ]
@@ -6604,6 +6604,12 @@
                                 "date": "2026-10-26"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                                "days": "Monday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Monday",
                                 "time": "2:00 p - 9:30 p",
@@ -6616,9 +6622,39 @@
                                 "date": "2026-10-26"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Monday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Monday",
                                 "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-26"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim Level 1",
+                                "days": "Monday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-26"
                             }
                         ]
@@ -7025,7 +7061,7 @@
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Roy Wilkins Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
