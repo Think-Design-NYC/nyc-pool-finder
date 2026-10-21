@@ -828,7 +828,7 @@
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The elevator will be temporarily out of service on October 20, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -4792,7 +4792,7 @@
                             {
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Tuesday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-20"
                             },
                             {
@@ -5182,7 +5182,7 @@
                             {
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Monday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-26"
                             },
                             {
@@ -5257,7 +5257,7 @@
                             {
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Tuesday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-27"
                             },
                             {
@@ -5326,7 +5326,7 @@
                             {
                                 "session_type": "St. John's: Senior Water Exercise",
                                 "days": "Wednesday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-28"
                             },
                             {
@@ -5784,7 +5784,25 @@
                 "date": "2026-10-20"
             },
             {
+                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                "days": "Tuesday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-20"
+            },
+            {
                 "session_type": "FMAC: Adult Water Exercise",
+                "days": "Tuesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Tuesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Tuesday",
                 "time": "1:00 p - 2:00 p",
                 "date": "2026-10-20"
@@ -5802,6 +5820,36 @@
                 "date": "2026-10-20"
             },
             {
+                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                "days": "Tuesday",
+                "time": "5:00 p - 6:00 p",
+                "date": "2026-10-20"
+            },
+            {
                 "session_type": "FMAC: Learn to Dive",
                 "days": "Tuesday",
                 "time": "6:00 p - 7:30 p",
@@ -5811,6 +5859,12 @@
                 "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
                 "days": "Tuesday",
                 "time": "6:00 p - 7:00 p",
+                "date": "2026-10-20"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                "days": "Tuesday",
+                "time": "7:00 p - 8:00 p",
                 "date": "2026-10-20"
             },
             {
@@ -5850,6 +5904,18 @@
                 "date": "2026-10-21"
             },
             {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "days": "Wednesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Wednesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-21"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Wednesday",
                 "time": "2:00 p - 9:30 p",
@@ -5859,6 +5925,42 @@
                 "session_type": "FMAC Aquacades Swim Team",
                 "days": "Wednesday",
                 "time": "4:00 p - 7:30 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                "days": "Wednesday",
+                "time": "5:00 p - 6:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                "days": "Wednesday",
+                "time": "6:00 p - 7:00 p",
+                "date": "2026-10-21"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Wednesday",
+                "time": "7:00 p - 8:00 p",
                 "date": "2026-10-21"
             },
             {
@@ -5893,6 +5995,12 @@
             },
             {
                 "session_type": "Swim For Life at FMAC Class C Thursday - PS 124",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
                 "days": "Thursday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-10-22"
@@ -5934,9 +6042,51 @@
                 "date": "2026-10-22"
             },
             {
+                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                "days": "Thursday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Thursday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Thursday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Thursday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                "days": "Thursday",
+                "time": "5:00 p - 6:00 p",
+                "date": "2026-10-22"
+            },
+            {
                 "session_type": "FMAC: Learn to Dive",
                 "days": "Thursday",
                 "time": "6:00 p - 7:30 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                "days": "Thursday",
+                "time": "6:00 p - 7:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                "days": "Thursday",
+                "time": "7:00 p - 8:00 p",
                 "date": "2026-10-22"
             },
             {
@@ -5988,6 +6138,18 @@
                 "date": "2026-10-23"
             },
             {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "days": "Friday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-23"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Friday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-10-23"
+            },
+            {
                 "session_type": "Open Swim",
                 "days": "Friday",
                 "time": "2:00 p - 9:30 p",
@@ -6003,6 +6165,18 @@
                 "session_type": "FMAC: Adaptive Aquatics",
                 "days": "Friday",
                 "time": "4:00 p - 5:00 p",
+                "date": "2026-10-23"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "days": "Friday",
+                "time": "5:00 p - 6:00 p",
+                "date": "2026-10-23"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                "days": "Friday",
+                "time": "5:00 p - 6:00 p",
                 "date": "2026-10-23"
             },
             {
@@ -6024,15 +6198,57 @@
                 "date": "2026-10-24"
             },
             {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3A)",
+                "days": "Saturday",
+                "time": "9:00 a - 10:00 a",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1A)",
+                "days": "Saturday",
+                "time": "9:00 a - 10:00 a",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                "days": "Saturday",
+                "time": "9:00 a - 10:00 a",
+                "date": "2026-10-24"
+            },
+            {
                 "session_type": "FMAC: Learn to Dive",
                 "days": "Saturday",
                 "time": "9:30 a - 11:00 a",
                 "date": "2026-10-24"
             },
             {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1B)",
+                "days": "Saturday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3B)",
+                "days": "Saturday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                "days": "Saturday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-10-24"
+            },
+            {
                 "session_type": "FMAC Aquacades Swim Team",
                 "days": "Saturday",
                 "time": "11:00 a - 1:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 1C)",
+                "days": "Saturday",
+                "time": "11:00 a - 12:00 p",
                 "date": "2026-10-24"
             },
             {
@@ -6048,6 +6264,36 @@
                 "date": "2026-10-24"
             },
             {
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Saturday",
+                "time": "1:15 p - 2:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                "days": "Saturday",
+                "time": "1:15 p - 2:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Saturday",
+                "time": "2:00 p - 3:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Saturday",
+                "time": "2:00 p - 3:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 2C)",
+                "days": "Saturday",
+                "time": "2:00 p - 3:00 p",
+                "date": "2026-10-24"
+            },
+            {
                 "session_type": "FMAC: Work Learn Grow",
                 "days": "Saturday",
                 "time": "3:00 p - 4:00 p",
@@ -6055,6 +6301,12 @@
             },
             {
                 "session_type": "Flushing Meadows Corona Park Aquatics Center: Swim Prep",
+                "days": "Saturday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-10-24"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
                 "days": "Saturday",
                 "time": "3:00 p - 4:00 p",
                 "date": "2026-10-24"
@@ -6220,7 +6472,25 @@
                                 "date": "2026-10-20"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-10-20"
@@ -6238,6 +6508,36 @@
                                 "date": "2026-10-20"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Tuesday",
                                 "time": "6:00 p - 7:30 p",
@@ -6247,6 +6547,12 @@
                                 "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
                                 "days": "Tuesday",
                                 "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-20"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                                "days": "Tuesday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-20"
                             }
                         ]
@@ -6295,6 +6601,18 @@
                                 "date": "2026-10-21"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Wednesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Wednesday",
                                 "time": "2:00 p - 9:30 p",
@@ -6304,6 +6622,42 @@
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 7:30 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-21"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Wednesday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-21"
                             }
                         ]
@@ -6352,6 +6706,12 @@
                                 "date": "2026-10-22"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
@@ -6388,9 +6748,51 @@
                                 "date": "2026-10-22"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Thursday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Thursday",
                                 "time": "6:00 p - 7:30 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                                "days": "Thursday",
+                                "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                                "days": "Thursday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-22"
                             },
                             {
@@ -6451,6 +6853,18 @@
                                 "date": "2026-10-23"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Friday",
                                 "time": "2:00 p - 9:30 p",
@@ -6466,6 +6880,18 @@
                                 "session_type": "FMAC: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "5:00 p - 6:00 p",
                                 "date": "2026-10-23"
                             },
                             {
@@ -6496,15 +6922,57 @@
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Saturday",
                                 "time": "9:30 a - 11:00 a",
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Saturday",
                                 "time": "11:00 a - 1:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1C)",
+                                "days": "Saturday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-24"
                             },
                             {
@@ -6520,6 +6988,36 @@
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2C)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "FMAC: Work Learn Grow",
                                 "days": "Saturday",
                                 "time": "3:00 p - 4:00 p",
@@ -6527,6 +7025,12 @@
                             },
                             {
                                 "session_type": "Flushing Meadows Corona Park Aquatics Center: Swim Prep",
+                                "days": "Saturday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
                                 "days": "Saturday",
                                 "time": "3:00 p - 4:00 p",
                                 "date": "2026-10-24"
@@ -6703,7 +7207,25 @@
                                 "date": "2026-10-27"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Water Exercise",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-10-27"
@@ -6721,6 +7243,36 @@
                                 "date": "2026-10-27"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Tuesday",
                                 "time": "6:00 p - 7:30 p",
@@ -6730,6 +7282,12 @@
                                 "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
                                 "days": "Tuesday",
                                 "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-27"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                                "days": "Tuesday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-27"
                             }
                         ]
@@ -6778,6 +7336,18 @@
                                 "date": "2026-10-28"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Wednesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Wednesday",
                                 "time": "2:00 p - 9:30 p",
@@ -6787,6 +7357,42 @@
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 7:30 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Wednesday",
+                                "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-28"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Wednesday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-28"
                             }
                         ]
@@ -6835,6 +7441,12 @@
                                 "date": "2026-10-29"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Thursday",
                                 "time": "1:00 p - 2:00 p",
@@ -6871,9 +7483,51 @@
                                 "date": "2026-10-29"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Thursday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Thursday",
                                 "time": "6:00 p - 7:30 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                                "days": "Thursday",
+                                "time": "6:00 p - 7:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3B)",
+                                "days": "Thursday",
+                                "time": "7:00 p - 8:00 p",
                                 "date": "2026-10-29"
                             },
                             {
@@ -6934,6 +7588,18 @@
                                 "date": "2026-10-30"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-30"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Friday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-10-30"
+                            },
+                            {
                                 "session_type": "Open Swim",
                                 "days": "Friday",
                                 "time": "2:00 p - 9:30 p",
@@ -6949,6 +7615,18 @@
                                 "session_type": "FMAC: Adaptive Aquatics",
                                 "days": "Friday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-10-30"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "5:00 p - 6:00 p",
+                                "date": "2026-10-30"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1)",
+                                "days": "Friday",
+                                "time": "5:00 p - 6:00 p",
                                 "date": "2026-10-30"
                             },
                             {
@@ -6979,15 +7657,57 @@
                                 "date": "2026-10-31"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1A)",
+                                "days": "Saturday",
+                                "time": "9:00 a - 10:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
                                 "session_type": "FMAC: Learn to Dive",
                                 "days": "Saturday",
                                 "time": "9:30 a - 11:00 a",
                                 "date": "2026-10-31"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2B)",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-10-31"
+                            },
+                            {
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Saturday",
                                 "time": "11:00 a - 1:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 1C)",
+                                "days": "Saturday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-10-31"
                             },
                             {
@@ -7003,6 +7723,36 @@
                                 "date": "2026-10-31"
                             },
                             {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 2C)",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
                                 "session_type": "FMAC: Work Learn Grow",
                                 "days": "Saturday",
                                 "time": "3:00 p - 4:00 p",
@@ -7010,6 +7760,12 @@
                             },
                             {
                                 "session_type": "Flushing Meadows Corona Park Aquatics Center: Swim Prep",
+                                "days": "Saturday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-10-31"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
                                 "days": "Saturday",
                                 "time": "3:00 p - 4:00 p",
                                 "date": "2026-10-31"
