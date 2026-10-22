@@ -1071,6 +1071,12 @@
                 "date": "2026-10-24"
             },
             {
+                "session_type": "Metropolitan Sharks Swim Team",
+                "days": "Saturday",
+                "time": "8:00 a - 9:30 a",
+                "date": "2026-10-24"
+            },
+            {
                 "session_type": "Chelsea: Children's Learn to Swim (Level 2)",
                 "days": "Saturday",
                 "time": "9:30 a - 10:30 a",
@@ -1104,12 +1110,6 @@
                 "session_type": "Chelsea: Teen Learn to Swim (Saturday)",
                 "days": "Saturday",
                 "time": "4:00 p - 5:00 p",
-                "date": "2026-10-24"
-            },
-            {
-                "session_type": "Metropolitan Sharks Swim Team",
-                "days": "Saturday",
-                "time": "5:00 p - 6:30 p",
                 "date": "2026-10-24"
             },
             {
@@ -1423,6 +1423,12 @@
                                 "date": "2026-10-24"
                             },
                             {
+                                "session_type": "Metropolitan Sharks Swim Team",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
                                 "session_type": "Chelsea: Children's Learn to Swim (Level 2)",
                                 "days": "Saturday",
                                 "time": "9:30 a - 10:30 a",
@@ -1456,12 +1462,6 @@
                                 "session_type": "Chelsea: Teen Learn to Swim (Saturday)",
                                 "days": "Saturday",
                                 "time": "4:00 p - 5:00 p",
-                                "date": "2026-10-24"
-                            },
-                            {
-                                "session_type": "Metropolitan Sharks Swim Team",
-                                "days": "Saturday",
-                                "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-24"
                             }
                         ]
@@ -1786,6 +1786,12 @@
                                 "date": "2026-10-31"
                             },
                             {
+                                "session_type": "Metropolitan Sharks Swim Team",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:30 a",
+                                "date": "2026-10-31"
+                            },
+                            {
                                 "session_type": "Chelsea: Children's Learn to Swim (Level 2)",
                                 "days": "Saturday",
                                 "time": "9:30 a - 10:30 a",
@@ -1819,12 +1825,6 @@
                                 "session_type": "Chelsea: Teen Learn to Swim (Saturday)",
                                 "days": "Saturday",
                                 "time": "4:00 p - 5:00 p",
-                                "date": "2026-10-31"
-                            },
-                            {
-                                "session_type": "Metropolitan Sharks Swim Team",
-                                "days": "Saturday",
-                                "time": "5:00 p - 6:30 p",
                                 "date": "2026-10-31"
                             }
                         ]
@@ -2753,7 +2753,7 @@
             {
                 "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
                 "days": "Thursday",
-                "time": "1:00 p - 2:00 p",
+                "time": "1:00 p - 1:45 p",
                 "date": "2026-10-22"
             },
             {
@@ -3057,7 +3057,7 @@
                             {
                                 "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
                                 "days": "Thursday",
-                                "time": "1:00 p - 2:00 p",
+                                "time": "1:00 p - 1:45 p",
                                 "date": "2026-10-22"
                             },
                             {
@@ -3395,7 +3395,7 @@
                             {
                                 "session_type": "Gertrude Ederle: Adult Learn to Swim Beginner (Thursday)",
                                 "days": "Thursday",
-                                "time": "1:00 p - 2:00 p",
+                                "time": "1:00 p - 1:45 p",
                                 "date": "2026-10-29"
                             },
                             {
@@ -4172,7 +4172,7 @@
         "borough": "Brooklyn",
         "pool_name": "Shirley Chisholm Recreation Center Pool",
         "pool_code": "B250",
-        "status": "open",
+        "status": "closed",
         "location": {
             "address": "3105 Farragut Place",
             "cross_streets": null,
@@ -4192,7 +4192,7 @@
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
-        "closed_through": null,
+        "closed_through": "November 2",
         "reopens": null,
         "closures": [
             {
@@ -4200,176 +4200,7 @@
                 "end": "2026-11-02"
             }
         ],
-        "schedules": [
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "6:30 a - 9:45 a",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
-                "days": "Monday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Monday -",
-                "days": "Monday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Monday -",
-                "days": "Monday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "1:00 p - 2:45 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Closed for Cleaning",
-                "days": "Monday",
-                "time": "3:00 p - 4:00 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Monday",
-                "time": "4:00 p - 5:45 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "6:00 p - 9:30 p",
-                "date": "2026-10-19"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "6:30 a - 9:45 a",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
-                "days": "Tuesday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
-                "days": "Tuesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
-                "days": "Tuesday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Water Aerobics",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Tuesday",
-                "time": "2:00 p - 3:30 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Closed for Cleaning",
-                "days": "Tuesday",
-                "time": "3:30 p - 4:00 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Tuesday)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Shirley Chisholm's Swim Team",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Shirley Chisholm: Adult Hydro-Fit",
-                "days": "Tuesday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-10-20"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "6:30 a - 9:45 a",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Wednesday -",
-                "days": "Wednesday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Wednesday -",
-                "days": "Wednesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Wednesday -",
-                "days": "Wednesday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "1:00 p - 2:45 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Closed for Cleaning",
-                "days": "Wednesday",
-                "time": "3:00 p - 4:00 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Wednesday)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "5:00 p - 5:45 p",
-                "date": "2026-10-21"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "6:00 p - 9:30 p",
-                "date": "2026-10-21"
-            }
-        ],
+        "schedules": [],
         "schedule_weeks": [
             {
                 "start": "2026-10-19",
@@ -4930,7 +4761,7 @@
                             {
                                 "session_type": "St. John's: Senior Learn to Swim Level 1 (Thursday)",
                                 "days": "Thursday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-22"
                             },
                             {
@@ -5005,7 +4836,7 @@
                             {
                                 "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
                                 "days": "Friday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-23"
                             },
                             {
@@ -5395,7 +5226,7 @@
                             {
                                 "session_type": "St. John's: Senior Learn to Swim Level 1 (Thursday)",
                                 "days": "Thursday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-29"
                             },
                             {
@@ -5470,7 +5301,7 @@
                             {
                                 "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
                                 "days": "Friday",
-                                "time": "8:30 a - 9:30 a",
+                                "time": "8:30 a - 9:15 a",
                                 "date": "2026-10-30"
                             },
                             {
@@ -5649,7 +5480,7 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The elevator at this location is currently out of service Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be p",
+        "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -8072,6 +7903,12 @@
                 "date": "2026-10-24"
             },
             {
+                "session_type": "Roy Wilkins: Children's Learn to Swim (Level 1)",
+                "days": "Saturday",
+                "time": "11:30 a - 12:30 p",
+                "date": "2026-10-24"
+            },
+            {
                 "session_type": "Roy Wilkins: Parent and Tots Learn to Swim",
                 "days": "Saturday",
                 "time": "12:30 p - 1:00 p",
@@ -8427,6 +8264,12 @@
                                 "session_type": "Roy Wilkins: Children's Learn to Swim (Level 2)",
                                 "days": "Saturday",
                                 "time": "10:30 a - 11:30 a",
+                                "date": "2026-10-24"
+                            },
+                            {
+                                "session_type": "Roy Wilkins: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "11:30 a - 12:30 p",
                                 "date": "2026-10-24"
                             },
                             {
@@ -8799,6 +8642,12 @@
                                 "date": "2026-10-31"
                             },
                             {
+                                "session_type": "Roy Wilkins: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "11:30 a - 12:30 p",
+                                "date": "2026-10-31"
+                            },
+                            {
                                 "session_type": "Roy Wilkins: Parent and Tots Learn to Swim",
                                 "days": "Saturday",
                                 "time": "12:30 p - 1:00 p",
@@ -9033,12 +8882,6 @@
                 "date": "2026-10-22"
             },
             {
-                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
-                "days": "Thursday",
-                "time": "8:30 a - 9:30 a",
-                "date": "2026-10-22"
-            },
-            {
                 "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
@@ -9054,6 +8897,12 @@
                 "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
                 "days": "Thursday",
                 "time": "12:00 p - 1:00 p",
+                "date": "2026-10-22"
+            },
+            {
+                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
+                "days": "Thursday",
+                "time": "1:30 p - 2:30 p",
                 "date": "2026-10-22"
             },
             {
@@ -9102,6 +8951,12 @@
                 "session_type": "Swim For Life at St. Mary's Class C Friday - PS 65x",
                 "days": "Friday",
                 "time": "12:00 p - 1:00 p",
+                "date": "2026-10-23"
+            },
+            {
+                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                "days": "Friday",
+                "time": "1:30 p - 2:30 p",
                 "date": "2026-10-23"
             },
             {
@@ -9367,12 +9222,6 @@
                                 "date": "2026-10-22"
                             },
                             {
-                                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
-                                "days": "Thursday",
-                                "time": "8:30 a - 9:30 a",
-                                "date": "2026-10-22"
-                            },
-                            {
                                 "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
@@ -9388,6 +9237,12 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
                                 "days": "Thursday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-22"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
+                                "days": "Thursday",
+                                "time": "1:30 p - 2:30 p",
                                 "date": "2026-10-22"
                             },
                             {
@@ -9445,6 +9300,12 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Friday - PS 65x",
                                 "days": "Friday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-23"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                                "days": "Friday",
+                                "time": "1:30 p - 2:30 p",
                                 "date": "2026-10-23"
                             },
                             {
@@ -9730,12 +9591,6 @@
                                 "date": "2026-10-29"
                             },
                             {
-                                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
-                                "days": "Thursday",
-                                "time": "8:30 a - 9:30 a",
-                                "date": "2026-10-29"
-                            },
-                            {
                                 "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
@@ -9751,6 +9606,12 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
                                 "days": "Thursday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-29"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
+                                "days": "Thursday",
+                                "time": "1:30 p - 2:30 p",
                                 "date": "2026-10-29"
                             },
                             {
@@ -9808,6 +9669,12 @@
                                 "session_type": "Swim For Life at St. Mary's Class C Friday - PS 65x",
                                 "days": "Friday",
                                 "time": "12:00 p - 1:00 p",
+                                "date": "2026-10-30"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                                "days": "Friday",
+                                "time": "1:30 p - 2:30 p",
                                 "date": "2026-10-30"
                             },
                             {
