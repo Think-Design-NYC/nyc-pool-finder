@@ -1,0 +1,121 @@
+{
+  "pool_code": "NYS-RBSP",
+  "operator": "nys_parks",
+  "pool_name": "Riverbank State Park Pool",
+  "borough": "Manhattan",
+  "phone": "(212) 694-3660",
+  "park_phone": "(212) 694-3600",
+  "url": "https://parks.ny.gov/visit/state-parks/riverbank-state-park-denny-farrell-riverbank-state-park",
+  "schedule_pdf": "https://parks.ny.gov/sites/default/files/2026-09/DFRBSP_Fall_SwimmingPoolSchedule.pdf",
+  "membership_required": false,
+  "card_place": "145 + Riverside",
+  "card_tag": "NYS Parks · $2+ Call first",
+  "price_range": "$1–$2 daily; lap pass $3–$30/30 days",
+  "price_summary": "a $1–$2 walk-up ticket, or an advance lap pass ($3 per swim to $30 for 30 days) for the 6:30am 50-meter lap swim",
+  "season": {
+    "label": "Fall 2026",
+    "start": "2026-10-01",
+    "end": "2026-12-12",
+    "holidays": [
+      { "date": "2026-10-12", "name": "Columbus Day" },
+      { "date": "2026-11-11", "name": "Veterans Day" },
+      { "date": "2026-11-26", "name": "Thanksgiving" }
+    ]
+  },
+  "location": {
+    "address": "679 Riverside Drive",
+    "cross_streets": "West 145th Street",
+    "city": "New York",
+    "state": "NY",
+    "zip_code": "10031",
+    "building_hours": {
+      "Daily": "6:00 AM - 11:00 PM"
+    }
+  },
+  "geometry": {
+    "depth": "4 ft throughout",
+    "lanes": 6,
+    "length_m": 50,
+    "morning_course": "50m × 6 lanes until 8:15am",
+    "after_morning": "Bulkhead in: two 25-yard pools with different activities on each half",
+    "sunday_holidays": "50m all day (bulkhead out)"
+  },
+  "admission": {
+    "checked": "Oct 26, 2026",
+    "tiers": [
+      { "who": "Ages 4–15", "price": "$1.00" },
+      { "who": "Ages 16+", "price": "$2.00" },
+      { "who": "Seniors", "price": "$1.00" }
+    ],
+    "notes": "Walk-up aquatics ticket for rec, youth and family/adult sessions. Pool rental available for groups. Padlock required (sold on site). Ticket booth closes 30 minutes before each session ends."
+  },
+  "lap_pass": {
+    "checked": "Oct 26, 2026",
+    "who": "Adult Lap Swim, 6:30–8:15am, ages 18+",
+    "price": "$3 per swim to $30 / 30 days",
+    "notes": "Must be purchased in advance. This is not the $1–$2 daily ticket. All six lanes, 50m."
+  },
+  "notes": "6 lanes, 4 ft deep. 50m from 6:30–8:15am and on Sundays and holidays; 25 yards at other times. Saturday mornings the team takes half the lanes. Tickets are sold at the rink, not the pool. Call aquatics at (212) 694-3660 before you go.",
+  "templates": [
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "time": "6:30 a - 8:15 a",
+      "session_type": "Adult Lap Swim",
+      "notes": "50m, all 6 lanes. Advance lap pass required ($3/swim–$30/30 days), ages 18+."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": "9:00 a - 11:00 a",
+      "session_type": "Senior Lap Swim",
+      "notes": "25-yard split. Senior classes and special populations. Proof of age 62+ or pre-authorization."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": "11:00 a - 2:30 p",
+      "session_type": "Adult Recreational Swim",
+      "notes": "25-yard split, 4 ft. Ages 18+. 2–3 lanes reserved for 25-yard laps; the rest is unstructured swim or walking."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": "3:30 p - 5:30 p",
+      "session_type": "Youth Recreational Swim",
+      "notes": "25-yard split, 4 ft. Ages 11–15 only. 2–3 lanes reserved for laps; the rest is unstructured swim."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": "6:30 p - 8:00 p",
+      "session_type": "Family Recreational Swim",
+      "notes": "25-yard split, 4 ft. Ages 16+. 2–3 lanes reserved for 25-yard laps; the rest is unstructured swim or walking."
+    },
+    {
+      "days": ["Saturday"],
+      "time": "9:00 a - 2:00 p",
+      "session_type": "Saturday Morning Recreational Swim",
+      "notes": "Public session in the 25-yard split, 4 ft. Swim team and aquatic classes often take about half the lanes; the rest stays swimable."
+    },
+    {
+      "days": ["Saturday"],
+      "time": "9:00 a - 2:00 p",
+      "session_type": "Saturday Morning Swim Team",
+      "notes": "Swim team / aquatic classes; typically about half the lanes in the 25-yard split."
+    },
+    {
+      "days": ["Saturday"],
+      "time": "3:00 p - 6:00 p",
+      "session_type": "Family Recreational Swim",
+      "notes": "25-yard split, 4 ft. Ages 16+. 2–3 lanes reserved for 25-yard laps; the rest is unstructured swim or walking."
+    },
+    {
+      "days": ["Sunday"],
+      "time": "9:00 a - 1:00 p",
+      "session_type": "Family Recreational Swim",
+      "notes": "50m all day (bulkhead out). Ages 16+."
+    },
+    {
+      "days": ["Sunday"],
+      "time": "2:00 p - 6:00 p",
+      "session_type": "Family Recreational Swim",
+      "notes": "50m all day (bulkhead out). Ages 16+."
+    }
+  ]
+}

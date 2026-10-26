@@ -17,6 +17,28 @@ export const CALL_AHEAD_DETAIL =
 
 export const CALL_AHEAD_NOTE = `${CALL_AHEAD_LEAD} ${CALL_AHEAD_DETAIL}`
 
+// The detail for one pool. Riverbank has no Rec Center; its aquatics office is
+// the number that knows (and the only source for holiday hours).
+export function callAheadDetail(pool) {
+  if (!pool || (pool.operator ?? 'nyc_parks') === 'nyc_parks') return CALL_AHEAD_DETAIL
+  return `the aquatics office${pool.phone ? ` at ${pool.phone}` : ''} will have the most up-to-date information.`
+}
+
+// The one sentence the "NYC Parks operates N pools" paragraph adds for pools
+// another agency runs, or null when there are none. Derived from the records
+// so the React paragraph and the fallback can't name different pools.
+export function otherOperatorsNote(pools) {
+  const others = (pools ?? []).filter((p) => (p.operator ?? 'nyc_parks') !== 'nyc_parks')
+  if (!others.length) return null
+  return others
+    .map(
+      (p) =>
+        `This page also lists ${p.pool_name} in ${p.borough}, run by New York State Parks — ` +
+        `no membership, just ${p.price_summary}.`,
+    )
+    .join(' ')
+}
+
 // The announcement banner at the top of the page, shared by <NewsBanner> and
 // the fallback's newsHtml() for the same parity reason as the call-ahead note.
 // Hand-written from the Bronx Times story (cited in the article, not linked

@@ -16,10 +16,11 @@ import { CALL_AHEAD_LEAD, CALL_AHEAD_DETAIL, NEWS } from './copy.js'
 // The call-ahead note as markup: uppercase bold lead, plain detail. Mirrors
 // what <CallAheadNote> renders in React — both sides need the same emphasis or
 // the fallback and the rendered DOM disagree on the page's most important
-// sentence. Callers style `.call-lead` in their own scoped block.
-export function callAheadHtml() {
+// sentence. Callers style `.call-lead` in their own scoped block. A pool page
+// passes callAheadDetail(pool) so Riverbank doesn't send people to a Rec Center.
+export function callAheadHtml(detail = CALL_AHEAD_DETAIL) {
   return `<strong class="call-lead">${escapeHtml(CALL_AHEAD_LEAD)}</strong> ${escapeHtml(
-    CALL_AHEAD_DETAIL,
+    detail,
   )}`
 }
 

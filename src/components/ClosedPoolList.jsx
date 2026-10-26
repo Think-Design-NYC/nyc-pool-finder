@@ -1,4 +1,4 @@
-import { getBorough, statusLabel, poolAnchorId, poolHref } from '../utils'
+import { getBorough, statusLabel, poolAnchorId, poolHref, officialPage } from '../utils'
 
 // Closed pools, always shown, below the grid.
 //
@@ -78,7 +78,7 @@ export default function ClosedPoolList({ pools, slugs = null }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    NYC Parks page
+                    {officialPage(pool).label}
                   </a>
                 </span>
               )}

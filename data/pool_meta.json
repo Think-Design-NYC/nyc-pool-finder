@@ -519,5 +519,31 @@
       "BX4"
     ],
     "bus_miles": 0.25
+  },
+  "NYS-RBSP": {
+    "pool_name": "Riverbank State Park Pool",
+    "neighborhood": "Hamilton Heights",
+    "lat": 40.8258,
+    "lng": -73.9564,
+    "subway": [
+      {
+        "station": "145 St",
+        "routes": ["1"],
+        "miles": 0.2
+      },
+      {
+        "station": "145 St",
+        "routes": ["A", "C", "B", "D"],
+        "miles": 0.45
+      },
+      {
+        "station": "137 St-City College",
+        "routes": ["1"],
+        "miles": 0.55
+      }
+    ],
+    "lirr": null,
+    "buses": ["M11", "BX19"],
+    "bus_miles": 0.25
   }
 }

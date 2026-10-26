@@ -103,6 +103,31 @@ export const BOROUGH_ORDER = [
 
 export const isOpen = (pool) => pool?.status === 'open'
 
+// Scraped pools carry no `operator`; only the Riverbank overlay sets one. Copy
+// that counts "NYC Parks pools" or promises a Recreation Center membership
+// must filter on this — pools.length stopped being the NYC Parks count when
+// Riverbank joined the list.
+export const isNycParks = (pool) => (pool?.operator ?? 'nyc_parks') === 'nyc_parks'
+
+export const operatorName = (pool) => (isNycParks(pool) ? 'NYC Parks' : 'NYS Parks')
+
+// The line under a pool's name on its card, e.g. "Kips Bay · Manhattan".
+// Riverbank swaps in a landmark people navigate by and a short operator/price
+// tag ("145 + Riverside · Manhattan · NYS Parks · $2+ Call first"); the pool
+// page and JSON-LD keep the real neighborhood. Shared with the SEO fallback.
+export function cardSubtitle(pool) {
+  return [pool.card_place ?? pool.place?.neighborhood, getBorough(pool), pool.card_tag]
+    .filter(Boolean)
+    .join(' · ')
+}
+
+// The operator's own page for a pool, and the words to link it with.
+export function officialPage(pool) {
+  return isNycParks(pool)
+    ? { url: pool.url, label: 'NYC Parks page', host: 'nycgovparks.org' }
+    : { url: pool.url, label: 'NYS Parks page', host: 'parks.ny.gov' }
+}
+
 // Boroughs with at least one pool matching `predicate`, in BOROUGH_ORDER.
 //
 // Copy that names boroughs has to derive them from the data. The subhead used
@@ -221,14 +246,27 @@ export function describeAge(hours) {
   return `${days} days ago`
 }
 
+// "Recreational Swim" is Riverbank's wording (data/riverbank.json); no NYC
+// Parks title uses it. Adult and Saturday-morning rec are Open Swim, youth rec
+// is Children/Teen, family rec is Family Swim — so Open Swim excludes the two
+// that belong elsewhere. Adult and family rec also count as Lap Swim: 2–3
+// lanes stay roped for 25-yard laps (the session notes say so). Youth and
+// Saturday-morning rec don't.
 export const ACTIVITIES = [
-  { key: 'Lap Swim', match: (s) => /lap swim/i.test(s) },
+  {
+    key: 'Lap Swim',
+    match: (s) => /lap swim|(adult|family) recreational swim/i.test(s),
+  },
   {
     key: 'Open Swim',
-    match: (s) => /open swim|general swim/i.test(s) && !/lap/i.test(s),
+    match: (s) =>
+      /open swim|general swim|recreational swim/i.test(s) && !/lap|family|youth/i.test(s),
   },
-  { key: 'Family Swim', match: (s) => /family swim/i.test(s) },
-  { key: 'Children/Teen Swim', match: (s) => /children|teen/i.test(s) },
+  { key: 'Family Swim', match: (s) => /family (recreational )?swim/i.test(s) },
+  {
+    key: 'Children/Teen Swim',
+    match: (s) => /children|teen|youth recreational swim/i.test(s),
+  },
   { key: 'Learn to Swim', match: (s) => /learn to swim/i.test(s) },
   {
     key: 'Water Exercise',

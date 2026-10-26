@@ -1,31 +1,39 @@
 // Shared by the rendered UI (SeoContent) and the build-time JSON-LD/no-JS
 // fallback in vite-plugin-seo.js, so the two can't drift apart. Answers take
-// the list of currently-open pool names so the first one stays accurate.
+// the list of currently-open pool names so the first one stays accurate, and
+// the full pool list so membership answers can name the pools that need none.
 
 import { IDNYC_NOTE, MEMBERSHIP_CHECKED, MEMBERSHIP_SUMMARY } from './membership'
+import { otherOperatorsNote } from './copy'
+
+const withOthers = (pools) => {
+  const note = otherOperatorsNote(pools)
+  return note ? ` ${note}` : ''
+}
 
 export const FAQ = [
   {
     q: 'Which NYC indoor pools are open right now?',
     a: (openNames) =>
-      `${openNames.length} NYC Parks indoor pools are currently open: ${openNames.join(', ')}. ` +
+      `${openNames.length} NYC indoor pools are currently open: ${openNames.join(', ')}. ` +
       `Use the "Today" filter to see only sessions that haven't already finished today.`,
   },
   {
     q: 'How much does it cost to swim at an NYC indoor pool?',
-    a: () =>
-      `Every NYC indoor pool sits inside a recreation center, so you need a Recreation Center ` +
+    a: (openNames, pools) =>
+      `Every NYC Parks indoor pool sits inside a recreation center, so you need a Recreation Center ` +
       `membership. As of ${MEMBERSHIP_CHECKED} it is ${MEMBERSHIP_SUMMARY}. ` +
       `One membership covers every recreation center in the ` +
       `city. Note that the cheaper $100 tier does not include centers with pools — you need the ` +
-      `"Access to All Centers" package. ${IDNYC_NOTE}`,
+      `"Access to All Centers" package. ${IDNYC_NOTE}${withOthers(pools)}`,
   },
   {
     q: 'Are NYC public indoor pools free?',
-    a: () =>
+    a: (openNames, pools) =>
       'Only if you are 24 or under — youth and young-adult memberships cost nothing. Everyone ' +
       "else pays for a Recreation Center membership. The city's outdoor pools, open late June " +
-      'through Labor Day, are free to everyone with no membership at all.',
+      'through Labor Day, are free to everyone with no membership at all.' +
+      withOthers(pools),
   },
   {
     q: 'When is lap swim at NYC indoor pools?',

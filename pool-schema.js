@@ -6,7 +6,7 @@
 // copies of a schema.org builder is exactly the drift the SEO invariants warn
 // about, so it moved here rather than being duplicated.
 
-import { ACTIVITIES } from './src/utils.js'
+import { ACTIVITIES, isNycParks } from './src/utils.js'
 
 // Each NYC borough is coextensive with a New York State county. The county is
 // the formally correct AdministrativeArea for structured data; the borough name
@@ -81,10 +81,15 @@ export function openingHours(pool) {
   return specs
 }
 
-export const parksUrl = (pool) =>
-  pool.pool_code
+// The operator's page for the pool. Only NYC Parks codes map onto
+// nycgovparks.org; Riverbank's synthetic NYS-RBSP would build a dead URL on the
+// wrong agency's site, so other operators use the `url` their record carries.
+export const parksUrl = (pool) => {
+  if (!isNycParks(pool)) return pool.url || undefined
+  return pool.pool_code
     ? `https://www.nycgovparks.org/parks/${pool.pool_code}/facilities/indoor-pools`
     : undefined
+}
 
 // Distinct swim programs offered, e.g. "Adult Lap Swim" -> "Lap Swim".
 //
@@ -113,14 +118,16 @@ export function poolNode(pool, url) {
     '@id': url,
     name: pool.pool_name,
     url,
-    // Nearly every NYC indoor pool sits inside a recreation center you have to
-    // join, so these are not free-access facilities.
-    isAccessibleForFree: pool.membership_required === true ? false : undefined,
-    // Cost is the rec center membership, not a per-swim fee.
+    // NYC Parks pools sit inside a recreation center you have to join;
+    // Riverbank charges at the door. Neither is a free-access facility.
+    isAccessibleForFree:
+      pool.membership_required === true || pool.price_range ? false : undefined,
+    // NYC Parks: the rec center membership, not a per-swim fee. Others carry
+    // their own visit/pass fees.
     priceRange:
       pool.membership_required === true
         ? '$0–$150 per year (Recreation Center membership)'
-        : undefined,
+        : pool.price_range || undefined,
     publicAccess: true,
     areaServed: {
       '@type': 'AdministrativeArea',

@@ -11,6 +11,7 @@
 // introduced here would be purged.
 
 import { escapeHtml as esc, callAheadHtml } from './src/html.js'
+import { callAheadDetail } from './src/copy.js'
 import { poolNode, parksUrl, NON_PUBLIC_SESSION } from './pool-schema.js'
 import {
   getBorough,
@@ -19,6 +20,9 @@ import {
   firstSessionDate,
   poolPath,
   poolAnchorId,
+  isNycParks,
+  operatorName,
+  officialPage,
 } from './src/utils.js'
 import {
   busList,
@@ -144,7 +148,8 @@ function buildingHours(pool) {
         `<tr><td>${esc(day.replaceAll('_', ' – '))}</td><td class="pp-time">${esc(time)}</td></tr>`,
     )
     .join('')
-  return `<section><h2>Recreation center hours</h2><table><tbody>${rows}</tbody></table>
+  const heading = isNycParks(pool) ? 'Recreation center hours' : 'Park hours'
+  return `<section><h2>${heading}</h2><table><tbody>${rows}</tbody></table>
   <p class="pp-note">These are the building's hours. The pool is only open during the sessions listed above.</p></section>`
 }
 
@@ -154,9 +159,10 @@ function metaDescription(pool) {
     const back = firstSessionDate(pool)
     return `${name} is currently closed${
       pool.closure_reason ? ` ${pool.closure_reason}` : ''
-    }.${back ? ` Sessions resume ${shortDay(back)}.` : ''} Address, phone and the latest status for this NYC Parks indoor pool.`
+    }.${back ? ` Sessions resume ${shortDay(back)}.` : ''} Address, phone and the latest status for this ${operatorName(pool)} indoor pool.`
   }
-  return `${name}: indoor pool schedule — lap swim, open swim and family swim times for the next two weeks, plus address, recreation center hours and phone number.`
+  const hours = isNycParks(pool) ? 'recreation center hours' : 'admission prices'
+  return `${name}: indoor pool schedule — lap swim, open swim and family swim times for the next two weeks, plus address, ${hours} and phone number.`
 }
 
 const STYLE = `
@@ -253,6 +259,55 @@ function transitHtml(pool) {
   return parts.join('\n    ')
 }
 
+function priceTable(rows) {
+  return `<table><thead><tr><th>Who</th><th>Cost</th></tr></thead><tbody>${rows
+    .map(
+      (t) =>
+        `<tr><td>${esc(t.who)}</td><td>${esc(t.price)}${t.note ? ` (${esc(t.note)})` : ''}</td></tr>`,
+    )
+    .join('')}</tbody></table>`
+}
+
+// NYC Parks pools: the Rec Center membership. Riverbank: its walk-up ticket
+// and the separate advance lap pass — never the membership, which it doesn't
+// take. Both price sets are hand-typed with their own "as of" date.
+function costSection(pool) {
+  if (!isNycParks(pool)) {
+    const adm = pool.admission
+    const lap = pool.lap_pass
+    return `<section>
+    <h2>What it costs</h2>
+    <p>No membership — ${esc(pool.pool_name)} is run by New York State Parks and charges per visit.</p>
+    ${adm ? `<h3>Walk-up ticket</h3><p class="pp-note">Prices as of ${esc(adm.checked)}</p>${priceTable(adm.tiers)}<p>${esc(adm.notes)}</p>` : ''}
+    ${lap ? `<h3>Morning lap swim pass</h3><p class="pp-note">Prices as of ${esc(lap.checked)}</p>${priceTable([{ who: lap.who, price: lap.price }])}<p>${esc(lap.notes)}</p>` : ''}
+  </section>`
+  }
+  return `<section>
+    <h2>What it costs</h2>
+    <p>${esc(pool.pool_name)} sits inside a recreation center, so swimming here needs a
+    Recreation Center membership — it is not a free drop-in pool.</p>
+    <p class="pp-note">Prices as of ${esc(MEMBERSHIP_CHECKED)}</p>
+    ${priceTable(MEMBERSHIP_TIERS)}
+    <p>Prices are for the &ldquo;Access to All Centers&rdquo; package — the cheaper $100/year
+    tier excludes every center with a pool. ${esc(IDNYC_NOTE)}
+    <a href="${esc(MEMBERSHIP_URL)}" rel="nofollow">Full membership details</a>.</p>
+  </section>`
+}
+
+// Where the timetable came from. Riverbank's is typed from a PDF, not scraped,
+// so it has no scrape date to vouch for.
+function sourceLine(pool, updatedLabel) {
+  if (!isNycParks(pool)) {
+    const href = pool.schedule_pdf || officialPage(pool).url
+    return `Schedule typed by hand from the
+    <a href="${esc(href)}" rel="nofollow">${esc(pool.season?.label ?? '')} NYS Parks schedule</a>
+    (${esc(officialPage(pool).host)}) and can change without notice.`
+  }
+  return `Schedules are scraped from
+    <a href="${esc(parksUrl(pool) ?? 'https://www.nycgovparks.org/facilities/indoor-pools')}" rel="nofollow">nycgovparks.org</a>
+    and can change without notice.${updatedLabel ? ` Last updated ${esc(updatedLabel)}.` : ''}`
+}
+
 export function renderPoolPage({
   pool,
   slug,
@@ -334,11 +389,11 @@ export function renderPoolPage({
 <main class="pp">
   <a class="pp-back" href="/">&larr; All NYC indoor pools</a>
   <h1>${esc(pool.pool_name)}</h1>
-  <p class="pp-borough">${esc(placeLabel(pool))} · NYC Parks indoor pool</p>
+  <p class="pp-borough">${esc(placeLabel(pool))} · ${esc(operatorName(pool))} indoor pool</p>
   <p><span class="pp-status ${statusClass}">${esc(statusSentence(pool))}</span></p>
 
   ${pool.notes ? `<p class="pp-notice">${esc(pool.notes)}</p>` : ''}
-  <p class="pp-call">${callAheadHtml()}</p>
+  <p class="pp-call">${callAheadHtml(callAheadDetail(pool))}</p>
 
   ${todaySection(pool, todayISO)}
 
@@ -362,27 +417,13 @@ export function renderPoolPage({
 
   ${buildingHours(pool)}
 
-  <section>
-    <h2>What it costs</h2>
-    <p>${esc(pool.pool_name)} sits inside a recreation center, so swimming here needs a
-    Recreation Center membership — it is not a free drop-in pool.</p>
-    <p class="pp-note">Prices as of ${esc(MEMBERSHIP_CHECKED)}</p>
-    <table><thead><tr><th>Who</th><th>Cost</th></tr></thead><tbody>${MEMBERSHIP_TIERS.map(
-      (t) =>
-        `<tr><td>${esc(t.who)}</td><td>${esc(t.price)}${t.note ? ` (${esc(t.note)})` : ''}</td></tr>`,
-    ).join('')}</tbody></table>
-    <p>Prices are for the &ldquo;Access to All Centers&rdquo; package — the cheaper $100/year
-    tier excludes every center with a pool. ${esc(IDNYC_NOTE)}
-    <a href="${esc(MEMBERSHIP_URL)}" rel="nofollow">Full membership details</a>.</p>
-  </section>
+  ${costSection(pool)}
 
   ${nearbySection(pool, pools, slugs)}
 
   <footer class="pp-foot">
-    <p>Schedules are scraped from
-    <a href="${esc(parksUrl(pool) ?? 'https://www.nycgovparks.org/facilities/indoor-pools')}" rel="nofollow">nycgovparks.org</a>
-    and can change without notice.${updatedLabel ? ` Last updated ${esc(updatedLabel)}.` : ''}
-    ${callAheadHtml()}</p>
+    <p>${sourceLine(pool, updatedLabel)}
+    ${callAheadHtml(callAheadDetail(pool))}</p>
     ${noticeLinks ? `<p>${noticeLinks}</p>` : ''}
     <img class="pp-qr" src="/qr-code.svg" alt="QR code for pools.thinkdesign.com" />
     <p><a href="/">NYC Indoor Pool Finder</a> &middot; <a href="/privacy/">Privacy</a></p>

@@ -242,6 +242,15 @@ def main():
     buses = bus_routes_near({code: (m["lat"], m["lng"]) for code, m in out.items()})
     for code, routes in buses.items():
         out[code]["buses"], out[code]["bus_miles"] = pick_buses(routes)
+    # Keep hand-maintained entries for pools the scrape doesn't carry (the
+    # NYS-RBSP Riverbank overlay, data/riverbank.json). Rewriting from the
+    # scrape alone would silently drop them, and with them the pool's
+    # coordinates, transit lines and nearby-pool distances.
+    if OUT.exists():
+        for code, entry in json.loads(OUT.read_text()).items():
+            if code not in out:
+                print(f"kept {code}: not in the scrape, preserved as hand-maintained")
+                out[code] = entry
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)} ({len(out)} pools)")

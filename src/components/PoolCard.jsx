@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import {
-  getBorough,
   getStatusStyle,
   statusLabel,
   statusBadgeLabel,
@@ -20,6 +19,8 @@ import {
   poolAnchorId,
   dayStamp,
   parseISODate,
+  officialPage,
+  cardSubtitle,
 } from '../utils'
 
 // "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
@@ -135,8 +136,7 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             </button>
           </h2>
           <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
-            {pool.place?.neighborhood ? `${pool.place.neighborhood} · ` : ''}
-            {getBorough(pool)}
+            {cardSubtitle(pool)}
           </p>
         </div>
         <div className="flex shrink-0 items-start gap-1.5">
@@ -296,16 +296,17 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
         </div>
 
         {/* Footer link */}
-        {pool.url && (
+        {/* Riverbank's schedule is a PDF on parks.ny.gov, not a scraped page. */}
+        {(pool.schedule_pdf || pool.url) && (
           <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-slate-100 px-4 py-2.5">
             <a
-              href={pool.url}
+              href={pool.schedule_pdf || pool.url}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-sky-700"
             >
               <Clock size={12} />
-              Check latest schedule on nycgovparks.org
+              Check latest schedule on {officialPage(pool).host}
               <ExternalLink size={12} />
             </a>
           </footer>

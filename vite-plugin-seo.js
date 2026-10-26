@@ -14,10 +14,10 @@
 // scanned sources and built the stylesheet, so classes introduced here would be
 // purged.
 
-import rawPools from './nyc_pools_live.json'
 import meta from './nyc_pools_meta.json'
 import { FAQ } from './src/faq.js'
 import { callAheadHtml, newsHtml } from './src/html.js'
+import { otherOperatorsNote } from './src/copy.js'
 import {
   boroughsPresent,
   joinBoroughs,
@@ -27,11 +27,14 @@ import {
   poolAnchorId as anchorId,
   poolSlugs,
   poolPath,
+  isNycParks,
+  officialPage,
+  cardSubtitle,
 } from './src/utils.js'
 import { escapeHtml as esc } from './src/html.js'
 import { NON_PUBLIC_SESSION, parksUrl, poolNode } from './pool-schema.js'
 import { renderPoolPage } from './pool-page.js'
-import { withPoolMeta } from './src/poolMeta.js'
+import { loadPools } from './src/pools.js'
 import {
   IDNYC_NOTE,
   MEMBERSHIP_CHECKED,
@@ -42,8 +45,12 @@ import {
 export const SITE_URL = 'https://pools.thinkdesign.com/'
 
 // Same merge App.jsx does, so the fallback and the pool pages carry the same
-// neighborhood and subway lines as the rendered cards.
-const pools = withPoolMeta(rawPools)
+// neighborhood and subway lines as the rendered cards. The Riverbank overlay is
+// judged against the scrape time, like the pool pages' "today" (scrapeDayISO):
+// a static build can only vouch for the day its data was fetched.
+const pools = loadPools(meta.updated_at ? new Date(meta.updated_at) : new Date())
+// "NYC Parks operates N" and the meta-description counts are NYC Parks only.
+const nycParks = pools.filter(isNycParks)
 
 // One slug table for the whole build: the JSON-LD, the fallback links, the
 // emitted pages and the sitemap must all agree on a pool's URL.
@@ -110,7 +117,7 @@ function buildJsonLd() {
         mainEntity: FAQ.map((f) => ({
           '@type': 'Question',
           name: f.q,
-          acceptedAnswer: { '@type': 'Answer', text: f.a(openNames) },
+          acceptedAnswer: { '@type': 'Answer', text: f.a(openNames, pools) },
         })),
       },
     ],
@@ -181,7 +188,7 @@ function buildFallbackHtml() {
           return `
 <article id="${esc(anchorId(pool))}" class="sf-card">
   <h3><a href="${esc(poolPath(SLUGS.get(anchorId(pool))))}">${esc(pool.pool_name)}</a> <span class="sf-badge">${esc(statusBadgeLabel(pool))}</span></h3>
-  ${pool.place?.neighborhood ? `<p>${esc(pool.place.neighborhood)}</p>` : ''}
+  <p>${esc(cardSubtitle(pool))}</p>
   ${pool.reduced_hours ? '<p>Reduced summer hours</p>' : ''}
   <p>${esc(
     [
@@ -198,7 +205,7 @@ function buildFallbackHtml() {
   ${sessions ? `<ul>${sessions}</ul>` : ''}
   <p><a href="${esc(poolPath(SLUGS.get(anchorId(pool))))}">Full ${esc(pool.pool_name)} schedule, hours &amp; directions</a>${
     parksUrl(pool)
-      ? ` · <a href="${esc(parksUrl(pool))}" rel="nofollow">Official NYC Parks page</a>`
+      ? ` · <a href="${esc(parksUrl(pool))}" rel="nofollow">Official ${esc(officialPage(pool).label)}</a>`
       : ''
   }</p>
 </article>`
@@ -210,14 +217,15 @@ function buildFallbackHtml() {
 
   const faq = FAQ.map(
     (f) =>
-      `<section><h3>${esc(f.q)}</h3><p>${esc(f.a(pools.filter((p) => p.status === 'open').map((p) => p.pool_name)))}</p></section>`,
+      `<section><h3>${esc(f.q)}</h3><p>${esc(f.a(pools.filter((p) => p.status === 'open').map((p) => p.pool_name), pools))}</p></section>`,
   ).join('')
 
   // Two different lists, on purpose: the subhead counts boroughs with an OPEN
   // pool, the "Indoor swimming in New York City" paragraph describes the whole
   // system. Both come from the same helpers React uses, so the wording matches.
   const openBoroughList = joinBoroughs(boroughsPresent(pools, isOpen))
-  const allBoroughList = joinBoroughs(boroughsPresent(pools))
+  const nycParksBoroughList = joinBoroughs(boroughsPresent(nycParks))
+  const othersNote = otherOperatorsNote(pools)
 
   // Mirrors what React renders once it mounts — same headings, same claims.
   // Divergence here would read as cloaking to a crawler that checks both.
@@ -232,11 +240,11 @@ function buildFallbackHtml() {
   ${sections}
   <section>
     <h2>Indoor swimming in New York City</h2>
-    <p>NYC Parks operates ${pools.length} indoor public pools across ${esc(allBoroughList)}. Every one of
+    <p>NYC Parks operates ${nycParks.length} indoor public pools across ${esc(nycParksBoroughList)}. Every one of
     them sits inside a recreation center, so you need a Recreation Center membership to swim. This
     page pulls the current lap swim, open swim, family swim and water exercise schedules straight
     from nycgovparks.org each morning, so you can see which pools are open now and when the next
-    session starts without clicking through a dozen recreation-center pages.</p>
+    session starts without clicking through a dozen recreation-center pages.${othersNote ? ` ${esc(othersNote)}` : ''}</p>
     <h3>What a Recreation Center membership costs</h3>
     <p>As of ${esc(MEMBERSHIP_CHECKED)}</p>
     <table>
@@ -266,7 +274,7 @@ function buildFallbackHtml() {
                 (l) => `<a href="${esc(l.url)}" rel="nofollow">${esc(l.text)}</a>`,
               ),
               pool.url
-                ? `<a href="${esc(pool.url)}" rel="nofollow">NYC Parks page</a>`
+                ? `<a href="${esc(pool.url)}" rel="nofollow">${esc(officialPage(pool).label)}</a>`
                 : null,
             ].filter(Boolean)
             const contact = [
@@ -325,12 +333,14 @@ export default function seoPlugin() {
       order: 'post',
       handler(html) {
         const jsonLd = JSON.stringify(buildJsonLd())
-        const openCount = pools.filter((p) => p.status === 'open').length
+        // index.html says "all N NYC Parks indoor public pools. M open now", so
+        // both counts are NYC Parks only.
+        const openCount = nycParks.filter((p) => p.status === 'open').length
 
         return html
           // replaceAll: both counts appear in the OG *and* Twitter tags.
           .replaceAll('%OPEN_COUNT%', String(openCount))
-          .replaceAll('%POOL_COUNT%', String(pools.length))
+          .replaceAll('%POOL_COUNT%', String(nycParks.length))
           .replace(
             '</head>',
             `  ${FALLBACK_STYLE}\n    <script type="application/ld+json">${jsonLd.replace(/</g, '\\u003c')}</script>\n  </head>`,

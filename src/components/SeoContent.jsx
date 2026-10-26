@@ -1,5 +1,6 @@
 import { FAQ } from '../faq'
-import { boroughsPresent, joinBoroughs } from '../utils'
+import { boroughsPresent, joinBoroughs, isNycParks } from '../utils'
+import { otherOperatorsNote } from '../copy'
 import CallAheadNote from './CallAheadNote'
 import {
   IDNYC_NOTE,
@@ -15,6 +16,10 @@ export default function SeoContent({ pools, openNames }) {
   // Every borough with a pool, open or not — this sentence is about the system,
   // not today's status. Shared with the SEO fallback so both name the same set.
   const boroughs = boroughsPresent(pools)
+  // "NYC Parks operates N" counts NYC Parks only; Riverbank gets its own
+  // sentence. Same split in the SEO fallback.
+  const nycParks = pools.filter(isNycParks)
+  const othersNote = otherOperatorsNote(pools)
 
   return (
     <section className="mx-auto mt-12 max-w-6xl border-t border-slate-200 pt-8">
@@ -22,13 +27,13 @@ export default function SeoContent({ pools, openNames }) {
         Indoor swimming in New York City
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
-        NYC Parks operates {pools.length} indoor public pools across{' '}
-        {joinBoroughs(boroughs)}. Every one of them sits inside a recreation center, so
-        you need a Recreation Center membership to swim. This page pulls the current
-        lap swim, open swim, family swim and water exercise schedules straight from
-        nycgovparks.org each morning, so you can see which pools are open now and when
-        the next session starts without clicking through a dozen recreation-center
-        pages.
+        NYC Parks operates {nycParks.length} indoor public pools across{' '}
+        {joinBoroughs(boroughsPresent(nycParks))}. Every one of them sits inside a
+        recreation center, so you need a Recreation Center membership to swim. This page
+        pulls the current lap swim, open swim, family swim and water exercise schedules
+        straight from nycgovparks.org each morning, so you can see which pools are open
+        now and when the next session starts without clicking through a dozen
+        recreation-center pages.{othersNote && ` ${othersNote}`}
       </p>
 
       <h3 className="mt-6 text-sm font-bold text-slate-900">
@@ -85,7 +90,7 @@ export default function SeoContent({ pools, openNames }) {
           <div key={item.q}>
             <dt className="text-sm font-semibold text-slate-800">{item.q}</dt>
             <dd className="mt-1 text-sm leading-relaxed text-slate-600">
-              {item.a(openNames)}
+              {item.a(openNames, pools)}
             </dd>
           </div>
         ))}
