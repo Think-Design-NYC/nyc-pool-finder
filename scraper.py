@@ -236,35 +236,60 @@ GENERIC_TRACKER_RE = re.compile(
 CLOSURE_INFO_OVERRIDES = {
     # "must remain closed until we are able to install a full dehumidification
     # system in the natatorium" -> that exact project.
-    "B085": {
-        "text": "Dehumidification System Reconstruction",
-        "url": (
-            "https://www.nycgovparks.org/planning-and-building"
-            "/capital-project-tracker/project/10796"
-        ),
-    },
+    "B085": [
+        {
+            "text": "Dehumidification System Reconstruction",
+            "url": (
+                "https://www.nycgovparks.org/planning-and-building"
+                "/capital-project-tracker/project/10796"
+            ),
+        },
+    ],
     # No capital project is listed for this site. The planning page for the
     # corridor is where the replacement facility (and its indoor pool) is
     # described, so it stands alone rather than beside a generic tracker link.
-    "M103": {
-        "text": "Clarkson Street Corridor Input Portal",
-        "url": (
-            "https://www.nycgovparks.org/planning-and-building"
-            "/planning/clarkson-street-corridor"
-        ),
-    },
+    "M103": [
+        {
+            "text": "Clarkson Street Corridor Input Portal",
+            "url": (
+                "https://www.nycgovparks.org/planning-and-building"
+                "/planning/clarkson-street-corridor"
+            ),
+        },
+    ],
+    # No capital project page yet. The mayor's July 2024 announcement names
+    # the $160M reconstruction; the Sep 2026 community update deck has the
+    # construction phasing. PDF size is annotated so readers know what to
+    # expect on tap.
+    "B270": [
+        {
+            "text": "$160M Reconstruction (July 2024)",
+            "url": (
+                "https://www.nyc.gov/mayors-office/news/2024/07/"
+                "mayor-adams-celebrates-160-million-investment-"
+                "brownsville-recreation-center-additional"
+            ),
+        },
+        {
+            "text": "Community Update (PDF, 1.2 MB)",
+            "url": (
+                "https://www.nyc.gov/assets/ddc/downloads/presentations/"
+                "092126_BrownsvilleRecreationCenterCommunityUpdateMeeting.pdf"
+            ),
+        },
+    ],
 }
 
 
 def apply_closure_info_override(pool_code: str, links: List[dict]) -> List[dict]:
-    """Drop the generic tracker link, and name the real page when we know it."""
-    override = CLOSURE_INFO_OVERRIDES.get(pool_code)
-    if not override:
+    """Drop the generic tracker link, and name the real page(s) when we know them."""
+    overrides = CLOSURE_INFO_OVERRIDES.get(pool_code)
+    if not overrides:
         return links
     kept = [l for l in links if not GENERIC_TRACKER_RE.match(l["url"])]
-    if override["url"] not in {l["url"] for l in kept}:
-        kept.insert(0, dict(override))
-    return kept
+    existing = {l["url"] for l in kept}
+    to_add = [dict(o) for o in overrides if o["url"] not in existing]
+    return to_add + kept
 
 
 def extract_notice_links(divs) -> List[dict]:
