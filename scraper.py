@@ -93,9 +93,21 @@ REMAINS_CLOSED_RE = re.compile(
 
 # A closure about some other part of the building. Chelsea's "the gymnasium at
 # Chelsea Recreation Center will be closed for voting preparation" matched
-# CLOSURE_RE through "Recreation Center" and shut the pool for it.
+# CLOSURE_RE through "Recreation Center" and shut the pool for it. Rooms are
+# matched generically (`\w+ room`): Shirley Chisholm's "the dance room ... will
+# be closed for voting preparation" (Oct 22–Nov 2, 2026) wasn't on the list, so
+# its window emptied two weeks of pool sessions. Other spaces rec centers name
+# differently (studio, court, track, lab, lounge, kitchen, library) are listed
+# too. "<x> center" only counts with a named sub-space prefix ("fitness center",
+# "teen center"): a bare `\w+ center` would also match "Recreation Center",
+# "Aquatics Center" and "the center", which DO close the pool. A sentence that
+# also names the pool still counts, so "the locker rooms and pool will be
+# closed" closes it.
 NON_POOL_RE = re.compile(
-    r"\b(?:gym|gymnasium|auditorium|fitness|weight room|field|rink|playground)\b",
+    r"\b(?:gym|gymnasium|auditorium|fitness|\w+ rooms?|field|rink|playground"
+    r"|studios?|courts?|track|labs?|lounge|kitchen|library"
+    r"|(?:fitness|teen|computer|senior|youth|kids|learning|technology|tech"
+    r"|media|wellness|game)s? centers?)\b",
     re.IGNORECASE,
 )
 POOL_WORD_RE = re.compile(r"\b(?:pool|aquatics?|natatorium|swim\w*)\b", re.IGNORECASE)
@@ -108,7 +120,10 @@ CLOSURE_WINDOW_RE = re.compile(
     rf"({_MONTHS})\s+(\d{{1,2}})(?:,\s*(\d{{4}}))?",
     re.IGNORECASE,
 )
-_SENTENCE_SPLIT_RE = re.compile(r"(?<!\bSt)(?<=[.!?])\s+")
+# The "St." guard has to include the period: the split point is *after* it, so
+# `(?<!\bSt)` never fired and "the gymnasium at St. John’s Recreation Center will
+# be closed" split into a gym-less fragment that closed the pool.
+_SENTENCE_SPLIT_RE = re.compile(r"(?<!\bSt\.)(?<=[.!?])\s+")
 
 
 def _month_day(month: str, day: str, year: Optional[str], default_year: int) -> date:
