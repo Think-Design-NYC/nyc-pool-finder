@@ -149,9 +149,15 @@ Parsing notes, all learned the hard way from real pages:
   building would still satisfy the day/activity filters and send someone to a
   locked door.
 - **Closure notices are read by `classify_closure()`, which is subject- and
-  date-aware.** (1) A closure sentence about the gym/field/etc. with no pool word
-  is ignored — Chelsea's "gymnasium ... will be closed for voting" (Oct 22) used
-  to mark the whole pool closed. (2) "Beginning <date> through <date>" is a
+  date-aware.** (1) A closure sentence about the gym/field/any "<word> room"/etc.
+  with no pool word is ignored — Chelsea's "gymnasium ... will be closed for
+  voting" (Oct 22) used to mark the whole pool closed, and Shirley Chisholm's
+  "the dance room ... will be closed for voting preparation" (Oct 22–Nov 2,
+  2026) emptied two weeks of its pool sessions until rooms were matched
+  generically (`\w+ rooms?` in `NON_POOL_RE`). Sentences are split on `.!?`
+  except after "St." — St. John's "the gymnasium at St. John’s Recreation
+  Center will be closed" was split at "St." (the guard was missing its period)
+  and the gym-less half closed the pool. (2) "Beginning <date> through <date>" is a
   window, stored in `closures`; the pool is `closed` only while today is inside
   it, and the window's days are emptied in `schedule_weeks` and `schedules`
   (NYC Parks keeps posting the normal timetable through a repair closure, so
