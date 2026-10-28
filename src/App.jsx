@@ -52,6 +52,7 @@ import {
 } from './utils'
 import { loadPools } from './pools'
 import { milesBetween } from './poolMeta'
+import { NYC_ZIPS } from './nycZips'
 
 // Scraped pools + the Riverbank overlay + location meta (data/pool_meta.json).
 // Built from the reader's clock, not the build's, so a cached bundle still
@@ -169,6 +170,12 @@ export default function App() {
   // bookmark. While it has text it searches every borough.
   const [query, setQuery] = useState('')
   const searching = query.trim().length > 0
+  // A New York ZIP means "near here", not "pools inside this ZIP": 10027 has no
+  // pool of its own but four within a couple of miles. It ranks every pool by
+  // distance from the ZIP's centre (src/nycZips.js) instead of text-matching.
+  const zip = /^\d{5}$/.test(query.trim()) ? query.trim() : null
+  const zipAt = zip && NYC_ZIPS[zip] ? { lat: NYC_ZIPS[zip][0], lng: NYC_ZIPS[zip][1] } : null
+  const inSearch = useCallback((p) => zipAt != null || matchesQuery(p, query), [zipAt, query])
 
   // "Near me": the reader's position, only after they ask, only in memory —
   // never persisted or sent anywhere. Sorts each group by distance and puts a
@@ -195,6 +202,10 @@ export default function App() {
       { enableHighAccuracy: false, maximumAge: 300_000, timeout: 10_000 },
     )
   }, [near.status])
+
+  // Where distances are measured from: a typed NYC ZIP wins over Near me while
+  // it's in the box.
+  const origin = zipAt ?? near.at
 
   // A filter the reader chose: push a history entry so Back returns to the
   // previous view, and write all three parameters so the URL is shareable
@@ -360,11 +371,19 @@ export default function App() {
   // purpose to find out.
   const emptyState = useMemo(() => {
     const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
-    const found = searching ? pools.filter((p) => matchesQuery(p, query)) : pools
+    const found = searching ? pools.filter(inSearch) : pools
+    if (zip && !zipAt && !found.length) {
+      return {
+        title: `${zip} isn't a New York City ZIP code.`,
+        next: 'Try a NYC ZIP, a pool name or a neighborhood.',
+      }
+    }
     if (searching && !found.length) {
       return { title: `No pools match “${query.trim()}”.`, next: 'Try a pool name, neighborhood or ZIP code.' }
     }
-    const where = searching
+    const where = zipAt
+      ? ` near ${zip}`
+      : searching
       ? found.length === 1
         ? ` at ${found[0].pool_name}`
         : ` at pools matching “${query.trim()}”`
@@ -387,7 +406,7 @@ export default function App() {
         ? `Next: ${day.charAt(0).toUpperCase() + day.slice(1)}, ${formatClock(next.start)} at ${next.pool.pool_name}.`
         : null,
     }
-  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay, query, searching])
+  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay, query, searching, inSearch, zip, zipAt])
 
   // Null unless the data has actually gone stale, so the banner is absent in the
   // normal case rather than rendered-and-hidden. Deliberately has no counterpart
@@ -417,7 +436,7 @@ export default function App() {
   const closedPools = useMemo(
     () =>
       pools.filter(
-        (p) => p.status === 'closed' && !reopening.has(p.pool_name) && matchesQuery(p, query),
+        (p) => p.status === 'closed' && !reopening.has(p.pool_name) && (!searching || inSearch(p)),
       ),
     [reopening, query],
   )
@@ -429,7 +448,7 @@ export default function App() {
       .filter((p) => p.status !== 'closed' || reopening.has(p.pool_name))
       .filter((p) =>
         searching
-          ? matchesQuery(p, query)
+          ? inSearch(p)
           : selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough,
       )
       .map((p) => {
@@ -448,7 +467,7 @@ export default function App() {
           ...p,
           schedules: lead.group === 'done' ? matching : upcoming,
           lead,
-          miles: near.at ? milesBetween({ place: near.at }, p) : null,
+          miles: origin ? milesBetween({ place: origin }, p) : null,
           reopens_on: reopening.get(p.pool_name) ?? null,
         }
       })
@@ -472,7 +491,8 @@ export default function App() {
     now,
     query,
     searching,
-    near.at,
+    inSearch,
+    origin,
   ])
 
   // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
@@ -539,13 +559,15 @@ export default function App() {
         : selectedDay === 'Tomorrow'
           ? 'Tomorrow'
           : longDayLabel(dateForDayFilter(selectedDay))
-    const where = searching
+    const where = zipAt
+      ? `near ${zip}`
+      : searching
       ? `“${query.trim()}”`
       : selectedBorough === 'All Boroughs'
         ? null
         : selectedBorough
     return [activity, day, where].filter(Boolean).join(' · ')
-  }, [activityActive, selectedActivity, selectedDay, selectedBorough, searching, query])
+  }, [activityActive, selectedActivity, selectedDay, selectedBorough, searching, query, zip, zipAt])
 
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step
@@ -682,6 +704,7 @@ export default function App() {
         selectedBorough={selectedBorough}
         onSelectBorough={setSelectedBorough}
         searching={searching}
+        searchNote={zipAt ? `Nearest pools to ${zip}, all boroughs` : 'Searching all boroughs'}
         dates={dates}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}
@@ -780,7 +803,8 @@ export default function App() {
             closed={mapClosed}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
-              you={near.at}
+              you={origin}
+              youLabel={zipAt ? zip : 'YOU'}
               className="h-full"
             />
           </div>
@@ -806,7 +830,8 @@ export default function App() {
             closed={mapClosed}
             highlightId={selectedId}
             onSelectPool={selectPool}
-            you={near.at}
+            you={origin}
+            youLabel={zipAt ? zip : 'YOU'}
             className="h-full"
           />
           <button

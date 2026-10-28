@@ -85,6 +85,7 @@ export default function PoolMap({
   highlightId,
   onSelectPool,
   you = null,
+  youLabel = 'YOU',
   className = '',
 }) {
   const placed = pools
@@ -144,11 +145,19 @@ export default function PoolMap({
           // Flip left at the frame's edge, or when an open pin (which wins the
           // space) sits where the label would run — Hansborough, just west of
           // St. Mary's.
-          const blocked = placed.some(
-            ({ at: [px, py] }) => px > x && px - x < nameW + 40 * k && Math.abs(py - y) < 34 * k,
-          )
-          const leftFits = x - 13 * k - nameW > vx
-          const flip = leftFits && (x + 12 * k + nameW > vx + vw || blocked)
+          // Open pins and the "You"/ZIP dot both count as in the way.
+          const others = [...placed.map((p) => p.at), ...(youAt ? [youAt] : [])]
+          const near = (side) =>
+            others.some(
+              ([px, py]) =>
+                (side > 0 ? px > x : px < x) &&
+                Math.abs(px - x) < nameW + 40 * k &&
+                Math.abs(py - y) < 34 * k,
+            )
+          const rightOk = x + 12 * k + nameW <= vx + vw && !near(1)
+          const leftOk = x - 13 * k - nameW > vx && !near(-1)
+          // Right by default, else left, else under the icon.
+          const side = rightOk ? 'right' : leftOk ? 'left' : 'below'
           return (
             <g
               key={id}
@@ -164,10 +173,17 @@ export default function PoolMap({
                 <ClosedIcon works={works} k={k} />
               </g>
               <text
-                x={flip ? x - 13 * k : x + 13 * k}
-                y={y}
+                x={
+                  side === 'right'
+                    ? x + 13 * k
+                    : side === 'left'
+                      ? x - 13 * k
+                      : // Under the icon, nudged inside the frame at either edge.
+                        Math.min(Math.max(x - nameW / 2, vx + 4 * k), vx + vw - nameW - 4 * k)
+                }
+                y={side === 'below' ? y + 20 * k : y}
                 dominantBaseline="central"
-                textAnchor={flip ? 'end' : 'start'}
+                textAnchor={side === 'left' ? 'end' : 'start'}
                 fontSize={11 * k}
                 fontWeight="600"
                 fill="#5a6e85"
@@ -182,7 +198,7 @@ export default function PoolMap({
           )
         })}
         {youAt && (
-          <g aria-label="Your location">
+          <g aria-label={youLabel === 'YOU' ? 'Your location' : `Centre of ZIP ${youLabel}`}>
             <circle cx={youAt[0]} cy={youAt[1]} r={14 * k} fill="#1668e3" opacity="0.18" />
             <circle
               cx={youAt[0]}
@@ -193,15 +209,20 @@ export default function PoolMap({
               strokeWidth={2 * k}
             />
             <text
-              x={youAt[0] + 11 * k}
-              y={youAt[1]}
+              x={youAt[0]}
+              y={youAt[1] - 17 * k}
               dominantBaseline="central"
+              textAnchor="middle"
+              stroke="#f4f7fa"
+              strokeWidth={3.5 * k}
+              strokeLinejoin="round"
+              paintOrder="stroke"
               fontSize={11 * k}
               fontWeight="700"
               letterSpacing={1 * k}
               fill="#1668e3"
             >
-              YOU
+              {youLabel}
             </text>
           </g>
         )}

@@ -189,6 +189,7 @@ export default function FilterBar({
   selectedBorough,
   onSelectBorough,
   searching,
+  searchNote,
   dates,
   selectedDay,
   onSelectDay,
@@ -223,7 +224,7 @@ export default function FilterBar({
           {/* The header search spans every borough, so the borough choice steps
               aside while it has text rather than silently narrowing it. */}
           {searching ? (
-            <p className="py-1.5 text-sm text-muted">Searching all boroughs</p>
+            <p className="py-1.5 text-sm text-muted">{searchNote}</p>
           ) : (
             <>
               <div className="md:hidden">
