@@ -779,6 +779,12 @@ building hours, costs, nearby pools.
   note if neither matches. Without the script the build day shows.
 - Timeline, counts and live blocks skip school "Swim For Life" classes and
   am/pm-typo starts before 5 am; the full timetable keeps them as posted.
+- **Add to calendar** (`src/calendar.js`, shared with the homepage cards): each
+  link is the whole event as an `.ics` data URI — works offline, sends nothing.
+  Events name `TZID=America/New_York` without a VTIMEZONE block (calendars
+  resolve the name; embedding it doubled page weight). On pool pages the links
+  live on the Today list rows (one per session per day); Up next copies its link
+  from the matching row (`data-k`) when the live script runs.
 - `[hidden]{display:none!important}` in the page style is load-bearing: the
   stats grid and flex rows would otherwise override the attribute.
 

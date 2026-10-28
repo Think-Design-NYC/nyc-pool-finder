@@ -22,6 +22,7 @@
 import { escapeHtml as esc, callAheadHtml } from './src/html.js'
 import { callAheadDetail, NEWS } from './src/copy.js'
 import { NYC_MAP, projectToMap } from './src/nycMap.js'
+import { icsFilename, icsHref, sessionEvent } from './src/calendar.js'
 import { poolNode, parksUrl, NON_PUBLIC_SESSION } from './pool-schema.js'
 import {
   ACTIVITIES,
@@ -240,6 +241,8 @@ body{margin:0;background:#f4f7fa;font-family:'Instrument Sans',ui-sans-serif,sys
 .pp-un .s{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1668e3}
 .pp-un li.is-on .s{color:#10976a}
 .pp-un .k{font-weight:700;font-size:.92rem}
+.pp-cal{display:inline-block;margin-top:.15rem;font-size:.74rem;font-weight:600;text-decoration:none}
+.pp-cal:hover{text-decoration:underline}
 .pp-map{display:block;width:100%;height:auto;border-radius:.75rem;background:#c9ebf6}
 .pp-good{margin:.25rem 0 0;padding-left:1.1rem}
 .pp-good li{margin:.35rem 0}
@@ -305,7 +308,7 @@ function publicSessions(pool, iso) {
   return (day?.sessions ?? [])
     .filter((s) => !NON_PUBLIC_SESSION.test(s.session_type ?? ''))
     .filter((s) => !SCHOOL_CLASS.test(s.session_type ?? ''))
-    .map((s) => ({ ...s, w: sessionWindow(s.time), bucket: bucketOf(s.session_type) }))
+    .map((s) => ({ ...s, date: iso, w: sessionWindow(s.time), bucket: bucketOf(s.session_type) }))
     .filter((s) => s.w && s.w.start >= 5 * 60)
     .sort((a, b) => a.w.start - b.w.start || a.w.end - b.w.end)
 }
@@ -359,17 +362,23 @@ function timelineHtml(sessions) {
   return `<div class="pp-tl-wrap pp-only-lg" aria-hidden="true"><div class="pp-tl"><div class="pp-tl-axis"><span></span><span>${ticks}</span></div>${body}</div><div class="pp-now" hidden><span></span></div></div>`
 }
 
-function listHtml(sessions) {
+function listHtml(sessions, pool, url) {
   return `<ul class="pp-list pp-only-sm">${sessions
     .map(
       (s) =>
-        `<li data-s="${s.w.start}" data-e="${s.w.end}"${LAP.match(s.session_type) ? ' data-lap' : ''}><i style="background:${BUCKET_STYLE[s.bucket][0]}"></i><span class="t">${esc(range(s.w))}</span><span class="k">${esc(s.session_type)}</span><span class="pp-state"></span></li>`,
+        `<li data-s="${s.w.start}" data-e="${s.w.end}" data-k="${s.date}-${s.w.start}-${s.w.end}"${LAP.match(s.session_type) ? ' data-lap' : ''}><i style="background:${BUCKET_STYLE[s.bucket][0]}"></i><span class="t">${esc(range(s.w))}</span><span class="k">${esc(s.session_type)}<br>${calLink(pool, s, url)}</span><span class="pp-state"></span></li>`,
     )
     .join('')}</ul>`
 }
 
+// A small "Add to calendar" link carrying the whole event as an .ics data URI.
+function calLink(pool, s, url) {
+  const ev = sessionEvent(pool, s, s.w, url)
+  return `<a class="pp-cal" href="${esc(icsHref(ev))}" download="${esc(icsFilename(ev))}" aria-label="${esc(`Add ${s.session_type}, ${range(s.w)}, to your calendar`)}">+ Calendar</a>`
+}
+
 // One "Today" card per pre-rendered day; only `visible` shows without script.
-function todayCard(pool, iso, visible) {
+function todayCard(pool, iso, visible, url) {
   const sessions = publicSessions(pool, iso)
   if (!sessions.length && pool.status === 'closed' && !visible) return ''
   const sentence = sessions.length
@@ -377,13 +386,15 @@ function todayCard(pool, iso, visible) {
     : `<p>No swim sessions are scheduled at ${esc(pool.pool_name)} on ${esc(dayHeading(iso))}.</p>`
   return `<section class="pp-card" data-pp-day="${iso}"${visible ? '' : ' hidden'}>
     <h2>Today, ${esc(dayHeading(iso))}<small>${sessions.length} session${sessions.length === 1 ? '' : 's'}</small></h2>
-    ${sessions.length ? `${timelineHtml(sessions)}${listHtml(sessions)}` : ''}
+    ${sessions.length ? `${timelineHtml(sessions)}${listHtml(sessions, pool, url)}` : ''}
     ${sentence}
   </section>`
 }
 
 // Up next: every session of the day, the first two shown. The script keeps
 // whichever is on now plus the next one, and labels them.
+// Its calendar link is filled in by the live script from the matching Today row
+// (data-k), so each event's .ics is carried once per day, not four times.
 function upNextCard(pool, iso, visible, cls) {
   const sessions = publicSessions(pool, iso)
   if (!sessions.length) return ''
@@ -393,7 +404,7 @@ function upNextCard(pool, iso, visible, cls) {
       const [end, endMer] = formatClock(s.w.end).split(' ')
       // "6:00 am" over "to 9:30 pm": the start's am/pm only when it differs.
       const startTxt = startMer === endMer ? start : `${start}<small style="display:inline"> ${startMer}</small>`
-      return `<li data-s="${s.w.start}" data-e="${s.w.end}"${i > 1 ? ' hidden' : ''}><i></i><span class="t">${startTxt}<small>to ${end} ${endMer}</small></span><span><span class="s">${s.w.start >= 17 * 60 ? 'Tonight' : 'Today'}</span><span class="k" style="display:block">${esc(s.session_type)}</span></span></li>`
+      return `<li data-s="${s.w.start}" data-e="${s.w.end}"${i > 1 ? ' hidden' : ''}><i></i><span class="t">${startTxt}<small>to ${end} ${endMer}</small></span><span><span class="s">${s.w.start >= 17 * 60 ? 'Tonight' : 'Today'}</span><span class="k" style="display:block">${esc(s.session_type)}</span><a class="pp-cal" data-cal="${s.date}-${s.w.start}-${s.w.end}" hidden>+ Calendar</a></span></li>`
     })
     .join('')
   return `<section class="pp-card ${cls}" data-pp-day="${iso}"${visible ? '' : ' hidden'}>
@@ -551,6 +562,7 @@ var day='[data-pp-day="'+iso+'"] ';
 document.querySelectorAll(day+'[data-s]').forEach(function(el){var s=+el.dataset.s,e=+el.dataset.e,k=t>=e?'done':t>=s?'on':'next';el.classList.add('is-'+k);var l=el.querySelector('.pp-state');if(l)l.textContent=k==='done'?'Done':k==='on'?'On now':''});
 document.querySelectorAll(day+'.pp-now').forEach(function(n){if(t<360||t>1320)return;n.style.left='calc((100% - 8.5rem) * '+(t-360)/960+')';n.firstChild.textContent=fm(t);n.hidden=false});
 document.querySelectorAll(day+'.pp-un').forEach(function(u){var li=[].slice.call(u.children),k=li.filter(function(x){return t<+x.dataset.e}).slice(0,2);li.forEach(function(x){x.hidden=k.indexOf(x)<0});k.forEach(function(x){var s=+x.dataset.s,e=+x.dataset.e,lab=x.querySelector('.s');if(t>=s){x.classList.add('is-on');lab.textContent='On now \\u00b7 ends in '+du(e-t)}else lab.textContent=s-t<=60?'Starts in '+du(s-t):s>=1020?'Tonight':'Later today'});var none=u.nextElementSibling;if(none&&!k.length)none.hidden=false});
+document.querySelectorAll(day+'a[data-cal]').forEach(function(a){var src=document.querySelector('li[data-k="'+a.dataset.cal+'"] a.pp-cal');if(src){a.href=src.href;a.download=src.download;a.setAttribute('aria-label',src.getAttribute('aria-label'));a.hidden=false}});
 var lap=[].slice.call(document.querySelectorAll(day+'li[data-lap]')).map(function(x){return[+x.dataset.s,+x.dataset.e]});
 document.querySelectorAll(day+'[data-pp-lap]').forEach(function(c){if(!lap.length)return;var on=lap.filter(function(w){return w[0]<=t&&t<w[1]})[0],nx=lap.filter(function(w){return w[0]>t})[0],v=c.querySelector('.v'),d=c.querySelector('.d');if(on){v.textContent='On now';d.textContent=fm(on[0])+' to '+fm(on[1])+', ends in '+du(on[1]-t)}else if(nx){v.textContent=fm(nx[0]);d.textContent=nx[0]-t<=60?'starts in '+du(nx[0]-t):'next today'}else{v.textContent='Done today';d.textContent='see this week below'}});
 })()`
@@ -773,7 +785,7 @@ export function renderPoolPage({
 <main class="pp-wrap pp-body">
   <div class="pp-col">
     ${days.map((d, i) => upNextCard(pool, d, i === 0, 'pp-only-sm')).join('')}
-    ${days.map((d, i) => todayCard(pool, d, i === 0)).join('')}
+    ${days.map((d, i) => todayCard(pool, d, i === 0, url)).join('')}
     <div id="pp-week" class="pp-col">${days.map((d, i) => weekCard(pool, d, i === 0)).join('')}</div>
     ${goodToKnow(pool)}
 

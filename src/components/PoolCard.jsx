@@ -24,7 +24,9 @@ import {
   officialPage,
   cardSubtitle,
   formatClock,
+  sessionWindow,
 } from '../utils'
+import { icsFilename, icsHref, sessionEvent } from '../calendar'
 
 // "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
 // selected week. It must never read as "Open": the badge is amber, not green,
@@ -47,13 +49,34 @@ function StatusBadge({ pool }) {
   )
 }
 
-function ScheduleRow({ schedule }) {
+function ScheduleRow({ schedule, pool, href }) {
+  // Add to calendar needs a real date and a readable time; legacy undated
+  // rows and unparseable times just don't offer it.
+  const window = schedule.date ? sessionWindow(schedule.time) : null
+  const event = window
+    ? sessionEvent(pool, schedule, window, href ? `https://pools.thinkdesign.com${href}` : undefined)
+    : null
   return (
     <li className="rounded-lg bg-shallow/40 p-3 ring-1 ring-inset ring-shallow">
       <p className="text-sm font-semibold text-deep-end">{schedule.session_type}</p>
       <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
         {/* "Mon 9/7" once the data carries dates; bare weekday otherwise. */}
-        <span className="text-xs text-muted">{dayStamp(schedule)}</span>
+        <span className="text-xs text-muted">
+          {dayStamp(schedule)}
+          {event && (
+            <>
+              {' · '}
+              <a
+                href={icsHref(event)}
+                download={icsFilename(event)}
+                className="font-medium text-tile-blue hover:underline"
+                aria-label={`Add ${schedule.session_type}, ${dayStamp(schedule)} ${schedule.time}, to your calendar`}
+              >
+                Add to calendar
+              </a>
+            </>
+          )}
+        </span>
         {/* Lane swim times are the hero — big and bold */}
         <span className="font-mono text-base font-medium text-tile-blue">{schedule.time}</span>
       </div>
@@ -351,7 +374,7 @@ export default function PoolCard({
               </h4>
               <ul className="space-y-2">
                 {schedules.map((s, i) => (
-                  <ScheduleRow key={i} schedule={s} />
+                  <ScheduleRow key={i} schedule={s} pool={pool} href={href} />
                 ))}
               </ul>
             </section>
