@@ -199,7 +199,11 @@ export default function PoolCard({
           {showSessionType && lead && (
             <p className="text-xs text-deep-end/80">{lead.lead.session_type}</p>
           )}
-          <p className="text-xs text-muted">{cardSubtitle(pool)}</p>
+          <p className="text-xs text-muted">
+            {cardSubtitle(pool)}
+            {pool.miles != null &&
+              ` · ${pool.miles < 10 ? pool.miles.toFixed(1) : Math.round(pool.miles)} mi`}
+          </p>
           {/* The news strip's story, kept in context on the pool it's about —
               still here after a reader dismisses the strip. */}
           {NEWS.poolName === pool.pool_name && (

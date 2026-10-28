@@ -52,11 +52,13 @@ function frame(points) {
   return [x0, y0, w, h]
 }
 
-export default function PoolMap({ pools, highlightId, onSelectPool, className = '' }) {
+export default function PoolMap({ pools, highlightId, onSelectPool, you = null, className = '' }) {
   const placed = pools
     .filter((p) => p.place?.lat != null && p.place?.lng != null && p.lead)
     .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
-  const [vx, vy, vw, vh] = frame(placed.map((p) => p.at))
+  const youAt = you ? projectToMap(you.lat, you.lng) : null
+  // Frame the reader too, so "You" is never off the edge.
+  const [vx, vy, vw, vh] = frame([...placed.map((p) => p.at), ...(youAt ? [youAt] : [])])
   // Pins and labels keep a constant on-screen size however far it zooms.
   const k = vw / 600
 
@@ -93,6 +95,30 @@ export default function PoolMap({ pools, highlightId, onSelectPool, className = 
             {b.name}
           </text>
         ))}
+        {youAt && (
+          <g aria-label="Your location">
+            <circle cx={youAt[0]} cy={youAt[1]} r={14 * k} fill="#1668e3" opacity="0.18" />
+            <circle
+              cx={youAt[0]}
+              cy={youAt[1]}
+              r={6 * k}
+              fill="#1668e3"
+              stroke="#fff"
+              strokeWidth={2 * k}
+            />
+            <text
+              x={youAt[0] + 11 * k}
+              y={youAt[1]}
+              dominantBaseline="central"
+              fontSize={11 * k}
+              fontWeight="700"
+              letterSpacing={1 * k}
+              fill="#1668e3"
+            >
+              YOU
+            </text>
+          </g>
+        )}
         {order.map(({ pool, id, at: [x, y] }) => {
           const tone = PIN[pool.lead.group] ?? PIN.day
           const label = pinLabel(pool)

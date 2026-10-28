@@ -52,6 +52,7 @@ import {
   longDayLabel,
 } from './utils'
 import { loadPools } from './pools'
+import { milesBetween } from './poolMeta'
 
 // Scraped pools + the Riverbank overlay + location meta (data/pool_meta.json).
 // Built from the reader's clock, not the build's, so a cached bundle still
@@ -169,6 +170,32 @@ export default function App() {
   // bookmark. While it has text it searches every borough.
   const [query, setQuery] = useState('')
   const searching = query.trim().length > 0
+
+  // "Near me": the reader's position, only after they ask, only in memory —
+  // never persisted or sent anywhere. Sorts each group by distance and puts a
+  // "You" dot on the map. Someone far outside the city gets no distances
+  // (sorting by "312 mi" helps no one).
+  const [near, setNear] = useState({ status: 'off', at: null })
+  const toggleNear = useCallback(() => {
+    if (near.status === 'on' || near.status === 'locating') {
+      setNear({ status: 'off', at: null })
+      return
+    }
+    if (!navigator.geolocation) {
+      setNear({ status: 'denied', at: null })
+      return
+    }
+    setNear({ status: 'locating', at: null })
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const at = { lat: coords.latitude, lng: coords.longitude }
+        const fromMidtown = milesBetween({ place: at }, { place: { lat: 40.754, lng: -73.984 } })
+        setNear(fromMidtown > 30 ? { status: 'far', at: null } : { status: 'on', at })
+      },
+      () => setNear({ status: 'denied', at: null }),
+      { enableHighAccuracy: false, maximumAge: 300_000, timeout: 10_000 },
+    )
+  }, [near.status])
 
   // A filter the reader chose: push a history entry so Back returns to the
   // previous view, and write all three parameters so the URL is shareable
@@ -422,6 +449,7 @@ export default function App() {
           ...p,
           schedules: lead.group === 'done' ? matching : upcoming,
           lead,
+          miles: near.at ? milesBetween({ place: near.at }, p) : null,
           reopens_on: reopening.get(p.pool_name) ?? null,
         }
       })
@@ -429,6 +457,8 @@ export default function App() {
       .sort(
         (a, b) =>
           RESULT_GROUPS.indexOf(a.lead.group) - RESULT_GROUPS.indexOf(b.lead.group) ||
+          // Near me: nearest first within each group.
+          (a.miles ?? 0) - (b.miles ?? 0) ||
           a.lead.lead.window.start - b.lead.lead.window.start ||
           a.lead.lead.window.end - b.lead.lead.window.end ||
           a.pool_name.localeCompare(b.pool_name),
@@ -443,6 +473,7 @@ export default function App() {
     now,
     query,
     searching,
+    near.at,
   ])
 
   // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
@@ -478,7 +509,10 @@ export default function App() {
     const day = dayPhrase(selectedDay)
     const n = visiblePools.length
     if (!n) return { title: `No ${noun.toLowerCase()} ${day}.`, next: null }
-    const first = visiblePools[0]
+    // The earliest session, not the first card — Near me sorts by distance.
+    const first = visiblePools.reduce((a, b) =>
+      b.lead.lead.window.start < a.lead.lead.window.start ? b : a,
+    )
     return {
       title: `${noun} at ${n} pool${n === 1 ? '' : 's'} ${day}.`,
       next: `First session starts at ${formatClock(first.lead.lead.window.start)} at ${first.pool_name}.`,
@@ -530,7 +564,7 @@ export default function App() {
               </span>
             </h1>
             <div className="hidden max-w-md flex-1 md:block">
-              <SearchBox value={query} onChange={setQuery} />
+              <SearchBox value={query} onChange={setQuery} near={near} onNear={toggleNear} />
             </div>
             <a
               href="https://thinkdesign.com"
@@ -565,7 +599,7 @@ export default function App() {
               )}
             </div>
             <div className="mt-4 md:hidden">
-              <SearchBox value={query} onChange={setQuery} />
+              <SearchBox value={query} onChange={setQuery} near={near} onNear={toggleNear} />
             </div>
             {activities.length > 0 && (
               <ActivityChips
@@ -717,6 +751,7 @@ export default function App() {
               pools={visiblePools}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
+              you={near.at}
               className="h-full"
             />
           </div>
@@ -740,6 +775,7 @@ export default function App() {
             pools={visiblePools}
             highlightId={selectedId}
             onSelectPool={selectPool}
+            you={near.at}
             className="h-full"
           />
           <button
