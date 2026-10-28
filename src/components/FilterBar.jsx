@@ -182,55 +182,37 @@ export default function FilterBar({
   boroughOptions,
   selectedBorough,
   onSelectBorough,
-  activities,
-  selectedActivity,
-  onSelectActivity,
+  searching,
   dates,
   selectedDay,
   onSelectDay,
 }) {
-  const hasActivities = activities && activities.length > 0
   return (
     <div className="sticky top-0 z-10 -mx-4 border-b border-line bg-deck/90 px-4 py-3 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-2">
-        {/* Mobile: dropdowns for borough + activity */}
-        <div className="flex items-center gap-2 md:hidden">
-          <SelectMenu
-            label="Borough"
-            options={boroughOptions}
-            selected={selectedBorough}
-            onSelect={onSelectBorough}
-          />
-          {hasActivities && (
-            <SelectMenu
-              label="Activity"
-              options={['All activities', ...activities]}
-              selected={selectedActivity}
-              onSelect={onSelectActivity}
-              accentClass="text-tile-blue ring-tile-blue/40"
-            />
-          )}
-        </div>
-
-        {/* Desktop: pill rows */}
-        <div className="hidden flex-wrap items-center gap-2 md:flex">
-          <PillRow
-            options={boroughOptions}
-            selected={selectedBorough}
-            onSelect={onSelectBorough}
-          />
-        </div>
-        {hasActivities && (
-          <div className="hidden md:block">
-            <PillRow
-              options={['All activities', ...activities]}
-              selected={selectedActivity}
-              onSelect={onSelectActivity}
-              activeClass="bg-tile-blue text-white shadow-sm"
-            />
-          </div>
+        {/* The header search spans every borough, so the borough choice steps
+            aside while it has text rather than silently narrowing it. */}
+        {searching ? (
+          <p className="text-sm text-muted">Searching all boroughs</p>
+        ) : (
+          <>
+            <div className="md:hidden">
+              <SelectMenu
+                label="Borough"
+                options={boroughOptions}
+                selected={selectedBorough}
+                onSelect={onSelectBorough}
+              />
+            </div>
+            <div className="hidden md:flex">
+              <PillRow
+                options={boroughOptions}
+                selected={selectedBorough}
+                onSelect={onSelectBorough}
+              />
+            </div>
+          </>
         )}
-
         <DayPicker selected={selectedDay} onSelect={onSelectDay} dates={dates} />
       </div>
     </div>

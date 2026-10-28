@@ -101,6 +101,31 @@ export const BOROUGH_ORDER = [
   'Other',
 ]
 
+// The header search: every word must appear somewhere in the pool's name,
+// neighborhood, borough, address or ZIP. "kips bay", "11206", "riverside" and
+// "chelsea pool" all work; it searches the bundled pools, nothing remote.
+export function matchesQuery(pool, query) {
+  const words = (query ?? '').toLowerCase().split(/\s+/).filter(Boolean)
+  if (!words.length) return true
+  const loc = pool.location ?? {}
+  const hay = [
+    pool.pool_name,
+    pool.card_place,
+    pool.place?.neighborhood,
+    getBorough(pool),
+    getBorough(pool) === 'Bronx' ? 'the bronx' : '',
+    loc.address,
+    loc.cross_streets,
+    loc.city,
+    loc.zip_code,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+    .replace(/[’']/g, "'")
+  return words.every((w) => hay.includes(w.replace(/[’']/g, "'")))
+}
+
 // "the Bronx" mid-sentence; every other borough takes no article.
 export const boroughInProse = (b) => (b === 'Bronx' ? 'the Bronx' : b)
 

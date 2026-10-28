@@ -45,7 +45,14 @@ export function otherOperatorsNote(pools) {
 // from the banner), never scraped. There is no expiry on purpose: React and
 // the build-time fallback would judge it at different times and disagree. Delete it (and its two render sites) once it stops being news.
 // Added 2026-10-04 when St. Mary's reopened (the scraper picked it up on 9/30).
+//
+// Since the 2026-10-27 redesign the homepage shows only a one-line strip
+// (headline + link, dismissible), and the pool the story is about wears a
+// small tag on its card. The summary and photo live on the story page; the
+// summary is kept here for the meta description and as the strip's title.
 export const NEWS = {
+  // Dismissal is remembered per story, so a new story shows again.
+  id: 'st-marys-reopening',
   headline: "St. Mary's Recreation Center pool has reopened in the Bronx",
   summary:
     "After nearly four years closed, St. Mary's Recreation Center in Mott Haven reopened on " +
@@ -55,6 +62,9 @@ export const NEWS = {
   // Our own write-up of a first visit, a static page in public/news/.
   postUrl: '/news/st-marys-reopening/',
   postLabel: 'Read our visit report, with photos',
+  // The pool this story is about, and the tag its card carries.
+  poolName: "St. Mary's Pool",
+  tag: 'Reopened Sep 30',
   // The article's shallow-end photo, set beside the text at half width. The
   // 800px copy is made for the banner; the 1600px original covers 2x screens.
   photo: {

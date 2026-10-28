@@ -6,6 +6,8 @@ import NewsBanner from './components/NewsBanner'
 import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
+import SearchBox from './components/SearchBox'
+import ActivityChips from './components/ActivityChips'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
@@ -44,6 +46,7 @@ import {
   relativeDay,
   boroughInProse,
   leadSession,
+  matchesQuery,
   RESULT_GROUPS,
   longDayLabel,
 } from './utils'
@@ -147,6 +150,10 @@ export default function App() {
     })
   }, [])
   const { borough: selectedBorough, activity: selectedActivity, day: selectedDay } = filters
+  // The header search. Not persisted: it's a quick lookup, not a view to
+  // bookmark. While it has text it searches every borough.
+  const [query, setQuery] = useState('')
+  const searching = query.trim().length > 0
 
   // A filter the reader chose: push a history entry so Back returns to the
   // previous view, and write all three parameters so the URL is shareable
@@ -312,13 +319,24 @@ export default function App() {
   // purpose to find out.
   const emptyState = useMemo(() => {
     const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
-    const where =
-      selectedBorough === 'All Boroughs'
+    const found = searching ? pools.filter((p) => matchesQuery(p, query)) : pools
+    if (searching && !found.length) {
+      return { title: `No pools match “${query.trim()}”.`, next: 'Try a pool name, neighborhood or ZIP code.' }
+    }
+    const where = searching
+      ? found.length === 1
+        ? ` at ${found[0].pool_name}`
+        : ` at pools matching “${query.trim()}”`
+      : selectedBorough === 'All Boroughs'
         ? ''
         : ` in ${boroughInProse(selectedBorough)}`
     const next = nextMatchingSession(
-      pools,
-      { activity: selectedActivity, borough: selectedBorough, day: selectedDay },
+      found,
+      {
+        activity: selectedActivity,
+        borough: searching ? 'All Boroughs' : selectedBorough,
+        day: selectedDay,
+      },
       now,
     )
     const day = next && relativeDay(next.date, now)
@@ -328,7 +346,7 @@ export default function App() {
         ? `Next: ${day.charAt(0).toUpperCase() + day.slice(1)}, ${formatClock(next.start)} at ${next.pool.pool_name}.`
         : null,
     }
-  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay])
+  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay, query, searching])
 
   // Null unless the data has actually gone stale, so the banner is absent in the
   // normal case rather than rendered-and-hidden. Deliberately has no counterpart
@@ -356,8 +374,11 @@ export default function App() {
   // pool has no schedules to match), so the pools people most need to know
   // about were the ones that disappeared.
   const closedPools = useMemo(
-    () => pools.filter((p) => p.status === 'closed' && !reopening.has(p.pool_name)),
-    [reopening],
+    () =>
+      pools.filter(
+        (p) => p.status === 'closed' && !reopening.has(p.pool_name) && matchesQuery(p, query),
+      ),
+    [reopening, query],
   )
 
   const visiblePools = useMemo(() => {
@@ -365,7 +386,11 @@ export default function App() {
       // A closed pool joins the grid only for a range it actually reopens in;
       // the rest of the time it stays in the closed list below.
       .filter((p) => p.status !== 'closed' || reopening.has(p.pool_name))
-      .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
+      .filter((p) =>
+        searching
+          ? matchesQuery(p, query)
+          : selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough,
+      )
       .map((p) => {
         // Always resolve through the dated weeks: "Today" now means this
         // calendar date, so a holiday closure genuinely empties the day
@@ -393,7 +418,17 @@ export default function App() {
           a.lead.lead.window.end - b.lead.lead.window.end ||
           a.pool_name.localeCompare(b.pool_name),
       )
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, reopening, now])
+  }, [
+    selectedBorough,
+    selectedActivity,
+    activityActive,
+    selectedDay,
+    hidePast,
+    reopening,
+    now,
+    query,
+    searching,
+  ])
 
   // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
   const groupedPools = useMemo(() => {
@@ -417,6 +452,23 @@ export default function App() {
       pools: byGroup.get(g),
     }))
   }, [visiblePools, selectedDay])
+
+  // On a day other than today the live "right now" line would talk past the
+  // list, so the headline describes the chosen day instead.
+  const shownHeadline = useMemo(() => {
+    if (selectedDay === 'Today') return headline
+    const noun = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'Swimming'
+    const day = dayPhrase(selectedDay)
+    const n = visiblePools.length
+    if (!n) return { title: `No ${noun.toLowerCase()} ${day}.`, next: null }
+    const first = visiblePools[0]
+    return {
+      title: `${noun} at ${n} pool${n === 1 ? '' : 's'} ${day}.`,
+      next: `First session starts at ${formatClock(first.lead.lead.window.start)} at ${first.pool_name}.`,
+    }
+  }, [selectedDay, headline, activityActive, selectedActivity, visiblePools])
 
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step
@@ -444,14 +496,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-deck px-4 pb-12">
-      <header className="-mx-4 mb-4 bg-deep-end px-4 text-white">
-        <div className="mx-auto max-w-6xl pb-6 pt-5">
-          <div className="flex items-center justify-between gap-4">
+      <header className="-mx-4 bg-deep-end px-4 text-white">
+        <div className="mx-auto max-w-6xl pb-5 pt-5">
+          <div className="flex items-center gap-4">
             {/* The Figma lockup, as live text: "NYC Indoor" over "Pool Finder".
                 textContent reads "NYC Indoor Pool Finder" — the site name, which
                 must keep "Indoor" (CLAUDE.md). The dot is CSS so it isn't part
                 of the name. */}
-            <h1 className="flex items-center gap-2.5">
+            <h1 className="flex shrink-0 items-center gap-2.5">
               <LogoMark className="size-10 shrink-0" />
               <span className="flex flex-col">
                 <span className="text-[0.68rem] font-semibold uppercase leading-none tracking-[0.16em] text-white/70">
@@ -462,11 +514,14 @@ export default function App() {
                 </span>
               </span>
             </h1>
+            <div className="hidden max-w-md flex-1 md:block">
+              <SearchBox value={query} onChange={setQuery} />
+            </div>
             <a
               href="https://thinkdesign.com"
               target="_blank"
               rel="noreferrer"
-              className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
+              className="ml-auto shrink-0 opacity-80 transition-opacity hover:opacity-100"
               aria-label="Think Design"
             >
               {/* The logo is purple artwork; knocked out to white on the navy band. */}
@@ -484,29 +539,48 @@ export default function App() {
               Schedules checked {checked} · NYC Parks
             </p>
           )}
-          {/* Time-relative, so React-only: the fallback can't know "now". */}
-          <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            {headline.title}
-          </h2>
-          {headline.next && <p className="mt-1 text-sm text-white/75">{headline.next}</p>}
+          <div className="lg:flex lg:items-end lg:justify-between lg:gap-6">
+            <div className="min-w-0">
+              {/* Time-relative, so React-only: the fallback can't know "now". */}
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                {shownHeadline.title}
+              </h2>
+              {shownHeadline.next && (
+                <p className="mt-1 text-sm text-white/75">{shownHeadline.next}</p>
+              )}
+            </div>
+            <div className="mt-4 md:hidden">
+              <SearchBox value={query} onChange={setQuery} />
+            </div>
+            {activities.length > 0 && (
+              <ActivityChips
+                activities={['All activities', ...activities]}
+                selected={selectedActivity}
+                onSelect={setSelectedActivity}
+              />
+            )}
+          </div>
 
-          <p className="mt-4 text-sm font-medium text-white/90">
-            {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
-            {openBoroughList}
-          </p>
-          <p className="mt-0.5 text-sm text-white/70">
-            Public pools open now — lap swim &amp; open swim schedules
-          </p>
-          {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
-          <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
-            <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
-            <CallAheadNote />
-          </p>
+          <div className="mt-4 border-t border-white/10 pt-3">
+            <p className="text-sm font-medium text-white/90">
+              {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
+              {openBoroughList}
+            </p>
+            <p className="mt-0.5 text-sm text-white/70">
+              Public pools open now — lap swim &amp; open swim schedules
+            </p>
+            {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
+            <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
+              <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
+              <CallAheadNote />
+            </p>
+          </div>
         </div>
       </header>
 
       {/* Mirrored in the SEO fallback via newsHtml(). */}
       <NewsBanner />
+      <div className="h-4" aria-hidden="true" />
 
       {staleFor && (
         <div
@@ -532,9 +606,7 @@ export default function App() {
         boroughOptions={boroughOptions}
         selectedBorough={selectedBorough}
         onSelectBorough={setSelectedBorough}
-        activities={activities}
-        selectedActivity={selectedActivity}
-        onSelectActivity={setSelectedActivity}
+        searching={searching}
         dates={dates}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}

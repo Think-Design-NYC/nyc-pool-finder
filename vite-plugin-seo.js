@@ -329,10 +329,6 @@ const FALLBACK_STYLE = `
 #seo-fallback .sf-news{background:#eef9fd;border:1px solid #d6f1fa;border-radius:.75rem;padding:.75rem 1rem;margin:.75rem 0;font-size:.9rem;color:#0b2a4a}
 #seo-fallback .sf-news strong a{color:inherit;text-decoration:none}
 #seo-fallback .sf-news p{margin:0}
-#seo-fallback .sf-news figure{margin:.75rem 0 0}
-#seo-fallback .sf-news img{display:block;width:100%;height:auto;border-radius:.5rem}
-#seo-fallback .sf-news figcaption{margin-top:.25rem;font-size:.75rem;opacity:.7}
-@media (min-width:768px){#seo-fallback .sf-news{display:flex;gap:1.25rem;align-items:flex-start}#seo-fallback .sf-news p,#seo-fallback .sf-news figure{flex:1;margin:0}}
 #seo-fallback .sf-qr{display:block;width:min(190px,50vw);height:auto;border:1px solid #dce4ec;border-radius:.5rem;margin:0 0 .75rem}
 </style>`
 

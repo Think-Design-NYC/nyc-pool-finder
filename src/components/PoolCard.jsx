@@ -9,8 +9,10 @@ import {
   Building2,
   CalendarDays,
   ChevronDown,
+  Newspaper,
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { NEWS } from '../copy'
 import {
   getStatusStyle,
   statusLabel,
@@ -198,6 +200,18 @@ export default function PoolCard({
             <p className="text-xs text-deep-end/80">{lead.lead.session_type}</p>
           )}
           <p className="text-xs text-muted">{cardSubtitle(pool)}</p>
+          {/* The news strip's story, kept in context on the pool it's about —
+              still here after a reader dismisses the strip. */}
+          {NEWS.poolName === pool.pool_name && (
+            <a
+              href={NEWS.postUrl}
+              onClick={(e) => e.stopPropagation()}
+              className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-shallow px-2 py-0.5 text-[11px] font-semibold text-tile-blue hover:underline"
+            >
+              <Newspaper size={12} aria-hidden="true" />
+              {NEWS.tag} · Read report
+            </a>
+          )}
           {/* Open is the default; only say something when it isn't. */}
           {(pool.status !== 'open' || pool.reopens_on) && (
             <div className="mt-1.5">
