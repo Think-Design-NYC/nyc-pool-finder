@@ -580,6 +580,19 @@ export default function App() {
     return pools.filter((p) => !shown.has(p.pool_name))
   }, [visiblePools, closedPools])
 
+  // Open pools with nothing matching (the directory's set): grey pins, so a
+  // pool like Asser Levy on a day without lap swim is still on the map.
+  const mapIdle = useMemo(
+    () =>
+      otherPools.filter(
+        (p) =>
+          p.status !== 'closed' &&
+          (searching || selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough),
+      ),
+    [otherPools, searching, selectedBorough],
+  )
+  const idleLabel = activityActive ? `no ${selectedActivity.toLowerCase()}` : 'no sessions'
+
   // One control for the grid: "Expand all" until every visible card is open.
   const visibleIds = visiblePools.map(poolAnchorId)
   const allCardsOpen = visibleIds.length > 0 && visibleIds.every((id) => openCards.has(id))
@@ -801,6 +814,8 @@ export default function App() {
               pools={visiblePools}
             caption={mapCaption}
             closed={mapClosed}
+            idle={mapIdle}
+            idleLabel={idleLabel}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
               you={origin}
@@ -828,6 +843,8 @@ export default function App() {
             pools={visiblePools}
             caption={mapCaption}
             closed={mapClosed}
+            idle={mapIdle}
+            idleLabel={idleLabel}
             highlightId={selectedId}
             onSelectPool={selectPool}
             you={origin}

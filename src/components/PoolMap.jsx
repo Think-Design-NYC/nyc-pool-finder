@@ -81,6 +81,8 @@ function frame(points) {
 export default function PoolMap({
   pools,
   closed = [],
+  idle = [],
+  idleLabel = 'none today',
   caption,
   highlightId,
   onSelectPool,
@@ -91,9 +93,15 @@ export default function PoolMap({
   const placed = pools
     .filter((p) => p.place?.lat != null && p.place?.lng != null && p.lead)
     .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
-  const shut = closed
-    .filter((p) => p.place?.lat != null && p.place?.lng != null)
-    .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
+  // Secondary markers: closed pools, and open pools with nothing matching the
+  // filters ("Asser Levy · no lap swim"). Every pool is on the map, as every
+  // pool is on the page — a missing pin reads as a missing pool.
+  const shut = [
+    ...closed.map((p) => ({ pool: p, kind: 'closed' })),
+    ...idle.map((p) => ({ pool: p, kind: 'idle' })),
+  ]
+    .filter(({ pool: p }) => p.place?.lat != null && p.place?.lng != null)
+    .map((m) => ({ ...m, id: poolAnchorId(m.pool), at: projectToMap(m.pool.place.lat, m.pool.place.lng) }))
   const youAt = you ? projectToMap(you.lat, you.lng) : null
   // Frame the reader and the closed pools too, so nothing listed is off the edge.
   const [vx, vy, vw, vh] = frame([
@@ -138,10 +146,11 @@ export default function PoolMap({
           </text>
         ))}
         {/* Closed pools first, so open pins sit on top where they crowd. */}
-        {shut.map(({ pool, id, at: [x, y] }) => {
-          const works = isWorks(pool)
+        {shut.map(({ pool, kind, id, at: [x, y] }) => {
+          const works = kind === 'closed' && isWorks(pool)
           const name = shortPoolName(pool)
-          const nameW = (name.length + 9) * 6.2 * k // name + " · closed"
+          const suffix = kind === 'closed' ? 'closed' : idleLabel
+          const nameW = (name.length + suffix.length + 3) * 6.2 * k
           // Flip left at the frame's edge, or when an open pin (which wins the
           // space) sits where the label would run — Hansborough, just west of
           // St. Mary's.
@@ -163,15 +172,25 @@ export default function PoolMap({
               key={id}
               role="button"
               tabIndex={0}
-              aria-label={`${pool.pool_name}: closed${pool.closure_reason ? ` ${pool.closure_reason}` : ''}`}
+              aria-label={
+                kind === 'closed'
+                  ? `${pool.pool_name}: closed${pool.closure_reason ? ` ${pool.closure_reason}` : ''}`
+                  : `${pool.pool_name}: ${idleLabel}`
+              }
               onClick={() => onSelectPool(id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectPool(id)}
               className="cursor-pointer focus:outline-none"
             >
-              <circle cx={x} cy={y} r={10 * k} fill="#fff" stroke="#dce4ec" strokeWidth={1.2 * k} />
-              <g transform={`translate(${x} ${y})`}>
-                <ClosedIcon works={works} k={k} />
-              </g>
+              {kind === 'closed' ? (
+                <>
+                  <circle cx={x} cy={y} r={10 * k} fill="#fff" stroke="#dce4ec" strokeWidth={1.2 * k} />
+                  <g transform={`translate(${x} ${y})`}>
+                    <ClosedIcon works={works} k={k} />
+                  </g>
+                </>
+              ) : (
+                <circle cx={x} cy={y} r={5.5 * k} fill="#fff" stroke="#8a9bb0" strokeWidth={2 * k} />
+              )}
               <text
                 x={
                   side === 'right'
@@ -192,7 +211,7 @@ export default function PoolMap({
                 strokeLinejoin="round"
                 paintOrder="stroke"
               >
-                {name} · closed
+                {name} · {suffix}
               </text>
             </g>
           )
@@ -297,7 +316,7 @@ export default function PoolMap({
           {caption}
         </p>
       )}
-      <ul className="absolute left-3 top-12 flex lg:bottom-3 lg:top-auto gap-3 rounded-full bg-white/95 px-3 py-1.5 text-xs text-deep-end shadow-sm ring-1 ring-line">
+      <ul className="absolute left-3 right-3 top-12 flex w-fit max-w-[calc(100%-1.5rem)] flex-wrap gap-x-3 gap-y-1 rounded-2xl bg-white/95 px-3 py-1.5 text-xs text-deep-end shadow-sm ring-1 ring-line lg:bottom-3 lg:top-auto [&>li]:whitespace-nowrap">
         <li className="flex items-center gap-1.5">
           <span className="size-2 rounded-full bg-open" aria-hidden="true" />
           On now
@@ -310,7 +329,13 @@ export default function PoolMap({
           <span className="size-2 rounded-full bg-deep-end" aria-hidden="true" />
           Later
         </li>
-        {shut.some((p) => !isWorks(p.pool)) && (
+        {shut.some((p) => p.kind === 'idle') && (
+          <li className="flex items-center gap-1.5">
+            <span className="size-2.5 rounded-full border-2 border-[#8a9bb0] bg-white" aria-hidden="true" />
+            {idleLabel.charAt(0).toUpperCase() + idleLabel.slice(1)}
+          </li>
+        )}
+        {shut.some((p) => p.kind === 'closed' && !isWorks(p.pool)) && (
           <li className="flex items-center gap-1.5">
             <svg viewBox="-7 -7 14 14" className="size-3" aria-hidden="true">
               <ClosedIcon works={false} k={1} />
@@ -318,7 +343,7 @@ export default function PoolMap({
             Closed
           </li>
         )}
-        {shut.some((p) => isWorks(p.pool)) && (
+        {shut.some((p) => p.kind === 'closed' && isWorks(p.pool)) && (
           <li className="flex items-center gap-1.5">
             <svg viewBox="-7 -7 14 14" className="size-3" aria-hidden="true">
               <ClosedIcon works k={1} />

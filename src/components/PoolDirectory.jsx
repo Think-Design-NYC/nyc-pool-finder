@@ -1,4 +1,4 @@
-import { getBorough, statusLabel, poolHref } from '../utils'
+import { getBorough, statusLabel, poolHref, poolAnchorId } from '../utils'
 
 // The pools the active filters excluded — links only, no schedules.
 //
@@ -28,7 +28,7 @@ export default function PoolDirectory({ pools, slugs }) {
         {pools.map((pool) => {
           const href = poolHref(pool, slugs)
           return (
-            <li key={pool.pool_name} className="text-sm">
+            <li key={pool.pool_name} id={poolAnchorId(pool)} className="scroll-mt-32 text-sm">
               {href ? (
                 <a href={href} className="font-medium text-tile-blue hover:underline">
                   {pool.pool_name}
