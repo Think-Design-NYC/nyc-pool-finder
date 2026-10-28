@@ -24,17 +24,11 @@ export function callAheadHtml(detail = CALL_AHEAD_DETAIL) {
   )}`
 }
 
-// The announcement banner as markup; mirrors <NewsBanner>. Scoped styles live
-// in vite-plugin-seo.js under `.sf-news`.
+// The news strip as markup; mirrors <NewsBanner> (headline and link only —
+// the summary and photo live on the story page). Scoped styles live in
+// vite-plugin-seo.js under `.sf-news`.
 export function newsHtml() {
-  const ph = NEWS.photo
-  return `<aside class="sf-news"><p><strong><a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(NEWS.headline)}</a>.</strong> ${escapeHtml(
-    NEWS.summary,
-  )} <a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(NEWS.postLabel)}</a>.</p><figure><a href="${escapeHtml(
-    NEWS.postUrl,
-  )}"><img src="${escapeHtml(ph.src)}" srcset="${escapeHtml(
-    ph.srcSet,
-  )}" sizes="(min-width: 768px) 560px, 100vw" width="${ph.width}" height="${ph.height}" alt="${escapeHtml(
-    ph.alt,
-  )}"></a><figcaption>${escapeHtml(ph.caption)}</figcaption></figure></aside>`
+  return `<aside class="sf-news"><p><strong><a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(
+    NEWS.headline,
+  )}</a>.</strong> <a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(NEWS.postLabel)}</a></p></aside>`
 }

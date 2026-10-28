@@ -1,4 +1,4 @@
-import { getBorough, statusLabel, poolHref } from '../utils'
+import { getBorough, statusLabel, poolHref, poolAnchorId } from '../utils'
 
 // The pools the active filters excluded — links only, no schedules.
 //
@@ -17,10 +17,10 @@ export default function PoolDirectory({ pools, slugs }) {
 
   return (
     <section className="mx-auto mt-10 max-w-6xl">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">
         Other NYC indoor pools ({pools.length})
       </h2>
-      <p className="mt-1 text-sm text-slate-500">
+      <p className="mt-1 text-sm text-muted">
         These don&apos;t match the filters above right now. Each has its own page with
         the full two-week schedule, address and phone number.
       </p>
@@ -28,15 +28,15 @@ export default function PoolDirectory({ pools, slugs }) {
         {pools.map((pool) => {
           const href = poolHref(pool, slugs)
           return (
-            <li key={pool.pool_name} className="text-sm">
+            <li key={pool.pool_name} id={poolAnchorId(pool)} className="scroll-mt-32 text-sm">
               {href ? (
-                <a href={href} className="font-medium text-sky-700 hover:underline">
+                <a href={href} className="font-medium text-tile-blue hover:underline">
                   {pool.pool_name}
                 </a>
               ) : (
-                <span className="font-medium text-slate-700">{pool.pool_name}</span>
+                <span className="font-medium text-deep-end">{pool.pool_name}</span>
               )}
-              <span className="text-slate-400">
+              <span className="text-muted/80">
                 {' '}
                 · {getBorough(pool)} · {statusLabel(pool)}
               </span>

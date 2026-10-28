@@ -101,6 +101,42 @@ export const BOROUGH_ORDER = [
   'Other',
 ]
 
+// The header search: every word must appear somewhere in the pool's name,
+// neighborhood, borough, address or ZIP. "kips bay", "11206", "riverside" and
+// "chelsea pool" all work; it searches the bundled pools, nothing remote.
+export function matchesQuery(pool, query) {
+  const words = (query ?? '').toLowerCase().split(/\s+/).filter(Boolean)
+  if (!words.length) return true
+  const loc = pool.location ?? {}
+  const hay = [
+    pool.pool_name,
+    pool.card_place,
+    pool.place?.neighborhood,
+    getBorough(pool),
+    getBorough(pool) === 'Bronx' ? 'the bronx' : '',
+    loc.address,
+    loc.cross_streets,
+    loc.city,
+    loc.zip_code,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+    .replace(/[’']/g, "'")
+  return words.every((w) => hay.includes(w.replace(/[’']/g, "'")))
+}
+
+// "Riverbank State Park", "Flushing Meadows", "Asser Levy" — a pool's name
+// with the generic tail dropped, for tight spots like map pins.
+export function shortPoolName(pool) {
+  return (pool?.pool_name ?? '')
+    .replace(/ Corona Park Pool & Rink$/, '')
+    .replace(/ (Recreation Center )?Pool( & Rink)?$/, '')
+}
+
+// "the Bronx" mid-sentence; every other borough takes no article.
+export const boroughInProse = (b) => (b === 'Bronx' ? 'the Bronx' : b)
+
 export const isOpen = (pool) => pool?.status === 'open'
 
 // Scraped pools carry no `operator`; only the Riverbank overlay sets one. Copy
@@ -156,8 +192,8 @@ export function joinBoroughs(names, conjunction = '&') {
 export const STATUS_STYLES = {
   open: {
     label: 'Open',
-    badge: 'bg-emerald-100 text-emerald-800 ring-emerald-600/20',
-    dot: 'bg-emerald-500',
+    badge: 'bg-open/10 text-emerald-800 ring-open/25',
+    dot: 'bg-open',
   },
   closed: {
     label: 'Closed',
@@ -283,8 +319,8 @@ export const BOROUGH_FILTERS = ['All Boroughs', ...BOROUGH_ORDER]
 export const ACTIVITY_FILTERS = ['All activities', ...ACTIVITIES.map((a) => a.key)]
 
 // Filter values as URL slugs: "All Boroughs" -> all-boroughs, "Children/Teen
-// Swim" -> children-teen-swim, "Plus2" -> plus-2. The camel-case split runs
-// first so compound values don't collapse to a single run of characters.
+// Swim" -> children-teen-swim. The camel-case split runs first so compound
+// values ("WaterPolo") don't collapse to a single run of characters.
 export function filterSlug(value) {
   return String(value ?? '')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -309,32 +345,42 @@ export function matchesActivity(sessionType, activityKey) {
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-// The day filter's stable values — offsets from the reader's today, so a tab
-// left open past midnight keeps meaning "+2 days from now". These are NOT
-// what the URL or localStorage carry: the persisted form is the resolved ISO
-// date (see filtersToSearch), so a copied link pins the calendar day the
-// sharer meant. Labels roll forward daily.
-export const DAY_FILTERS = ['Today', 'Tomorrow', 'Plus2', 'Plus3']
+// The day filter's values: 'Today' and 'Tomorrow' stay relative to the
+// reader's clock, so a tab left open past midnight keeps meaning "today"; any
+// other day is the picked ISO date itself ('2026-10-29'), from the Pick a day
+// calendar. Neither form is what the URL carries — the persisted form is always
+// the resolved ISO date (see filtersToSearch), so a copied link pins the
+// calendar day the sharer meant.
+export const DAY_FILTERS = ['Today', 'Tomorrow']
 
-const DAY_OFFSETS = { Today: 0, Tomorrow: 1, Plus2: 2, Plus3: 3 }
+const DAY_OFFSETS = { Today: 0, Tomorrow: 1 }
 
-// 'Plus2' on 2026-09-20 -> '2026-09-22'.
+const isISODate = (v) => /^\d{4}-\d{2}-\d{2}$/.test(v ?? '')
+
+// 'Tomorrow' on 2026-09-20 -> '2026-09-21'; a picked ISO date is itself.
 export function dateForDayFilter(dayKey, from = new Date()) {
+  if (isISODate(dayKey)) return dayKey
   const d = new Date(from.getFullYear(), from.getMonth(), from.getDate())
   d.setDate(d.getDate() + (DAY_OFFSETS[dayKey] ?? 0))
   return toISODate(d)
 }
 
-// '2026-09-22' back to the token it means for this reader today, or null
-// when the date is past, beyond the four-pill window, or not a date at all —
-// callers fall through to their stored/default value. Math.round absorbs the
-// off-by-an-hour a DST boundary introduces into the millisecond difference.
+// How far ahead a picked day may be. The scraper covers this week and next;
+// a little slack lets a link shared late on a Sunday still resolve.
+const MAX_DAYS_AHEAD = 21
+
+// '2026-09-22' back to the filter value it means for this reader today:
+// 'Today', 'Tomorrow', or the date itself for a later day. Null when the date
+// is past, too far out, or not a date at all — callers fall through to their
+// stored/default value. Math.round absorbs the off-by-an-hour a DST boundary
+// introduces into the millisecond difference.
 export function dayFilterFromDate(iso, from = new Date()) {
   const d = parseISODate(iso)
   if (!d) return null
   const today = new Date(from.getFullYear(), from.getMonth(), from.getDate())
   const offset = Math.round((d - today) / 86400000)
-  return DAY_FILTERS[offset] ?? null
+  if (offset < 0 || offset > MAX_DAYS_AHEAD) return null
+  return DAY_FILTERS[offset] ?? iso
 }
 
 // Filter state <-> query string. Deliberately writes all three parameters at
@@ -389,22 +435,30 @@ export function toISODate(d) {
 const shortDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`
 const longDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
 
-// The four day pills. Labels derive from the reader's clock — Today/Tomorrow
-// always did, and a weekday name can't claim data we lack the way a dated
-// week label could. A day with no data falls through to the empty-grid
-// message and the staleness banner, same as Today does now.
-export function dayFilterOptions(from = new Date()) {
-  const weekday = (d) => d.toLocaleDateString('en-US', { weekday: 'long' })
-  return DAY_FILTERS.map((value) => {
-    if (value === 'Today' || value === 'Tomorrow') return { value, label: value }
-    const d = parseISODate(dateForDayFilter(value, from))
-    return {
-      value,
-      label: weekday(d),
-      // A bare weekday name read aloud doesn't say which one; the date does.
-      ariaLabel: `${weekday(d)}, ${longDate(d)}`,
+// Every date from today on that the scraped weeks cover, for the Pick a day
+// calendar. A date with no matching sessions still appears — choosing it shows
+// the explained empty state rather than leaving the reader to guess.
+export function availableDates(pools, from = new Date()) {
+  const today = toISODate(from)
+  const out = new Set()
+  for (const p of pools ?? []) {
+    for (const w of p.schedule_weeks ?? []) {
+      for (const d of w.days ?? []) if (d.date >= today) out.add(d.date)
     }
-  })
+  }
+  return [...out].sort()
+}
+
+// "Thu 10/29" for the Pick a day chip once a date is chosen.
+export function shortDayLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `${d.toLocaleDateString('en-US', { weekday: 'short' })} ${shortDate(d)}` : iso
+}
+
+// "Thursday, October 29" — what a screen reader hears for a picked day.
+export function longDayLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `${d.toLocaleDateString('en-US', { weekday: 'long' })}, ${longDate(d)}` : iso
 }
 
 // The single ISO date a filter selects, resolved against the reader's clock.
@@ -489,8 +543,7 @@ export function dayStamp(session) {
 // Legacy weekday-name matching, kept for data without schedule_weeks.
 export function matchesDay(scheduleDays, dayKey) {
   if (!dayKey) return true
-  const now = new Date()
-  const target = DAY_NAMES[(now.getDay() + (DAY_OFFSETS[dayKey] ?? 0)) % 7]
+  const target = DAY_NAMES[parseISODate(dateForDayFilter(dayKey)).getDay()]
   return new RegExp(`\\b${target}\\b`, 'i').test(scheduleDays ?? '')
 }
 
@@ -510,4 +563,182 @@ export function isPastToday(timeRange) {
   if (mins == null) return false
   const now = new Date()
   return mins <= now.getHours() * 60 + now.getMinutes()
+}
+
+// "6:30 a - 8:15 a" -> { start: 390, end: 495 }, or null if either end is
+// unreadable.
+export function sessionWindow(timeRange) {
+  const [a, b] = (timeRange ?? '').split('-')
+  const start = parseClockTime(a)
+  const end = parseClockTime(b)
+  return start == null || end == null ? null : { start, end }
+}
+
+// 1080 -> "6:00 pm"
+export function formatClock(mins) {
+  const h = Math.floor(mins / 60) % 24
+  const m = String(mins % 60).padStart(2, '0')
+  return `${h % 12 || 12}:${m} ${h < 12 ? 'am' : 'pm'}`
+}
+
+const minutesNow = (now) => now.getHours() * 60 + now.getMinutes()
+
+// The header's live line: how many pools are in the chosen activity right now,
+// and where the next session starts. Reads today's and tomorrow's dated
+// sessions against the reader's clock, so it is React-only — the build-time
+// fallback can't know what "now" is and says nothing time-relative.
+export function liveSummary(pools, { activity, borough }, now = new Date()) {
+  const matches = (s) =>
+    !activity || activity === 'All activities' || matchesActivity(s.session_type, activity)
+  const inBorough = (p) =>
+    !borough || borough === 'All Boroughs' || getBorough(p) === borough
+  const t = minutesNow(now)
+  // No recreation center opens before 6 am, so a session "starting" earlier is
+  // an am/pm typo on the NYC Parks page (Roy Wilkins listed lap swim as
+  // "12:00 a - 2:45 a" in Oct 2026). The cards still show what NYC Parks
+  // posted; the headline just doesn't promote it.
+  const plausible = (w) => w && w.start >= 5 * 60
+  let onNow = 0
+  let next = null
+  let tomorrow = null
+  for (const p of pools) {
+    if (p.status === 'closed' && !p.schedule_weeks?.length) continue
+    if (!inBorough(p)) continue
+    let live = false
+    for (const s of sessionsForFilter(p, 'Today', now).filter(matches)) {
+      const w = sessionWindow(s.time)
+      if (!plausible(w)) continue
+      if (w.start <= t && t < w.end) live = true
+      else if (w.start > t && (!next || w.start < next.start)) next = { start: w.start, pool: p }
+    }
+    if (live) onNow++
+    for (const s of sessionsForFilter(p, 'Tomorrow', now).filter(matches)) {
+      const w = sessionWindow(s.time)
+      if (plausible(w) && (!tomorrow || w.start < tomorrow.start)) tomorrow = { start: w.start, pool: p }
+    }
+  }
+  return { onNow, next, tomorrow }
+}
+
+// "1 h 25 min", "25 min", "2 h"
+export function formatDuration(mins) {
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  if (!h) return `${m} min`
+  return m ? `${h} h ${m} min` : `${h} h`
+}
+
+// How soon "Starting soon" means.
+export const SOON_MINUTES = 60
+
+// Result groups, in display order. Today uses the first four; any other day
+// lists every pool in one 'day' group.
+export const RESULT_GROUPS = ['on', 'soon', 'later', 'done', 'day']
+
+// Picks the session a pool's card leads with and the group it belongs in.
+//
+// Today: a session in progress wins ('on'), else the next one to start
+// ('soon' within SOON_MINUTES, otherwise 'later'), else the last one that ran
+// ('done' — the pool stays on the page instead of silently dropping out).
+// Any other day: the first session ('day'). `others` is everything else, in
+// time order, for the card's chips. `status` is the card's small caps line.
+// Returns null when the pool has no readable sessions.
+export function leadSession(sessions, { today, now = new Date() } = {}) {
+  const timed = sessions
+    .map((s) => ({ ...s, window: sessionWindow(s.time) }))
+    .filter((s) => s.window)
+    .sort((a, b) => a.window.start - b.window.start || a.window.end - b.window.end)
+  if (!timed.length) return null
+  // Never lead with an am/pm typo (a "12:00 a" session — see liveSummary);
+  // it still shows among the chips as NYC Parks posted it.
+  const leadable = timed.some((s) => s.window.start >= 5 * 60)
+    ? timed.filter((s) => s.window.start >= 5 * 60)
+    : timed
+  const t = minutesNow(now)
+  let lead
+  let group
+  let status
+  if (!today) {
+    lead = leadable[0]
+    group = 'day'
+    status = null
+  } else {
+    const on = leadable.find((s) => s.window.start <= t && t < s.window.end)
+    const next = leadable.find((s) => s.window.start > t)
+    if (on) {
+      lead = on
+      group = 'on'
+      status = `On now · ends in ${formatDuration(on.window.end - t)}`
+    } else if (next) {
+      lead = next
+      const wait = next.window.start - t
+      group = wait <= SOON_MINUTES ? 'soon' : 'later'
+      status =
+        group === 'soon'
+          ? `Starts in ${formatDuration(wait)}`
+          : next.window.start >= 17 * 60
+            ? 'Tonight'
+            : `Later today`
+    } else {
+      lead = leadable[leadable.length - 1]
+      group = 'done'
+      status = `Ended at ${formatClock(lead.window.end)}`
+    }
+  }
+  return { lead, group, status, others: timed.filter((s) => s !== lead) }
+}
+
+// The first matching session after the selected day's — or, for Today, after
+// the reader's clock — across the scraped weeks. Feeds the empty state's
+// "Next: Thursday 5:15 pm at St. Mary's Pool". Null when nothing in the data
+// window matches.
+export function nextMatchingSession(pools, { activity, borough, day }, now = new Date()) {
+  const matches = (s) =>
+    !activity || activity === 'All activities' || matchesActivity(s.session_type, activity)
+  const inBorough = (p) =>
+    !borough || borough === 'All Boroughs' || getBorough(p) === borough
+  const today = toISODate(now)
+  const selected = dateForDayFilter(day, now)
+  const t = minutesNow(now)
+  let best = null
+  for (const p of pools) {
+    if (!inBorough(p)) continue
+    for (const w of p.schedule_weeks ?? []) {
+      for (const d of w.days ?? []) {
+        if (d.date < selected || (d.date === selected && selected !== today)) continue
+        for (const s of (d.sessions ?? []).filter(matches)) {
+          const win = sessionWindow(s.time)
+          if (!win || win.start < 5 * 60) continue
+          if (d.date === today && win.start <= t) continue
+          const key = `${d.date} ${String(win.start).padStart(4, '0')}`
+          if (!best || key < best.key) best = { key, date: d.date, start: win.start, pool: p }
+        }
+      }
+    }
+  }
+  return best
+}
+
+// "today", "tomorrow" or "Thursday", relative to the reader's day.
+export function relativeDay(iso, now = new Date()) {
+  if (iso === toISODate(now)) return 'today'
+  if (iso === dateForDayFilter('Tomorrow', now)) return 'tomorrow'
+  return parseISODate(iso)?.toLocaleDateString('en-US', { weekday: 'long' }) ?? iso
+}
+
+// "Schedules checked today, 6:02 am" — the scrape time in New York, relative
+// to the reader's day. Null when there is no timestamp.
+export function checkedLabel(updatedAt, now = new Date()) {
+  if (!updatedAt) return null
+  const at = new Date(updatedAt)
+  const tz = { timeZone: 'America/New_York' }
+  const day = (d) => d.toLocaleDateString('en-CA', tz)
+  const time = at
+    .toLocaleTimeString('en-US', { ...tz, hour: 'numeric', minute: '2-digit' })
+    .toLowerCase()
+  const yesterday = new Date(now)
+  yesterday.setDate(yesterday.getDate() - 1)
+  if (day(at) === day(now)) return `today, ${time}`
+  if (day(at) === day(yesterday)) return `yesterday, ${time}`
+  return `${at.toLocaleDateString('en-US', { ...tz, month: 'short', day: 'numeric' })}, ${time}`
 }

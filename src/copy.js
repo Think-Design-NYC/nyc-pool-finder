@@ -11,17 +11,19 @@
 // running case. The casing is CSS (text-transform), not baked into the string:
 // screen readers then still read a normal sentence rather than spelling out
 // shouted capitals, and the plain-text CALL_AHEAD_NOTE stays usable as prose.
-export const CALL_AHEAD_LEAD = 'Please call ahead before planning your swim:'
-export const CALL_AHEAD_DETAIL =
-  'the Rec Center will have the most up-to-date information.'
+// Shortened 2026-10-28 from "Please call ahead before planning your swim: the
+// Rec Center will have the most up-to-date information."
+export const CALL_AHEAD_LEAD = 'Note:'
+export const CALL_AHEAD_DETAIL = 'we recommend calling ahead'
 
 export const CALL_AHEAD_NOTE = `${CALL_AHEAD_LEAD} ${CALL_AHEAD_DETAIL}`
 
 // The detail for one pool. Riverbank has no Rec Center; its aquatics office is
-// the number that knows (and the only source for holiday hours).
+// the number that knows (and the only source for holiday hours), so its pages
+// name it.
 export function callAheadDetail(pool) {
   if (!pool || (pool.operator ?? 'nyc_parks') === 'nyc_parks') return CALL_AHEAD_DETAIL
-  return `the aquatics office${pool.phone ? ` at ${pool.phone}` : ''} will have the most up-to-date information.`
+  return `we recommend calling the aquatics office${pool.phone ? ` at ${pool.phone}` : ''}`
 }
 
 // The one sentence the "NYC Parks operates N pools" paragraph adds for pools
@@ -45,7 +47,14 @@ export function otherOperatorsNote(pools) {
 // from the banner), never scraped. There is no expiry on purpose: React and
 // the build-time fallback would judge it at different times and disagree. Delete it (and its two render sites) once it stops being news.
 // Added 2026-10-04 when St. Mary's reopened (the scraper picked it up on 9/30).
+//
+// Since the 2026-10-27 redesign the homepage shows only a one-line strip
+// (headline + link, dismissible), and the pool the story is about wears a
+// small tag on its card. The summary and photo live on the story page; the
+// summary is kept here for the meta description and as the strip's title.
 export const NEWS = {
+  // Dismissal is remembered per story, so a new story shows again.
+  id: 'st-marys-reopening',
   headline: "St. Mary's Recreation Center pool has reopened in the Bronx",
   summary:
     "After nearly four years closed, St. Mary's Recreation Center in Mott Haven reopened on " +
@@ -55,6 +64,9 @@ export const NEWS = {
   // Our own write-up of a first visit, a static page in public/news/.
   postUrl: '/news/st-marys-reopening/',
   postLabel: 'Read our visit report, with photos',
+  // The pool this story is about, and the tag its card carries.
+  poolName: "St. Mary's Pool",
+  tag: 'Reopened Sep 30',
   // The article's shallow-end photo, set beside the text at half width. The
   // 800px copy is made for the banner; the 1600px original covers 2x screens.
   photo: {

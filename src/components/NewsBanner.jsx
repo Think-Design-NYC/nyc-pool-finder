@@ -1,44 +1,60 @@
-import { Newspaper } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, Newspaper, X } from 'lucide-react'
 import { NEWS } from '../copy'
 
-// Mirrored by newsHtml() in src/html.js for the no-JS fallback; keep the
-// wording and structure in step (both read NEWS).
+const DISMISS_KEY = 'poolfinder.newsDismissed'
+
+function wasDismissed() {
+  try {
+    return localStorage.getItem(DISMISS_KEY) === NEWS.id
+  } catch {
+    return false
+  }
+}
+
+// A one-line strip under the header, in the mockup's info-bar style. Mirrored
+// by newsHtml() in src/html.js for the no-JS fallback; keep the wording in
+// step (both read NEWS). Dismissal hides it for this reader only — the
+// fallback and every other visitor still get it, and the story's pool keeps
+// its tag (PoolCard), so the news stays findable in context.
 export default function NewsBanner() {
+  const [hidden, setHidden] = useState(wasDismissed)
+  if (hidden) return null
   return (
-    <aside
-      aria-label="News"
-      className="mx-auto mb-4 flex max-w-6xl flex-col gap-3 rounded-xl bg-sky-50 px-4 py-3 text-sm text-sky-950 ring-1 ring-sky-600/20 md:flex-row md:items-start md:gap-5"
-    >
-      <div className="flex items-start gap-3 md:w-1/2">
-        <Newspaper className="mt-0.5 shrink-0 text-sky-600" size={18} aria-hidden="true" />
-        <p>
+    <aside aria-label="News" className="-mx-4 border-b border-tile-blue/15 bg-shallow/60 px-4">
+      <div className="mx-auto flex max-w-6xl items-start gap-2.5 py-2.5 text-sm text-deep-end">
+        <Newspaper className="mt-0.5 shrink-0 text-tile-blue" size={16} aria-hidden="true" />
+        <p className="flex-1" title={NEWS.summary}>
           <strong className="font-semibold">
             <a href={NEWS.postUrl} className="hover:underline">
               {NEWS.headline}
             </a>
             .
           </strong>{' '}
-          {NEWS.summary}{' '}
-          <a href={NEWS.postUrl} className="font-medium underline underline-offset-2">
+          <a
+            href={NEWS.postUrl}
+            className="inline-flex items-center gap-1 whitespace-nowrap font-medium text-tile-blue hover:underline"
+          >
             {NEWS.postLabel}
+            <ArrowRight size={14} aria-hidden="true" />
           </a>
-          .
         </p>
+        <button
+          type="button"
+          onClick={() => {
+            try {
+              localStorage.setItem(DISMISS_KEY, NEWS.id)
+            } catch {
+              // still hide it for this page view
+            }
+            setHidden(true)
+          }}
+          aria-label="Dismiss this news"
+          className="-mr-1 shrink-0 rounded-full p-1 text-muted hover:bg-white hover:text-deep-end"
+        >
+          <X size={16} aria-hidden="true" />
+        </button>
       </div>
-      <figure className="md:w-1/2">
-        <a href={NEWS.postUrl}>
-          <img
-            src={NEWS.photo.src}
-            srcSet={NEWS.photo.srcSet}
-            sizes="(min-width: 768px) 560px, 100vw"
-            width={NEWS.photo.width}
-            height={NEWS.photo.height}
-            alt={NEWS.photo.alt}
-            className="block h-auto w-full rounded-lg bg-sky-100"
-          />
-        </a>
-        <figcaption className="mt-1 text-xs text-sky-900/70">{NEWS.photo.caption}</figcaption>
-      </figure>
     </aside>
   )
 }

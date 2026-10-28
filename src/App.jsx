@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ChevronsDownUp, ChevronsUpDown, Phone, Waves } from 'lucide-react'
+import { ChevronsDownUp, ChevronsUpDown, List, Map as MapIcon, Phone } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
+import LogoMark from './components/LogoMark'
 import NewsBanner from './components/NewsBanner'
 import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
+import SearchBox from './components/SearchBox'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
 import PoolDirectory from './components/PoolDirectory'
 import UpdatePrompt from './components/UpdatePrompt'
+import PoolMap from './components/PoolMap'
 import {
   getBorough,
   BOROUGH_ORDER,
@@ -25,7 +28,7 @@ import {
   poolHref,
   ACTIVITIES,
   matchesActivity,
-  dayFilterOptions,
+  availableDates,
   sessionsForFilter,
   reopeningDate,
   holidaysInRange,
@@ -36,8 +39,20 @@ import {
   STALE_AFTER_HOURS,
   dayFilterValue,
   dateForDayFilter,
+  liveSummary,
+  formatClock,
+  checkedLabel,
+  nextMatchingSession,
+  relativeDay,
+  boroughInProse,
+  leadSession,
+  matchesQuery,
+  RESULT_GROUPS,
+  longDayLabel,
 } from './utils'
 import { loadPools } from './pools'
+import { milesBetween } from './poolMeta'
+import { NYC_ZIPS } from './nycZips'
 
 // Scraped pools + the Riverbank overlay + location meta (data/pool_meta.json).
 // Built from the reader's clock, not the build's, so a cached bundle still
@@ -98,6 +113,17 @@ function persistFilters(filters) {
   }
 }
 
+// Boroughs that have at least one pool — the borough bar's fixed set.
+const POOL_BOROUGHS = BOROUGH_ORDER.filter((b) => pools.some((p) => getBorough(p) === b))
+
+// "for the rest of today", "tomorrow", "on Thursday" — the selected day as it
+// reads after "No lap swim in the Bronx …".
+function dayPhrase(dayKey) {
+  if (dayKey === 'Today') return 'for the rest of today'
+  const rel = relativeDay(dateForDayFilter(dayKey))
+  return rel === 'tomorrow' ? rel : `on ${rel}`
+}
+
 function readFilters() {
   return { ...storedFilters(), ...filtersFromSearch(window.location.search) }
 }
@@ -118,6 +144,20 @@ export default function App() {
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
+  // Map <-> list: a hovered or focused card highlights its pin; a clicked pin
+  // selects its card — opened, outlined and scrolled into view (closing the
+  // full-screen map first on small screens).
+  const [hoverId, setHoverId] = useState(null)
+  const [selectedId, setSelectedId] = useState(null)
+  const [mapOpen, setMapOpen] = useState(false)
+  const selectPool = useCallback((id) => {
+    setSelectedId(id)
+    setMapOpen(false)
+    setOpenCards((prev) => new Set(prev).add(id))
+    requestAnimationFrame(() =>
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+    )
+  }, [])
   const toggleCard = useCallback((id) => {
     setOpenCards((prev) => {
       const next = new Set(prev)
@@ -126,10 +166,50 @@ export default function App() {
     })
   }, [])
   const { borough: selectedBorough, activity: selectedActivity, day: selectedDay } = filters
+  // The header search. Not persisted: it's a quick lookup, not a view to
+  // bookmark. While it has text it searches every borough.
+  const [query, setQuery] = useState('')
+  const searching = query.trim().length > 0
+  // A New York ZIP means "near here", not "pools inside this ZIP": 10027 has no
+  // pool of its own but four within a couple of miles. It ranks every pool by
+  // distance from the ZIP's centre (src/nycZips.js) instead of text-matching.
+  const zip = /^\d{5}$/.test(query.trim()) ? query.trim() : null
+  const zipAt = zip && NYC_ZIPS[zip] ? { lat: NYC_ZIPS[zip][0], lng: NYC_ZIPS[zip][1] } : null
+  const inSearch = useCallback((p) => zipAt != null || matchesQuery(p, query), [zipAt, query])
+
+  // "Near me": the reader's position, only after they ask, only in memory —
+  // never persisted or sent anywhere. Sorts each group by distance and puts a
+  // "You" dot on the map. Someone far outside the city gets no distances
+  // (sorting by "312 mi" helps no one).
+  const [near, setNear] = useState({ status: 'off', at: null })
+  const toggleNear = useCallback(() => {
+    if (near.status === 'on' || near.status === 'locating') {
+      setNear({ status: 'off', at: null })
+      return
+    }
+    if (!navigator.geolocation) {
+      setNear({ status: 'denied', at: null })
+      return
+    }
+    setNear({ status: 'locating', at: null })
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const at = { lat: coords.latitude, lng: coords.longitude }
+        const fromMidtown = milesBetween({ place: at }, { place: { lat: 40.754, lng: -73.984 } })
+        setNear(fromMidtown > 30 ? { status: 'far', at: null } : { status: 'on', at })
+      },
+      () => setNear({ status: 'denied', at: null }),
+      { enableHighAccuracy: false, maximumAge: 300_000, timeout: 10_000 },
+    )
+  }, [near.status])
+
+  // Where distances are measured from: a typed NYC ZIP wins over Near me while
+  // it's in the box.
+  const origin = zipAt ?? near.at
 
   // A filter the reader chose: push a history entry so Back returns to the
   // previous view, and write all three parameters so the URL is shareable
-  // whole. Automatic corrections use replace instead — see resetBorough.
+  // whole. The mount-time normalisation below uses replace instead.
   const commitFilters = useCallback((next, { push = true } = {}) => {
     setFilters(next)
     persistFilters(next)
@@ -170,7 +250,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  const dayOptions = useMemo(() => dayFilterOptions(), [])
+  const dates = useMemo(() => availableDates(pools), [])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const hidePast = selectedDay === 'Today'
@@ -189,14 +269,23 @@ export default function App() {
     return BOROUGH_ORDER.filter((b) => present.has(b))
   }, [activityActive, hidePast, selectedActivity, selectedDay])
 
-  useEffect(() => {
-    if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
-      // Replace, not push: this is the app correcting an impossible combination,
-      // not a choice the reader made. A pushed entry would make Back land on the
-      // same dead filter and immediately bounce forward again.
-      commitFilters({ ...filters, borough: 'All Boroughs' }, { push: false })
-    }
-  }, [boroughs, selectedBorough, commitFilters, filters])
+  // Every borough that has a pool at all stays on the bar. One with nothing
+  // matching the other filters is greyed but still pickable, and says why —
+  // a hidden pill read as a missing borough (the Bronx vanished on Wednesdays,
+  // when St. Mary's runs no open swim, while the header still named it).
+  // Picking one lands on an explained empty state, not a silent reset.
+  const boroughOptions = useMemo(() => {
+    const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
+    const when = dayPhrase(selectedDay)
+    return [
+      'All Boroughs',
+      ...POOL_BOROUGHS.map((b) => {
+        if (boroughs.includes(b)) return b
+        const why = `No ${noun} in ${boroughInProse(b)} ${when}`
+        return { value: b, label: b, muted: true, title: why, ariaLabel: `${b} — ${why.charAt(0).toLowerCase()}${why.slice(1)}`, mutedLabel: `${b} (none)` }
+      }),
+    ]
+  }, [boroughs, activityActive, selectedActivity, selectedDay])
 
   const activities = useMemo(() => {
     const present = new Set()
@@ -238,6 +327,87 @@ export default function App() {
     })
   }, [])
 
+  // The reader's clock, ticking once a minute so "right now" stays true while
+  // the page sits open.
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60_000)
+    return () => clearInterval(id)
+  }, [])
+
+  const checked = useMemo(() => checkedLabel(meta.updated_at, now), [now])
+
+  const headline = useMemo(() => {
+    const { onNow, next, tomorrow } = liveSummary(
+      pools,
+      { activity: selectedActivity, borough: selectedBorough },
+      now,
+    )
+    const noun = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'Swimming'
+    const where = selectedBorough === 'All Boroughs' ? '' : `${selectedBorough} `
+    const at = (n) => `${formatClock(n.start)} at ${n.pool.pool_name}`
+    if (onNow > 0) {
+      return {
+        title: `${noun} is on at ${onNow} ${where}pool${onNow === 1 ? '' : 's'} right now.`,
+        next: next ? `Next one starts at ${at(next)}.` : null,
+      }
+    }
+    if (next) {
+      return {
+        title: `No ${noun.toLowerCase()} on right now${where ? ` in ${boroughInProse(selectedBorough)}` : ''}.`,
+        next: `Next one starts at ${at(next)}.`,
+      }
+    }
+    return {
+      title: `${noun} is done for today${where ? ` in ${boroughInProse(selectedBorough)}` : ''}.`,
+      next: tomorrow ? `Next one starts tomorrow at ${at(tomorrow)}.` : null,
+    }
+  }, [now, selectedActivity, selectedBorough, activityActive])
+
+  // Says what was asked for and when it next happens, instead of "No pools
+  // match your filters" — the reader may have picked a greyed borough on
+  // purpose to find out.
+  const emptyState = useMemo(() => {
+    const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
+    const found = searching ? pools.filter(inSearch) : pools
+    if (zip && !zipAt && !found.length) {
+      return {
+        title: `${zip} isn't a New York City ZIP code.`,
+        next: 'Try a NYC ZIP, a pool name or a neighborhood.',
+      }
+    }
+    if (searching && !found.length) {
+      return { title: `No pools match “${query.trim()}”.`, next: 'Try a pool name, neighborhood or ZIP code.' }
+    }
+    const where = zipAt
+      ? ` near ${zip}`
+      : searching
+      ? found.length === 1
+        ? ` at ${found[0].pool_name}`
+        : ` at pools matching “${query.trim()}”`
+      : selectedBorough === 'All Boroughs'
+        ? ''
+        : ` in ${boroughInProse(selectedBorough)}`
+    const next = nextMatchingSession(
+      found,
+      {
+        activity: selectedActivity,
+        borough: searching ? 'All Boroughs' : selectedBorough,
+        day: selectedDay,
+      },
+      now,
+    )
+    const day = next && relativeDay(next.date, now)
+    return {
+      title: `No ${noun}${where} ${dayPhrase(selectedDay)}.`,
+      next: next
+        ? `Next: ${day.charAt(0).toUpperCase() + day.slice(1)}, ${formatClock(next.start)} at ${next.pool.pool_name}.`
+        : null,
+    }
+  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay, query, searching, inSearch, zip, zipAt])
+
   // Null unless the data has actually gone stale, so the banner is absent in the
   // normal case rather than rendered-and-hidden. Deliberately has no counterpart
   // in the build-time SEO fallback — see the note in vite-plugin-seo.js.
@@ -264,34 +434,134 @@ export default function App() {
   // pool has no schedules to match), so the pools people most need to know
   // about were the ones that disappeared.
   const closedPools = useMemo(
-    () => pools.filter((p) => p.status === 'closed' && !reopening.has(p.pool_name)),
-    [reopening],
+    () =>
+      pools.filter(
+        (p) => p.status === 'closed' && !reopening.has(p.pool_name) && (!searching || inSearch(p)),
+      ),
+    [reopening, query],
   )
 
-  const visiblePools = useMemo(() => {
+  // Every pool with a matching session, citywide — the map's set. The list
+  // below narrows it to the chosen borough; the map never does.
+  const cityPools = useMemo(() => {
     return pools
       // A closed pool joins the grid only for a range it actually reopens in;
       // the rest of the time it stays in the closed list below.
       .filter((p) => p.status !== 'closed' || reopening.has(p.pool_name))
-      .filter((p) => selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough)
+      .filter((p) => !searching || inSearch(p))
       .map((p) => {
         // Always resolve through the dated weeks: "Today" now means this
         // calendar date, so a holiday closure genuinely empties the day
         // instead of showing that weekday's usual sessions.
-        const filtered = sessionsForFilter(p, selectedDay).filter(
-          (s) =>
-            (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
-            (!hidePast || !isPastToday(s.time)),
+        const matching = sessionsForFilter(p, selectedDay).filter(
+          (s) => !activityActive || matchesActivity(s.session_type, selectedActivity),
         )
-        return { ...p, schedules: filtered, reopens_on: reopening.get(p.pool_name) ?? null }
+        const lead = leadSession(matching, { today: hidePast, now })
+        if (!lead) return null
+        // A pool whose sessions have all ended today stays on the page under
+        // "Done for today" with what it ran; otherwise past sessions drop off.
+        const upcoming = matching.filter((s) => !hidePast || !isPastToday(s.time))
+        return {
+          ...p,
+          schedules: lead.group === 'done' ? matching : upcoming,
+          lead,
+          miles: origin ? milesBetween({ place: origin }, p) : null,
+          reopens_on: reopening.get(p.pool_name) ?? null,
+        }
       })
-      .filter((p) => (p.schedules?.length ?? 0) > 0)
-      .sort((a, b) => {
-        // Open first, then transitioning. Closed pools aren't in this list.
-        const rank = { open: 0, transitioning: 1 }
-        return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
-      })
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, reopening])
+      .filter(Boolean)
+      .sort(
+        (a, b) =>
+          RESULT_GROUPS.indexOf(a.lead.group) - RESULT_GROUPS.indexOf(b.lead.group) ||
+          // Near me: nearest first within each group.
+          (a.miles ?? 0) - (b.miles ?? 0) ||
+          a.lead.lead.window.start - b.lead.lead.window.start ||
+          a.lead.lead.window.end - b.lead.lead.window.end ||
+          a.pool_name.localeCompare(b.pool_name),
+      )
+  }, [
+    selectedActivity,
+    activityActive,
+    selectedDay,
+    hidePast,
+    reopening,
+    now,
+    searching,
+    inSearch,
+    origin,
+  ])
+
+  const visiblePools = useMemo(
+    () =>
+      searching || selectedBorough === 'All Boroughs'
+        ? cityPools
+        : cityPools.filter((p) => getBorough(p) === selectedBorough),
+    [cityPools, searching, selectedBorough],
+  )
+
+  // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
+  const groupedPools = useMemo(() => {
+    const byGroup = new Map()
+    for (const p of visiblePools) {
+      const g = p.lead.group
+      if (!byGroup.has(g)) byGroup.set(g, [])
+      byGroup.get(g).push(p)
+    }
+    const dayTitle = longDayLabel(dateForDayFilter(selectedDay))
+    const titles = {
+      on: 'On now',
+      soon: 'Starting soon',
+      later: 'Later today',
+      done: 'Done for today',
+      day: selectedDay === 'Tomorrow' ? `Tomorrow, ${dayTitle.split(', ')[1]}` : dayTitle,
+    }
+    return RESULT_GROUPS.filter((g) => byGroup.has(g)).map((g) => ({
+      key: g,
+      title: titles[g],
+      pools: byGroup.get(g),
+    }))
+  }, [visiblePools, selectedDay])
+
+  // On a day other than today the live "right now" line would talk past the
+  // list, so the headline describes the chosen day instead.
+  const shownHeadline = useMemo(() => {
+    if (selectedDay === 'Today') return headline
+    const noun = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'Swimming'
+    const day = dayPhrase(selectedDay)
+    const n = visiblePools.length
+    if (!n) return { title: `No ${noun.toLowerCase()} ${day}.`, next: null }
+    // The earliest session, not the first card — Near me sorts by distance.
+    const first = visiblePools.reduce((a, b) =>
+      b.lead.lead.window.start < a.lead.lead.window.start ? b : a,
+    )
+    return {
+      title: `${noun} at ${n} pool${n === 1 ? '' : 's'} ${day}.`,
+      next: `First session starts at ${formatClock(first.lead.lead.window.start)} at ${first.pool_name}.`,
+    }
+  }, [selectedDay, headline, activityActive, selectedActivity, visiblePools])
+
+  // What the map's pin times are for: activity, day, and where.
+  const mapCaption = useMemo(() => {
+    const activity = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'All activities'
+    const day =
+      selectedDay === 'Today'
+        ? 'Today'
+        : selectedDay === 'Tomorrow'
+          ? 'Tomorrow'
+          : longDayLabel(dateForDayFilter(selectedDay))
+    const where = zipAt
+      ? `near ${zip}`
+      : searching
+      ? `“${query.trim()}”`
+      : selectedBorough === 'All Boroughs'
+        ? null
+        : selectedBorough
+    return [activity, day, where].filter(Boolean).join(' · ')
+  }, [activityActive, selectedActivity, selectedDay, selectedBorough, searching, query, zip, zipAt])
 
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step
@@ -303,6 +573,25 @@ export default function App() {
     ])
     return pools.filter((p) => !shown.has(p.pool_name))
   }, [visiblePools, closedPools])
+
+  // The map covers the whole city whatever the borough filter says: every
+  // matching pool (cityPools), every closed pool, and every other open pool as
+  // a grey pin (Asser Levy on a day without lap swim). A search narrows it like
+  // the list. The borough only decides where the map starts (mapFocus).
+  const mapIdle = useMemo(() => {
+    const matched = new Set(cityPools.map((p) => p.pool_name))
+    return pools.filter(
+      (p) => p.status !== 'closed' && !matched.has(p.pool_name) && (!searching || inSearch(p)),
+    )
+  }, [cityPools, searching, inSearch])
+  const mapFocus = useMemo(
+    () =>
+      searching || selectedBorough === 'All Boroughs'
+        ? null
+        : pools.filter((p) => getBorough(p) === selectedBorough).map(poolAnchorId),
+    [searching, selectedBorough],
+  )
+  const idleLabel = activityActive ? `no ${selectedActivity.toLowerCase()}` : 'no sessions'
 
   // One control for the grid: "Expand all" until every visible card is open.
   const visibleIds = visiblePools.map(poolAnchorId)
@@ -318,46 +607,85 @@ export default function App() {
     })
 
   return (
-    <div className="min-h-screen bg-slate-50 px-4 pb-12">
-      <header className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-4 pt-6">
-        <div>
-          <h1 className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-900">
-            <Waves className="text-sky-600" size={26} />
-            NYC Indoor Pool Finder
-          </h1>
-          <p className="mt-1 text-sm text-slate-500">
-            Public pools open now — lap swim &amp; open swim schedules
-            {lastUpdated && (
-              <span className="text-slate-400"> · Last updated: {lastUpdated}</span>
-            )}
-          </p>
-          <p className="mt-1 text-sm font-medium text-slate-600">
-            {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
-            {openBoroughList}
-          </p>
-          {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
-          <p className="mt-2 flex items-start gap-1.5 text-sm text-slate-600">
-            <Phone className="mt-0.5 shrink-0 text-slate-400" size={14} aria-hidden="true" />
-            <CallAheadNote />
-          </p>
+    <div className="min-h-screen bg-deck px-4 pb-12">
+      <header className="-mx-4 bg-deep-end px-4 text-white">
+        <div className="mx-auto max-w-6xl pb-5 pt-5">
+          <div className="flex items-center gap-4">
+            {/* The Figma lockup, as live text: "NYC Indoor" over "Pool Finder".
+                textContent reads "NYC Indoor Pool Finder" — the site name, which
+                must keep "Indoor" (CLAUDE.md). The dot is CSS so it isn't part
+                of the name. */}
+            <h1 className="flex shrink-0 items-center gap-2.5">
+              <LogoMark className="size-10 shrink-0" />
+              <span className="flex flex-col">
+                <span className="text-[0.68rem] font-semibold uppercase leading-none tracking-[0.16em] text-white/70">
+                  <span className="after:ml-1 after:content-['·']">NYC</span> Indoor
+                </span>{' '}
+                <span className="font-display text-2xl font-bold leading-tight tracking-tight">
+                  Pool Finder
+                </span>
+              </span>
+            </h1>
+            <div className="hidden max-w-md flex-1 md:block">
+              <SearchBox value={query} onChange={setQuery} near={near} onNear={toggleNear} />
+            </div>
+            <a
+              href="https://thinkdesign.com"
+              target="_blank"
+              rel="noreferrer"
+              className="ml-auto shrink-0 opacity-80 transition-opacity hover:opacity-100"
+              aria-label="Think Design"
+            >
+              {/* The logo is purple artwork; knocked out to white on the navy band. */}
+              <img
+                src={thinkDesignLogo}
+                alt="Think Design"
+                className="h-8 w-auto brightness-0 invert"
+              />
+            </a>
+          </div>
+
+          {checked && (
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/85">
+              <span className="size-1.5 rounded-full bg-open" aria-hidden="true" />
+              Schedules checked {checked} · NYC Parks
+            </p>
+          )}
+          <div className="lg:flex lg:items-end lg:justify-between lg:gap-6">
+            <div className="min-w-0">
+              {/* Time-relative, so React-only: the fallback can't know "now". */}
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                {shownHeadline.title}
+              </h2>
+              {shownHeadline.next && (
+                <p className="mt-1 text-sm text-white/75">{shownHeadline.next}</p>
+              )}
+            </div>
+            <div className="mt-4 md:hidden">
+              <SearchBox value={query} onChange={setQuery} near={near} onNear={toggleNear} />
+            </div>
+          </div>
+
+          <div className="mt-4 border-t border-white/10 pt-3">
+            <p className="text-sm font-medium text-white/90">
+              {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
+              {openBoroughList}
+            </p>
+            <p className="mt-0.5 text-sm text-white/70">
+              Public pools open now — lap swim &amp; open swim schedules
+            </p>
+            {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
+            <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
+              <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
+              <CallAheadNote />
+            </p>
+          </div>
         </div>
-        <a
-          href="https://thinkdesign.com"
-          target="_blank"
-          rel="noreferrer"
-          className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
-          aria-label="Think Design"
-        >
-          <img
-            src={thinkDesignLogo}
-            alt="Think Design"
-            className="h-10 w-auto"
-          />
-        </a>
       </header>
 
       {/* Mirrored in the SEO fallback via newsHtml(). */}
       <NewsBanner />
+      <div className="h-4" aria-hidden="true" />
 
       {staleFor && (
         <div
@@ -379,72 +707,162 @@ export default function App() {
         </div>
       )}
 
+      {/* Every filter in one bar pinned to the top, so activity, borough and day
+          stay in reach however far down the list you are. */}
       <FilterBar
-        boroughs={boroughs}
-        selectedBorough={selectedBorough}
-        onSelectBorough={setSelectedBorough}
-        activities={activities}
+        activities={activities.length > 0 ? ['All activities', ...activities] : []}
         selectedActivity={selectedActivity}
         onSelectActivity={setSelectedActivity}
-        dayOptions={dayOptions}
+        boroughOptions={boroughOptions}
+        selectedBorough={selectedBorough}
+        onSelectBorough={setSelectedBorough}
+        searching={searching}
+        searchNote={zipAt ? `Nearest pools to ${zip}, all boroughs` : 'Searching all boroughs'}
+        dates={dates}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}
       />
 
-      <main className="mx-auto mt-5 max-w-6xl">
-        {visiblePools.length === 0 ? (
-          <div className="rounded-2xl bg-white p-10 text-center text-slate-500 ring-1 ring-slate-200">
-            {rangeHolidays.length > 0 ? (
-              <>
-                <p className="font-medium text-slate-700">
-                  {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
-                  recreation centers are closed.
-                </p>
-                <p className="mt-1 text-sm">
-                  No pools have sessions on{' '}
-                  {rangeHolidays.map((h) => dayStamp({ date: h.date })).join(', ')}.
-                </p>
-              </>
-            ) : (
-              'No pools match your filters.'
-            )}
-          </div>
-        ) : (
-          <>
-            {visiblePools.length > 1 && (
-              <div className="mb-2 flex justify-end">
-                <button
-                  type="button"
-                  onClick={toggleAllCards}
-                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-sky-700 hover:bg-sky-50"
-                >
-                  {allCardsOpen ? (
-                    <ChevronsDownUp size={14} aria-hidden="true" />
-                  ) : (
-                    <ChevronsUpDown size={14} aria-hidden="true" />
-                  )}
-                  {allCardsOpen ? 'Collapse all' : 'Expand all'}
-                </button>
+      {/* Desktop: list column + the map, sticky beside it. Below lg the map
+          is a full-screen view behind the floating Map button. */}
+      <div className="mx-auto max-w-6xl lg:grid lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] lg:gap-6">
+        <div className="min-w-0">
+
+          <main className="mt-5">
+            {visiblePools.length === 0 ? (
+              <div className="rounded-2xl bg-white p-10 text-center text-muted ring-1 ring-line">
+                {rangeHolidays.length > 0 ? (
+                  <>
+                    <p className="font-medium text-deep-end">
+                      {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
+                      recreation centers are closed.
+                    </p>
+                    <p className="mt-1 text-sm">
+                      No pools have sessions on{' '}
+                      {rangeHolidays.map((h) => dayStamp({ date: h.date })).join(', ')}.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-medium text-deep-end">{emptyState.title}</p>
+                    {emptyState.next && <p className="mt-1 text-sm">{emptyState.next}</p>}
+                  </>
+                )}
               </div>
+            ) : (
+              <>
+                {visiblePools.length > 1 && (
+                  <div className="mb-2 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={toggleAllCards}
+                      className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-tile-blue hover:bg-shallow/40"
+                    >
+                      {allCardsOpen ? (
+                        <ChevronsDownUp size={14} aria-hidden="true" />
+                      ) : (
+                        <ChevronsUpDown size={14} aria-hidden="true" />
+                      )}
+                      {allCardsOpen ? 'Collapse all' : 'Expand all'}
+                    </button>
+                  </div>
+                )}
+                {groupedPools.map((group) => (
+                  <section key={group.key} className="mb-5" aria-labelledby={`group-${group.key}`}>
+                    <h2
+                      id={`group-${group.key}`}
+                      className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted"
+                    >
+                      {group.title} ({group.pools.length})
+                    </h2>
+                    <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-1">
+                      {group.pools.map((pool) => {
+                        const id = poolAnchorId(pool)
+                        return (
+                          <div
+                            key={pool.pool_name}
+                            onMouseEnter={() => setHoverId(id)}
+                            onMouseLeave={() => setHoverId(null)}
+                            onFocusCapture={() => setHoverId(id)}
+                            onBlurCapture={() => setHoverId(null)}
+                            className={`rounded-2xl transition-shadow ${
+                              selectedId === id ? 'ring-2 ring-tile-blue ring-offset-2 ring-offset-deck' : ''
+                            }`}
+                          >
+                            <PoolCard
+                              pool={pool}
+                              href={poolHref(pool, slugs)}
+                              activityLabel={activityActive ? selectedActivity : 'Swim'}
+                              showSessionType={!activityActive}
+                              open={openCards.has(id)}
+                              onToggle={() => toggleCard(id)}
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </section>
+                ))}
+              </>
             )}
-            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {visiblePools.map((pool) => {
-                const id = poolAnchorId(pool)
-                return (
-                  <PoolCard
-                    key={pool.pool_name}
-                    pool={pool}
-                    href={poolHref(pool, slugs)}
-                    activityLabel={activityActive ? selectedActivity : 'Swim'}
-                    open={openCards.has(id)}
-                    onToggle={() => toggleCard(id)}
-                  />
-                )
-              })}
-            </div>
-          </>
-        )}
-      </main>
+          </main>
+        </div>
+
+        <aside className="hidden lg:block" aria-label="Map">
+          <div className="sticky top-[calc(var(--filters-h,7rem)+1rem)] mt-5 h-[calc(100vh-var(--filters-h,7rem)-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
+            <PoolMap
+              pools={cityPools}
+              focus={mapFocus}
+              caption={mapCaption}
+              closed={closedPools}
+              idle={mapIdle}
+              idleLabel={idleLabel}
+              highlightId={hoverId ?? selectedId}
+              onSelectPool={selectPool}
+              you={origin}
+              youLabel={zipAt ? zip : 'YOU'}
+              className="h-full"
+            />
+          </div>
+        </aside>
+      </div>
+
+      {/* Below lg: the mockup's floating Map button, and the map full screen. */}
+      {!mapOpen && (
+        <button
+          type="button"
+          onClick={() => setMapOpen(true)}
+          className="fixed bottom-5 left-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-deep-end px-6 py-3 text-sm font-semibold text-white shadow-lg lg:hidden"
+        >
+          <MapIcon size={16} aria-hidden="true" />
+          Map
+        </button>
+      )}
+      {mapOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-label="Map of pools">
+          <PoolMap
+            pools={cityPools}
+            focus={mapFocus}
+            caption={mapCaption}
+            closed={closedPools}
+            idle={mapIdle}
+            idleLabel={idleLabel}
+            highlightId={selectedId}
+            onSelectPool={selectPool}
+            you={origin}
+            youLabel={zipAt ? zip : 'YOU'}
+            className="h-full"
+          />
+          <button
+            type="button"
+            onClick={() => setMapOpen(false)}
+            className="absolute bottom-5 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-deep-end px-6 py-3 text-sm font-semibold text-white shadow-lg"
+          >
+            <List size={16} aria-hidden="true" />
+            List
+          </button>
+        </div>
+      )}
 
       <ClosedPoolList pools={closedPools} slugs={slugs} />
 
@@ -454,13 +872,13 @@ export default function App() {
 
       {/* Mirrored in the SEO fallback (vite-plugin-seo.js) — if this changes,
           change it there too or crawlers see different markup than visitors. */}
-      <footer className="mx-auto mt-10 max-w-6xl border-t border-slate-200 pt-4 text-xs text-slate-400">
+      <footer className="mx-auto mt-10 max-w-6xl border-t border-line pt-4 text-xs text-muted/80">
         <img
           src="/qr-code.svg"
           alt="QR code for pools.thinkdesign.com"
-          className="mb-3 w-[min(190px,50vw)] rounded-lg border border-slate-200"
+          className="mb-3 w-[min(190px,50vw)] rounded-lg border border-line"
         />
-        <a href="/privacy/" className="underline hover:text-sky-700">
+        <a href="/privacy/" className="underline hover:text-tile-blue">
           Privacy
         </a>
         <span className="mx-2" aria-hidden="true">
@@ -470,7 +888,7 @@ export default function App() {
           href="https://thinkdesign.com"
           target="_blank"
           rel="noreferrer"
-          className="underline hover:text-sky-700"
+          className="underline hover:text-tile-blue"
         >
           Think Design
         </a>
