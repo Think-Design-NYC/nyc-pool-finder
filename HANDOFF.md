@@ -154,7 +154,10 @@ Parsing notes, all learned the hard way from real pages:
   voting" (Oct 22) used to mark the whole pool closed, and Shirley Chisholm's
   "the dance room ... will be closed for voting preparation" (Oct 22–Nov 2,
   2026) emptied two weeks of its pool sessions until rooms were matched
-  generically (`\w+ rooms?` in `NON_POOL_RE`). Sentences are split on `.!?`
+  generically (`\w+ rooms?` in `NON_POOL_RE`). Studios, courts, track, labs,
+  lounge, kitchen and library are listed too, and "<x> center" only with a
+  named sub-space prefix ("fitness center", "teen center") — "Recreation
+  Center", "Aquatics Center" and "the center" must keep closing the pool. Sentences are split on `.!?`
   except after "St." — St. John's "the gymnasium at St. John’s Recreation
   Center will be closed" was split at "St." (the guard was missing its period)
   and the gym-less half closed the pool. (2) "Beginning <date> through <date>" is a
