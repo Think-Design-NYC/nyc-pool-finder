@@ -1,4 +1,13 @@
-import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
+import { CalendarDays, ChevronDown } from 'lucide-react'
+import {
+  DAY_FILTERS,
+  dateForDayFilter,
+  longDayLabel,
+  parseISODate,
+  shortDayLabel,
+  toISODate,
+} from '../utils'
 
 function PillRow({ options, selected, onSelect, activeClass = 'bg-deep-end text-white shadow-sm' }) {
   return (
@@ -62,6 +71,113 @@ function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-de
   )
 }
 
+const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+// Today · Tomorrow · Pick a day. The calendar lists every date the scraped
+// weeks cover, Monday-first like NYC Parks' own weeks, and sits in the flow
+// under the chips rather than floating, so it can't be clipped by the sticky
+// bar. Once a later day is picked, the third chip shows it ("Thu 10/29").
+function DayPicker({ selected, onSelect, dates }) {
+  const [open, setOpen] = useState(false)
+  const picked = !DAY_FILTERS.includes(selected)
+  const available = new Set(dates)
+  const selectedISO = dateForDayFilter(selected)
+
+  // Pad from the Monday of the first week to the Sunday of the last.
+  const cells = []
+  if (dates.length) {
+    const first = parseISODate(dates[0])
+    const last = parseISODate(dates[dates.length - 1])
+    const d = new Date(first)
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7))
+    const end = new Date(last)
+    end.setDate(end.getDate() + (6 - ((end.getDay() + 6) % 7)))
+    for (; d <= end; d.setDate(d.getDate() + 1)) cells.push(toISODate(d))
+  }
+
+  const chip = (active) =>
+    `shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium tabular-nums transition-colors ${
+      active
+        ? 'bg-shallow text-deep-end ring-1 ring-inset ring-tile-blue'
+        : 'bg-white text-deep-end ring-1 ring-inset ring-line hover:bg-deck'
+    }`
+
+  return (
+    <div>
+      <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
+        {DAY_FILTERS.map((v) => (
+          <button
+            key={v}
+            type="button"
+            aria-pressed={selected === v}
+            onClick={() => {
+              setOpen(false)
+              onSelect(v)
+            }}
+            className={chip(selected === v)}
+          >
+            {v}
+          </button>
+        ))}
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-pressed={picked}
+          aria-label={picked ? `Pick a day: ${longDayLabel(selected)}` : 'Pick a day'}
+          onClick={() => setOpen((o) => !o)}
+          className={`${chip(picked)} inline-flex items-center gap-1.5`}
+        >
+          <CalendarDays size={14} aria-hidden="true" />
+          {picked ? shortDayLabel(selected) : 'Pick a day'}
+        </button>
+      </div>
+      {open && (
+        <div className="mt-2 w-full max-w-xs rounded-2xl bg-white p-3 shadow-sm ring-1 ring-line">
+          <div className="grid grid-cols-7 gap-1 text-center">
+            {WEEKDAYS.map((w) => (
+              <span key={w} className="pb-1 text-[11px] font-medium uppercase text-muted">
+                {w}
+              </span>
+            ))}
+            {cells.map((iso) => {
+              const ok = available.has(iso)
+              const on = iso === selectedISO
+              return (
+                <button
+                  key={iso}
+                  type="button"
+                  disabled={!ok}
+                  aria-label={longDayLabel(iso)}
+                  aria-pressed={on}
+                  onClick={() => {
+                    setOpen(false)
+                    // Today and Tomorrow stay relative; any later date is itself.
+                    const v = iso === dateForDayFilter('Today')
+                      ? 'Today'
+                      : iso === dateForDayFilter('Tomorrow')
+                        ? 'Tomorrow'
+                        : iso
+                    onSelect(v)
+                  }}
+                  className={`rounded-lg py-1.5 text-sm tabular-nums ${
+                    on
+                      ? 'bg-tile-blue font-semibold text-white'
+                      : ok
+                        ? 'text-deep-end hover:bg-shallow/60'
+                        : 'text-muted/40'
+                  }`}
+                >
+                  {parseISODate(iso).getDate()}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function FilterBar({
   boroughOptions,
   selectedBorough,
@@ -69,7 +185,7 @@ export default function FilterBar({
   activities,
   selectedActivity,
   onSelectActivity,
-  dayOptions,
+  dates,
   selectedDay,
   onSelectDay,
 }) {
@@ -115,12 +231,7 @@ export default function FilterBar({
           </div>
         )}
 
-        <PillRow
-          options={dayOptions}
-          selected={selectedDay}
-          onSelect={onSelectDay}
-          activeClass="bg-shallow text-deep-end ring-1 ring-inset ring-tile-blue"
-        />
+        <DayPicker selected={selectedDay} onSelect={onSelectDay} dates={dates} />
       </div>
     </div>
   )

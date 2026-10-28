@@ -696,8 +696,9 @@ Filter helpers live in `src/utils.js`:
   (Lap Swim, Open Swim, Family Swim, Learn to Swim, Water Exercise, Swim
   Team). Open Swim explicitly excludes "lap" to avoid double-matching.
 - `matchesDay` — legacy weekday-name matching against the flat schedule's
-  `days` string, for data scraped before `schedule_weeks` existed. Maps all
-  four day tokens (offsets 0–3 from today) to a weekday name.
+  `days` string, for data scraped before `schedule_weeks` existed. Maps any
+  day filter value (`Today`, `Tomorrow` or a picked ISO date) to a weekday
+  name.
 - `isPastToday` — when "Today" is active, hides schedules whose end time
   has already passed (parses `"9:45 a-11:15 a"` style ranges).
 
@@ -925,30 +926,29 @@ Verified 2026-09-05, this week vs next: Chelsea 0→17, Constance Baker Motley
 Wilkins 16→13. (The week pills these numbers justified were replaced by
 single-day pills on 2026-09-20; the dated filtering they proved remains.)
 
-### Filter values vs. labels (redesigned 2026-09-20)
+### Filter values vs. labels (redesigned 2026-10-27)
 
-The four day pills are **relative**: internal tokens `Today` / `Tomorrow` /
-`Plus2` / `Plus3` mean offsets 0–3 from the reader's today, and the +2/+3
-labels are weekday names that roll forward daily (on a Sunday:
-`Today · Tomorrow · Tuesday · Wednesday`).
+The day chips are **Today · Tomorrow · Pick a day**. `Today` and `Tomorrow`
+are relative tokens (offsets 0 and 1 from the reader's today), so a tab left
+open past midnight keeps meaning "today". Any later day is the **picked ISO
+date itself** (`'2026-10-29'`), chosen from a calendar of every date the
+scraped weeks cover (`availableDates()`); once picked, the third chip shows it
+("Thu 10/29").
 
-What persists — in the URL *and* localStorage — is the **resolved ISO date**
-(`?day=2026-09-22`), not the token, so a copied link pins the calendar day the
-sharer meant. Reading maps the date back by offset from the reader's today:
-0–3 selects the matching pill (a "Tuesday" link shared Sunday, opened Monday,
-arrives as the *Tomorrow* pill — still Tuesday's schedule); anything past or
-beyond the window falls through URL → stored → the Today default. That
-fall-through is also the migration story: stale stored dates self-clean, the
-legacy raw `Today`/`Tomorrow` tokens still read, and the retired week values
-(`ThisWeek` / `NextWeek` / `Week`, plus old `?day=thisweek` links) land on
-Today. The token↔date pair is `dateForDayFilter` / `dayFilterValue` in
-`utils.js`.
+What persists — in the URL *and* localStorage — is always the **resolved ISO
+date** (`?day=2026-10-29`), so a copied link pins the calendar day the sharer
+meant. Reading maps it back by offset from the reader's today: 0 → Today,
+1 → Tomorrow, 2–21 → the date itself; anything past or further out falls
+through URL → stored → the Today default. That fall-through is also the
+migration story: stale stored dates self-clean, the legacy raw
+`Today`/`Tomorrow` tokens still read, and the retired values (`Plus2`/`Plus3`,
+the week values, old `?day=thisweek` links) land on Today. The pair is
+`dateForDayFilter` / `dayFilterValue` in `utils.js`.
 
-Labels come from the clock, not the scraped weeks — a weekday name can't claim
-data we lack the way a dated week label could. If a refresh is missed, the
-selected day is simply empty and the staleness banner flags the gap. The old
-week pills (7-day session grids) were removed as too dense to be useful; the
-pool pages' two-week tables are now the only whole-week view.
+A picked date with no matching sessions still selects — the empty state says
+what was asked for and when it next happens. The 2026-09-20 design (four
+relative pills, the +2/+3 labelled by weekday name) was replaced because it
+only reached four days ahead while the data covers about two weeks.
 
 ## The privacy page is indexable (changed 2026-09-05)
 

@@ -26,7 +26,7 @@ import {
   poolHref,
   ACTIVITIES,
   matchesActivity,
-  dayFilterOptions,
+  availableDates,
   sessionsForFilter,
   reopeningDate,
   holidaysInRange,
@@ -188,7 +188,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  const dayOptions = useMemo(() => dayFilterOptions(), [])
+  const dates = useMemo(() => availableDates(pools), [])
 
   const activityActive = selectedActivity && selectedActivity !== 'All activities'
   const hidePast = selectedDay === 'Today'
@@ -220,7 +220,7 @@ export default function App() {
       ...POOL_BOROUGHS.map((b) => {
         if (boroughs.includes(b)) return b
         const why = `No ${noun} in ${boroughInProse(b)} ${when}`
-        return { value: b, label: b, muted: true, title: why, ariaLabel: `${b} — ${why.toLowerCase()}`, mutedLabel: `${b} (none)` }
+        return { value: b, label: b, muted: true, title: why, ariaLabel: `${b} — ${why.charAt(0).toLowerCase()}${why.slice(1)}`, mutedLabel: `${b} (none)` }
       }),
     ]
   }, [boroughs, activityActive, selectedActivity, selectedDay])
@@ -499,7 +499,7 @@ export default function App() {
         activities={activities}
         selectedActivity={selectedActivity}
         onSelectActivity={setSelectedActivity}
-        dayOptions={dayOptions}
+        dates={dates}
         selectedDay={selectedDay}
         onSelectDay={setSelectedDay}
       />

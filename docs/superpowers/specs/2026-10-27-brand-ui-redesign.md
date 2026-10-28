@@ -54,6 +54,35 @@ foundation; the mockups add the new layouts on top.
    (green = now, blue = soon, navy = later). Mobile: floating "Map" button.
    Pool page: small "Getting there" map beside the transit details.
 
+## Homepage decisions (Phase 2)
+
+6. **Borough bar keeps every borough with a pool.** A borough with nothing
+   matching is greyed but pickable (reason in tooltip/aria-label); picking it
+   shows "No open swim in the Bronx tomorrow. Next: Thursday, 5:15 pm at St.
+   Mary's Pool." Done in `49b87f7`.
+7. **One card per pool, grouped.** Today groups pools by their most relevant
+   matching session: On now / Starting soon (within 60 min) / Later today /
+   Done for today. Each card leads with that session (monospace time, status
+   bar, "ENDS IN 1 H 15"), the pool's other matching times as chips.
+   Expand/collapse, pool-page links and PoolDirectory stay. Other days: one
+   group, pools sorted by first session.
+8. **Day chips: Today · Tomorrow · Pick a day.** Pick a day opens a calendar of
+   every date the scraped weeks cover (~2 weeks). The URL keeps the ISO date.
+9. **Mockup layout.** Desktop: search + activity chips in the header; borough
+   and day chips atop the list column; the map sticky on the right, pin ↔ card
+   highlighting. Mobile: list first, floating "Map" button toggles a
+   full-screen map with a "List" button back. News banner above the columns;
+   closed pools, directory, FAQ and footer full-width below.
+
+10. **News: slim strip + pool tag.** The full-width photo banner becomes a
+    one-line strip under the header in the mockup's info-bar style ("St. Mary's
+    pool has reopened in the Bronx. Read the visit report →"), dismissible per
+    reader (localStorage). The pool the story is about gets a small tag on its
+    card and pool page ("Reopened Sep 30 · Read report"), so the story stays in
+    context after dismissal. The full text and photo live on the story page.
+    The fallback's `newsHtml()` changes to match. A `/news/` index can come
+    later if stories accumulate.
+
 ## Phases
 
 1. **Foundation.** Cherry-pick `19c0568`; resolve conflicts in `pool-page.js`,

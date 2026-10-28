@@ -286,8 +286,8 @@ export const BOROUGH_FILTERS = ['All Boroughs', ...BOROUGH_ORDER]
 export const ACTIVITY_FILTERS = ['All activities', ...ACTIVITIES.map((a) => a.key)]
 
 // Filter values as URL slugs: "All Boroughs" -> all-boroughs, "Children/Teen
-// Swim" -> children-teen-swim, "Plus2" -> plus-2. The camel-case split runs
-// first so compound values don't collapse to a single run of characters.
+// Swim" -> children-teen-swim. The camel-case split runs first so compound
+// values ("WaterPolo") don't collapse to a single run of characters.
 export function filterSlug(value) {
   return String(value ?? '')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -312,32 +312,42 @@ export function matchesActivity(sessionType, activityKey) {
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-// The day filter's stable values — offsets from the reader's today, so a tab
-// left open past midnight keeps meaning "+2 days from now". These are NOT
-// what the URL or localStorage carry: the persisted form is the resolved ISO
-// date (see filtersToSearch), so a copied link pins the calendar day the
-// sharer meant. Labels roll forward daily.
-export const DAY_FILTERS = ['Today', 'Tomorrow', 'Plus2', 'Plus3']
+// The day filter's values: 'Today' and 'Tomorrow' stay relative to the
+// reader's clock, so a tab left open past midnight keeps meaning "today"; any
+// other day is the picked ISO date itself ('2026-10-29'), from the Pick a day
+// calendar. Neither form is what the URL carries — the persisted form is always
+// the resolved ISO date (see filtersToSearch), so a copied link pins the
+// calendar day the sharer meant.
+export const DAY_FILTERS = ['Today', 'Tomorrow']
 
-const DAY_OFFSETS = { Today: 0, Tomorrow: 1, Plus2: 2, Plus3: 3 }
+const DAY_OFFSETS = { Today: 0, Tomorrow: 1 }
 
-// 'Plus2' on 2026-09-20 -> '2026-09-22'.
+const isISODate = (v) => /^\d{4}-\d{2}-\d{2}$/.test(v ?? '')
+
+// 'Tomorrow' on 2026-09-20 -> '2026-09-21'; a picked ISO date is itself.
 export function dateForDayFilter(dayKey, from = new Date()) {
+  if (isISODate(dayKey)) return dayKey
   const d = new Date(from.getFullYear(), from.getMonth(), from.getDate())
   d.setDate(d.getDate() + (DAY_OFFSETS[dayKey] ?? 0))
   return toISODate(d)
 }
 
-// '2026-09-22' back to the token it means for this reader today, or null
-// when the date is past, beyond the four-pill window, or not a date at all —
-// callers fall through to their stored/default value. Math.round absorbs the
-// off-by-an-hour a DST boundary introduces into the millisecond difference.
+// How far ahead a picked day may be. The scraper covers this week and next;
+// a little slack lets a link shared late on a Sunday still resolve.
+const MAX_DAYS_AHEAD = 21
+
+// '2026-09-22' back to the filter value it means for this reader today:
+// 'Today', 'Tomorrow', or the date itself for a later day. Null when the date
+// is past, too far out, or not a date at all — callers fall through to their
+// stored/default value. Math.round absorbs the off-by-an-hour a DST boundary
+// introduces into the millisecond difference.
 export function dayFilterFromDate(iso, from = new Date()) {
   const d = parseISODate(iso)
   if (!d) return null
   const today = new Date(from.getFullYear(), from.getMonth(), from.getDate())
   const offset = Math.round((d - today) / 86400000)
-  return DAY_FILTERS[offset] ?? null
+  if (offset < 0 || offset > MAX_DAYS_AHEAD) return null
+  return DAY_FILTERS[offset] ?? iso
 }
 
 // Filter state <-> query string. Deliberately writes all three parameters at
@@ -392,22 +402,30 @@ export function toISODate(d) {
 const shortDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`
 const longDate = (d) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
 
-// The four day pills. Labels derive from the reader's clock — Today/Tomorrow
-// always did, and a weekday name can't claim data we lack the way a dated
-// week label could. A day with no data falls through to the empty-grid
-// message and the staleness banner, same as Today does now.
-export function dayFilterOptions(from = new Date()) {
-  const weekday = (d) => d.toLocaleDateString('en-US', { weekday: 'long' })
-  return DAY_FILTERS.map((value) => {
-    if (value === 'Today' || value === 'Tomorrow') return { value, label: value }
-    const d = parseISODate(dateForDayFilter(value, from))
-    return {
-      value,
-      label: weekday(d),
-      // A bare weekday name read aloud doesn't say which one; the date does.
-      ariaLabel: `${weekday(d)}, ${longDate(d)}`,
+// Every date from today on that the scraped weeks cover, for the Pick a day
+// calendar. A date with no matching sessions still appears — choosing it shows
+// the explained empty state rather than leaving the reader to guess.
+export function availableDates(pools, from = new Date()) {
+  const today = toISODate(from)
+  const out = new Set()
+  for (const p of pools ?? []) {
+    for (const w of p.schedule_weeks ?? []) {
+      for (const d of w.days ?? []) if (d.date >= today) out.add(d.date)
     }
-  })
+  }
+  return [...out].sort()
+}
+
+// "Thu 10/29" for the Pick a day chip once a date is chosen.
+export function shortDayLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `${d.toLocaleDateString('en-US', { weekday: 'short' })} ${shortDate(d)}` : iso
+}
+
+// "Thursday, October 29" — what a screen reader hears for a picked day.
+export function longDayLabel(iso) {
+  const d = parseISODate(iso)
+  return d ? `${d.toLocaleDateString('en-US', { weekday: 'long' })}, ${longDate(d)}` : iso
 }
 
 // The single ISO date a filter selects, resolved against the reader's clock.
@@ -492,8 +510,7 @@ export function dayStamp(session) {
 // Legacy weekday-name matching, kept for data without schedule_weeks.
 export function matchesDay(scheduleDays, dayKey) {
   if (!dayKey) return true
-  const now = new Date()
-  const target = DAY_NAMES[(now.getDay() + (DAY_OFFSETS[dayKey] ?? 0)) % 7]
+  const target = DAY_NAMES[parseISODate(dateForDayFilter(dayKey)).getDay()]
   return new RegExp(`\\b${target}\\b`, 'i').test(scheduleDays ?? '')
 }
 
