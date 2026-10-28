@@ -23,7 +23,12 @@ import urllib.request
 from pathlib import Path
 
 SOURCE = "https://data.cityofnewyork.us/resource/gthc-hcne.geojson"
-OUT = Path(__file__).resolve().parent.parent / "src" / "nycMap.js"
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "src" / "nycMap.js"
+# The same map as a standalone file for the static pool pages, which frame it
+# with an <svg viewBox> around each pool. One cached file instead of 58 KB of
+# outlines inlined into every page.
+SVG_OUT = ROOT / "public" / "nyc-map.svg"
 
 # The view: every pool with room to spare. Staten Island has no indoor pool,
 # so it is only the corner of the frame.
@@ -153,7 +158,20 @@ def main():
         "  return [(lng - west) * kx * scale, (north - lat) * scale]\n"
         "}\n"
     )
+    labels = "".join(
+        f'<text x="{b["label"][0]}" y="{b["label"][1]}" text-anchor="middle">{b["name"].upper()}</text>'
+        for b in boroughs
+    )
+    SVG_OUT.write_text(
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}">'
+        f'<rect x="-2000" y="-2000" width="{WIDTH + 4000}" height="{HEIGHT + 4000}" fill="#c9ebf6"/>'
+        f'<path d="{ring_path(nj)}" fill="#eef2f5"/>'
+        + "".join(f'<path d="{b["d"]}" fill="#f4f7fa" stroke="#dce4ec" stroke-width="1"/>' for b in boroughs)
+        + f'<g font-family="sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#5a6e85">{labels}</g>'
+        "</svg>\n"
+    )
     print(f"wrote {OUT} ({OUT.stat().st_size // 1024} KB, {WIDTH}x{HEIGHT})")
+    print(f"wrote {SVG_OUT} ({SVG_OUT.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

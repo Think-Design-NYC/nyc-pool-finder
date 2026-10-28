@@ -371,6 +371,7 @@ export default function seoPlugin() {
             slug,
             siteUrl: SITE_URL,
             updatedLabel,
+            checkedAt: checkedAtLabel(),
             todayISO,
             pools,
             slugs: SLUGS,

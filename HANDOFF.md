@@ -759,6 +759,24 @@ are in `docs/superpowers/specs/2026-10-27-brand-ui-redesign.md`.
 - **News**: a dismissible one-line strip (`NewsBanner`, dismissal per story in
   localStorage) plus a tag on the story's pool card (`NEWS.poolName`/`NEWS.tag`).
 
+### Pool pages (redesigned 2026-10-27)
+
+`pool-page.js` follows the "Pool detail v4" mockup: navy header with a stats
+row (lap swim / today / entry / nearest subway — "Membership, from $25/yr",
+never "Free"), Up next, today as a timeline (desktop, decorative) and a list
+(mobile), "Lap swim this week", Good to know, Getting there (a crop of
+`public/nyc-map.svg` from `scripts/make_map.py` via `<svg><image>`), About this
+schedule, then everything the page had before: full two-week timetable,
+building hours, costs, nearby pools.
+
+- The build day and the next are both pre-rendered (`data-pp-day`); the inline
+  `LIVE_SCRIPT` shows the reader's day, or hides both and shows a "built on"
+  note if neither matches. Without the script the build day shows.
+- Timeline, counts and live blocks skip school "Swim For Life" classes and
+  am/pm-typo starts before 5 am; the full timetable keeps them as posted.
+- `[hidden]{display:none!important}` in the page style is load-bearing: the
+  stats grid and flex rows would otherwise override the attribute.
+
 ## Known gotchas
 
 - **`.venv/` is required and gitignored.** A fresh clone can't run
