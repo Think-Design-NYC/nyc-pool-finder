@@ -30,5 +30,5 @@ export function callAheadHtml(detail = CALL_AHEAD_DETAIL) {
 export function newsHtml() {
   return `<aside class="sf-news"><p><strong><a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(
     NEWS.headline,
-  )}</a>.</strong> <a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(NEWS.postLabel)}</a>.</p></aside>`
+  )}</a>.</strong> <a href="${escapeHtml(NEWS.postUrl)}">${escapeHtml(NEWS.postLabel)}</a></p></aside>`
 }

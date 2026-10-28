@@ -308,9 +308,10 @@ pool, for the "NYC Parks operates 13 pools across …" copy. **If you change the
 
 ### Call ahead (added 2026-09-08)
 
-`CALL_AHEAD_NOTE` in [src/copy.js](src/copy.js) — *"Please call ahead before
-planning your swim: the Rec Center will have the most up-to-date information."*
-— renders under the open-count line in the header and again in the closing
+`CALL_AHEAD_NOTE` in [src/copy.js](src/copy.js) — *"Note: we recommend calling
+ahead"* (shortened 2026-10-28 from "Please call ahead before planning your swim:
+the Rec Center will have the most up-to-date information."; Riverbank's pages
+say "we recommend calling the aquatics office at (212) 694-3660") — renders under the open-count line in the header and again in the closing
 source disclaimer, in both React and the fallback.
 
 It exists because on 2026-09-08 Chelsea Pool was found drained while NYC Parks

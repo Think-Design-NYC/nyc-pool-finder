@@ -11,17 +11,19 @@
 // running case. The casing is CSS (text-transform), not baked into the string:
 // screen readers then still read a normal sentence rather than spelling out
 // shouted capitals, and the plain-text CALL_AHEAD_NOTE stays usable as prose.
-export const CALL_AHEAD_LEAD = 'Please call ahead before planning your swim:'
-export const CALL_AHEAD_DETAIL =
-  'the Rec Center will have the most up-to-date information.'
+// Shortened 2026-10-28 from "Please call ahead before planning your swim: the
+// Rec Center will have the most up-to-date information."
+export const CALL_AHEAD_LEAD = 'Note:'
+export const CALL_AHEAD_DETAIL = 'we recommend calling ahead'
 
 export const CALL_AHEAD_NOTE = `${CALL_AHEAD_LEAD} ${CALL_AHEAD_DETAIL}`
 
 // The detail for one pool. Riverbank has no Rec Center; its aquatics office is
-// the number that knows (and the only source for holiday hours).
+// the number that knows (and the only source for holiday hours), so its pages
+// name it.
 export function callAheadDetail(pool) {
   if (!pool || (pool.operator ?? 'nyc_parks') === 'nyc_parks') return CALL_AHEAD_DETAIL
-  return `the aquatics office${pool.phone ? ` at ${pool.phone}` : ''} will have the most up-to-date information.`
+  return `we recommend calling the aquatics office${pool.phone ? ` at ${pool.phone}` : ''}`
 }
 
 // The one sentence the "NYC Parks operates N pools" paragraph adds for pools

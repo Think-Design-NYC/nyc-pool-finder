@@ -19,6 +19,30 @@ const PIN = {
   done: { fill: '#fff', text: '#5a6e85', stroke: '#dce4ec' },
 }
 
+// A closed pool's marker says why at a glance: a cone for construction work
+// (judged from NYC Parks' closure reason — "for reconstruction", "for
+// construction"), a no-entry sign for any other closure. Not from the notice
+// prose: Metropolitan's mentions repairs but it is shut for a mechanical fault.
+const isWorks = (pool) => /construct|renovat/i.test(pool.closure_reason ?? '')
+
+function ClosedIcon({ works, k }) {
+  if (works) {
+    return (
+      <g>
+        <path d={`M0 ${-6 * k}L${4.6 * k} ${5 * k}H${-4.6 * k}Z`} fill="#d97706" />
+        <path d={`M${-2.5 * k} ${0}H${2.5 * k}`} stroke="#fff" strokeWidth={1.6 * k} />
+        <rect x={-6 * k} y={4.6 * k} width={12 * k} height={1.8 * k} rx={0.6 * k} fill="#92400e" />
+      </g>
+    )
+  }
+  return (
+    <g>
+      <circle r={5.4 * k} fill="#b91c1c" />
+      <rect x={-3.4 * k} y={-1 * k} width={6.8 * k} height={2 * k} rx={0.6 * k} fill="#fff" />
+    </g>
+  )
+}
+
 const PAD = 70 // view box units around the framed pins
 const MIN_W = 320 // never zoom in further than this
 const ASPECT = 1.1 // framed area: height / width (the pane is a tall rectangle)
@@ -56,6 +80,7 @@ function frame(points) {
 // since a bare "6:30" means nothing without the activity and day.
 export default function PoolMap({
   pools,
+  closed = [],
   caption,
   highlightId,
   onSelectPool,
@@ -65,9 +90,16 @@ export default function PoolMap({
   const placed = pools
     .filter((p) => p.place?.lat != null && p.place?.lng != null && p.lead)
     .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
+  const shut = closed
+    .filter((p) => p.place?.lat != null && p.place?.lng != null)
+    .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
   const youAt = you ? projectToMap(you.lat, you.lng) : null
-  // Frame the reader too, so "You" is never off the edge.
-  const [vx, vy, vw, vh] = frame([...placed.map((p) => p.at), ...(youAt ? [youAt] : [])])
+  // Frame the reader and the closed pools too, so nothing listed is off the edge.
+  const [vx, vy, vw, vh] = frame([
+    ...placed.map((p) => p.at),
+    ...shut.map((p) => p.at),
+    ...(youAt ? [youAt] : []),
+  ])
   // Pins and labels keep a constant on-screen size however far it zooms.
   const k = vw / 600
 
@@ -104,6 +136,51 @@ export default function PoolMap({
             {b.name}
           </text>
         ))}
+        {/* Closed pools first, so open pins sit on top where they crowd. */}
+        {shut.map(({ pool, id, at: [x, y] }) => {
+          const works = isWorks(pool)
+          const name = shortPoolName(pool)
+          const nameW = (name.length + 9) * 6.2 * k // name + " · closed"
+          // Flip left at the frame's edge, or when an open pin (which wins the
+          // space) sits where the label would run — Hansborough, just west of
+          // St. Mary's.
+          const blocked = placed.some(
+            ({ at: [px, py] }) => px > x && px - x < nameW + 40 * k && Math.abs(py - y) < 34 * k,
+          )
+          const leftFits = x - 13 * k - nameW > vx
+          const flip = leftFits && (x + 12 * k + nameW > vx + vw || blocked)
+          return (
+            <g
+              key={id}
+              role="button"
+              tabIndex={0}
+              aria-label={`${pool.pool_name}: closed${pool.closure_reason ? ` ${pool.closure_reason}` : ''}`}
+              onClick={() => onSelectPool(id)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectPool(id)}
+              className="cursor-pointer focus:outline-none"
+            >
+              <circle cx={x} cy={y} r={10 * k} fill="#fff" stroke="#dce4ec" strokeWidth={1.2 * k} />
+              <g transform={`translate(${x} ${y})`}>
+                <ClosedIcon works={works} k={k} />
+              </g>
+              <text
+                x={flip ? x - 13 * k : x + 13 * k}
+                y={y}
+                dominantBaseline="central"
+                textAnchor={flip ? 'end' : 'start'}
+                fontSize={11 * k}
+                fontWeight="600"
+                fill="#5a6e85"
+                stroke="#f4f7fa"
+                strokeWidth={3.5 * k}
+                strokeLinejoin="round"
+                paintOrder="stroke"
+              >
+                {name} · closed
+              </text>
+            </g>
+          )
+        })}
         {youAt && (
           <g aria-label="Your location">
             <circle cx={youAt[0]} cy={youAt[1]} r={14 * k} fill="#1668e3" opacity="0.18" />
@@ -212,6 +289,22 @@ export default function PoolMap({
           <span className="size-2 rounded-full bg-deep-end" aria-hidden="true" />
           Later
         </li>
+        {shut.some((p) => !isWorks(p.pool)) && (
+          <li className="flex items-center gap-1.5">
+            <svg viewBox="-7 -7 14 14" className="size-3" aria-hidden="true">
+              <ClosedIcon works={false} k={1} />
+            </svg>
+            Closed
+          </li>
+        )}
+        {shut.some((p) => isWorks(p.pool)) && (
+          <li className="flex items-center gap-1.5">
+            <svg viewBox="-7 -7 14 14" className="size-3" aria-hidden="true">
+              <ClosedIcon works k={1} />
+            </svg>
+            Construction
+          </li>
+        )}
       </ul>
     </div>
   )

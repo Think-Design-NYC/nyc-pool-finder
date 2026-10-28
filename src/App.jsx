@@ -518,6 +518,16 @@ export default function App() {
     }
   }, [selectedDay, headline, activityActive, selectedActivity, visiblePools])
 
+  // Closed pools on the map: the same set as the closed list below, narrowed to
+  // the chosen borough (the list stays citywide; the map frames one borough).
+  const mapClosed = useMemo(
+    () =>
+      searching || selectedBorough === 'All Boroughs'
+        ? closedPools
+        : closedPools.filter((p) => getBorough(p) === selectedBorough),
+    [closedPools, searching, selectedBorough],
+  )
+
   // What the map's pin times are for: activity, day, and where.
   const mapCaption = useMemo(() => {
     const activity = activityActive
@@ -767,6 +777,7 @@ export default function App() {
             <PoolMap
               pools={visiblePools}
             caption={mapCaption}
+            closed={mapClosed}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
               you={near.at}
@@ -792,6 +803,7 @@ export default function App() {
           <PoolMap
             pools={visiblePools}
             caption={mapCaption}
+            closed={mapClosed}
             highlightId={selectedId}
             onSelectPool={selectPool}
             you={near.at}
