@@ -587,6 +587,74 @@ export function liveSummary(pools, { activity, borough }, now = new Date()) {
   return { onNow, next, tomorrow }
 }
 
+// "1 h 25 min", "25 min", "2 h"
+export function formatDuration(mins) {
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  if (!h) return `${m} min`
+  return m ? `${h} h ${m} min` : `${h} h`
+}
+
+// How soon "Starting soon" means.
+export const SOON_MINUTES = 60
+
+// Result groups, in display order. Today uses the first four; any other day
+// lists every pool in one 'day' group.
+export const RESULT_GROUPS = ['on', 'soon', 'later', 'done', 'day']
+
+// Picks the session a pool's card leads with and the group it belongs in.
+//
+// Today: a session in progress wins ('on'), else the next one to start
+// ('soon' within SOON_MINUTES, otherwise 'later'), else the last one that ran
+// ('done' — the pool stays on the page instead of silently dropping out).
+// Any other day: the first session ('day'). `others` is everything else, in
+// time order, for the card's chips. `status` is the card's small caps line.
+// Returns null when the pool has no readable sessions.
+export function leadSession(sessions, { today, now = new Date() } = {}) {
+  const timed = sessions
+    .map((s) => ({ ...s, window: sessionWindow(s.time) }))
+    .filter((s) => s.window)
+    .sort((a, b) => a.window.start - b.window.start || a.window.end - b.window.end)
+  if (!timed.length) return null
+  // Never lead with an am/pm typo (a "12:00 a" session — see liveSummary);
+  // it still shows among the chips as NYC Parks posted it.
+  const leadable = timed.some((s) => s.window.start >= 5 * 60)
+    ? timed.filter((s) => s.window.start >= 5 * 60)
+    : timed
+  const t = minutesNow(now)
+  let lead
+  let group
+  let status
+  if (!today) {
+    lead = leadable[0]
+    group = 'day'
+    status = null
+  } else {
+    const on = leadable.find((s) => s.window.start <= t && t < s.window.end)
+    const next = leadable.find((s) => s.window.start > t)
+    if (on) {
+      lead = on
+      group = 'on'
+      status = `On now · ends in ${formatDuration(on.window.end - t)}`
+    } else if (next) {
+      lead = next
+      const wait = next.window.start - t
+      group = wait <= SOON_MINUTES ? 'soon' : 'later'
+      status =
+        group === 'soon'
+          ? `Starts in ${formatDuration(wait)}`
+          : next.window.start >= 17 * 60
+            ? 'Tonight'
+            : `Later today`
+    } else {
+      lead = leadable[leadable.length - 1]
+      group = 'done'
+      status = `Ended at ${formatClock(lead.window.end)}`
+    }
+  }
+  return { lead, group, status, others: timed.filter((s) => s !== lead) }
+}
+
 // The first matching session after the selected day's — or, for Today, after
 // the reader's clock — across the scraped weeks. Feeds the empty state's
 // "Next: Thursday 5:15 pm at St. Mary's Pool". Null when nothing in the data

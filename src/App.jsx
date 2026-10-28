@@ -43,6 +43,9 @@ import {
   nextMatchingSession,
   relativeDay,
   boroughInProse,
+  leadSession,
+  RESULT_GROUPS,
+  longDayLabel,
 } from './utils'
 import { loadPools } from './pools'
 
@@ -367,20 +370,53 @@ export default function App() {
         // Always resolve through the dated weeks: "Today" now means this
         // calendar date, so a holiday closure genuinely empties the day
         // instead of showing that weekday's usual sessions.
-        const filtered = sessionsForFilter(p, selectedDay).filter(
-          (s) =>
-            (!activityActive || matchesActivity(s.session_type, selectedActivity)) &&
-            (!hidePast || !isPastToday(s.time)),
+        const matching = sessionsForFilter(p, selectedDay).filter(
+          (s) => !activityActive || matchesActivity(s.session_type, selectedActivity),
         )
-        return { ...p, schedules: filtered, reopens_on: reopening.get(p.pool_name) ?? null }
+        const lead = leadSession(matching, { today: hidePast, now })
+        if (!lead) return null
+        // A pool whose sessions have all ended today stays on the page under
+        // "Done for today" with what it ran; otherwise past sessions drop off.
+        const upcoming = matching.filter((s) => !hidePast || !isPastToday(s.time))
+        return {
+          ...p,
+          schedules: lead.group === 'done' ? matching : upcoming,
+          lead,
+          reopens_on: reopening.get(p.pool_name) ?? null,
+        }
       })
-      .filter((p) => (p.schedules?.length ?? 0) > 0)
-      .sort((a, b) => {
-        // Open first, then transitioning. Closed pools aren't in this list.
-        const rank = { open: 0, transitioning: 1 }
-        return (rank[a.status] ?? 2) - (rank[b.status] ?? 2)
-      })
-  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, reopening])
+      .filter(Boolean)
+      .sort(
+        (a, b) =>
+          RESULT_GROUPS.indexOf(a.lead.group) - RESULT_GROUPS.indexOf(b.lead.group) ||
+          a.lead.lead.window.start - b.lead.lead.window.start ||
+          a.lead.lead.window.end - b.lead.lead.window.end ||
+          a.pool_name.localeCompare(b.pool_name),
+      )
+  }, [selectedBorough, selectedActivity, activityActive, selectedDay, hidePast, reopening, now])
+
+  // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
+  const groupedPools = useMemo(() => {
+    const byGroup = new Map()
+    for (const p of visiblePools) {
+      const g = p.lead.group
+      if (!byGroup.has(g)) byGroup.set(g, [])
+      byGroup.get(g).push(p)
+    }
+    const dayTitle = longDayLabel(dateForDayFilter(selectedDay))
+    const titles = {
+      on: 'On now',
+      soon: 'Starting soon',
+      later: 'Later today',
+      done: 'Done for today',
+      day: selectedDay === 'Tomorrow' ? `Tomorrow, ${dayTitle.split(', ')[1]}` : dayTitle,
+    }
+    return RESULT_GROUPS.filter((g) => byGroup.has(g)).map((g) => ({
+      key: g,
+      title: titles[g],
+      pools: byGroup.get(g),
+    }))
+  }, [visiblePools, selectedDay])
 
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step
@@ -543,21 +579,32 @@ export default function App() {
                 </button>
               </div>
             )}
-            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {visiblePools.map((pool) => {
-                const id = poolAnchorId(pool)
-                return (
-                  <PoolCard
-                    key={pool.pool_name}
-                    pool={pool}
-                    href={poolHref(pool, slugs)}
-                    activityLabel={activityActive ? selectedActivity : 'Swim'}
-                    open={openCards.has(id)}
-                    onToggle={() => toggleCard(id)}
-                  />
-                )
-              })}
-            </div>
+            {groupedPools.map((group) => (
+              <section key={group.key} className="mb-5" aria-labelledby={`group-${group.key}`}>
+                <h2
+                  id={`group-${group.key}`}
+                  className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted"
+                >
+                  {group.title} ({group.pools.length})
+                </h2>
+                <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-3">
+                  {group.pools.map((pool) => {
+                    const id = poolAnchorId(pool)
+                    return (
+                      <PoolCard
+                        key={pool.pool_name}
+                        pool={pool}
+                        href={poolHref(pool, slugs)}
+                        activityLabel={activityActive ? selectedActivity : 'Swim'}
+                        showSessionType={!activityActive}
+                        open={openCards.has(id)}
+                        onToggle={() => toggleCard(id)}
+                      />
+                    )
+                  })}
+                </div>
+              </section>
+            ))}
           </>
         )}
       </main>

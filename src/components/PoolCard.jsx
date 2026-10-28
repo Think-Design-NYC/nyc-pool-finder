@@ -21,6 +21,7 @@ import {
   parseISODate,
   officialPage,
   cardSubtitle,
+  formatClock,
 } from '../utils'
 
 // "Reopens Tue 9/8" — a pool shut today whose timetable starts inside the
@@ -59,7 +60,7 @@ function ScheduleRow({ schedule }) {
   )
 }
 
-// Session times as compact chips for a collapsed card. The session type only
+// The pool's other matching times as compact chips. The session type only
 // shows when the list mixes types (activity filter off); otherwise the filter
 // already says what they are.
 function TimeChips({ schedules }) {
@@ -67,16 +68,46 @@ function TimeChips({ schedules }) {
   return (
     <ul className="flex flex-wrap gap-1.5">
       {schedules.map((s, i) => (
-        <li key={i} className="rounded-md bg-shallow/40 px-2 py-1 ring-1 ring-inset ring-shallow">
+        <li key={i} className="rounded-md bg-deck px-2 py-0.5 ring-1 ring-inset ring-line">
           {mixed && (
             <span className="block text-[11px] leading-tight text-deep-end/70">
               {s.session_type}
             </span>
           )}
-          <span className="font-mono text-sm font-medium text-tile-blue">{s.time}</span>
+          <span className="font-mono text-xs font-medium text-deep-end">{s.time}</span>
         </li>
       ))}
     </ul>
+  )
+}
+
+// Colour of the lead session's bar and status line, by result group.
+const TONE = {
+  on: { bar: 'bg-open', text: 'text-open', dot: 'bg-open' },
+  soon: { bar: 'bg-tile-blue', text: 'text-tile-blue', dot: 'bg-tile-blue' },
+  later: { bar: 'bg-deep-end/70', text: 'text-muted', dot: 'bg-deep-end/70' },
+  done: { bar: 'bg-line', text: 'text-muted/80', dot: 'bg-line' },
+  day: { bar: 'bg-tile-blue', text: 'text-muted', dot: 'bg-tile-blue' },
+}
+
+// "6:00" over "to 9:45 am" — the mockup's time block. The start's am/pm only
+// shows when it differs from the end's ("6:00 am" over "to 9:30 pm"), so a
+// day-long session can't read as starting in the evening.
+function TimeBlock({ window, muted }) {
+  const [start, startMer] = formatClock(window.start).split(' ')
+  const [end, endMer] = formatClock(window.end).split(' ')
+  return (
+    <div
+      className={`w-[5.75rem] shrink-0 whitespace-nowrap font-mono leading-tight ${
+        muted ? 'text-muted' : 'text-deep-end'
+      }`}
+    >
+      <span className="text-xl font-medium">{start}</span>
+      {startMer !== endMer && <span className="ml-0.5 text-xs">{startMer}</span>}
+      <span className="block text-xs text-muted">
+        to {end} {endMer}
+      </span>
+    </div>
   )
 }
 
@@ -85,7 +116,14 @@ function TimeChips({ schedules }) {
 // control, and a #pool-m260 link opens its card). Collapsed content stays in
 // the DOM (`hidden`), so the rendered page never says less than the crawlable
 // fallback.
-export default function PoolCard({ pool, href = null, activityLabel = 'Swim', open, onToggle }) {
+export default function PoolCard({
+  pool,
+  href = null,
+  activityLabel = 'Swim',
+  showSessionType = false,
+  open,
+  onToggle,
+}) {
   const id = poolAnchorId(pool)
   const bodyId = `${id}-details`
   const noticeRef = useRef(null)
@@ -110,6 +148,13 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
   const reopening = Boolean(pool.reopens_on)
   const isClosed = pool.status === 'closed' && !reopening
   const schedules = !isClosed ? (pool.schedules ?? []) : []
+  // The session the card leads with (App's leadSession), and the rest of the
+  // pool's matching times for the chips. Today's past sessions aren't chips.
+  const lead = pool.lead ?? null
+  const tone = TONE[lead?.group] ?? TONE.day
+  const others = lead
+    ? lead.others.filter((s) => lead.group === 'done' || schedules.some((x) => x.time === s.time))
+    : schedules
 
   return (
     <article
@@ -120,12 +165,26 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
           button (keyboard, screen readers); its clicks bubble up to here. */}
       <header
         onClick={onToggle}
-        className={`group flex cursor-pointer items-start justify-between gap-3 p-4 ${
+        className={`group flex cursor-pointer items-stretch gap-3 p-4 ${
           open ? 'border-b border-line/60' : ''
         }`}
       >
-        <div className="min-w-0">
-          <h2 className="text-lg font-bold leading-snug text-deep-end">
+        {lead && (
+          <>
+            <span className={`w-1 shrink-0 rounded-full ${tone.bar}`} aria-hidden="true" />
+            <TimeBlock window={lead.lead.window} muted={lead.group === 'done'} />
+          </>
+        )}
+        <div className="min-w-0 flex-1">
+          {lead?.status && (
+            <p
+              className={`flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide ${tone.text}`}
+            >
+              <span className={`size-1.5 rounded-full ${tone.dot}`} aria-hidden="true" />
+              {lead.status}
+            </p>
+          )}
+          <h3 className="text-base font-bold leading-snug text-deep-end">
             <button
               type="button"
               aria-expanded={open}
@@ -134,26 +193,30 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
             >
               {pool.pool_name}
             </button>
-          </h2>
-          <p className="text-xs font-medium uppercase tracking-wide text-muted/80">
-            {cardSubtitle(pool)}
-          </p>
+          </h3>
+          {showSessionType && lead && (
+            <p className="text-xs text-deep-end/80">{lead.lead.session_type}</p>
+          )}
+          <p className="text-xs text-muted">{cardSubtitle(pool)}</p>
+          {/* Open is the default; only say something when it isn't. */}
+          {(pool.status !== 'open' || pool.reopens_on) && (
+            <div className="mt-1.5">
+              <StatusBadge pool={pool} />
+            </div>
+          )}
         </div>
-        <div className="flex shrink-0 items-start gap-1.5">
-          <StatusBadge pool={pool} />
-          <span className="-mr-1 rounded-full p-0.5 text-muted/80 group-hover:bg-deck group-hover:text-tile-blue">
-            <ChevronDown
-              size={20}
-              aria-hidden="true"
-              className={`transition-transform ${open ? 'rotate-180' : ''}`}
-            />
-          </span>
-        </div>
+        <span className="-mr-1 self-start rounded-full p-0.5 text-muted/80 group-hover:bg-deck group-hover:text-tile-blue">
+          <ChevronDown
+            size={20}
+            aria-hidden="true"
+            className={`transition-transform ${open ? 'rotate-180' : ''}`}
+          />
+        </span>
       </header>
 
-      {!open && (schedules.length > 0 || pool.notes) && (
-        <div className="-mt-1 flex flex-wrap items-center gap-2 px-4 pb-4">
-          {schedules.length > 0 && <TimeChips schedules={schedules} />}
+      {!open && (others.length > 0 || pool.notes) && (
+        <div className="-mt-1 flex flex-wrap items-center gap-2 px-4 pb-4 pl-4 sm:pl-[8.5rem]">
+          {others.length > 0 && <TimeChips schedules={others} />}
           {pool.notes && (
             <button
               type="button"
@@ -259,7 +322,7 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
           {/* Swim schedules */}
           {schedules.length > 0 && (
             <section>
-              <h3 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
+              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
                 <Waves size={14} className="text-tile-blue" />
                 {activityLabel} Times
                 {reopening && (
@@ -267,7 +330,7 @@ export default function PoolCard({ pool, href = null, activityLabel = 'Swim', op
                     · from {dayStamp({ date: pool.reopens_on })}
                   </span>
                 )}
-              </h3>
+              </h4>
               <ul className="space-y-2">
                 {schedules.map((s, i) => (
                   <ScheduleRow key={i} schedule={s} />
