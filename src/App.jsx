@@ -354,7 +354,7 @@ export default function App() {
             <img
               src={thinkDesignLogo}
               alt="Think Design"
-              className="h-10 w-auto brightness-0 invert"
+              className="h-6 w-auto brightness-0 invert"
             />
           </a>
         </div>
