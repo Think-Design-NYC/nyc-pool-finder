@@ -83,6 +83,11 @@ foundation; the mockups add the new layouts on top.
     The fallback's `newsHtml()` changes to match. A `/news/` index can come
     later if stories accumulate.
 
+11. **Filters always visible** (2026-10-28). Activity, borough and day sit in
+    one bar pinned to the top while scrolling; activity chips moved out of the
+    navy header (the mockup's placement) so they never scroll away. Search
+    stays in the header.
+
 ## Phases
 
 1. **Foundation.** Cherry-pick `19c0568`; resolve conflicts in `pool-page.js`,

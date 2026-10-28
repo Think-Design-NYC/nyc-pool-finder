@@ -737,7 +737,12 @@ are in `docs/superpowers/specs/2026-10-27-brand-ui-redesign.md`.
   8:25 am · NYC Parks" badge from `meta.updated_at` (`checkedLabel()`); a live
   headline (`liveSummary()`) that re-renders every minute and, on a picked day,
   describes that day instead. The headline and grouping are time-relative, so
-  they have no fallback counterpart. Search box and activity chips live here.
+  they have no fallback counterpart. The search box lives here.
+- **Filters are always visible**: activity, borough and day share one bar pinned
+  to the top of the viewport (`FilterBar`). It publishes its height as
+  `--filters-h` (ResizeObserver) so the sticky map pane sits just below it,
+  however the bar wraps. The mockup put activity chips in the navy header;
+  they moved into the pinned bar on 2026-10-28 so they never scroll away.
 - **Grouping**: still one card per pool. `leadSession()` picks the session a
   card leads with and its group — On now / Starting soon (≤60 min) / Later today
   / Done for today, or one dated group on other days. Pools whose sessions have

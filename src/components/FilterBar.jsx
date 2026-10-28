@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import ActivityChips from './ActivityChips'
 import { CalendarDays, ChevronDown } from 'lucide-react'
 import {
   DAY_FILTERS,
@@ -181,6 +182,9 @@ function DayPicker({ selected, onSelect, dates }) {
 }
 
 export default function FilterBar({
+  activities,
+  selectedActivity,
+  onSelectActivity,
   boroughOptions,
   selectedBorough,
   onSelectBorough,
@@ -189,33 +193,58 @@ export default function FilterBar({
   selectedDay,
   onSelectDay,
 }) {
+  // Publishes the bar's height as --filters-h, so the sticky map pane can sit
+  // just below it whatever the bar wraps to (or while the calendar is open).
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(([e]) =>
+      document.documentElement.style.setProperty('--filters-h', `${e.target.offsetHeight}px`),
+    )
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   return (
-    <div className="sticky top-0 z-10 -mx-4 border-b border-line bg-deck/90 px-4 py-3 backdrop-blur lg:mx-0 lg:px-0">
+    <div
+      ref={ref}
+      className="sticky top-0 z-20 -mx-4 border-b border-line bg-deck/95 px-4 py-2.5 backdrop-blur"
+    >
       <div className="mx-auto flex max-w-6xl flex-col gap-2">
-        {/* The header search spans every borough, so the borough choice steps
-            aside while it has text rather than silently narrowing it. */}
-        {searching ? (
-          <p className="text-sm text-muted">Searching all boroughs</p>
-        ) : (
-          <>
-            <div className="md:hidden">
-              <SelectMenu
-                label="Borough"
-                options={boroughOptions}
-                selected={selectedBorough}
-                onSelect={onSelectBorough}
-              />
-            </div>
-            <div className="hidden md:flex">
-              <PillRow
-                options={boroughOptions}
-                selected={selectedBorough}
-                onSelect={onSelectBorough}
-              />
-            </div>
-          </>
+        {activities.length > 0 && (
+          <ActivityChips
+            activities={activities}
+            selected={selectedActivity}
+            onSelect={onSelectActivity}
+          />
         )}
-        <DayPicker selected={selectedDay} onSelect={onSelectDay} dates={dates} />
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-start lg:justify-between">
+          {/* The header search spans every borough, so the borough choice steps
+              aside while it has text rather than silently narrowing it. */}
+          {searching ? (
+            <p className="py-1.5 text-sm text-muted">Searching all boroughs</p>
+          ) : (
+            <>
+              <div className="md:hidden">
+                <SelectMenu
+                  label="Borough"
+                  options={boroughOptions}
+                  selected={selectedBorough}
+                  onSelect={onSelectBorough}
+                />
+              </div>
+              <div className="hidden md:flex">
+                <PillRow
+                  options={boroughOptions}
+                  selected={selectedBorough}
+                  onSelect={onSelectBorough}
+                />
+              </div>
+            </>
+          )}
+          <DayPicker selected={selectedDay} onSelect={onSelectDay} dates={dates} />
+        </div>
       </div>
     </div>
   )

@@ -7,7 +7,6 @@ import meta from '../nyc_pools_meta.json'
 import thinkDesignLogo from '../think-design-logo-2026.png'
 import FilterBar from './components/FilterBar'
 import SearchBox from './components/SearchBox'
-import ActivityChips from './components/ActivityChips'
 import PoolCard from './components/PoolCard'
 import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
@@ -601,13 +600,6 @@ export default function App() {
             <div className="mt-4 md:hidden">
               <SearchBox value={query} onChange={setQuery} near={near} onNear={toggleNear} />
             </div>
-            {activities.length > 0 && (
-              <ActivityChips
-                activities={['All activities', ...activities]}
-                selected={selectedActivity}
-                onSelect={setSelectedActivity}
-              />
-            )}
           </div>
 
           <div className="mt-4 border-t border-white/10 pt-3">
@@ -651,19 +643,25 @@ export default function App() {
         </div>
       )}
 
+      {/* Every filter in one bar pinned to the top, so activity, borough and day
+          stay in reach however far down the list you are. */}
+      <FilterBar
+        activities={activities.length > 0 ? ['All activities', ...activities] : []}
+        selectedActivity={selectedActivity}
+        onSelectActivity={setSelectedActivity}
+        boroughOptions={boroughOptions}
+        selectedBorough={selectedBorough}
+        onSelectBorough={setSelectedBorough}
+        searching={searching}
+        dates={dates}
+        selectedDay={selectedDay}
+        onSelectDay={setSelectedDay}
+      />
+
       {/* Desktop: list column + the map, sticky beside it. Below lg the map
           is a full-screen view behind the floating Map button. */}
       <div className="mx-auto max-w-6xl lg:grid lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] lg:gap-6">
         <div className="min-w-0">
-          <FilterBar
-            boroughOptions={boroughOptions}
-            selectedBorough={selectedBorough}
-            onSelectBorough={setSelectedBorough}
-            searching={searching}
-            dates={dates}
-            selectedDay={selectedDay}
-            onSelectDay={setSelectedDay}
-          />
 
           <main className="mt-5">
             {visiblePools.length === 0 ? (
@@ -746,7 +744,7 @@ export default function App() {
         </div>
 
         <aside className="hidden lg:block" aria-label="Map">
-          <div className="sticky top-4 mt-3 h-[calc(100vh-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
+          <div className="sticky top-[calc(var(--filters-h,7rem)+1rem)] mt-5 h-[calc(100vh-var(--filters-h,7rem)-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
             <PoolMap
               pools={visiblePools}
               highlightId={hoverId ?? selectedId}
