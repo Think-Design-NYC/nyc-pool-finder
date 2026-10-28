@@ -101,6 +101,9 @@ export const BOROUGH_ORDER = [
   'Other',
 ]
 
+// "the Bronx" mid-sentence; every other borough takes no article.
+export const boroughInProse = (b) => (b === 'Bronx' ? 'the Bronx' : b)
+
 export const isOpen = (pool) => pool?.status === 'open'
 
 // Scraped pools carry no `operator`; only the Riverbank overlay sets one. Copy
@@ -565,6 +568,44 @@ export function liveSummary(pools, { activity, borough }, now = new Date()) {
     }
   }
   return { onNow, next, tomorrow }
+}
+
+// The first matching session after the selected day's — or, for Today, after
+// the reader's clock — across the scraped weeks. Feeds the empty state's
+// "Next: Thursday 5:15 pm at St. Mary's Pool". Null when nothing in the data
+// window matches.
+export function nextMatchingSession(pools, { activity, borough, day }, now = new Date()) {
+  const matches = (s) =>
+    !activity || activity === 'All activities' || matchesActivity(s.session_type, activity)
+  const inBorough = (p) =>
+    !borough || borough === 'All Boroughs' || getBorough(p) === borough
+  const today = toISODate(now)
+  const selected = dateForDayFilter(day, now)
+  const t = minutesNow(now)
+  let best = null
+  for (const p of pools) {
+    if (!inBorough(p)) continue
+    for (const w of p.schedule_weeks ?? []) {
+      for (const d of w.days ?? []) {
+        if (d.date < selected || (d.date === selected && selected !== today)) continue
+        for (const s of (d.sessions ?? []).filter(matches)) {
+          const win = sessionWindow(s.time)
+          if (!win || win.start < 5 * 60) continue
+          if (d.date === today && win.start <= t) continue
+          const key = `${d.date} ${String(win.start).padStart(4, '0')}`
+          if (!best || key < best.key) best = { key, date: d.date, start: win.start, pool: p }
+        }
+      }
+    }
+  }
+  return best
+}
+
+// "today", "tomorrow" or "Thursday", relative to the reader's day.
+export function relativeDay(iso, now = new Date()) {
+  if (iso === toISODate(now)) return 'today'
+  if (iso === dateForDayFilter('Tomorrow', now)) return 'tomorrow'
+  return parseISODate(iso)?.toLocaleDateString('en-US', { weekday: 'long' }) ?? iso
 }
 
 // "Schedules checked today, 6:02 am" — the scrape time in New York, relative

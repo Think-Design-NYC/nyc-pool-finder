@@ -4,17 +4,25 @@ function PillRow({ options, selected, onSelect, activeClass = 'bg-deep-end text-
   return (
     <div className="flex flex-1 gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
       {options.map((o) => {
-        // Borough/activity pills are plain strings; the day pills carry a label
-        // that differs from the stored token (weekday names that roll daily).
-        const { value, label, ariaLabel } = typeof o === 'string' ? { value: o, label: o } : o
+        // Activity pills are plain strings; the day pills carry a label that
+        // differs from the stored token (weekday names that roll daily), and a
+        // borough with nothing matching is `muted` — greyed, still pickable,
+        // with the reason in `title`.
+        const { value, label, ariaLabel, title, muted } =
+          typeof o === 'string' ? { value: o, label: o } : o
         return (
           <button
             key={value}
             onClick={() => onSelect(value)}
             aria-label={ariaLabel}
+            title={title}
             aria-pressed={selected === value}
             className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium tabular-nums transition-colors ${
-              selected === value ? activeClass : 'bg-white text-deep-end ring-1 ring-inset ring-line hover:bg-deck'
+              selected === value
+                ? activeClass
+                : muted
+                  ? 'bg-white/50 text-muted/60 ring-1 ring-inset ring-line/60 hover:bg-white'
+                  : 'bg-white text-deep-end ring-1 ring-inset ring-line hover:bg-deck'
             }`}
           >
             {label}
@@ -26,7 +34,8 @@ function PillRow({ options, selected, onSelect, activeClass = 'bg-deep-end text-
 }
 
 function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-deep-end ring-deep-end/40' }) {
-  const isDefault = selected === options[0]
+  const opts = options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o))
+  const isDefault = selected === opts[0].value
   return (
     <label className="relative flex-1">
       <span className="sr-only">{label}</span>
@@ -39,9 +48,9 @@ function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-de
             : `bg-shallow ${accentClass}`
         }`}
       >
-        {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
+        {opts.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.mutedLabel ?? o.label}
           </option>
         ))}
       </select>
@@ -54,7 +63,7 @@ function SelectMenu({ label, options, selected, onSelect, accentClass = 'text-de
 }
 
 export default function FilterBar({
-  boroughs,
+  boroughOptions,
   selectedBorough,
   onSelectBorough,
   activities,
@@ -72,7 +81,7 @@ export default function FilterBar({
         <div className="flex items-center gap-2 md:hidden">
           <SelectMenu
             label="Borough"
-            options={['All Boroughs', ...boroughs]}
+            options={boroughOptions}
             selected={selectedBorough}
             onSelect={onSelectBorough}
           />
@@ -90,7 +99,7 @@ export default function FilterBar({
         {/* Desktop: pill rows */}
         <div className="hidden flex-wrap items-center gap-2 md:flex">
           <PillRow
-            options={['All Boroughs', ...boroughs]}
+            options={boroughOptions}
             selected={selectedBorough}
             onSelect={onSelectBorough}
           />

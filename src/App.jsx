@@ -40,6 +40,9 @@ import {
   liveSummary,
   formatClock,
   checkedLabel,
+  nextMatchingSession,
+  relativeDay,
+  boroughInProse,
 } from './utils'
 import { loadPools } from './pools'
 
@@ -102,6 +105,17 @@ function persistFilters(filters) {
   }
 }
 
+// Boroughs that have at least one pool — the borough bar's fixed set.
+const POOL_BOROUGHS = BOROUGH_ORDER.filter((b) => pools.some((p) => getBorough(p) === b))
+
+// "for the rest of today", "tomorrow", "on Thursday" — the selected day as it
+// reads after "No lap swim in the Bronx …".
+function dayPhrase(dayKey) {
+  if (dayKey === 'Today') return 'for the rest of today'
+  const rel = relativeDay(dateForDayFilter(dayKey))
+  return rel === 'tomorrow' ? rel : `on ${rel}`
+}
+
 function readFilters() {
   return { ...storedFilters(), ...filtersFromSearch(window.location.search) }
 }
@@ -133,7 +147,7 @@ export default function App() {
 
   // A filter the reader chose: push a history entry so Back returns to the
   // previous view, and write all three parameters so the URL is shareable
-  // whole. Automatic corrections use replace instead — see resetBorough.
+  // whole. The mount-time normalisation below uses replace instead.
   const commitFilters = useCallback((next, { push = true } = {}) => {
     setFilters(next)
     persistFilters(next)
@@ -193,14 +207,23 @@ export default function App() {
     return BOROUGH_ORDER.filter((b) => present.has(b))
   }, [activityActive, hidePast, selectedActivity, selectedDay])
 
-  useEffect(() => {
-    if (selectedBorough !== 'All Boroughs' && !boroughs.includes(selectedBorough)) {
-      // Replace, not push: this is the app correcting an impossible combination,
-      // not a choice the reader made. A pushed entry would make Back land on the
-      // same dead filter and immediately bounce forward again.
-      commitFilters({ ...filters, borough: 'All Boroughs' }, { push: false })
-    }
-  }, [boroughs, selectedBorough, commitFilters, filters])
+  // Every borough that has a pool at all stays on the bar. One with nothing
+  // matching the other filters is greyed but still pickable, and says why —
+  // a hidden pill read as a missing borough (the Bronx vanished on Wednesdays,
+  // when St. Mary's runs no open swim, while the header still named it).
+  // Picking one lands on an explained empty state, not a silent reset.
+  const boroughOptions = useMemo(() => {
+    const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
+    const when = dayPhrase(selectedDay)
+    return [
+      'All Boroughs',
+      ...POOL_BOROUGHS.map((b) => {
+        if (boroughs.includes(b)) return b
+        const why = `No ${noun} in ${boroughInProse(b)} ${when}`
+        return { value: b, label: b, muted: true, title: why, ariaLabel: `${b} — ${why.toLowerCase()}`, mutedLabel: `${b} (none)` }
+      }),
+    ]
+  }, [boroughs, activityActive, selectedActivity, selectedDay])
 
   const activities = useMemo(() => {
     const present = new Set()
@@ -271,15 +294,38 @@ export default function App() {
     }
     if (next) {
       return {
-        title: `No ${noun.toLowerCase()} on right now${where ? ` in ${selectedBorough}` : ''}.`,
+        title: `No ${noun.toLowerCase()} on right now${where ? ` in ${boroughInProse(selectedBorough)}` : ''}.`,
         next: `Next one starts at ${at(next)}.`,
       }
     }
     return {
-      title: `${noun} is done for today${where ? ` in ${selectedBorough}` : ''}.`,
+      title: `${noun} is done for today${where ? ` in ${boroughInProse(selectedBorough)}` : ''}.`,
       next: tomorrow ? `Next one starts tomorrow at ${at(tomorrow)}.` : null,
     }
   }, [now, selectedActivity, selectedBorough, activityActive])
+
+  // Says what was asked for and when it next happens, instead of "No pools
+  // match your filters" — the reader may have picked a greyed borough on
+  // purpose to find out.
+  const emptyState = useMemo(() => {
+    const noun = activityActive ? selectedActivity.toLowerCase() : 'sessions'
+    const where =
+      selectedBorough === 'All Boroughs'
+        ? ''
+        : ` in ${boroughInProse(selectedBorough)}`
+    const next = nextMatchingSession(
+      pools,
+      { activity: selectedActivity, borough: selectedBorough, day: selectedDay },
+      now,
+    )
+    const day = next && relativeDay(next.date, now)
+    return {
+      title: `No ${noun}${where} ${dayPhrase(selectedDay)}.`,
+      next: next
+        ? `Next: ${day.charAt(0).toUpperCase() + day.slice(1)}, ${formatClock(next.start)} at ${next.pool.pool_name}.`
+        : null,
+    }
+  }, [now, activityActive, selectedActivity, selectedBorough, selectedDay])
 
   // Null unless the data has actually gone stale, so the banner is absent in the
   // normal case rather than rendered-and-hidden. Deliberately has no counterpart
@@ -447,7 +493,7 @@ export default function App() {
       )}
 
       <FilterBar
-        boroughs={boroughs}
+        boroughOptions={boroughOptions}
         selectedBorough={selectedBorough}
         onSelectBorough={setSelectedBorough}
         activities={activities}
@@ -473,7 +519,10 @@ export default function App() {
                 </p>
               </>
             ) : (
-              'No pools match your filters.'
+              <>
+                <p className="font-medium text-deep-end">{emptyState.title}</p>
+                {emptyState.next && <p className="mt-1 text-sm">{emptyState.next}</p>}
+              </>
             )}
           </div>
         ) : (
