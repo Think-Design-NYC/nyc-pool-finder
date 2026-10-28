@@ -511,3 +511,75 @@ export function isPastToday(timeRange) {
   const now = new Date()
   return mins <= now.getHours() * 60 + now.getMinutes()
 }
+
+// "6:30 a - 8:15 a" -> { start: 390, end: 495 }, or null if either end is
+// unreadable.
+export function sessionWindow(timeRange) {
+  const [a, b] = (timeRange ?? '').split('-')
+  const start = parseClockTime(a)
+  const end = parseClockTime(b)
+  return start == null || end == null ? null : { start, end }
+}
+
+// 1080 -> "6:00 pm"
+export function formatClock(mins) {
+  const h = Math.floor(mins / 60) % 24
+  const m = String(mins % 60).padStart(2, '0')
+  return `${h % 12 || 12}:${m} ${h < 12 ? 'am' : 'pm'}`
+}
+
+const minutesNow = (now) => now.getHours() * 60 + now.getMinutes()
+
+// The header's live line: how many pools are in the chosen activity right now,
+// and where the next session starts. Reads today's and tomorrow's dated
+// sessions against the reader's clock, so it is React-only — the build-time
+// fallback can't know what "now" is and says nothing time-relative.
+export function liveSummary(pools, { activity, borough }, now = new Date()) {
+  const matches = (s) =>
+    !activity || activity === 'All activities' || matchesActivity(s.session_type, activity)
+  const inBorough = (p) =>
+    !borough || borough === 'All Boroughs' || getBorough(p) === borough
+  const t = minutesNow(now)
+  // No recreation center opens before 6 am, so a session "starting" earlier is
+  // an am/pm typo on the NYC Parks page (Roy Wilkins listed lap swim as
+  // "12:00 a - 2:45 a" in Oct 2026). The cards still show what NYC Parks
+  // posted; the headline just doesn't promote it.
+  const plausible = (w) => w && w.start >= 5 * 60
+  let onNow = 0
+  let next = null
+  let tomorrow = null
+  for (const p of pools) {
+    if (p.status === 'closed' && !p.schedule_weeks?.length) continue
+    if (!inBorough(p)) continue
+    let live = false
+    for (const s of sessionsForFilter(p, 'Today', now).filter(matches)) {
+      const w = sessionWindow(s.time)
+      if (!plausible(w)) continue
+      if (w.start <= t && t < w.end) live = true
+      else if (w.start > t && (!next || w.start < next.start)) next = { start: w.start, pool: p }
+    }
+    if (live) onNow++
+    for (const s of sessionsForFilter(p, 'Tomorrow', now).filter(matches)) {
+      const w = sessionWindow(s.time)
+      if (plausible(w) && (!tomorrow || w.start < tomorrow.start)) tomorrow = { start: w.start, pool: p }
+    }
+  }
+  return { onNow, next, tomorrow }
+}
+
+// "Schedules checked today, 6:02 am" — the scrape time in New York, relative
+// to the reader's day. Null when there is no timestamp.
+export function checkedLabel(updatedAt, now = new Date()) {
+  if (!updatedAt) return null
+  const at = new Date(updatedAt)
+  const tz = { timeZone: 'America/New_York' }
+  const day = (d) => d.toLocaleDateString('en-CA', tz)
+  const time = at
+    .toLocaleTimeString('en-US', { ...tz, hour: 'numeric', minute: '2-digit' })
+    .toLowerCase()
+  const yesterday = new Date(now)
+  yesterday.setDate(yesterday.getDate() - 1)
+  if (day(at) === day(now)) return `today, ${time}`
+  if (day(at) === day(yesterday)) return `yesterday, ${time}`
+  return `${at.toLocaleDateString('en-US', { ...tz, month: 'short', day: 'numeric' })}, ${time}`
+}

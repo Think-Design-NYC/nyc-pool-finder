@@ -126,6 +126,17 @@ function buildJsonLd() {
 
 // The scrape date, formatted as the React header formats it. Pinned to New York
 // so a CI build (UTC) and a local build don't disagree about the day.
+// The header badge's wording, minus React's "today"/"yesterday": the build
+// can't know the reader's day, so it names the date. "Oct 27, 8:25 am".
+function checkedAtLabel() {
+  const day = lastUpdatedLabel()
+  if (!day) return null
+  const time = new Date(meta.updated_at)
+    .toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })
+    .toLowerCase()
+  return `${day.replace(/, \d{4}$/, '')}, ${time}`
+}
+
 function lastUpdatedLabel() {
   if (!meta.updated_at) return null
   const t = new Date(meta.updated_at)
@@ -232,10 +243,10 @@ function buildFallbackHtml() {
   return `
 <div id="seo-fallback">
   <h1>NYC Indoor Pool Finder</h1>
-  <p>Public pools open now — lap swim &amp; open swim schedules</p>
+  ${checkedAtLabel() ? `<p>Schedules checked ${esc(checkedAtLabel())} · NYC Parks</p>` : ''}
   <p>${openCount} of ${pools.length} NYC indoor pools open today across ${esc(openBoroughList)}</p>
+  <p>Public pools open now — lap swim &amp; open swim schedules</p>
   <p>${callAheadHtml()}</p>
-  ${lastUpdatedLabel() ? `<p>Schedules last updated ${esc(lastUpdatedLabel())}.</p>` : ''}
   ${newsHtml()}
   ${sections}
   <section>

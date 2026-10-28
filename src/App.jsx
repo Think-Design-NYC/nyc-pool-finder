@@ -37,6 +37,9 @@ import {
   STALE_AFTER_HOURS,
   dayFilterValue,
   dateForDayFilter,
+  liveSummary,
+  formatClock,
+  checkedLabel,
 } from './utils'
 import { loadPools } from './pools'
 
@@ -239,6 +242,45 @@ export default function App() {
     })
   }, [])
 
+  // The reader's clock, ticking once a minute so "right now" stays true while
+  // the page sits open.
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60_000)
+    return () => clearInterval(id)
+  }, [])
+
+  const checked = useMemo(() => checkedLabel(meta.updated_at, now), [now])
+
+  const headline = useMemo(() => {
+    const { onNow, next, tomorrow } = liveSummary(
+      pools,
+      { activity: selectedActivity, borough: selectedBorough },
+      now,
+    )
+    const noun = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'Swimming'
+    const where = selectedBorough === 'All Boroughs' ? '' : `${selectedBorough} `
+    const at = (n) => `${formatClock(n.start)} at ${n.pool.pool_name}`
+    if (onNow > 0) {
+      return {
+        title: `${noun} is on at ${onNow} ${where}pool${onNow === 1 ? '' : 's'} right now.`,
+        next: next ? `Next one starts at ${at(next)}.` : null,
+      }
+    }
+    if (next) {
+      return {
+        title: `No ${noun.toLowerCase()} on right now${where ? ` in ${selectedBorough}` : ''}.`,
+        next: `Next one starts at ${at(next)}.`,
+      }
+    }
+    return {
+      title: `${noun} is done for today${where ? ` in ${selectedBorough}` : ''}.`,
+      next: tomorrow ? `Next one starts tomorrow at ${at(tomorrow)}.` : null,
+    }
+  }, [now, selectedActivity, selectedBorough, activityActive])
+
   // Null unless the data has actually gone stale, so the banner is absent in the
   // normal case rather than rendered-and-hidden. Deliberately has no counterpart
   // in the build-time SEO fallback — see the note in vite-plugin-seo.js.
@@ -321,42 +363,63 @@ export default function App() {
   return (
     <div className="min-h-screen bg-deck px-4 pb-12">
       <header className="-mx-4 mb-4 bg-deep-end px-4 text-white">
-        <div className="mx-auto flex max-w-6xl items-start justify-between gap-4 pb-5 pt-6">
-          <div>
-            <h1 className="flex items-center gap-2 font-display text-2xl font-bold tracking-tight">
-              <LogoMark className="size-9 shrink-0" />
-              NYC Indoor Pool Finder
+        <div className="mx-auto max-w-6xl pb-6 pt-5">
+          <div className="flex items-center justify-between gap-4">
+            {/* The Figma lockup, as live text: "NYC Indoor" over "Pool Finder".
+                textContent reads "NYC Indoor Pool Finder" — the site name, which
+                must keep "Indoor" (CLAUDE.md). The dot is CSS so it isn't part
+                of the name. */}
+            <h1 className="flex items-center gap-2.5">
+              <LogoMark className="size-10 shrink-0" />
+              <span className="flex flex-col">
+                <span className="text-[0.68rem] font-semibold uppercase leading-none tracking-[0.16em] text-white/70">
+                  <span className="after:ml-1 after:content-['·']">NYC</span> Indoor
+                </span>{' '}
+                <span className="font-display text-2xl font-bold leading-tight tracking-tight">
+                  Pool Finder
+                </span>
+              </span>
             </h1>
-            <p className="mt-1 text-sm text-white/75">
-              Public pools open now — lap swim &amp; open swim schedules
-              {lastUpdated && (
-                <span className="text-white/60"> · Last updated: {lastUpdated}</span>
-              )}
-            </p>
-            <p className="mt-1 text-sm font-medium text-white/90">
-              {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
-              {openBoroughList}
-            </p>
-            {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
-            <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
-              <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
-              <CallAheadNote />
-            </p>
+            <a
+              href="https://thinkdesign.com"
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
+              aria-label="Think Design"
+            >
+              {/* The logo is purple artwork; knocked out to white on the navy band. */}
+              <img
+                src={thinkDesignLogo}
+                alt="Think Design"
+                className="h-8 w-auto brightness-0 invert"
+              />
+            </a>
           </div>
-          <a
-            href="https://thinkdesign.com"
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 opacity-80 transition-opacity hover:opacity-100"
-            aria-label="Think Design"
-          >
-            {/* The logo is purple artwork; knocked out to white on the navy band. */}
-            <img
-              src={thinkDesignLogo}
-              alt="Think Design"
-              className="h-8 w-auto brightness-0 invert"
-            />
-          </a>
+
+          {checked && (
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/85">
+              <span className="size-1.5 rounded-full bg-open" aria-hidden="true" />
+              Schedules checked {checked} · NYC Parks
+            </p>
+          )}
+          {/* Time-relative, so React-only: the fallback can't know "now". */}
+          <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+            {headline.title}
+          </h2>
+          {headline.next && <p className="mt-1 text-sm text-white/75">{headline.next}</p>}
+
+          <p className="mt-4 text-sm font-medium text-white/90">
+            {openNames.length} of {pools.length} NYC indoor pools open today across{' '}
+            {openBoroughList}
+          </p>
+          <p className="mt-0.5 text-sm text-white/70">
+            Public pools open now — lap swim &amp; open swim schedules
+          </p>
+          {/* Mirrored in the SEO fallback via CALL_AHEAD_NOTE. */}
+          <p className="mt-2 flex items-start gap-1.5 text-sm text-white/90">
+            <Phone className="mt-0.5 shrink-0 text-lane-red" size={14} aria-hidden="true" />
+            <CallAheadNote />
+          </p>
         </div>
       </header>
 
