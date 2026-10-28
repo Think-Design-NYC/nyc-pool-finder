@@ -88,6 +88,11 @@ foundation; the mockups add the new layouts on top.
     navy header (the mockup's placement) so they never scroll away. Search
     stays in the header.
 
+12. **The map is citywide and pannable** (2026-10-28). Every pool is on it
+    whatever the borough filter (grey rings for pools with nothing matching,
+    icons for closed ones); the borough only sets the starting view. Drag,
+    pinch/wheel and +/−/whole-city buttons.
+
 ## Phases
 
 1. **Foundation.** Cherry-pick `19c0568`; resolve conflicts in `pool-page.js`,

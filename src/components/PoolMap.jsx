@@ -1,15 +1,20 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Maximize2, Minus, Plus } from 'lucide-react'
 import { NYC_MAP, projectToMap } from '../nycMap'
 import { formatClock, poolAnchorId, shortPoolName } from '../utils'
 
 // The mockup's map pane. A flat SVG drawn from NYC Open Data borough outlines
 // (scripts/make_map.py), so there are no tiles, no third-party requests and it
-// works offline. No street detail or zoom controls — directions are a link
-// away on each pool page.
+// works offline. No street detail — directions are a link away on each pool
+// page.
 //
-// Pins carry the card's lead time ("6:30", or "Now") in the card's colours,
-// and the view frames whichever pools are listed: pick Manhattan and it zooms
-// to Manhattan. Hovering or focusing a card highlights its pin; clicking a pin
-// selects the card (App scrolls to it and opens it).
+// It always covers the whole city: every pool is on it whatever borough the
+// list is filtered to. The borough only decides where it starts (`focus`);
+// drag to pan, wheel or pinch to zoom, or use the buttons, to reach St.
+// John's or Flushing from a Manhattan view. Pins carry the card's lead time
+// ("6:30", or "Now") in the card's colours. Hovering or focusing a card
+// highlights its pin; clicking a pin selects the card (App scrolls to it and
+// opens it).
 
 const PIN = {
   on: { fill: '#10976a', text: '#fff' },
@@ -44,8 +49,10 @@ function ClosedIcon({ works, k }) {
 }
 
 const PAD = 70 // view box units around the framed pins
-const MIN_W = 320 // never zoom in further than this
-const ASPECT = 1.1 // framed area: height / width (the pane is a tall rectangle)
+const MIN_W = 320 // the starting frame never zooms in further than this
+const ZOOM_MIN_W = 110 // how far the reader can zoom in
+const ZOOM_MAX_W = 1300 // ...and out
+const SLACK = 250 // how far past the drawn map the view may pan
 
 function pinLabel(pool) {
   if (pool.lead.group === 'on') return 'Now'
@@ -53,10 +60,11 @@ function pinLabel(pool) {
 }
 
 // A view box around the pins, padded, at least MIN_W wide, at the pane's
-// aspect, and kept inside the drawn map.
-function frame(points) {
+// aspect (height / width, so nothing is letterboxed), and kept inside the
+// drawn map.
+function frame(points, ASPECT) {
   const { width, height } = NYC_MAP
-  if (!points.length) return [0, 0, width, height]
+  if (!points.length) points = [[0, 0], [width, height]]
   const xs = points.map((p) => p[0])
   const ys = points.map((p) => p[1])
   let x0 = Math.min(...xs) - PAD
@@ -71,8 +79,10 @@ function frame(points) {
     w = width
     h = w * ASPECT
   }
-  x0 = Math.min(Math.max(cx - w / 2, 0), width - w)
-  y0 = Math.min(Math.max(cy - h / 2, 0), Math.max(height - h, 0))
+  // Kept inside the drawn map where it fits; centred on the pins where it
+  // doesn't (a tall phone showing the whole city is taller than the map).
+  x0 = w >= width ? cx - w / 2 : Math.min(Math.max(cx - w / 2, 0), width - w)
+  y0 = h >= height ? cy - h / 2 : Math.min(Math.max(cy - h / 2, 0), height - h)
   return [x0, y0, w, h]
 }
 
@@ -80,6 +90,7 @@ function frame(points) {
 // since a bare "6:30" means nothing without the activity and day.
 export default function PoolMap({
   pools,
+  focus = null,
   closed = [],
   idle = [],
   idleLabel = 'none today',
@@ -104,23 +115,160 @@ export default function PoolMap({
     .map((m) => ({ ...m, id: poolAnchorId(m.pool), at: projectToMap(m.pool.place.lat, m.pool.place.lng) }))
   const youAt = you ? projectToMap(you.lat, you.lng) : null
   // Frame the reader and the closed pools too, so nothing listed is off the edge.
-  const [vx, vy, vw, vh] = frame([
-    ...placed.map((p) => p.at),
-    ...shut.map((p) => p.at),
+  // The pane's size, so the view matches its shape (a tall phone screen gets a
+  // tall view, not a letterboxed square) and pins can be sized in pixels.
+  const boxRef = useRef(null)
+  const [size, setSize] = useState({ w: 600, h: 660 })
+  useEffect(() => {
+    const el = boxRef.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(([e]) => {
+      const { width, height } = e.contentRect
+      if (width > 0 && height > 0) setSize({ w: width, h: height })
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+  const aspect = size.h / size.w
+
+  // Where it starts: the focused borough's pools (or everything), and "You".
+  const all = [...placed, ...shut]
+  const focusPts = [
+    ...(focus ? all.filter((m) => focus.includes(m.id)) : all).map((m) => m.at),
     ...(youAt ? [youAt] : []),
-  ])
-  // Pins and labels keep a constant on-screen size however far it zooms.
-  const k = vw / 600
+  ]
+  const fit = frame(focusPts, aspect)
+  const whole = frame([...all.map((m) => m.at), ...(youAt ? [youAt] : [])], aspect)
+  const fitKey = fit.map((v) => Math.round(v)).join(',')
+
+  // The reader's pan/zoom, reset whenever the starting frame changes (a new
+  // borough, a ZIP, the pane resizing).
+  const [view, setView] = useState(null)
+  useEffect(() => setView(null), [fitKey])
+  const [vx, vy, vw, vh] = view ?? fit
+  // View box units per screen pixel. Pins and labels are drawn in multiples of
+  // it, so they stay the same size on screen however far it zooms.
+  const k = vw / size.w
+
+  const clamp = useCallback(
+    ([x, y, w]) => {
+      const cw = Math.min(Math.max(w, ZOOM_MIN_W), ZOOM_MAX_W)
+      const ch = cw * aspect
+      return [
+        Math.min(Math.max(x, -SLACK), NYC_MAP.width + SLACK - cw),
+        Math.min(Math.max(y, -SLACK), NYC_MAP.height + SLACK - ch),
+        cw,
+        ch,
+      ]
+    },
+    [aspect],
+  )
+  // The live view, updated synchronously as well as through state, so a burst
+  // of pointer moves between renders each builds on the last.
+  const current = useRef([vx, vy, vw, vh])
+  current.current = [vx, vy, vw, vh]
+  const apply = useCallback((v) => {
+    current.current = v
+    setView(v)
+  }, [])
+
+  // Zoom by `f` (<1 zooms in) about a point given in screen pixels within the
+  // pane; the centre when none is given.
+  const zoomAt = useCallback(
+    (f, px = size.w / 2, py = size.h / 2) => {
+      const [x, y, w] = current.current
+      const ux = x + (px / size.w) * w
+      const uy = y + (py / size.w) * w
+      const nw = Math.min(Math.max(w * f, ZOOM_MIN_W), ZOOM_MAX_W)
+      const r = nw / w
+      apply(clamp([ux - (ux - x) * r, uy - (uy - y) * r, nw]))
+    },
+    [apply, clamp, size],
+  )
+
+  // Pointer drag pans; two pointers pinch-zoom. `moved` swallows the click that
+  // ends a drag, so dragging across a pin doesn't select it.
+  const svgRef = useRef(null)
+  const drag = useRef({ pts: new Map(), moved: false, dist: 0 })
+  const onPointerDown = (e) => {
+    drag.current.pts.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    drag.current.moved = false
+    if (drag.current.pts.size === 2) {
+      const [a, b] = [...drag.current.pts.values()]
+      drag.current.dist = Math.hypot(a.x - b.x, a.y - b.y)
+    }
+  }
+  useEffect(() => {
+    const move = (e) => {
+      const d = drag.current
+      const prev = d.pts.get(e.pointerId)
+      if (!prev) return
+      const box = svgRef.current?.getBoundingClientRect()
+      if (!box) return
+      if (d.pts.size === 1) {
+        const dx = e.clientX - prev.x
+        const dy = e.clientY - prev.y
+        if (Math.abs(dx) + Math.abs(dy) > 3) d.moved = true
+        if (d.moved) {
+          const [x, y, w] = current.current
+          const upp = w / box.width
+          apply(clamp([x - dx * upp, y - dy * upp, w]))
+        }
+      } else if (d.pts.size === 2) {
+        d.pts.set(e.pointerId, { x: e.clientX, y: e.clientY })
+        const [a, b] = [...d.pts.values()]
+        const dist = Math.hypot(a.x - b.x, a.y - b.y)
+        if (d.dist > 0 && dist > 0) {
+          d.moved = true
+          zoomAt(d.dist / dist, (a.x + b.x) / 2 - box.left, (a.y + b.y) / 2 - box.top)
+        }
+        d.dist = dist
+        return
+      }
+      d.pts.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    }
+    const up = (e) => {
+      drag.current.pts.delete(e.pointerId)
+      drag.current.dist = 0
+    }
+    window.addEventListener('pointermove', move)
+    window.addEventListener('pointerup', up)
+    window.addEventListener('pointercancel', up)
+    return () => {
+      window.removeEventListener('pointermove', move)
+      window.removeEventListener('pointerup', up)
+      window.removeEventListener('pointercancel', up)
+    }
+  }, [apply, clamp, zoomAt])
+  // Wheel / trackpad zoom, about the cursor. Non-passive so the page doesn't
+  // scroll underneath.
+  useEffect(() => {
+    const el = svgRef.current
+    if (!el) return
+    const wheel = (e) => {
+      e.preventDefault()
+      const box = el.getBoundingClientRect()
+      zoomAt(Math.exp(e.deltaY * 0.0015), e.clientX - box.left, e.clientY - box.top)
+    }
+    el.addEventListener('wheel', wheel, { passive: false })
+    return () => el.removeEventListener('wheel', wheel)
+  }, [zoomAt])
+  const select = (id) => {
+    if (!drag.current.moved) onSelectPool(id)
+  }
 
   // Highlighted pin drawn last, so it sits on top of its neighbours.
   const order = [...placed].sort((a, b) => (a.id === highlightId) - (b.id === highlightId))
 
   return (
-    <div className={`relative overflow-hidden bg-[#c9ebf6] ${className}`}>
+    <div ref={boxRef} className={`relative overflow-hidden bg-[#c9ebf6] ${className}`}>
       <svg
+        ref={svgRef}
         viewBox={`${vx} ${vy} ${vw} ${vh}`}
         preserveAspectRatio="xMidYMid meet"
-        className="block h-full w-full"
+        onPointerDown={onPointerDown}
+        style={{ touchAction: 'none' }}
+        className="block h-full w-full cursor-grab select-none active:cursor-grabbing"
         role="img"
         aria-label={`Map of ${placed.length} pools`}
       >
@@ -177,7 +325,7 @@ export default function PoolMap({
                   ? `${pool.pool_name}: closed${pool.closure_reason ? ` ${pool.closure_reason}` : ''}`
                   : `${pool.pool_name}: ${idleLabel}`
               }
-              onClick={() => onSelectPool(id)}
+              onClick={() => select(id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectPool(id)}
               className="cursor-pointer focus:outline-none"
             >
@@ -263,7 +411,7 @@ export default function PoolMap({
               role="button"
               tabIndex={0}
               aria-label={`${pool.pool_name}: ${pool.lead.status ?? label}`}
-              onClick={() => onSelectPool(id)}
+              onClick={() => select(id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectPool(id)}
               className="cursor-pointer focus:outline-none"
             >
@@ -311,6 +459,33 @@ export default function PoolMap({
           )
         })}
       </svg>
+      <div className="absolute bottom-24 right-3 flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-line lg:bottom-3">
+        <button
+          type="button"
+          onClick={() => zoomAt(0.7)}
+          aria-label="Zoom in"
+          className="p-2 text-deep-end hover:bg-deck"
+        >
+          <Plus size={16} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={() => zoomAt(1 / 0.7)}
+          aria-label="Zoom out"
+          className="border-t border-line p-2 text-deep-end hover:bg-deck"
+        >
+          <Minus size={16} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={() => apply(whole)}
+          aria-label="Show the whole city"
+          title="Whole city"
+          className="border-t border-line p-2 text-deep-end hover:bg-deck"
+        >
+          <Maximize2 size={16} aria-hidden="true" />
+        </button>
+      </div>
       {caption && (
         <p className="absolute left-3 right-3 top-3 w-fit rounded-full bg-deep-end px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm">
           {caption}

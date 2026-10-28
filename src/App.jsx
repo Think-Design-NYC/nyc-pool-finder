@@ -441,16 +441,14 @@ export default function App() {
     [reopening, query],
   )
 
-  const visiblePools = useMemo(() => {
+  // Every pool with a matching session, citywide — the map's set. The list
+  // below narrows it to the chosen borough; the map never does.
+  const cityPools = useMemo(() => {
     return pools
       // A closed pool joins the grid only for a range it actually reopens in;
       // the rest of the time it stays in the closed list below.
       .filter((p) => p.status !== 'closed' || reopening.has(p.pool_name))
-      .filter((p) =>
-        searching
-          ? inSearch(p)
-          : selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough,
-      )
+      .filter((p) => !searching || inSearch(p))
       .map((p) => {
         // Always resolve through the dated weeks: "Today" now means this
         // calendar date, so a holiday closure genuinely empties the day
@@ -482,18 +480,24 @@ export default function App() {
           a.pool_name.localeCompare(b.pool_name),
       )
   }, [
-    selectedBorough,
     selectedActivity,
     activityActive,
     selectedDay,
     hidePast,
     reopening,
     now,
-    query,
     searching,
     inSearch,
     origin,
   ])
+
+  const visiblePools = useMemo(
+    () =>
+      searching || selectedBorough === 'All Boroughs'
+        ? cityPools
+        : cityPools.filter((p) => getBorough(p) === selectedBorough),
+    [cityPools, searching, selectedBorough],
+  )
 
   // The grid's sections, in RESULT_GROUPS order, skipping empty ones.
   const groupedPools = useMemo(() => {
@@ -538,16 +542,6 @@ export default function App() {
     }
   }, [selectedDay, headline, activityActive, selectedActivity, visiblePools])
 
-  // Closed pools on the map: the same set as the closed list below, narrowed to
-  // the chosen borough (the list stays citywide; the map frames one borough).
-  const mapClosed = useMemo(
-    () =>
-      searching || selectedBorough === 'All Boroughs'
-        ? closedPools
-        : closedPools.filter((p) => getBorough(p) === selectedBorough),
-    [closedPools, searching, selectedBorough],
-  )
-
   // What the map's pin times are for: activity, day, and where.
   const mapCaption = useMemo(() => {
     const activity = activityActive
@@ -580,16 +574,22 @@ export default function App() {
     return pools.filter((p) => !shown.has(p.pool_name))
   }, [visiblePools, closedPools])
 
-  // Open pools with nothing matching (the directory's set): grey pins, so a
-  // pool like Asser Levy on a day without lap swim is still on the map.
-  const mapIdle = useMemo(
+  // The map covers the whole city whatever the borough filter says: every
+  // matching pool (cityPools), every closed pool, and every other open pool as
+  // a grey pin (Asser Levy on a day without lap swim). A search narrows it like
+  // the list. The borough only decides where the map starts (mapFocus).
+  const mapIdle = useMemo(() => {
+    const matched = new Set(cityPools.map((p) => p.pool_name))
+    return pools.filter(
+      (p) => p.status !== 'closed' && !matched.has(p.pool_name) && (!searching || inSearch(p)),
+    )
+  }, [cityPools, searching, inSearch])
+  const mapFocus = useMemo(
     () =>
-      otherPools.filter(
-        (p) =>
-          p.status !== 'closed' &&
-          (searching || selectedBorough === 'All Boroughs' || getBorough(p) === selectedBorough),
-      ),
-    [otherPools, searching, selectedBorough],
+      searching || selectedBorough === 'All Boroughs'
+        ? null
+        : pools.filter((p) => getBorough(p) === selectedBorough).map(poolAnchorId),
+    [searching, selectedBorough],
   )
   const idleLabel = activityActive ? `no ${selectedActivity.toLowerCase()}` : 'no sessions'
 
@@ -811,11 +811,12 @@ export default function App() {
         <aside className="hidden lg:block" aria-label="Map">
           <div className="sticky top-[calc(var(--filters-h,7rem)+1rem)] mt-5 h-[calc(100vh-var(--filters-h,7rem)-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
             <PoolMap
-              pools={visiblePools}
-            caption={mapCaption}
-            closed={mapClosed}
-            idle={mapIdle}
-            idleLabel={idleLabel}
+              pools={cityPools}
+              focus={mapFocus}
+              caption={mapCaption}
+              closed={closedPools}
+              idle={mapIdle}
+              idleLabel={idleLabel}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
               you={origin}
@@ -827,7 +828,7 @@ export default function App() {
       </div>
 
       {/* Below lg: the mockup's floating Map button, and the map full screen. */}
-      {visiblePools.length > 0 && !mapOpen && (
+      {!mapOpen && (
         <button
           type="button"
           onClick={() => setMapOpen(true)}
@@ -840,9 +841,10 @@ export default function App() {
       {mapOpen && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-label="Map of pools">
           <PoolMap
-            pools={visiblePools}
+            pools={cityPools}
+            focus={mapFocus}
             caption={mapCaption}
-            closed={mapClosed}
+            closed={closedPools}
             idle={mapIdle}
             idleLabel={idleLabel}
             highlightId={selectedId}
