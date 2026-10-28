@@ -10,8 +10,10 @@ import {
 } from '../utils'
 
 function PillRow({ options, selected, onSelect, activeClass = 'bg-deep-end text-white shadow-sm' }) {
+  // Wraps rather than scrolls: in the desktop list column a scrolled row hid
+  // the last borough off the edge.
   return (
-    <div className="flex flex-1 gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="flex flex-1 flex-wrap gap-2 pb-1">
       {options.map((o) => {
         // Activity pills are plain strings; the day pills carry a label that
         // differs from the stored token (weekday names that roll daily), and a
@@ -188,7 +190,7 @@ export default function FilterBar({
   onSelectDay,
 }) {
   return (
-    <div className="sticky top-0 z-10 -mx-4 border-b border-line bg-deck/90 px-4 py-3 backdrop-blur">
+    <div className="sticky top-0 z-10 -mx-4 border-b border-line bg-deck/90 px-4 py-3 backdrop-blur lg:mx-0 lg:px-0">
       <div className="mx-auto flex max-w-6xl flex-col gap-2">
         {/* The header search spans every borough, so the borough choice steps
             aside while it has text rather than silently narrowing it. */}

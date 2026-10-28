@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ChevronsDownUp, ChevronsUpDown, Phone } from 'lucide-react'
+import { ChevronsDownUp, ChevronsUpDown, List, Map as MapIcon, Phone } from 'lucide-react'
 import CallAheadNote from './components/CallAheadNote'
 import LogoMark from './components/LogoMark'
 import NewsBanner from './components/NewsBanner'
@@ -13,6 +13,7 @@ import SeoContent from './components/SeoContent'
 import ClosedPoolList from './components/ClosedPoolList'
 import PoolDirectory from './components/PoolDirectory'
 import UpdatePrompt from './components/UpdatePrompt'
+import PoolMap from './components/PoolMap'
 import {
   getBorough,
   BOROUGH_ORDER,
@@ -141,6 +142,20 @@ export default function App() {
     }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+  // Map <-> list: a hovered or focused card highlights its pin; a clicked pin
+  // selects its card — opened, outlined and scrolled into view (closing the
+  // full-screen map first on small screens).
+  const [hoverId, setHoverId] = useState(null)
+  const [selectedId, setSelectedId] = useState(null)
+  const [mapOpen, setMapOpen] = useState(false)
+  const selectPool = useCallback((id) => {
+    setSelectedId(id)
+    setMapOpen(false)
+    setOpenCards((prev) => new Set(prev).add(id))
+    requestAnimationFrame(() =>
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+    )
   }, [])
   const toggleCard = useCallback((id) => {
     setOpenCards((prev) => {
@@ -602,84 +617,141 @@ export default function App() {
         </div>
       )}
 
-      <FilterBar
-        boroughOptions={boroughOptions}
-        selectedBorough={selectedBorough}
-        onSelectBorough={setSelectedBorough}
-        searching={searching}
-        dates={dates}
-        selectedDay={selectedDay}
-        onSelectDay={setSelectedDay}
-      />
+      {/* Desktop: list column + the map, sticky beside it. Below lg the map
+          is a full-screen view behind the floating Map button. */}
+      <div className="mx-auto max-w-6xl lg:grid lg:grid-cols-[minmax(0,27rem)_minmax(0,1fr)] lg:gap-6">
+        <div className="min-w-0">
+          <FilterBar
+            boroughOptions={boroughOptions}
+            selectedBorough={selectedBorough}
+            onSelectBorough={setSelectedBorough}
+            searching={searching}
+            dates={dates}
+            selectedDay={selectedDay}
+            onSelectDay={setSelectedDay}
+          />
 
-      <main className="mx-auto mt-5 max-w-6xl">
-        {visiblePools.length === 0 ? (
-          <div className="rounded-2xl bg-white p-10 text-center text-muted ring-1 ring-line">
-            {rangeHolidays.length > 0 ? (
-              <>
-                <p className="font-medium text-deep-end">
-                  {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
-                  recreation centers are closed.
-                </p>
-                <p className="mt-1 text-sm">
-                  No pools have sessions on{' '}
-                  {rangeHolidays.map((h) => dayStamp({ date: h.date })).join(', ')}.
-                </p>
-              </>
+          <main className="mt-5">
+            {visiblePools.length === 0 ? (
+              <div className="rounded-2xl bg-white p-10 text-center text-muted ring-1 ring-line">
+                {rangeHolidays.length > 0 ? (
+                  <>
+                    <p className="font-medium text-deep-end">
+                      {rangeHolidays.map((h) => h.holiday.split(':')[0]).join(', ')} —
+                      recreation centers are closed.
+                    </p>
+                    <p className="mt-1 text-sm">
+                      No pools have sessions on{' '}
+                      {rangeHolidays.map((h) => dayStamp({ date: h.date })).join(', ')}.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-medium text-deep-end">{emptyState.title}</p>
+                    {emptyState.next && <p className="mt-1 text-sm">{emptyState.next}</p>}
+                  </>
+                )}
+              </div>
             ) : (
               <>
-                <p className="font-medium text-deep-end">{emptyState.title}</p>
-                {emptyState.next && <p className="mt-1 text-sm">{emptyState.next}</p>}
+                {visiblePools.length > 1 && (
+                  <div className="mb-2 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={toggleAllCards}
+                      className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-tile-blue hover:bg-shallow/40"
+                    >
+                      {allCardsOpen ? (
+                        <ChevronsDownUp size={14} aria-hidden="true" />
+                      ) : (
+                        <ChevronsUpDown size={14} aria-hidden="true" />
+                      )}
+                      {allCardsOpen ? 'Collapse all' : 'Expand all'}
+                    </button>
+                  </div>
+                )}
+                {groupedPools.map((group) => (
+                  <section key={group.key} className="mb-5" aria-labelledby={`group-${group.key}`}>
+                    <h2
+                      id={`group-${group.key}`}
+                      className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted"
+                    >
+                      {group.title} ({group.pools.length})
+                    </h2>
+                    <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-1">
+                      {group.pools.map((pool) => {
+                        const id = poolAnchorId(pool)
+                        return (
+                          <div
+                            key={pool.pool_name}
+                            onMouseEnter={() => setHoverId(id)}
+                            onMouseLeave={() => setHoverId(null)}
+                            onFocusCapture={() => setHoverId(id)}
+                            onBlurCapture={() => setHoverId(null)}
+                            className={`rounded-2xl transition-shadow ${
+                              selectedId === id ? 'ring-2 ring-tile-blue ring-offset-2 ring-offset-deck' : ''
+                            }`}
+                          >
+                            <PoolCard
+                              pool={pool}
+                              href={poolHref(pool, slugs)}
+                              activityLabel={activityActive ? selectedActivity : 'Swim'}
+                              showSessionType={!activityActive}
+                              open={openCards.has(id)}
+                              onToggle={() => toggleCard(id)}
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </section>
+                ))}
               </>
             )}
+          </main>
+        </div>
+
+        <aside className="hidden lg:block" aria-label="Map">
+          <div className="sticky top-4 mt-3 h-[calc(100vh-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
+            <PoolMap
+              pools={visiblePools}
+              highlightId={hoverId ?? selectedId}
+              onSelectPool={selectPool}
+              className="h-full"
+            />
           </div>
-        ) : (
-          <>
-            {visiblePools.length > 1 && (
-              <div className="mb-2 flex justify-end">
-                <button
-                  type="button"
-                  onClick={toggleAllCards}
-                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-tile-blue hover:bg-shallow/40"
-                >
-                  {allCardsOpen ? (
-                    <ChevronsDownUp size={14} aria-hidden="true" />
-                  ) : (
-                    <ChevronsUpDown size={14} aria-hidden="true" />
-                  )}
-                  {allCardsOpen ? 'Collapse all' : 'Expand all'}
-                </button>
-              </div>
-            )}
-            {groupedPools.map((group) => (
-              <section key={group.key} className="mb-5" aria-labelledby={`group-${group.key}`}>
-                <h2
-                  id={`group-${group.key}`}
-                  className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted"
-                >
-                  {group.title} ({group.pools.length})
-                </h2>
-                <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 lg:grid-cols-3">
-                  {group.pools.map((pool) => {
-                    const id = poolAnchorId(pool)
-                    return (
-                      <PoolCard
-                        key={pool.pool_name}
-                        pool={pool}
-                        href={poolHref(pool, slugs)}
-                        activityLabel={activityActive ? selectedActivity : 'Swim'}
-                        showSessionType={!activityActive}
-                        open={openCards.has(id)}
-                        onToggle={() => toggleCard(id)}
-                      />
-                    )
-                  })}
-                </div>
-              </section>
-            ))}
-          </>
-        )}
-      </main>
+        </aside>
+      </div>
+
+      {/* Below lg: the mockup's floating Map button, and the map full screen. */}
+      {visiblePools.length > 0 && !mapOpen && (
+        <button
+          type="button"
+          onClick={() => setMapOpen(true)}
+          className="fixed bottom-5 left-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-deep-end px-6 py-3 text-sm font-semibold text-white shadow-lg lg:hidden"
+        >
+          <MapIcon size={16} aria-hidden="true" />
+          Map
+        </button>
+      )}
+      {mapOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-label="Map of pools">
+          <PoolMap
+            pools={visiblePools}
+            highlightId={selectedId}
+            onSelectPool={selectPool}
+            className="h-full"
+          />
+          <button
+            type="button"
+            onClick={() => setMapOpen(false)}
+            className="absolute bottom-5 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-deep-end px-6 py-3 text-sm font-semibold text-white shadow-lg"
+          >
+            <List size={16} aria-hidden="true" />
+            List
+          </button>
+        </div>
+      )}
 
       <ClosedPoolList pools={closedPools} slugs={slugs} />
 
