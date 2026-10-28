@@ -1,5 +1,5 @@
 import { NYC_MAP, projectToMap } from '../nycMap'
-import { formatClock, poolAnchorId } from '../utils'
+import { formatClock, poolAnchorId, shortPoolName } from '../utils'
 
 // The mockup's map pane. A flat SVG drawn from NYC Open Data borough outlines
 // (scripts/make_map.py), so there are no tiles, no third-party requests and it
@@ -52,7 +52,16 @@ function frame(points) {
   return [x0, y0, w, h]
 }
 
-export default function PoolMap({ pools, highlightId, onSelectPool, you = null, className = '' }) {
+// `caption` names what the pins' times are for ("Lap swim · Thursday, Oct 29"),
+// since a bare "6:30" means nothing without the activity and day.
+export default function PoolMap({
+  pools,
+  caption,
+  highlightId,
+  onSelectPool,
+  you = null,
+  className = '',
+}) {
   const placed = pools
     .filter((p) => p.place?.lat != null && p.place?.lng != null && p.lead)
     .map((p) => ({ pool: p, id: poolAnchorId(p), at: projectToMap(p.place.lat, p.place.lng) }))
@@ -126,6 +135,11 @@ export default function PoolMap({ pools, highlightId, onSelectPool, you = null, 
           const s = on ? 1.2 : 1
           const w = (label.length * 8 + 18) * k * s
           const h = 24 * k * s
+          // Names run right of the pill unless that would cross the frame's
+          // right edge (Roy Wilkins, far east in Queens) — then they flip left.
+          const name = shortPoolName(pool)
+          const nameW = name.length * 6.6 * k * s
+          const flip = x + w / 2 + 4 * k + nameW > vx + vw
           return (
             <g
               key={id}
@@ -159,11 +173,33 @@ export default function PoolMap({ pools, highlightId, onSelectPool, you = null, 
               >
                 {label}
               </text>
+              {/* The pool's name beside its pill, haloed so it reads over
+                  shorelines and borough labels. */}
+              <text
+                x={flip ? x - w / 2 - 4 * k : x + w / 2 + 4 * k}
+                y={y - 7 * k - h / 2}
+                dominantBaseline="central"
+                textAnchor={flip ? 'end' : 'start'}
+                fontSize={11.5 * k * s}
+                fontWeight={on ? '700' : '600'}
+                fill="#0b2a4a"
+                stroke="#f4f7fa"
+                strokeWidth={3.5 * k}
+                strokeLinejoin="round"
+                paintOrder="stroke"
+              >
+                {name}
+              </text>
             </g>
           )
         })}
       </svg>
-      <ul className="absolute left-3 top-3 flex lg:bottom-3 lg:top-auto gap-3 rounded-full bg-white/95 px-3 py-1.5 text-xs text-deep-end shadow-sm ring-1 ring-line">
+      {caption && (
+        <p className="absolute left-3 right-3 top-3 w-fit rounded-full bg-deep-end px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm">
+          {caption}
+        </p>
+      )}
+      <ul className="absolute left-3 top-12 flex lg:bottom-3 lg:top-auto gap-3 rounded-full bg-white/95 px-3 py-1.5 text-xs text-deep-end shadow-sm ring-1 ring-line">
         <li className="flex items-center gap-1.5">
           <span className="size-2 rounded-full bg-open" aria-hidden="true" />
           On now

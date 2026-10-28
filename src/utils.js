@@ -126,6 +126,14 @@ export function matchesQuery(pool, query) {
   return words.every((w) => hay.includes(w.replace(/[’']/g, "'")))
 }
 
+// "Riverbank State Park", "Flushing Meadows", "Asser Levy" — a pool's name
+// with the generic tail dropped, for tight spots like map pins.
+export function shortPoolName(pool) {
+  return (pool?.pool_name ?? '')
+    .replace(/ Corona Park Pool & Rink$/, '')
+    .replace(/ (Recreation Center )?Pool( & Rink)?$/, '')
+}
+
 // "the Bronx" mid-sentence; every other borough takes no article.
 export const boroughInProse = (b) => (b === 'Bronx' ? 'the Bronx' : b)
 

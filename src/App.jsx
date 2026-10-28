@@ -518,6 +518,25 @@ export default function App() {
     }
   }, [selectedDay, headline, activityActive, selectedActivity, visiblePools])
 
+  // What the map's pin times are for: activity, day, and where.
+  const mapCaption = useMemo(() => {
+    const activity = activityActive
+      ? selectedActivity.charAt(0) + selectedActivity.slice(1).toLowerCase()
+      : 'All activities'
+    const day =
+      selectedDay === 'Today'
+        ? 'Today'
+        : selectedDay === 'Tomorrow'
+          ? 'Tomorrow'
+          : longDayLabel(dateForDayFilter(selectedDay))
+    const where = searching
+      ? `“${query.trim()}”`
+      : selectedBorough === 'All Boroughs'
+        ? null
+        : selectedBorough
+    return [activity, day, where].filter(Boolean).join(' · ')
+  }, [activityActive, selectedActivity, selectedDay, selectedBorough, searching, query])
+
   // The complement of what's already on screen. Computed from the rendered
   // lists rather than by re-deriving the filters, so it can't fall out of step
   // with them: whatever the grid and the closed list don't show, this does.
@@ -747,6 +766,7 @@ export default function App() {
           <div className="sticky top-[calc(var(--filters-h,7rem)+1rem)] mt-5 h-[calc(100vh-var(--filters-h,7rem)-2rem)] max-h-[56rem] overflow-hidden rounded-2xl ring-1 ring-line">
             <PoolMap
               pools={visiblePools}
+            caption={mapCaption}
               highlightId={hoverId ?? selectedId}
               onSelectPool={selectPool}
               you={near.at}
@@ -771,6 +791,7 @@ export default function App() {
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-label="Map of pools">
           <PoolMap
             pools={visiblePools}
+            caption={mapCaption}
             highlightId={selectedId}
             onSelectPool={selectPool}
             you={near.at}
