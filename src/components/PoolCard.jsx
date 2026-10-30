@@ -177,6 +177,9 @@ export default function PoolCard({
   // pool's matching times for the chips. Today's past sessions aren't chips.
   const lead = pool.lead ?? null
   const tone = TONE[lead?.group] ?? TONE.day
+  // The ON NOW slot gets a soft shallow tint so it lifts from the deck
+  // without a loud color move. Every other state keeps the plain white card.
+  const isLive = lead?.group === 'on'
   const others = lead
     ? lead.others.filter((s) => lead.group === 'done' || schedules.some((x) => x.time === s.time))
     : schedules
@@ -184,7 +187,9 @@ export default function PoolCard({
   return (
     <article
       id={id}
-      className="flex scroll-mt-4 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-line transition-shadow hover:shadow-md"
+      className={`flex scroll-mt-4 flex-col overflow-hidden rounded-2xl shadow-sm ring-1 ring-line transition-shadow hover:shadow-md ${
+        isLive ? 'bg-shallow/40' : 'bg-white'
+      }`}
     >
       {/* The whole header toggles, arrow included. The name is the real
           button (keyboard, screen readers); its clicks bubble up to here. */}
@@ -205,7 +210,14 @@ export default function PoolCard({
             <p
               className={`flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide ${tone.text}`}
             >
-              <span className={`size-1.5 rounded-full ${tone.dot}`} aria-hidden="true" />
+              {isLive ? (
+                <span className="relative inline-flex size-1.5" aria-hidden="true">
+                  <span className="absolute inset-0 animate-live-ping rounded-full bg-open/60" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-open" />
+                </span>
+              ) : (
+                <span className={`size-1.5 rounded-full ${tone.dot}`} aria-hidden="true" />
+              )}
               {lead.status}
             </p>
           )}

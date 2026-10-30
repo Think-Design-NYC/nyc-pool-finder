@@ -607,7 +607,7 @@ export default function App() {
     })
 
   return (
-    <div className="min-h-screen bg-deck px-4 pb-12">
+    <div className="min-h-screen overflow-x-hidden bg-deck px-4 pb-12">
       <header className="-mx-4 bg-deep-end px-4 text-white">
         <div className="mx-auto max-w-6xl pb-5 pt-5">
           <div className="flex items-center gap-4">
@@ -647,7 +647,10 @@ export default function App() {
 
           {checked && (
             <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/85">
-              <span className="size-1.5 rounded-full bg-open" aria-hidden="true" />
+              <span className="relative inline-flex size-1.5" aria-hidden="true">
+                <span className="absolute inset-0 animate-live-ping rounded-full bg-open/60" />
+                <span className="relative inline-flex size-1.5 rounded-full bg-open" />
+              </span>
               Schedules checked {checked} · NYC Parks
             </p>
           )}

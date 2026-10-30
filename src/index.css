@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* Live-data signal: a halo expands behind an "on now" dot and fades, every
+   three seconds. Tailwind's own `animate-ping` runs on a one-second cycle
+   which reads as a notification alert; three seconds + a smaller max scale
+   reads as a heartbeat and stays in peripheral vision without pulling the
+   eye. The companion `.live-dot` wrapper is a positioning hook — the halo
+   span sits absolutely over the solid dot underneath. */
+@keyframes live-ping {
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+@utility animate-live-ping {
+  animation: live-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
 /* Brand palette from the Figma "Pool Finder — Brand + UI" file (v4 tokens).
    The build-time pages (pool-page.js, the SEO fallback, the news and privacy
    pages) can't use Tailwind, so they repeat these hex values by hand — change
