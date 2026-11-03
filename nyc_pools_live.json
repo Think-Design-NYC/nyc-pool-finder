@@ -17,7 +17,7 @@
         },
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -707,8 +707,8 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": true,
-        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+        "membership_required": null,
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -2439,6 +2439,12 @@
                 "date": "2026-11-02"
             },
             {
+                "session_type": "Swim For Life at Gertrude Ederle Class B Monday - PS 138M@30",
+                "days": "Monday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-02"
+            },
+            {
                 "session_type": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
                 "days": "Monday",
                 "time": "12:00 p - 1:00 p",
@@ -2689,6 +2695,12 @@
                                 "session_type": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-02"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Monday - PS 138M@30",
+                                "days": "Monday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-02"
                             },
                             {
@@ -2997,6 +3009,12 @@
                                 "session_type": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Monday - PS 138M@30",
+                                "days": "Monday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-09"
                             },
                             {
@@ -3945,7 +3963,7 @@
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -5087,7 +5105,7 @@
         "phone": "(718) 771-2787",
         "url": "https://www.nycgovparks.org/parks/B245/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Beginning Thursday, October 22 through Monday, November 2, 2026 the gymnasium at St. John\u2019s Recreation Center will be closed for voting preparation and Early Voting.",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -6484,7 +6502,7 @@
                 "date": "2026-11-02"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                 "days": "Monday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-02"
@@ -6496,7 +6514,7 @@
                 "date": "2026-11-02"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                 "days": "Monday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-02"
@@ -7145,7 +7163,7 @@
                                 "date": "2026-11-02"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-02"
@@ -7157,7 +7175,7 @@
                                 "date": "2026-11-02"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-02"
@@ -7862,6 +7880,12 @@
                                 "date": "2026-11-09"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-09"
+                            },
+                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
@@ -7869,12 +7893,6 @@
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-09"
