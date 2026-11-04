@@ -17,7 +17,7 @@
         },
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -707,7 +707,7 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -2417,7 +2417,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -3626,16 +3626,12 @@
         "pool_code": "B270",
         "status": "closed",
         "location": {
-            "address": "1555 Linden Boulevard",
-            "cross_streets": "Linden Blvd. and Hegeman Ave.",
-            "city": "Brooklyn",
+            "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
+            "cross_streets": null,
+            "city": "New York",
             "state": "NY",
-            "zip_code": "11212",
-            "building_hours": {
-                "Monday_Friday": "7:00 AM - 10:00 PM",
-                "Saturday": "8:00 AM - 12:00 AM",
-                "Sunday": "8:00 AM - 4:00 PM"
-            }
+            "zip_code": null,
+            "building_hours": null
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
@@ -6426,7 +6422,7 @@
         },
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
         "reduced_hours": false,
         "notice_links": [],
@@ -6568,12 +6564,6 @@
                 "date": "2026-11-03"
             },
             {
-                "session_type": "FMAC: Adult Water Exercise",
-                "days": "Tuesday",
-                "time": "1:00 p - 2:00 p",
-                "date": "2026-11-03"
-            },
-            {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Tuesday",
                 "time": "1:00 p - 2:00 p",
@@ -6581,6 +6571,12 @@
             },
             {
                 "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "days": "Tuesday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-11-03"
+            },
+            {
+                "session_type": "FMAC: Adult Water Exercise",
                 "days": "Tuesday",
                 "time": "1:00 p - 2:00 p",
                 "date": "2026-11-03"
@@ -6604,7 +6600,7 @@
                 "date": "2026-11-03"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-03"
@@ -6616,7 +6612,7 @@
                 "date": "2026-11-03"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-03"
@@ -7238,12 +7234,6 @@
                                 "date": "2026-11-03"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
-                                "days": "Tuesday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-11-03"
-                            },
-                            {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
@@ -7251,6 +7241,12 @@
                             },
                             {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "days": "Tuesday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-11-03"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-03"
@@ -7274,7 +7270,7 @@
                                 "date": "2026-11-03"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-03"
@@ -7286,7 +7282,7 @@
                                 "date": "2026-11-03"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-03"
@@ -7979,13 +7975,13 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Tuesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-10"
@@ -8009,13 +8005,13 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-10"
@@ -9861,7 +9857,7 @@
             {
                 "session_type": "Adult Open Swim",
                 "days": "Friday",
-                "time": "8:00 a - 10:00 a",
+                "time": "8:00 a - 9:45 a",
                 "date": "2026-11-06"
             },
             {
@@ -10180,7 +10176,7 @@
                             {
                                 "session_type": "Adult Open Swim",
                                 "days": "Friday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-06"
                             },
                             {
@@ -10525,7 +10521,7 @@
                             {
                                 "session_type": "Adult Open Swim",
                                 "days": "Friday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-13"
                             },
                             {
