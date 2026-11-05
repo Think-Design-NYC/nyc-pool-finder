@@ -1479,7 +1479,13 @@
                             {
                                 "session_type": "Adult Lap Swim",
                                 "days": "Wednesday",
-                                "time": "7:00 a - 9:45 a",
+                                "time": "7:00 a - 10:45 a",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "Holiday Open Swim - All ages",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 1:00 p",
                                 "date": "2026-11-11"
                             },
                             {
@@ -2417,7 +2423,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -3626,12 +3632,16 @@
         "pool_code": "B270",
         "status": "closed",
         "location": {
-            "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
-            "cross_streets": null,
-            "city": "New York",
+            "address": "1555 Linden Boulevard",
+            "cross_streets": "Linden Blvd. and Hegeman Ave.",
+            "city": "Brooklyn",
             "state": "NY",
-            "zip_code": null,
-            "building_hours": null
+            "zip_code": "11212",
+            "building_hours": {
+                "Monday_Friday": "7:00 AM - 10:00 PM",
+                "Saturday": "8:00 AM - 12:00 AM",
+                "Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
@@ -6422,7 +6432,7 @@
         },
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
         "reduced_hours": false,
         "notice_links": [],
@@ -6702,12 +6712,6 @@
                 "date": "2026-11-04"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-04"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                 "days": "Wednesday",
                 "time": "4:00 p - 5:00 p",
@@ -6715,6 +6719,12 @@
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "days": "Wednesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-04"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                 "days": "Wednesday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-04"
@@ -6792,15 +6802,15 @@
                 "date": "2026-11-05"
             },
             {
-                "session_type": "FMAC Aquacades Swim Team",
-                "days": "Thursday",
-                "time": "4:00 p - 6:00 p",
-                "date": "2026-11-05"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                 "days": "Thursday",
                 "time": "4:00 p - 5:00 p",
+                "date": "2026-11-05"
+            },
+            {
+                "session_type": "FMAC Aquacades Swim Team",
+                "days": "Thursday",
+                "time": "4:00 p - 6:00 p",
                 "date": "2026-11-05"
             },
             {
@@ -7381,12 +7391,6 @@
                                 "date": "2026-11-04"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-04"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
@@ -7394,6 +7398,12 @@
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-04"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-04"
@@ -7480,15 +7490,15 @@
                                 "date": "2026-11-05"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
-                                "days": "Thursday",
-                                "time": "4:00 p - 6:00 p",
-                                "date": "2026-11-05"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                                 "days": "Thursday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-05"
+                            },
+                            {
+                                "session_type": "FMAC Aquacades Swim Team",
+                                "days": "Thursday",
+                                "time": "4:00 p - 6:00 p",
                                 "date": "2026-11-05"
                             },
                             {
@@ -7993,15 +8003,15 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC Aquacades Swim Team",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 6:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "FMAC Aquacades Swim Team",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 6:00 p",
                                 "date": "2026-11-10"
                             },
                             {
@@ -8098,6 +8108,12 @@
                                 "date": "2026-11-11"
                             },
                             {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-11"
+                            },
+                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
@@ -8105,12 +8121,6 @@
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-11"
