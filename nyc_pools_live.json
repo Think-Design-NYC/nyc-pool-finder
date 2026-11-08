@@ -3633,7 +3633,7 @@
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "reduced_hours": false,
         "notice_links": [
@@ -3796,7 +3796,7 @@
         },
         "phone": "(718) 599-5707",
         "url": "https://www.nycgovparks.org/parks/B085/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Metropolitan Recreation Center is currently closed due to a mechanical issue which has resulted in poor dehumidification and air circulation. For the health and safety of our patrons, the Center must remain closed until we are able to install a full dehumidification system in the natatorium through our planned Capital renovation. For more information, please visit NYC Parks Capital Project Tracker",
         "reduced_hours": false,
         "notice_links": [
@@ -3956,7 +3956,7 @@
         },
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -4679,399 +4679,6 @@
                                 "days": "Sunday",
                                 "time": "3:00 p - 4:00 p",
                                 "date": "2026-11-08"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "start": "2026-11-09",
-                "end": "2026-11-15",
-                "days": [
-                    {
-                        "date": "2026-11-09",
-                        "weekday": "Monday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
-                                "days": "Monday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Monday -",
-                                "days": "Monday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Monday -",
-                                "days": "Monday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "1:00 p - 2:45 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Monday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-11-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-10",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
-                                "days": "Tuesday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
-                                "days": "Tuesday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Water Aerobics",
-                                "days": "Tuesday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Tuesday",
-                                "time": "2:00 p - 3:30 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Tuesday",
-                                "time": "3:30 p - 4:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Tuesday)",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm's Swim Team",
-                                "days": "Tuesday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adult Hydro-Fit",
-                                "days": "Tuesday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-11-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-11",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "1:00 p - 2:45 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Wednesday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Wednesday)",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "5:00 p - 5:45 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "6:00 p - 9:30 p",
-                                "date": "2026-11-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-12",
-                        "weekday": "Thursday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
-                                "days": "Thursday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
-                                "days": "Thursday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
-                                "days": "Thursday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Water Aerobics",
-                                "days": "Thursday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Synchronized Swimming",
-                                "days": "Thursday",
-                                "time": "2:00 p - 3:30 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Thursday",
-                                "time": "3:30 p - 4:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Afterschool Learn to Swim (Thursday)",
-                                "days": "Thursday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm's Swim Team",
-                                "days": "Thursday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adult Hydro-Fit",
-                                "days": "Thursday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-11-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-13",
-                        "weekday": "Friday",
-                        "building_hours": "6:30 a - 10:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "6:30 a - 9:45 a",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "1:00 p - 2:45 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Friday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "4:00 p - 5:45 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adaptive Aquatics",
-                                "days": "Friday",
-                                "time": "6:00 p - 7:00 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "7:00 p - 9:30 p",
-                                "date": "2026-11-13"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-14",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 12:00 a",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Saturday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Parent and Tots Learn to Swim (Saturday)",
-                                "days": "Saturday",
-                                "time": "11:30 a - 12:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Saturday",
-                                "time": "12:00 p - 3:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Closed for Cleaning",
-                                "days": "Saturday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Teen Learn to Swim (Saturday)",
-                                "days": "Saturday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Teen General Swim",
-                                "days": "Saturday",
-                                "time": "5:00 p - 7:30 p",
-                                "date": "2026-11-14"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-15",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 4:00 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Open Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 2 - Sunday)",
-                                "days": "Sunday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Children's Learn to Swim (Level 1 - Sunday)",
-                                "days": "Sunday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Adult Learn to Swim (Sunday)",
-                                "days": "Sunday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "1:00 p - 3:00 p",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Shirley Chisholm: Swim Prep",
-                                "days": "Sunday",
-                                "time": "3:00 p - 4:00 p",
-                                "date": "2026-11-15"
                             }
                         ]
                     }
@@ -6420,7 +6027,7 @@
         },
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
         "reduced_hours": false,
         "notice_links": [],
@@ -9675,12 +9282,15 @@
         "pool_code": "X045",
         "status": "open",
         "location": {
-            "address": "St. Ann's Avenue and E. 145th Street",
-            "cross_streets": null,
-            "city": "New York",
+            "address": "450 Saint Ann's Avenue",
+            "cross_streets": "145th Street and St. Ann's Avenue",
+            "city": "Bronx",
             "state": "NY",
-            "zip_code": null,
-            "building_hours": null
+            "zip_code": "10455",
+            "building_hours": {
+                "Monday_Saturday": "8:00 AM - 8:00 PM",
+                "Sunday": "8:00 AM - 4:00 PM"
+            }
         },
         "phone": "(718) 402-5157",
         "url": "https://www.nycgovparks.org/parks/X045/facilities/indoor-pools",
