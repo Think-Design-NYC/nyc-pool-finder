@@ -1734,7 +1734,7 @@
         },
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -4004,7 +4004,7 @@
         },
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -5172,846 +5172,8 @@
         "closed_through": null,
         "reopens": null,
         "closures": [],
-        "schedules": [
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Monday",
-                "time": "8:30 a - 9:15 a",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Monday - PS 282",
-                "days": "Monday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Monday - PS 372K",
-                "days": "Monday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Monday - PS 282",
-                "days": "Monday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Monday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "St. John's: Afterschool Learn to Swim (Monday)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Monday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Monday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Monday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-11-09"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Tuesday",
-                "time": "8:30 a - 9:15 a",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Tuesday - PS 5",
-                "days": "Tuesday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Tuesday - PS 372K",
-                "days": "Tuesday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Tuesday - PS 282",
-                "days": "Tuesday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Tuesday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Tuesday",
-                "time": "3:00 p - 4:45 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "St. John's: Swim Prep",
-                "days": "Tuesday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Women's General Swim",
-                "days": "Tuesday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Women's Lap Swim",
-                "days": "Tuesday",
-                "time": "7:45 p - 9:00 p",
-                "date": "2026-11-10"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "St. John's: Senior Water Exercise",
-                "days": "Wednesday",
-                "time": "8:30 a - 9:15 a",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Wednesday",
-                "time": "10:00 a - 1:00 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Wednesday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "St. John's: Afterschool Learn to Swim (Wednesday)",
-                "days": "Wednesday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Wednesday",
-                "time": "5:00 p - 6:30 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Wednesday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Wednesday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-11-11"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "St. John's: Senior Learn to Swim Level 1 (Thursday)",
-                "days": "Thursday",
-                "time": "8:30 a - 9:15 a",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class A Thursday - PS 308",
-                "days": "Thursday",
-                "time": "10:00 a - 11:00 a",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class B Thursday - PS 114",
-                "days": "Thursday",
-                "time": "11:00 a - 12:00 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Swim For Life at St. John's Class C Thursday - PS 282",
-                "days": "Thursday",
-                "time": "12:00 p - 1:00 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "1:15 p - 2:45 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Thursday",
-                "time": "3:00 p - 4:45 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Thursday",
-                "time": "5:00 p - 6:15 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "St. John's: Adult Water Exercise",
-                "days": "Thursday",
-                "time": "6:30 p - 7:15 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Thursday",
-                "time": "7:30 p - 8:15 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Thursday",
-                "time": "8:30 p - 9:30 p",
-                "date": "2026-11-12"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:00 a - 8:15 a",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
-                "days": "Friday",
-                "time": "8:30 a - 9:15 a",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "10:00 a - 1:00 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "1:15 p - 1:45 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "2:00 p - 2:45 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Friday",
-                "time": "3:00 p - 3:45 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "St. John's: Adaptive Aquatics",
-                "days": "Friday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Friday",
-                "time": "5:15 p - 6:30 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Friday",
-                "time": "6:45 p - 7:30 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Friday",
-                "time": "7:45 p - 9:30 p",
-                "date": "2026-11-13"
-            },
-            {
-                "session_type": "St. John's Finmen Swim Team",
-                "days": "Saturday",
-                "time": "9:00 a - 10:30 a",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "St. John's: Children's Learn to Swim (Level 2)",
-                "days": "Saturday",
-                "time": "10:30 a - 11:30 a",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "St. John's: Children's Learn to Swim (Level 1)",
-                "days": "Saturday",
-                "time": "11:30 a - 12:30 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "St. John's: Parent and Tots Learn to Swim",
-                "days": "Saturday",
-                "time": "12:30 p - 1:00 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "St. John's: Adult Learn to Swim (Saturday)",
-                "days": "Saturday",
-                "time": "1:00 p - 2:00 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Saturday",
-                "time": "2:15 p - 3:45 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "St. John's: Teen Learn to Swim Level 1 (Saturday)",
-                "days": "Saturday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "Children Swim (SNL)",
-                "days": "Saturday",
-                "time": "5:15 p - 6:30 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "Teen/Young Adult Swim - SNL",
-                "days": "Saturday",
-                "time": "7:00 p - 8:00 p",
-                "date": "2026-11-14"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "8:15 a - 9:45 a",
-                "date": "2026-11-15"
-            },
-            {
-                "session_type": "General Swim",
-                "days": "Sunday",
-                "time": "10:00 a - 11:15 a",
-                "date": "2026-11-15"
-            },
-            {
-                "session_type": "Family Swim",
-                "days": "Sunday",
-                "time": "11:30 a - 1:15 p",
-                "date": "2026-11-15"
-            },
-            {
-                "session_type": "Children/Teen Swim",
-                "days": "Sunday",
-                "time": "1:30 p - 2:30 p",
-                "date": "2026-11-15"
-            },
-            {
-                "session_type": "Adult Lap Swim",
-                "days": "Sunday",
-                "time": "2:45 p - 4:15 p",
-                "date": "2026-11-15"
-            }
-        ],
+        "schedules": [],
         "schedule_weeks": [
-            {
-                "start": "2026-11-09",
-                "end": "2026-11-15",
-                "days": [
-                    {
-                        "date": "2026-11-09",
-                        "weekday": "Monday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "7:00 a - 8:15 a",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "St. John's: Senior Water Exercise",
-                                "days": "Monday",
-                                "time": "8:30 a - 9:15 a",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class A Monday - PS 282",
-                                "days": "Monday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class B Monday - PS 372K",
-                                "days": "Monday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class C Monday - PS 282",
-                                "days": "Monday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "1:15 p - 2:45 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Monday",
-                                "time": "3:00 p - 3:45 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "St. John's: Afterschool Learn to Swim (Monday)",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "St. John's Finmen Swim Team",
-                                "days": "Monday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "St. John's: Adult Water Exercise",
-                                "days": "Monday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-09"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Monday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-11-09"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-10",
-                        "weekday": "Tuesday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "7:00 a - 8:15 a",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "St. John's: Senior Water Exercise",
-                                "days": "Tuesday",
-                                "time": "8:30 a - 9:15 a",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class A Tuesday - PS 5",
-                                "days": "Tuesday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class B Tuesday - PS 372K",
-                                "days": "Tuesday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class C Tuesday - PS 282",
-                                "days": "Tuesday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Tuesday",
-                                "time": "1:15 p - 2:45 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Tuesday",
-                                "time": "3:00 p - 4:45 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "St. John's: Swim Prep",
-                                "days": "Tuesday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Women's General Swim",
-                                "days": "Tuesday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-10"
-                            },
-                            {
-                                "session_type": "Women's Lap Swim",
-                                "days": "Tuesday",
-                                "time": "7:45 p - 9:00 p",
-                                "date": "2026-11-10"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-11",
-                        "weekday": "Wednesday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "7:00 a - 8:15 a",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "St. John's: Senior Water Exercise",
-                                "days": "Wednesday",
-                                "time": "8:30 a - 9:15 a",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Wednesday",
-                                "time": "10:00 a - 1:00 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Wednesday",
-                                "time": "3:00 p - 3:45 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "St. John's: Afterschool Learn to Swim (Wednesday)",
-                                "days": "Wednesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "St. John's Finmen Swim Team",
-                                "days": "Wednesday",
-                                "time": "5:00 p - 6:30 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "St. John's: Adult Water Exercise",
-                                "days": "Wednesday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-11"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Wednesday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-11-11"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-12",
-                        "weekday": "Thursday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "7:00 a - 8:15 a",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "St. John's: Senior Learn to Swim Level 1 (Thursday)",
-                                "days": "Thursday",
-                                "time": "8:30 a - 9:15 a",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class A Thursday - PS 308",
-                                "days": "Thursday",
-                                "time": "10:00 a - 11:00 a",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class B Thursday - PS 114",
-                                "days": "Thursday",
-                                "time": "11:00 a - 12:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Swim For Life at St. John's Class C Thursday - PS 282",
-                                "days": "Thursday",
-                                "time": "12:00 p - 1:00 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "1:15 p - 2:45 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Thursday",
-                                "time": "3:00 p - 4:45 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Thursday",
-                                "time": "5:00 p - 6:15 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "St. John's: Adult Water Exercise",
-                                "days": "Thursday",
-                                "time": "6:30 p - 7:15 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Thursday",
-                                "time": "7:30 p - 8:15 p",
-                                "date": "2026-11-12"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Thursday",
-                                "time": "8:30 p - 9:30 p",
-                                "date": "2026-11-12"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-13",
-                        "weekday": "Friday",
-                        "building_hours": "6:00 a - 10:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "7:00 a - 8:15 a",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "St. John's: Senior Learn to Swim Level 2 (Friday)",
-                                "days": "Friday",
-                                "time": "8:30 a - 9:15 a",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "10:00 a - 1:00 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "1:15 p - 1:45 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "2:00 p - 2:45 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Friday",
-                                "time": "3:00 p - 3:45 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "St. John's: Adaptive Aquatics",
-                                "days": "Friday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Friday",
-                                "time": "5:15 p - 6:30 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Friday",
-                                "time": "6:45 p - 7:30 p",
-                                "date": "2026-11-13"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Friday",
-                                "time": "7:45 p - 9:30 p",
-                                "date": "2026-11-13"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-14",
-                        "weekday": "Saturday",
-                        "building_hours": "8:00 a - 11:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "St. John's Finmen Swim Team",
-                                "days": "Saturday",
-                                "time": "9:00 a - 10:30 a",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "St. John's: Children's Learn to Swim (Level 2)",
-                                "days": "Saturday",
-                                "time": "10:30 a - 11:30 a",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "St. John's: Children's Learn to Swim (Level 1)",
-                                "days": "Saturday",
-                                "time": "11:30 a - 12:30 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "St. John's: Parent and Tots Learn to Swim",
-                                "days": "Saturday",
-                                "time": "12:30 p - 1:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "St. John's: Adult Learn to Swim (Saturday)",
-                                "days": "Saturday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Saturday",
-                                "time": "2:15 p - 3:45 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "St. John's: Teen Learn to Swim Level 1 (Saturday)",
-                                "days": "Saturday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Children Swim (SNL)",
-                                "days": "Saturday",
-                                "time": "5:15 p - 6:30 p",
-                                "date": "2026-11-14"
-                            },
-                            {
-                                "session_type": "Teen/Young Adult Swim - SNL",
-                                "days": "Saturday",
-                                "time": "7:00 p - 8:00 p",
-                                "date": "2026-11-14"
-                            }
-                        ]
-                    },
-                    {
-                        "date": "2026-11-15",
-                        "weekday": "Sunday",
-                        "building_hours": "8:00 a - 5:45 p",
-                        "holiday": null,
-                        "note": null,
-                        "sessions": [
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Sunday",
-                                "time": "8:15 a - 9:45 a",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "General Swim",
-                                "days": "Sunday",
-                                "time": "10:00 a - 11:15 a",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Family Swim",
-                                "days": "Sunday",
-                                "time": "11:30 a - 1:15 p",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Children/Teen Swim",
-                                "days": "Sunday",
-                                "time": "1:30 p - 2:30 p",
-                                "date": "2026-11-15"
-                            },
-                            {
-                                "session_type": "Adult Lap Swim",
-                                "days": "Sunday",
-                                "time": "2:45 p - 4:15 p",
-                                "date": "2026-11-15"
-                            }
-                        ]
-                    }
-                ]
-            },
             {
                 "start": "2026-11-16",
                 "end": "2026-11-22",
@@ -7958,13 +7120,13 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-16"
@@ -9784,15 +8946,601 @@
         "phone": "(718) 402-5157",
         "url": "https://www.nycgovparks.org/parks/X045/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "On Tuesday, November 10, 2026, the fitness room in St. Mary's Recreation Center will be closed for fitness equipment upgrades.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
         "closed_through": null,
         "reopens": null,
         "closures": [],
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "St. Mary's: Senior Water Exercise",
+                "days": "Monday",
+                "time": "8:30 a - 9:30 a",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class A Monday - PS 16",
+                "days": "Monday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class B Monday - PS 72",
+                "days": "Monday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class C Monday - PS 16",
+                "days": "Monday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "1:30 p - 4:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "St. Mary's: Afterschool Learn to Swim (Monday)",
+                "days": "Monday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "St. Mary's Marlins Swim Team",
+                "days": "Monday",
+                "time": "5:00 p - 6:30 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Monday",
+                "time": "7:00 p - 8:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Tuesday",
+                "time": "8:00 a - 9:45 a",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class B Tuesday - PS 72",
+                "days": "Tuesday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
+                "days": "Tuesday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "1:30 p - 5:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "St. Mary's: Swim Prep",
+                "days": "Tuesday",
+                "time": "5:00 p - 6:30 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Adult Open Swim",
+                "days": "Tuesday",
+                "time": "7:00 p - 8:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "St. Mary's: Senior Water Exercise",
+                "days": "Wednesday",
+                "time": "8:30 a - 9:30 a",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "1:30 p - 5:00 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "St. Mary's Marlins Swim Team",
+                "days": "Wednesday",
+                "time": "5:00 p - 6:30 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 p - 8:00 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "8:00 a - 9:45 a",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
+                "days": "Thursday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class B Thursday - PS 72",
+                "days": "Thursday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
+                "days": "Thursday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
+                "days": "Thursday",
+                "time": "1:30 p - 2:30 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Adult Open Swim",
+                "days": "Thursday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Teen Swim",
+                "days": "Thursday",
+                "time": "3:30 p - 5:00 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Adult Open Swim",
+                "days": "Thursday",
+                "time": "5:15 p - 6:45 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 p - 8:00 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Adult Open Swim",
+                "days": "Friday",
+                "time": "8:00 a - 9:45 a",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                "days": "Friday",
+                "time": "1:30 p - 2:30 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "2:30 p - 4:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "St. Mary's: Adaptive Aquatics",
+                "days": "Friday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Friday",
+                "time": "5:30 p - 8:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Saturday",
+                "time": "8:00 a - 9:00 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Saturday",
+                "time": "9:15 a - 10:30 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "St. Mary's: Children's Learn to Swim (Level 2)",
+                "days": "Saturday",
+                "time": "10:30 a - 11:30 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "St. Mary's: Children's Learn to Swim (Level 1)",
+                "days": "Saturday",
+                "time": "11:30 a - 12:30 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "St. Mary's: Parent and Tots Learn to Swim",
+                "days": "Saturday",
+                "time": "12:30 p - 1:00 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "St. Mary's: Adult Learn to Swim (Saturday)",
+                "days": "Saturday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "St. Mary's Marlins Swim Team",
+                "days": "Saturday",
+                "time": "2:00 p - 3:30 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "SNL Teen Swim",
+                "days": "Saturday",
+                "time": "4:00 p - 7:30 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Adult Lap Swim",
+                "days": "Sunday",
+                "time": "8:00 a - 9:30 a",
+                "date": "2026-11-15"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Sunday",
+                "time": "9:45 a - 11:45 a",
+                "date": "2026-11-15"
+            },
+            {
+                "session_type": "Family Swim",
+                "days": "Sunday",
+                "time": "12:00 p - 3:30 p",
+                "date": "2026-11-15"
+            }
+        ],
         "schedule_weeks": [
+            {
+                "start": "2026-11-09",
+                "end": "2026-11-15",
+                "days": [
+                    {
+                        "date": "2026-11-09",
+                        "weekday": "Monday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "St. Mary's: Senior Water Exercise",
+                                "days": "Monday",
+                                "time": "8:30 a - 9:30 a",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class A Monday - PS 16",
+                                "days": "Monday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Monday - PS 72",
+                                "days": "Monday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Monday - PS 16",
+                                "days": "Monday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "1:30 p - 4:00 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "St. Mary's: Afterschool Learn to Swim (Monday)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "St. Mary's Marlins Swim Team",
+                                "days": "Monday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-09"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-10",
+                        "weekday": "Tuesday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Tuesday - PS 72",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "1:30 p - 5:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "St. Mary's: Swim Prep",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-10"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-11",
+                        "weekday": "Wednesday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "St. Mary's: Senior Water Exercise",
+                                "days": "Wednesday",
+                                "time": "8:30 a - 9:30 a",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "1:30 p - 5:00 p",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "St. Mary's Marlins Swim Team",
+                                "days": "Wednesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-11"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-12",
+                        "weekday": "Thursday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class A Thursday - PS 41",
+                                "days": "Thursday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Thursday - PS 72",
+                                "days": "Thursday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Thursday - PS 65x",
+                                "days": "Thursday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 1 (Thursday)",
+                                "days": "Thursday",
+                                "time": "1:30 p - 2:30 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Thursday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Teen Swim",
+                                "days": "Thursday",
+                                "time": "3:30 p - 5:00 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Thursday",
+                                "time": "5:15 p - 6:45 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-12"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-13",
+                        "weekday": "Friday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Friday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                                "days": "Friday",
+                                "time": "1:30 p - 2:30 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "2:30 p - 4:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "St. Mary's: Adaptive Aquatics",
+                                "days": "Friday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "5:30 p - 8:00 p",
+                                "date": "2026-11-13"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-14",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:00 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Saturday",
+                                "time": "9:15 a - 10:30 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "St. Mary's: Children's Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "St. Mary's: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "11:30 a - 12:30 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "St. Mary's: Parent and Tots Learn to Swim",
+                                "days": "Saturday",
+                                "time": "12:30 p - 1:00 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "St. Mary's: Adult Learn to Swim (Saturday)",
+                                "days": "Saturday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "St. Mary's Marlins Swim Team",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:30 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "SNL Teen Swim",
+                                "days": "Saturday",
+                                "time": "4:00 p - 7:30 p",
+                                "date": "2026-11-14"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-15",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:00 a - 9:30 a",
+                                "date": "2026-11-15"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "9:45 a - 11:45 a",
+                                "date": "2026-11-15"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "12:00 p - 3:30 p",
+                                "date": "2026-11-15"
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 "start": "2026-11-16",
                 "end": "2026-11-22",
