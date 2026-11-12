@@ -69,7 +69,7 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Asser Levy Class B Tuesday - PS",
+                "session_type": "Swim For Life at Asser Levy Class B Tuesday - Ps 161",
                 "days": "Tuesday",
                 "time": "11:00 a - 12:00 p",
                 "date": "2026-11-10"
@@ -117,13 +117,13 @@
                 "date": "2026-11-11"
             },
             {
-                "session_type": "Swim For Life at Asser Levy Class A Thursday - PS",
+                "session_type": "Swim For Life at Asser Levy Class A Thursday - Ps 133",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Asser Levy Class B Thursday - PS",
+                "session_type": "Swim For Life at Asser Levy Class B Thursday - Ps 133",
                 "days": "Thursday",
                 "time": "11:00 a - 12:00 p",
                 "date": "2026-11-12"
@@ -265,7 +265,7 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Asser Levy Class B Tuesday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class B Tuesday - Ps 161",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-10"
@@ -331,13 +331,13 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Swim For Life at Asser Levy Class A Thursday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class A Thursday - Ps 133",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Asser Levy Class B Thursday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class B Thursday - Ps 133",
                                 "days": "Thursday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-12"
@@ -507,7 +507,7 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Asser Levy Class B Tuesday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class B Tuesday - Ps 161",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-17"
@@ -591,13 +591,13 @@
                         "note": null,
                         "sessions": [
                             {
-                                "session_type": "Swim For Life at Asser Levy Class A Thursday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class A Thursday - Ps 133",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Asser Levy Class B Thursday - PS",
+                                "session_type": "Swim For Life at Asser Levy Class B Thursday - Ps 133",
                                 "days": "Thursday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-19"
@@ -741,7 +741,7 @@
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Chelsea Class A Monday - P 12x 045",
+                "session_type": "Swim For Life at Chelsea Class A Monday -",
                 "days": "Monday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-09"
@@ -795,7 +795,7 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Chelsea Class A Tuesday - P 12x 045",
+                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
                 "days": "Tuesday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-10"
@@ -879,7 +879,7 @@
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Chelsea Class A Thursday - P 12x 045",
+                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-12"
@@ -1030,7 +1030,7 @@
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Monday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Monday -",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-09"
@@ -1093,7 +1093,7 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Tuesday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-10"
@@ -1195,7 +1195,7 @@
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Thursday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-12"
@@ -1375,7 +1375,7 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Monday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Monday -",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-16"
@@ -1438,7 +1438,7 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Tuesday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-17"
@@ -1501,7 +1501,7 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class C Wednesday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class C Wednesday - Ps 12x 045",
                                 "days": "Wednesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-18"
@@ -1552,7 +1552,7 @@
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Thursday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-19"
@@ -1742,8 +1742,437 @@
         "closed_through": null,
         "reopens": null,
         "closures": [],
-        "schedules": [],
+        "schedules": [
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Monday",
+                "time": "12:00 p - 2:30 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                "days": "Monday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Monday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-11-09"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Tuesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Tuesday",
+                "time": "12:00 p - 2:30 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                "days": "Tuesday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Tuesday)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Constance Baker Motley Gators Swim Team",
+                "days": "Tuesday",
+                "time": "5:00 p - 6:30 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Wednesday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "12:00 p - 2:30 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                "days": "Wednesday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Wednesday",
+                "time": "4:00 p - 7:00 p",
+                "date": "2026-11-11"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Thursday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Thursday",
+                "time": "12:00 p - 2:30 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Constance Baker Motley: Adult Learn to Swim Beginner (Thursday)",
+                "days": "Thursday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Thursday)",
+                "days": "Thursday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Constance Baker Motley Gators Swim Team",
+                "days": "Thursday",
+                "time": "5:00 p - 6:30 p",
+                "date": "2026-11-12"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "7:00 a - 11:45 a",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Friday",
+                "time": "12:00 p - 2:30 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                "days": "Friday",
+                "time": "2:30 p - 3:30 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Constance Baker Motley: Adaptive Aquatics",
+                "days": "Friday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Lap Swim",
+                "days": "Friday",
+                "time": "5:00 p - 7:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Constance Baker Motley Gators Swim Team",
+                "days": "Saturday",
+                "time": "8:00 a - 9:30 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 2)",
+                "days": "Saturday",
+                "time": "9:30 a - 10:30 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 1)",
+                "days": "Saturday",
+                "time": "10:30 a - 11:30 a",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Constance Baker Motley: Parent and Tots Learn to Swim",
+                "days": "Saturday",
+                "time": "11:30 a - 12:00 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Constance Baker Motley: Adult Learn to Swim (Saturday)",
+                "days": "Saturday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "General Swim",
+                "days": "Saturday",
+                "time": "1:15 p - 2:45 p",
+                "date": "2026-11-14"
+            },
+            {
+                "session_type": "Constance Baker Motley: Swim Prep",
+                "days": "Saturday",
+                "time": "3:00 p - 4:00 p",
+                "date": "2026-11-14"
+            }
+        ],
         "schedule_weeks": [
+            {
+                "start": "2026-11-09",
+                "end": "2026-11-15",
+                "days": [
+                    {
+                        "date": "2026-11-09",
+                        "weekday": "Monday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                                "days": "Monday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-09"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Monday",
+                                "time": "4:00 p - 7:00 p",
+                                "date": "2026-11-09"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-10",
+                        "weekday": "Tuesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                                "days": "Tuesday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Tuesday)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley Gators Swim Team",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-10"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-11",
+                        "weekday": "Wednesday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Wednesday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                                "days": "Wednesday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-11"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "4:00 p - 7:00 p",
+                                "date": "2026-11-11"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-12",
+                        "weekday": "Thursday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Thursday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Thursday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Adult Learn to Swim Beginner (Thursday)",
+                                "days": "Thursday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Afterschool Learn to Swim (Thursday)",
+                                "days": "Thursday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-12"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley Gators Swim Team",
+                                "days": "Thursday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-12"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-13",
+                        "weekday": "Friday",
+                        "building_hours": "7:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "7:00 a - 11:45 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "12:00 p - 2:30 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley - Adult Water Exercise",
+                                "days": "Friday",
+                                "time": "2:30 p - 3:30 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Adaptive Aquatics",
+                                "days": "Friday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Lap Swim",
+                                "days": "Friday",
+                                "time": "5:00 p - 7:00 p",
+                                "date": "2026-11-13"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-14",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 3:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Constance Baker Motley Gators Swim Team",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:30 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "9:30 a - 10:30 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Parent and Tots Learn to Swim",
+                                "days": "Saturday",
+                                "time": "11:30 a - 12:00 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Adult Learn to Swim (Saturday)",
+                                "days": "Saturday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Saturday",
+                                "time": "1:15 p - 2:45 p",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Constance Baker Motley: Swim Prep",
+                                "days": "Saturday",
+                                "time": "3:00 p - 4:00 p",
+                                "date": "2026-11-14"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-15",
+                        "weekday": "Sunday",
+                        "building_hours": "Closed",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": []
+                    }
+                ]
+            },
             {
                 "start": "2026-11-16",
                 "end": "2026-11-22",
@@ -3843,6 +4272,12 @@
                 "date": "2026-11-14"
             },
             {
+                "session_type": "Shirley Chisholm's Swim Team",
+                "days": "Saturday",
+                "time": "10:00 a - 11:30 a",
+                "date": "2026-11-14"
+            },
+            {
                 "session_type": "Shirley Chisholm: Parent and Tots Learn to Swim (Saturday)",
                 "days": "Saturday",
                 "time": "11:30 a - 12:00 p",
@@ -4222,6 +4657,12 @@
                                 "session_type": "Open Lap Swim",
                                 "days": "Saturday",
                                 "time": "8:00 a - 10:00 a",
+                                "date": "2026-11-14"
+                            },
+                            {
+                                "session_type": "Shirley Chisholm's Swim Team",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:30 a",
                                 "date": "2026-11-14"
                             },
                             {
@@ -4633,6 +5074,12 @@
                                 "session_type": "Open Lap Swim",
                                 "days": "Saturday",
                                 "time": "8:00 a - 10:00 a",
+                                "date": "2026-11-21"
+                            },
+                            {
+                                "session_type": "Shirley Chisholm's Swim Team",
+                                "days": "Saturday",
+                                "time": "10:00 a - 11:30 a",
                                 "date": "2026-11-21"
                             },
                             {
@@ -6069,7 +6516,7 @@
         },
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
         "reduced_hours": false,
         "notice_links": [],
@@ -6217,13 +6664,13 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
+                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
                 "days": "Tuesday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-10"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
                 "days": "Tuesday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-10"
@@ -6253,25 +6700,25 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                "days": "Tuesday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-10"
-            },
-            {
                 "session_type": "FMAC Aquacades Swim Team",
                 "days": "Tuesday",
                 "time": "4:00 p - 6:00 p",
                 "date": "2026-11-10"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-10"
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                "days": "Tuesday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-10"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                 "days": "Tuesday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-10"
@@ -6325,13 +6772,13 @@
                 "date": "2026-11-11"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                 "days": "Wednesday",
                 "time": "1:00 p - 2:00 p",
                 "date": "2026-11-11"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Wednesday",
                 "time": "1:00 p - 2:00 p",
                 "date": "2026-11-11"
@@ -6887,13 +7334,13 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-10"
@@ -6923,25 +7370,25 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-10"
-                            },
-                            {
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-10"
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-10"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-10"
@@ -7004,13 +7451,13 @@
                                 "date": "2026-11-11"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                                 "days": "Wednesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-11"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Wednesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-11"
@@ -7469,13 +7916,13 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
+                                "session_type": "Swim For Life at FMAC Class A Monday - PS 24Q",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class A Monday - PS 24Q",
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-16"
@@ -7604,13 +8051,13 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 3A)",
+                                "session_type": "Swim For Life at FMAC Class C Tuesday - PS 124",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-17"
@@ -7640,25 +8087,25 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
-                                "days": "Tuesday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-17"
-                            },
-                            {
                                 "session_type": "FMAC Aquacades Swim Team",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 6:00 p",
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 6)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-17"
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
+                                "days": "Tuesday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-17"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Tuesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-17"
@@ -7715,13 +8162,13 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "FMAC: Adult Water Exercise",
+                                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at FMAC Class A Wednesday - PS 244Q",
+                                "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-18"
@@ -7739,13 +8186,13 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
                                 "days": "Wednesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 2)",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                                 "days": "Wednesday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-18"
@@ -7769,13 +8216,13 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
+                                "session_type": "FMAC: Children's Learn to Swim (Level 5)",
                                 "days": "Wednesday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-18"
