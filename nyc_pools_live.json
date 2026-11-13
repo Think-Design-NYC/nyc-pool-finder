@@ -795,7 +795,7 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
+                "session_type": "Swim For Life at Chelsea Class A Tuesday -",
                 "days": "Tuesday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-10"
@@ -879,7 +879,7 @@
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
+                "session_type": "Swim For Life at Chelsea Class A Thursday -",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-12"
@@ -1093,7 +1093,7 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday -",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-10"
@@ -1195,7 +1195,7 @@
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Thursday -",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-12"
@@ -1438,7 +1438,7 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Tuesday -",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-17"
@@ -1489,7 +1489,7 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Wednesday - P 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Wednesday -",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-18"
@@ -1501,7 +1501,7 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class C Wednesday - Ps 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class C Wednesday -",
                                 "days": "Wednesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-18"
@@ -1552,7 +1552,7 @@
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
+                                "session_type": "Swim For Life at Chelsea Class A Thursday -",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-19"
@@ -2442,7 +2442,7 @@
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "The elevator will temporarily be out of service on November 12, 2026, from 12 p.m. \u2013 2 p.m., for monthly maintenance. Please call the center for any updates.",
+        "notes": null,
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -2457,7 +2457,7 @@
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
+                "session_type": "Swim For Life at Gertrude Ederle Class A Monday -",
                 "days": "Monday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-09"
@@ -2469,7 +2469,7 @@
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
+                "session_type": "Swim For Life at Gertrude Ederle Class C Monday -",
                 "days": "Monday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-09"
@@ -2583,7 +2583,7 @@
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday -",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-12"
@@ -2716,7 +2716,7 @@
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Monday -",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-09"
@@ -2728,7 +2728,7 @@
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Monday -",
                                 "days": "Monday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-09"
@@ -2869,7 +2869,7 @@
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday -",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-12"
@@ -3030,7 +3030,7 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Monday -",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-16"
@@ -3042,7 +3042,7 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Monday -",
                                 "days": "Monday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-16"
@@ -3201,7 +3201,7 @@
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+                                "session_type": "Swim For Life at Gertrude Ederle Class A Thursday -",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-19"
@@ -3681,7 +3681,7 @@
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "reduced_hours": false,
         "notice_links": [
@@ -4020,19 +4020,19 @@
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class A Monday - Ps 161",
                 "days": "Monday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Monday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class B Monday - PS 40",
                 "days": "Monday",
                 "time": "11:00 a - 12:00 p",
                 "date": "2026-11-09"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Monday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class C Monday - Ps 245",
                 "days": "Monday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-09"
@@ -4068,19 +4068,19 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday - Ps 361",
                 "days": "Tuesday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday - P.S/I.S 109",
                 "days": "Tuesday",
                 "time": "11:00 a - 12:00 p",
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday - Ps 238",
                 "days": "Tuesday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-10"
@@ -4170,19 +4170,19 @@
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday - Cultural Arts Academy Charter School",
                 "days": "Thursday",
                 "time": "10:00 a - 11:00 a",
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday - Ps 399",
                 "days": "Thursday",
                 "time": "11:00 a - 12:00 p",
                 "date": "2026-11-12"
             },
             {
-                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
+                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday - Ps 92",
                 "days": "Thursday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-12"
@@ -4363,19 +4363,19 @@
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Monday - Ps 161",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Monday - PS 40",
                                 "days": "Monday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-09"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Monday - Ps 245",
                                 "days": "Monday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-09"
@@ -4420,19 +4420,19 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday - Ps 361",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday - P.S/I.S 109",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday - Ps 238",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-10"
@@ -4540,19 +4540,19 @@
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday - Cultural Arts Academy Charter School",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday - Ps 399",
                                 "days": "Thursday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-12"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday - Ps 92",
                                 "days": "Thursday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-12"
@@ -4762,19 +4762,19 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Monday - Ps 161",
                                 "days": "Monday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Monday - PS 40",
                                 "days": "Monday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Monday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Monday - Ps 245",
                                 "days": "Monday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-16"
@@ -4819,19 +4819,19 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Tuesday - Ps 361",
                                 "days": "Tuesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Tuesday - P.S/I.S 109",
                                 "days": "Tuesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Tuesday - Ps 238",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-17"
@@ -4894,19 +4894,19 @@
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Wednesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Wednesday - Ps 245",
                                 "days": "Wednesday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Wednesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Wednesday - PS 40",
                                 "days": "Wednesday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-18"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Wednesday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Wednesday - Ps 361",
                                 "days": "Wednesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-18"
@@ -4957,19 +4957,19 @@
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class A Thursday - Cultural Arts Academy Charter School",
                                 "days": "Thursday",
                                 "time": "10:00 a - 11:00 a",
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class B Thursday - Ps 399",
                                 "days": "Thursday",
                                 "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-19"
                             },
                             {
-                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday -",
+                                "session_type": "Swim For Life at Shirley Chisholm Class C Thursday - Ps 92",
                                 "days": "Thursday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-19"
@@ -8648,7 +8648,7 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -9871,7 +9871,7 @@
                 "date": "2026-11-10"
             },
             {
-                "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
+                "session_type": "Swim For Life at St. Mary's Class C Tuesday - Ps 277x",
                 "days": "Tuesday",
                 "time": "12:00 p - 1:00 p",
                 "date": "2026-11-10"
@@ -10151,7 +10151,7 @@
                                 "date": "2026-11-10"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
+                                "session_type": "Swim For Life at St. Mary's Class C Tuesday - Ps 277x",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-10"
@@ -10484,7 +10484,7 @@
                                 "date": "2026-11-17"
                             },
                             {
-                                "session_type": "Swim For Life at St. Mary's Class C Tuesday -",
+                                "session_type": "Swim For Life at St. Mary's Class C Tuesday - Ps 277x",
                                 "days": "Tuesday",
                                 "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-17"
