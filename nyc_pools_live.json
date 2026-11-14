@@ -147,6 +147,24 @@
                 "date": "2026-11-12"
             },
             {
+                "session_type": "Swim For Life at Asser Levy Class A Friday - PS 19",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at Asser Levy Class B Friday - PS 19",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at Asser Levy Class C Friday - PS 188",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-13"
+            },
+            {
                 "session_type": "Asser Levy: Adult Water Exercise",
                 "days": "Friday",
                 "time": "1:00 p - 2:00 p",
@@ -369,6 +387,24 @@
                         "holiday": null,
                         "note": null,
                         "sessions": [
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class A Friday - PS 19",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class B Friday - PS 19",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Asser Levy Class C Friday - PS 188",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-13"
+                            },
                             {
                                 "session_type": "Asser Levy: Adult Water Exercise",
                                 "days": "Friday",
@@ -921,6 +957,12 @@
                 "date": "2026-11-13"
             },
             {
+                "session_type": "Swim For Life at Chelsea Class B Friday - PS 129",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-13"
+            },
+            {
                 "session_type": "Water Aerobics",
                 "days": "Friday",
                 "time": "1:15 p - 2:15 p",
@@ -1243,6 +1285,12 @@
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
                                 "time": "7:00 a - 9:45 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Chelsea Class B Friday - PS 129",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
                                 "date": "2026-11-13"
                             },
                             {
@@ -2441,7 +2489,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -2628,6 +2676,18 @@
                 "session_type": "Adult Lap Swim",
                 "days": "Friday",
                 "time": "7:00 a - 9:45 a",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at Gertrude Ederle Class B Friday - PS 140",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at Gertrude Ederle Class C Friday - PS 140",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p",
                 "date": "2026-11-13"
             },
             {
@@ -2923,6 +2983,18 @@
                                 "session_type": "Adult Lap Swim",
                                 "days": "Friday",
                                 "time": "7:00 a - 9:45 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class B Friday - PS 140",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at Gertrude Ederle Class C Friday - PS 140",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-13"
                             },
                             {
@@ -3681,7 +3753,7 @@
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "reduced_hours": false,
         "notice_links": [
@@ -6988,6 +7060,24 @@
                 "date": "2026-11-13"
             },
             {
+                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
+                "days": "Friday",
+                "time": "10:00 a - 11:00 a",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at FMAC Class B Friday - PS 24Q",
+                "days": "Friday",
+                "time": "11:00 a - 12:00 p",
+                "date": "2026-11-13"
+            },
+            {
+                "session_type": "Swim For Life at FMAC Class C Friday - PS 124",
+                "days": "Friday",
+                "time": "12:00 p - 1:00 p",
+                "date": "2026-11-13"
+            },
+            {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1)",
                 "days": "Friday",
                 "time": "1:00 p - 2:00 p",
@@ -7682,6 +7772,24 @@
                                 "session_type": "FMAC: Adult Water Exercise",
                                 "days": "Friday",
                                 "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class A Friday - PS 24Q",
+                                "days": "Friday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class B Friday - PS 24Q",
+                                "days": "Friday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-13"
+                            },
+                            {
+                                "session_type": "Swim For Life at FMAC Class C Friday - PS 124",
+                                "days": "Friday",
+                                "time": "12:00 p - 1:00 p",
                                 "date": "2026-11-13"
                             },
                             {
@@ -8648,7 +8756,7 @@
         },
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
