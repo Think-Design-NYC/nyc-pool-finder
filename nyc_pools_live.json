@@ -2489,7 +2489,7 @@
         },
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
