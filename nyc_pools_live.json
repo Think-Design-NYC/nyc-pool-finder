@@ -18,7 +18,7 @@
         "phone": "(212) 447-2020",
         "url": "https://www.nycgovparks.org/parks/M164/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -724,8 +724,8 @@
         },
         "phone": "(212) 255-3705",
         "url": "https://www.nycgovparks.org/parks/M260/facilities/indoor-pools",
-        "membership_required": true,
-        "notes": null,
+        "membership_required": null,
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -1703,7 +1703,7 @@
         "phone": "(212) 754-5411",
         "url": "https://www.nycgovparks.org/parks/M130/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -2373,7 +2373,7 @@
         "phone": "(212) 397-3159",
         "url": "https://www.nycgovparks.org/parks/M063/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -3593,7 +3593,7 @@
         },
         "phone": "(718) 485-4633",
         "url": "https://www.nycgovparks.org/parks/B270/facilities/indoor-pools",
-        "membership_required": true,
+        "membership_required": null,
         "notes": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
         "reduced_hours": false,
         "notice_links": [
@@ -3916,7 +3916,7 @@
         },
         "phone": "(718) 859-3937",
         "url": "https://www.nycgovparks.org/parks/B250/facilities/indoor-pools",
-        "membership_required": null,
+        "membership_required": true,
         "notes": null,
         "reduced_hours": false,
         "notice_links": [],
@@ -4198,13 +4198,13 @@
             {
                 "session_type": "Open Lap Swim",
                 "days": "Saturday",
-                "time": "8:00 a - 10:00 a",
+                "time": "8:00 a - 9:45 a",
                 "date": "2026-11-21"
             },
             {
                 "session_type": "Shirley Chisholm's Swim Team",
                 "days": "Saturday",
-                "time": "10:00 a - 11:30 a",
+                "time": "10:00 a - 11:15 a",
                 "date": "2026-11-21"
             },
             {
@@ -4240,7 +4240,7 @@
             {
                 "session_type": "Open Lap Swim",
                 "days": "Sunday",
-                "time": "8:00 a - 10:00 a",
+                "time": "8:00 a - 9:45 a",
                 "date": "2026-11-22"
             },
             {
@@ -4264,7 +4264,7 @@
             {
                 "session_type": "General Swim",
                 "days": "Sunday",
-                "time": "1:00 p - 3:00 p",
+                "time": "1:00 p - 2:45 p",
                 "date": "2026-11-22"
             },
             {
@@ -4604,13 +4604,13 @@
                             {
                                 "session_type": "Open Lap Swim",
                                 "days": "Saturday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-21"
                             },
                             {
                                 "session_type": "Shirley Chisholm's Swim Team",
                                 "days": "Saturday",
-                                "time": "10:00 a - 11:30 a",
+                                "time": "10:00 a - 11:15 a",
                                 "date": "2026-11-21"
                             },
                             {
@@ -4655,7 +4655,7 @@
                             {
                                 "session_type": "Open Lap Swim",
                                 "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-22"
                             },
                             {
@@ -4679,7 +4679,7 @@
                             {
                                 "session_type": "General Swim",
                                 "days": "Sunday",
-                                "time": "1:00 p - 3:00 p",
+                                "time": "1:00 p - 2:45 p",
                                 "date": "2026-11-22"
                             },
                             {
@@ -4942,13 +4942,13 @@
                             {
                                 "session_type": "Open Lap Swim",
                                 "days": "Saturday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-28"
                             },
                             {
                                 "session_type": "Shirley Chisholm's Swim Team",
                                 "days": "Saturday",
-                                "time": "10:00 a - 11:30 a",
+                                "time": "10:00 a - 11:15 a",
                                 "date": "2026-11-28"
                             },
                             {
@@ -4993,7 +4993,7 @@
                             {
                                 "session_type": "Open Lap Swim",
                                 "days": "Sunday",
-                                "time": "8:00 a - 10:00 a",
+                                "time": "8:00 a - 9:45 a",
                                 "date": "2026-11-29"
                             },
                             {
@@ -5017,7 +5017,7 @@
                             {
                                 "session_type": "General Swim",
                                 "days": "Sunday",
-                                "time": "1:00 p - 3:00 p",
+                                "time": "1:00 p - 2:45 p",
                                 "date": "2026-11-29"
                             },
                             {
@@ -6319,7 +6319,7 @@
         "phone": "(718) 271-7572",
         "url": "https://www.nycgovparks.org/parks/Q099/facilities/indoor-pools",
         "membership_required": true,
-        "notes": "Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and ",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -6364,12 +6364,6 @@
                 "date": "2026-11-16"
             },
             {
-                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
-                "days": "Monday",
-                "time": "1:00 p - 2:00 p",
-                "date": "2026-11-16"
-            },
-            {
                 "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
                 "days": "Monday",
                 "time": "1:00 p - 2:00 p",
@@ -6377,6 +6371,12 @@
             },
             {
                 "session_type": "FMAC: Senior Learn to Swim (Level 1)",
+                "days": "Monday",
+                "time": "1:00 p - 2:00 p",
+                "date": "2026-11-16"
+            },
+            {
+                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
                 "days": "Monday",
                 "time": "1:00 p - 2:00 p",
                 "date": "2026-11-16"
@@ -6394,12 +6394,6 @@
                 "date": "2026-11-16"
             },
             {
-                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                "days": "Monday",
-                "time": "4:00 p - 5:00 p",
-                "date": "2026-11-16"
-            },
-            {
                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                 "days": "Monday",
                 "time": "4:00 p - 5:00 p",
@@ -6407,6 +6401,12 @@
             },
             {
                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                "days": "Monday",
+                "time": "4:00 p - 5:00 p",
+                "date": "2026-11-16"
+            },
+            {
+                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                 "days": "Monday",
                 "time": "4:00 p - 5:00 p",
                 "date": "2026-11-16"
@@ -7043,12 +7043,6 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
-                                "days": "Monday",
-                                "time": "1:00 p - 2:00 p",
-                                "date": "2026-11-16"
-                            },
-                            {
                                 "session_type": "FMAC: Adult Learn to Swim (Level 1B)",
                                 "days": "Monday",
                                 "time": "1:00 p - 2:00 p",
@@ -7056,6 +7050,12 @@
                             },
                             {
                                 "session_type": "FMAC: Senior Learn to Swim (Level 1)",
+                                "days": "Monday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-11-16"
+                            },
+                            {
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
                                 "days": "Monday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-16"
@@ -7073,12 +7073,6 @@
                                 "date": "2026-11-16"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-16"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
@@ -7086,6 +7080,12 @@
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-16"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-16"
@@ -7784,13 +7784,13 @@
                                 "date": "2026-11-23"
                             },
                             {
-                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
+                                "session_type": "FMAC: Senior Learn to Swim (Level 1)",
                                 "days": "Monday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-23"
                             },
                             {
-                                "session_type": "FMAC: Senior Learn to Swim (Level 1)",
+                                "session_type": "FMAC: Adult Learn to Swim (Level 1A)",
                                 "days": "Monday",
                                 "time": "1:00 p - 2:00 p",
                                 "date": "2026-11-23"
@@ -7808,12 +7808,6 @@
                                 "date": "2026-11-23"
                             },
                             {
-                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
-                                "days": "Monday",
-                                "time": "4:00 p - 5:00 p",
-                                "date": "2026-11-23"
-                            },
-                            {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 4)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
@@ -7821,6 +7815,12 @@
                             },
                             {
                                 "session_type": "FMAC: Children's Learn to Swim (Level 5)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "FMAC: Children's Learn to Swim (Level 3)",
                                 "days": "Monday",
                                 "time": "4:00 p - 5:00 p",
                                 "date": "2026-11-23"
@@ -8318,7 +8318,7 @@
         "phone": "(718) 276-8686",
         "url": "https://www.nycgovparks.org/parks/Q448/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -9428,7 +9428,7 @@
         "phone": "(718) 402-5157",
         "url": "https://www.nycgovparks.org/parks/X045/facilities/indoor-pools",
         "membership_required": true,
-        "notes": null,
+        "notes": "Mary's Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
         "reduced_hours": false,
         "notice_links": [],
         "closure_reason": null,
@@ -10066,6 +10066,290 @@
                                 "days": "Sunday",
                                 "time": "12:00 p - 3:30 p",
                                 "date": "2026-11-22"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "start": "2026-11-23",
+                "end": "2026-11-29",
+                "days": [
+                    {
+                        "date": "2026-11-23",
+                        "weekday": "Monday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "St. Mary's: Senior Water Exercise",
+                                "days": "Monday",
+                                "time": "8:30 a - 9:30 a",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class A Monday - PS 16",
+                                "days": "Monday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Monday - PS 72",
+                                "days": "Monday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Monday - PS 16",
+                                "days": "Monday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Monday",
+                                "time": "1:30 p - 4:00 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "St. Mary's: Afterschool Learn to Swim (Monday)",
+                                "days": "Monday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "St. Mary's Marlins Swim Team",
+                                "days": "Monday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-23"
+                            },
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Monday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-23"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-24",
+                        "weekday": "Tuesday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Tuesday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class A Tuesday - PS 12x314",
+                                "days": "Tuesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Tuesday - PS 72",
+                                "days": "Tuesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Tuesday - Ps 277x",
+                                "days": "Tuesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Tuesday",
+                                "time": "1:30 p - 5:00 p",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "St. Mary's: Swim Prep",
+                                "days": "Tuesday",
+                                "time": "5:00 p - 6:30 p",
+                                "date": "2026-11-24"
+                            },
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Tuesday",
+                                "time": "7:00 p - 8:00 p",
+                                "date": "2026-11-24"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-25",
+                        "weekday": "Wednesday",
+                        "building_hours": "8:00 a - 5:00 p",
+                        "holiday": "Thanksgiving Eve: Recreation centers will be open at regularly scheduled times but will close at 5:00 p.m., or earlier at the regularly scheduled time if the center normally closes before 5:00 p.m.",
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "St. Mary's: Senior Water Exercise",
+                                "days": "Wednesday",
+                                "time": "8:30 a - 9:30 a",
+                                "date": "2026-11-25"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class A Wednesday - PS 16",
+                                "days": "Wednesday",
+                                "time": "10:00 a - 11:00 a",
+                                "date": "2026-11-25"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class B Wednesday - PS 72",
+                                "days": "Wednesday",
+                                "time": "11:00 a - 12:00 p",
+                                "date": "2026-11-25"
+                            },
+                            {
+                                "session_type": "Swim For Life at St. Mary's Class C Wednesday - PS 16",
+                                "days": "Wednesday",
+                                "time": "12:00 p - 1:00 p",
+                                "date": "2026-11-25"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Wednesday",
+                                "time": "1:30 p - 5:00 p",
+                                "date": "2026-11-25"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-26",
+                        "weekday": "Thursday",
+                        "building_hours": "Closed",
+                        "holiday": "Thanksgiving Day: Recreation Centers will be closed.",
+                        "note": "There are no programs at this pool today.",
+                        "sessions": []
+                    },
+                    {
+                        "date": "2026-11-27",
+                        "weekday": "Friday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Open Swim",
+                                "days": "Friday",
+                                "time": "8:00 a - 9:45 a",
+                                "date": "2026-11-27"
+                            },
+                            {
+                                "session_type": "St. Mary's: Senior Learn to Swim Level 2 (Friday)",
+                                "days": "Friday",
+                                "time": "1:30 p - 2:30 p",
+                                "date": "2026-11-27"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Friday",
+                                "time": "2:30 p - 4:00 p",
+                                "date": "2026-11-27"
+                            },
+                            {
+                                "session_type": "St. Mary's: Adaptive Aquatics",
+                                "days": "Friday",
+                                "time": "4:00 p - 5:00 p",
+                                "date": "2026-11-27"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Friday",
+                                "time": "5:30 p - 8:00 p",
+                                "date": "2026-11-27"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-28",
+                        "weekday": "Saturday",
+                        "building_hours": "8:00 a - 8:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Saturday",
+                                "time": "8:00 a - 9:00 a",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Saturday",
+                                "time": "9:15 a - 10:30 a",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "St. Mary's: Children's Learn to Swim (Level 2)",
+                                "days": "Saturday",
+                                "time": "10:30 a - 11:30 a",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "St. Mary's: Children's Learn to Swim (Level 1)",
+                                "days": "Saturday",
+                                "time": "11:30 a - 12:30 p",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "St. Mary's: Parent and Tots Learn to Swim",
+                                "days": "Saturday",
+                                "time": "12:30 p - 1:00 p",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "St. Mary's: Adult Learn to Swim (Saturday)",
+                                "days": "Saturday",
+                                "time": "1:00 p - 2:00 p",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "St. Mary's Marlins Swim Team",
+                                "days": "Saturday",
+                                "time": "2:00 p - 3:30 p",
+                                "date": "2026-11-28"
+                            },
+                            {
+                                "session_type": "SNL Teen Swim",
+                                "days": "Saturday",
+                                "time": "4:00 p - 7:30 p",
+                                "date": "2026-11-28"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "2026-11-29",
+                        "weekday": "Sunday",
+                        "building_hours": "8:00 a - 4:00 p",
+                        "holiday": null,
+                        "note": null,
+                        "sessions": [
+                            {
+                                "session_type": "Adult Lap Swim",
+                                "days": "Sunday",
+                                "time": "8:00 a - 9:30 a",
+                                "date": "2026-11-29"
+                            },
+                            {
+                                "session_type": "General Swim",
+                                "days": "Sunday",
+                                "time": "9:45 a - 11:45 a",
+                                "date": "2026-11-29"
+                            },
+                            {
+                                "session_type": "Family Swim",
+                                "days": "Sunday",
+                                "time": "12:00 p - 3:30 p",
+                                "date": "2026-11-29"
                             }
                         ]
                     }
